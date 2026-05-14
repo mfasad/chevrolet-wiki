@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Диагностика Нива Шевроле: коды ошибок и методы проверки — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по диагностике ВАЗ-2123. Как считать ошибки ЭБУ без сканера, проверить датчики и найти неисправность двигателя.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv46_mD86/kak-provesti-diagnostiku-niva-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Диагностика Нива Шевроле: коды ошибок и методы проверки">
+    <meta property="og:description" content="Полная инструкция по диагностике ВАЗ-2123. Как считать ошибки ЭБУ без сканера, проверить датчики и найти неисправность двигателя.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Диагностика Нива Шевроле: коды ошибок и методы проверки</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Диагностика Нива Шевроле: от бортового компьютера до сканера</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#визуальный-осмотр-и-первичная-проверка-систем">Визуальный осмотр и первичная проверка систем</a></li><li><a href="#считывание-кодов-ошибок-через-панель-приборов">Считывание кодов ошибок через панель приборов</a></li><li><a href="#диагностика-с-помощью-obd-ii-сканера-и-ноутбука">Диагностика с помощью OBD-II сканера и ноутбука</a></li><li><a href="#проверка-датчиков-и-исполнительных-механизмов">Проверка датчиков и исполнительных механизмов</a></li><li><a href="#анализ-работы-системы-зажигания-и-свечей">Анализ работы системы зажигания и свечей</a></li><li><a href="#диагностика-механической-части-и-компрессии">Диагностика механической части и компрессии</a></li><li><a href="#частые-вопросы-и-ответы-faq">Частые вопросы и ответы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Своевременное выявление неисправностей в системе управления двигателем позволяет владельцам <em>VАЗ-2123</em> избежать дорогостоящего ремонта и внезапных поломок в дороге. Диагностика Нива Шевроле — это не просто гашение горящей лампы <code>Check Engine</code>, а комплексный процесс анализа работы всех систем автомобиля. Современные методы позволяют считывать данные даже без дорогостоящего оборудования, используя лишь подручные средства и внимательность.</p>
+
+<p>В этой статье мы разберем все доступные способы проверки: от простой визуальной оценки до подключения профессиональных сканеров. Вы узнаете, как интерпретировать коды ошибок, на что обращать внимание в первую очередь и какие параметры критичны для стабильной работы мотора. Правильный подход к диагностике сэкономит вам время и деньги.</p>
+
+<h2 id="визуальный-осмотр-и-первичная-проверка-систем">Визуальный осмотр и первичная проверка систем</h2>
+
+<p>Перед тем как подключать сложное оборудование, необходимо провести тщательный визуальный осмотр подкапотного пространства. Часто причина нестабильной работы двигателя кроется в банальных вещах: окислившихся контактах, трещинах на патрубках или поврежденной изоляции проводов. Особое внимание следует уделить состоянию <strong>высоковольтных проводов</strong> и катушек зажигания, так как пробой искры является частой причиной троения двигателя.</p>
+
+<p>Проверьте целостность вакуумных шлангов. На двигателях объемом 1.7 литра даже микроскопическая трещина в патрубке регулятора холостого хода может привести к серьезному обеднению смеси. Воздух, поступающий в обход дроссельной заслонки, сбивает с толку <strong>датчик массового расхода воздуха</strong> (ДМРВ), что вызывает плавающие обороты и повышенный расход топлива.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При работающем двигателе прислушайтесь к характерному шипению. Оно часто указывает на подсос неучтенного воздуха, который невозможно обнаружить визуально. Обрызгайте подозрительные места очистителем карбюратора — если обороты изменятся, вы нашли утечку.</p>
+</blockquote>
+
+<p>Не забывайте про состояние клемм аккумулятора. Плохой контакт "массы" двигателя с кузовом может вызывать хаотичные скачки напряжения в бортовой сети, что ЭБУ воспринимает как неисправность датчиков. Зачистка контактов — это первый шаг, который нужно сделать перед любой глубокой диагностикой.</p>
+
+<div class="checklist-block"><h4>☑️ Первичный осмотр Нива Шевроле</h4><label class="check-item"><input type="checkbox"><span>Проверить целостность патрубков</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть разъемы датчиков</span></label><label class="check-item"><input type="checkbox"><span>Проверить уровень жидкостей</span></label><label class="check-item"><input type="checkbox"><span>Оценить состояние свечей зажигания</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="считывание-кодов-ошибок-через-панель-приборов">Считывание кодов ошибок через панель приборов</h2>
+
+<p>Одной из уникальных особенностей автомобилей семейства Нива является возможность проведения самодиагностики без использования внешних сканеров. Электронный блок управления (ЭБУ) сохраняет коды неисправностей в своей памяти, и вывести их на экран можно штатными средствами. Для этого не требуется вскрывать салон или искать разъем OBD-II.</p>
+
+<p>Процедура запуска режима диагностики проста, но требует точности в действиях. Вам необходимо нажать одновременно две кнопки на блоке управления отопителем: регулятор температуры (левая кнопка) и кнопку переключения режимов вентилятора (правая кнопка). Удерживая их около 3-5 секунд, вы переводите бортовой компьютер в сервисный режим.</p>
+
+<p>После активации режима на дисплее появятся цифры, указывающие на версию прошивки ЭБУ, а затем начнут последовательно отображаться коды ошибок. Каждая цифра соответствует определенной неисправности. Например, код "4" может указывать на проблемы с датчиком температуры, а "6" — на перегрев двигателя. Расшифровку кодов лучше держать под рукой или запомнить основные значения.</p>
+
+<details class="faq-item"><summary>Список основных кодов ошибок панели приборов</summary><div class="faq-answer"><p>1 — Неисправность микропроцессора. 2 — Датчик уровня топлива (обрыв). 3 — Перегрев двигателя. 4 — Низкое напряжение бортсети. 5 — Обрыв датчика температуры воздуха. 6 — Перегрев двигателя (критический). 7 — Давление масла. 8 — Неисправность тормозной системы.>
+
+<p>Важно понимать, что этот метод показывает только наличие ошибки, но не дает детальной информации о текущих параметрах работы двигателя в реальном времени. Это "быстрый чек", который помогает понять, в каком направлении двигаться дальше.</p>
+
+
+
+<h2 id="диагностика-с-помощью-obd-ii-сканера-и-ноутбука">Диагностика с помощью OBD-II сканера и ноутбука</h2>
+
+<p>Для получения полной картины состояния автомобиля необходимо использовать специализированное оборудование. Разъем диагностики в Нива Шевроле стандарта <em>OBD-II</em> обычно расположен под панелью приборов слева от рулевой колонки или в районе центрального тоннеля, закрытый декоративной заглушкой. Подключение сканера дает доступ к глубоким настройкам ЭБУ.</p>
+
+<p>Использование ноутбука с установленным программным обеспечением, таким как <strong>OpenDiag</strong> или <em>Scanmatik</em>, позволяет видеть работу двигателя в реальном времени. Вы можете отслеживать угол опережения зажигания, время впрыска, положение дроссельной заслонки и коррекции топливной смеси. Это незаменимый инструмент для поиска плавающих неисправностей, которые не всегда фиксируются как постоянные коды.</p>
+
+<p>При подключении через Bluetooth-адаптер и смартфон приложение может превратиться в полноценный маршрутизатор данных. Однако для профессиональной диагностики, особенно при настройке ГБО или чип-тюнинге, рекомендуется использовать проводное соединение для исключения потерь пакетов данных и обеспечения стабильности связи.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Нормальное значение</th>
+<th>Критическое отклонение</th>
+<th>Возможная причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Напряжение бортсети</td>
+<td>13.5 - 14.5 В</td>
+<td>Менее 12 В</td>
+<td>Неисправен генератор</td>
+</tr>
+<tr>
+<td>ДМРВ (расход воздуха)</td>
+<td>9 - 12 кг/ч</td>
+<td>Более 15 кг/ч</td>
+<td>Подсос воздуха, грязный ДМРВ</td>
+</tr>
+<tr>
+<td>Лямбда-зонд</td>
+<td>0.1 - 0.9 В</td>
+<td>Постоянно 0 или 1 В</td>
+<td>Неисправность датчика</td>
+</tr>
+<tr>
+<td>Угол открытия ДЗ</td>
+<td>0 - 1 %</td>
+<td>Более 2 %</td>
+<td>Сбит регулировочный винт</td>
+</tr>
+</tbody>
+</table>
+
+<p>Анализируя полученные данные, можно точно определить, какой узел требует вмешательства. Например, если лямбда-зонд показывает постоянное значение, а коррекция смеси уходит в плюс или минус более чем на 10%, проблема явно в системе топливоподачи или зажигания.</p>
+
+<h2 id="проверка-датчиков-и-исполнительных-механизмов">Проверка датчиков и исполнительных механизмов</h2>
+
+<p>Отдельного внимания заслуживает проверка ключевых датчиков, от которых зависит формирование топливно-воздушной смеси. <strong>Датчик положения коленчатого вала</strong> (ДПКВ) является синхронизирующим элементом; при его неисправности двигатель чаще всего просто не заводится. Проверка производится мультиметром: сопротивление обмотки должно находиться в пределах 500-700 Ом.</p>
+
+<p>Датчик положения дроссельной заслонки (ДПДЗ) часто становится источником проблем с холостым ходом. При плавном нажатии на педаль газа напряжение на сигнальном проводе должно плавно расти от 0.5 до 4.5 Вольт. Любой "провал" или скачок напряжения свидетельствует о износе дорожек резистора внутри датчика, что требует его замены.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Перед заменой ДПДЗ убедитесь, что дроссельная заслонка полностью закрыта в исходном положении. Если есть нагар, сначала произведите чистку узла, иначе новый датчик быстро выйдет из строя или будет показывать неверные данные.</p>
+</blockquote>
+
+<p>Регулятор холостого хода (РХХ) — еще один частый "гость" в списке неисправностей. Его шток может заклинить из-за нагара, что приводит к невозможности запустить двигатель без подгазовки. Проверка осуществляется подачей напряжения 12В на определенные контакты разъема — шток должен выдвигаться и втягиваться с характерным щелчком.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Замена датчиков на Нива Шевроле должна производиться только после отключения минусовой клеммы аккумулятора во избежание короткого замыкания в цепи ЭБУ.</p></div>
+
+<h2 id="анализ-работы-системы-зажигания-и-свечей">Анализ работы системы зажигания и свечей</h2>
+
+<p>Система зажигания на Нива Шевроле эволюционировала от трамблерной к модульной. На современных версиях установлены индивидуальные катушки зажигания или двухвыводные модули. Диагностика здесь начинается с визуального осмотра свечей. Цвет нагара может многое рассказать о состоянии мотора: черный сухой нагар говорит о богатой смеси, а белый — о бедной или перегреве.</p>
+
+<p>Проверка высоковольтных проводов и катушек производится методом исключения. В темное время суток можно увидеть "убегающую" искру по поверхности пробитого провода. Для более точной диагностики используется мотор-тестер, который показывает форму искрового разряда и энергию зажигания.</p>
+
+<p>Зазор между электродами свечи также играет важную роль. Для Нивы Шевроле с 8-клапанным двигателем оптимальным считается зазор 0.7-0.8 мм, хотя современные свечи с многоэлектродным дизайном могут иметь другие рекомендации завода-изготовителя. Использование свечей с неправильным калильным числом может привести к детонации или калильному зажиганию.</p>
+
+<ul>
+<li>🔌 <strong>Искра:</strong> Должна быть яркой, синего цвета и пробивать зазор 15-20 мм при проверке на массу.</li>
+<li>🕯️ <strong>Нагар:</strong> Кирпичный оттенок изолятора свидетельствует о нормальной работе двигателя.</li>
+<li>⚡ <strong>Модуль:</strong> Проверьте разъемы на предмет окисления, особенно нижний ряд контактов.</li>
+</ul>
+
+<p>Если троение проявляется только на холодном двигателе, вероятнее всего, проблема в одной из катушек, которая "плывет" при нагреве. В таком случае поможет тепловая диагностика: прогрейте двигатель и аккуратно (соблюдая осторожность) проверьте температуру модулей зажигания — неисправный будет заметно холоднее или горячее остальных.</p>
+
+<div class="poll-widget" id="poll-ba52cbfb"><div class="poll-widget-question">📊 С каким типом зажигания у вас Нива Шевроле?</div><div class="poll-widget-option" data-poll="ba52cbfb" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Модуль зажигания (2 вывода)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="ba52cbfb" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Индивидуальные катушки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="ba52cbfb" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Трамблер (старые модели)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="ba52cbfb" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Не знаю / Другое</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="диагностика-механической-части-и-компрессии">Диагностика механической части и компрессии</h2>
+
+<p>Электронная диагностика не всесильна, и если она не выявляет проблем, а двигатель работает плохо, стоит обратиться к механике. Измерение компрессии в цилиндрах — базовый метод оценки состояния цилиндро-поршневой группы. Для двигателя ВАЗ-2123 нормальной считается компрессия в диапазоне 10-12 бар.</p>
+
+<p>Разброс показаний между цилиндрами не должен превышать 1 бар. Если в одном из цилиндров компрессия значительно ниже, можно провести "масляный тест". Влейте в цилиндр 5-10 мл моторного масла и повторите замер. Если компрессия выросла — проблема в износе поршневых колец. Если осталась низкой — прогорел клапан или повреждена прокладка ГБЦ.</p>
+
+<p>Также важно проверить фазы газораспределения. Перескок ремня ГРМ даже на один зуб может привести к нестабильной работе, потере мощности и повышенному расходу топлива, которые электроника не всегда может компенсировать. Визуально это проверяется по меткам на шкивах коленвала и распредвала.</p>
+
+<h2 id="частые-вопросы-и-ответы-faq">Частые вопросы и ответы (FAQ)</h2>
+
+<details>
+<summary>Почему горит лампа Check Engine, но ошибок нет?</summary>
+<p>Это может происходить по нескольким причинам: неисправность самой лампы на панели приборов, "плавающая" ошибка, которая была в памяти, но сейчас условия для ее появления отсутствуют, или низкое качество топлива, которое ЭБУ воспринимает как временный сбой. Также возможно повреждение проводки до панели приборов.</p>
+</details>
+
+<details>
+<summary>Как сбросить ошибки на Нива Шевроле без сканера?</summary>
+<p>Самый простой способ — войти в режим диагностики (зажав две кнопки на печке), дождаться появления кода ошибки и нажать правую кнопку (сброс) на несколько секунд. Также можно снять минусовую клемму аккумулятора на 10-15 минут, но это сбросит и другие настройки (время, магнитолу).</p>
+</details>
+
+<details>
+<summary>Можно ли ездить с горящим Check Engine?</summary>
+<p>Если лампа горит ровным светом и поведение автомобиля не изменилось (нет потери мощности, стуков, дыма), доехать до сервиса можно. Если лампа мигает или горит красным — движение следует прекратить, так как это указывает на критическую неисправность, например, пропуски зажигания, которые могут разрушить катализатор.</p>
+</details>
+
+<details>
+<summary>Где находится разъем для диагностики?</summary>
+<p>В зависимости от года выпуска, разъем OBD-II может находиться под панелью приборов слева от рулевой колонки (за декоративной заглушкой) или в нижней части центральной консоли, рядом с блоком управления отопителем. В ранних моделях использовался специальный 12-контактный разъем.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#визуальный-осмотр-и-первичная-проверка-систем">Визуальный осмотр и первичная проверка систем</a></li><li><a href="#считывание-кодов-ошибок-через-панель-приборов">Считывание кодов ошибок через панель приборов</a></li><li><a href="#диагностика-с-помощью-obd-ii-сканера-и-ноутбука">Диагностика с помощью OBD-II сканера и ноутбука</a></li><li><a href="#проверка-датчиков-и-исполнительных-механизмов">Проверка датчиков и исполнительных механизмов</a></li><li><a href="#анализ-работы-системы-зажигания-и-свечей">Анализ работы системы зажигания и свечей</a></li><li><a href="#диагностика-механической-части-и-компрессии">Диагностика механической части и компрессии</a></li><li><a href="#частые-вопросы-и-ответы-faq">Частые вопросы и ответы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

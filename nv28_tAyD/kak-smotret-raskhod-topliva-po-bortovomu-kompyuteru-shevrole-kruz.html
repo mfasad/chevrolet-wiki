@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Расход топлива Шевроле Круз: чтение БК и нормы — Chevrolet-Wiki</title>
+    <meta name="description" content="Как смотреть расход топлива на бортовом компьютере Шевроле Круз. Реальные показатели двигателя 1.6 и 1.8. Причины ошибок и сброс данных.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv28_tAyD/kak-smotret-raskhod-topliva-po-bortovomu-kompyuteru-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Расход топлива Шевроле Круз: чтение БК и нормы">
+    <meta property="og:description" content="Как смотреть расход топлива на бортовом компьютере Шевроле Круз. Реальные показатели двигателя 1.6 и 1.8. Причины ошибок и сброс данных.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Расход топлива Шевроле Круз: чтение БК и нормы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как смотреть расход топлива по бортовому компьютеру Шевроле Круз</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#расположение-кнопок-управления-и-навигация-по-меню">Расположение кнопок управления и навигация по меню</a></li><li><a href="#просмотр-мгновенного-и-среднего-расхода-топлива">Просмотр мгновенного и среднего расхода топлива</a></li><li><a href="#таблица-нормативных-показателей-для-разных-двигателей">Таблица нормативных показателей для разных двигателей</a></li><li><a href="#сброс-показателей-и-калибровка-данных">Сброс показателей и калибровка данных</a></li><li><a href="#факторы-влияющие-на-точность-показаний-бк">Факторы, влияющие на точность показаний БК</a></li><li><a href="#диагностика-проблем-при-аномальном-расходе">Диагностика проблем при аномальном расходе</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана <em>Chevrolet Cruze</em> часто задаются вопросом о реальном потреблении бензина, так как заводские цифры могут существенно отличаться от показаний на приборной панели. <strong>Бортовой компьютер</strong> (БК) в этих автомобилях предоставляет базовую, но полезную информацию, позволяющую водителю контролировать экономичность поездки в режиме реального времени. Понимание принципов работы системы отображения данных помогает не только отслеживать расходы, но и вовремя заметить неисправности в системе питания или зажигания.</p>
+
+<p>Интерфейс БК на Шевроле Круз, независимо от года выпуска, сконструирован достаточно лаконично, однако доступ к некоторым функциям может быть скрыт за определенными комбинациями действий. <em>Электронный блок управления</em> (ЭБУ) собирает данные с датчиков массового расхода воздуха и форсунок, преобразуя их в понятные водителю значения. Важно учитывать, что любые расчеты носят усредненный характер и зависят от множества внешних факторов.</p>
+
+<p>В данной статье мы детально разберем, где именно находятся нужные показатели, как их интерпретировать и почему реальный <strong>расход топлива</strong> может отличаться от того, что вы видите на экране. Мы также затронем тему калибровки и типичных ошибок, с которыми сталкиваются водители при эксплуатации автомобиля в различных условиях.</p>
+
+<h2 id="расположение-кнопок-управления-и-навигация-по-меню">Расположение кнопок управления и навигация по меню</h2>
+
+<p>Для управления параметрами отображения на приборной панели в <em>Chevrolet Cruze</em> используется блок кнопок, расположенный на торце левого подрулевого переключателя. Нажимая на кнопку <code>MENU</code>, вы циклически переключаетесь между основными разделами бортового компьютера. На дисплее могут отображаться время, температура наружного воздуха, данные о пробеге и, конечно же, информация о топливе.</p>
+
+<p>Короткое нажатие кнопки позволяет переходить от одного экрана к другому, в то время как длительное удержание часто используется для сброса текущих показателей или входа в подменю настроек. <strong>Навигация</strong> по меню интуитивно понятна, но требует привыкания, так как количество доступных экранов зависит от комплектации автомобиля. В базовых версиях список опций может быть ограничен только пробегом и температурой.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Не пытайтесь менять настройки бортового компьютера во время движения автомобиля. Отвлечение от дороги даже на секунду для поиска нужного экрана может привести к аварийной ситуации.</p>
+</blockquote>
+
+<p>Если нажатие кнопки <code>MENU</code> не приводит к изменению информации на дисплее, возможно, функция БК отключена в настройках головного устройства (в более дорогих комплектациях с цветным экраном) или произошел временный сбой в работе электроники. В таком случае стоит проверить другие разделы или перезапустить двигатель.</p>
+
+<div class="poll-widget" id="poll-09a4c293"><div class="poll-widget-question">📊 Как часто вы проверяете расход топлива на БК?</div><div class="poll-widget-option" data-poll="09a4c293" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Ежедневно</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="09a4c293" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Раз в неделю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="09a4c293" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Только при загорании лампы</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="09a4c293" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не смотрю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="просмотр-мгновенного-и-среднего-расхода-топлива">Просмотр мгновенного и среднего расхода топлива</h2>
+
+<p>Основная информация, которая интересует водителя, делится на два типа: мгновенный и средний расход. <strong>Мгновенный расход</strong> показывает, сколько литров топлива двигатель потребляет в данную секунду при текущей нагрузке. Этот параметр крайне полезен для выработки экономичного стиля вождения: вы видите, как резко возрастает потребление при резком нажатии на педаль газа.</p>
+
+<p>Для переключения между режимами отображения часто используется короткое нажатие кнопки <code>SET/CLR</code> или повторное нажатие <code>MENU</code>, пока на экране не появится шкала или цифровое значение в литрах на 100 км. На некоторых версиях приборной панели мгновенный расход отображается в виде столбчатой диаграммы, где высота столбца коррелирует с интенсивностью впрыска.</p>
+
+<ul>
+<li>📊 <strong>Шкала нагрузки:</strong> Визуальное отображение потребления в реальном времени, где каждый деление соответствует определенному объему топлива.</li>
+<li>🔢 <strong>Цифровое значение:</strong> Точное числовое отображение литров на 100 км, обновляемое несколько раз в секунду.</li>
+<li>⛽ <strong>Запас хода:</strong> Часто соседствует с расходом и показываетнное расстояние, которое можно проехать на остатке топлива.</li>
+</ul>
+
+<p><strong>Средний расход</strong> рассчитывается ЭБУ на основе пройденного расстояния с момента последнего сброса. Это более стабильный показатель, который позволяет оценить общую экономичность автомобиля на длинной дистанции. Именно на него стоит ориентироваться при планировании бюджета на содержание <em>Шевроле Круз</strong>.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для получения наиболее точных данных о среднем расходе сбрасывайте показания БК сразу после полной заправки бака и фиксируйте результат при следующей полной заправке до «отстрела» пистолента.</p></div>
+
+<h2 id="таблица-нормативных-показателей-для-разных-двигателей">Таблица нормативных показателей для разных двигателей</h2>
+
+<p>Понимание того, какие цифры являются нормой для вашего двигателя, помогает избежать ложной паники. <strong>Шевроле Круз</strong> оснащался различными силовыми агрегатами, и их аппетиты существенно различаются в зависимости от объема, типа коробки передач и условий эксплуатации.</p>
+
+<p>Ниже приведена таблица, демонстрирующая усредненные значения расхода топлива, которые можно ожидать от исправного автомобиля в смешанном цикле. Помните, что реальные цифры всегда зависят от стиля вождения, пробок, качества топлива и состояния шин.</p>
+
+<table>
+<thead>
+<tr>
+<th>Двигатель</th>
+<th>КПП</th>
+<th>Город (л/100 км)</th>
+<th>Трасса (л/100 км)</th>
+<th>Смешанный (л/1100 км)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.6 (109 л.с.)</td>
+<td>Механика</td>
+<td>9.5 – 11.0</td>
+<td>6.0 – 7.0</td>
+<td>7.5 – 8.5</td>
+</tr>
+<tr>
+<td>1.6 (124 л.с.)</td>
+<td>Автомат</td>
+<td>10.5 – 12.5</td>
+<td>6.5 – 7.5</td>
+<td>8.0 – 9.0</td>
+</tr>
+<tr>
+<td>1.8 (141 л.с.)</td>
+<td>Автомат</td>
+<td>11.0 – 13.0</td>
+<td>6.5 – 8.0</td>
+<td>8.5 – 9.5</td>
+</tr>
+<tr>
+<td>1.4 Turbo (140 л.с.)</td>
+<td>Автомат</td>
+<td>9.0 – 10.5</td>
+<td>5.5 – 6.5</td>
+<td>7.0 – 8.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>Если ваш <strong>бортовой компьютер</strong> показывает значения, значительно превышающие верхнюю границу указанных диапазонов (например, более 15 литров в городе для атмосферного 1.6), это повод провести диагностику. Превышение нормы может указывать на проблемы с системой охлаждения, датчиками кислорода или загрязнение топливной системы.</p>
+
+<details class="faq-item"><summary>Почему турбо двигатель 1.4 экономичнее атмосферного 1.8?</summary><div class="faq-answer"><p>Турбированный двигатель имеет меньший рабочий объем и при спокойной езде работает как малолитражный агрегат, расходуя меньше топлива. Большой расход возникает только при активном использовании турбины для резких ускорений.</p></div></details>
+
+<h2 id="сброс-показателей-и-калибровка-данных">Сброс показателей и калибровка данных</h2>
+
+<p>Для получения актуальных данных о расходе топлива на конкретной поездке или после замены типа вождения (например, переход с зимней резины на летнюю или с городских пробок на трассу) необходимо выполнять <strong>сброс показателей</em>. Это позволяет обнулить накопленную статистику и начать расчет среднего значения с нуля.</p>
+
+<p>Процедура сброса на <em>Chevrolet Cruze</em> обычно выполняется следующим образом: найдите экран с расходом топлива или пробегом, затем нажмите и удерживайте кнопку <code>SET/CLR</code> (или <code>MENU</code>, в зависимости от года выпуска) в течение 3-5 секунд. На дисплее может появиться мигающее значение или подтверждение сброса.</p>
+
+<div class="checklist-block"><h4>☑️ Алгоритм сброса БК</h4><label class="check-item"><input type="checkbox"><span>Найти экран расхода топлива</span></label><label class="check-item"><input type="checkbox"><span>Убедиться, что автомобиль стоит на месте</span></label><label class="check-item"><input type="checkbox"><span>Нажать и удерживать кнопку SET/CLR 5 сек</span></label><label class="check-item"><input type="checkbox"><span>Дождаться обновления цифр на ноль</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Важно понимать, что сразу после сброса показания будут некорректными. <strong>Калибровка</strong> происходит в процессе движения: первые 5-10 километров БК будет показывать резкие скачки значений, пока не накопит достаточный объем данных для построения усредненного графика. Только после проезда примерно 50-100 км можно считать данные достоверными.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Сброс бортового компьютера не влияет на работу двигателя и не является диагностической процедурой. Он лишь обнуляет пользовательскую статистику в памяти ЭБУ.</p>
+</blockquote>
+
+<h2 id="факторы-влияющие-на-точность-показаний-бк">Факторы, влияющие на точность показаний БК</h2>
+
+<p>Многие водители замечают расхождение между показаниями <strong>бортового компьютера</strong> и реальным расходом, рассчитанным математическим путем (литры на пробег). Погрешность в 5-10% считается нормальной для автомобилей этого класса, однако она может варьироваться в зависимости от ряда технических факторов.</p>
+
+<p>Одним из главных факторов является <strong>калибровка форсунок</strong> в памяти ЭБУ. Со временем, из-за износа топливной аппаратуры или использования некачественного бензина, фактическая производительность форсунок может измениться, но программные коэффициенты останутся прежними. Это приводит к тому, что компьютер «думает», что впрыскивает одно количество топлива, а реально льется другое.</p>
+
+<ul>
+<li>🌡️ <strong>Температура двигателя:</strong> На холодном двигателе смесь обогащается, и БК показывает высокий расход, что является штатным режимом прогрева.</li>
+<li>📉 <strong>Давление в шинах:</strong> Низкое давление увеличивает сопротивление качению, что напрямую влияет на потребление топлива, но БК может не сразу отреагировать на это изменение.</li>
+<li>🔋 <strong>Нагрузка на сеть:</strong> Работа кондиционера, подогревов и мощной акустики заставляет генератор работать интенсивнее, увеличивая нагрузку на двигатель и расход бензина.</li>
+</ul>
+
+<p>Также стоит учитывать алгоритм усреднения. Некоторые версии ПО <em>Chevrolet Cruze</em> имеют «плавающее» окно усреднения, где старые данные постепенно вытесняются новыми, а другие просто делят общий остаток топлива на пройденный путь с момента последнего полного бака. Понимание этого нюанса помогает правильно трактовать цифры на дисплее.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Наибольшую погрешность БК дает при коротких поездках по городу, когда двигатель не успевает выйти на рабочую температуру, и при движении накатом, когда современные системы отключают подачу топлива, но БК может показывать нулевой или минимальный расход.</p></div>
+
+<h2 id="диагностика-проблем-при-аномальном-расходе">Диагностика проблем при аномальном расходе</h2>
+
+<p>Если <strong>расход топлива</strong>, отображаемый на бортовом компьютере, внезапно вырос без изменения стиля вождения, это может сигнализировать о неисправности. Первым шагом должна стать визуальная проверка и анализ сопутствующих симптомов работы автомобиля.</p>
+
+<p>Частой причиной завышенных показаний является неисправность <strong>датчика массового расхода воздуха</strong> (ДМРВ). Если он передает неверные данные о количестве поступающего воздуха, ЭБУ может готовить слишком богатую смесь, сжигая лишнее топливо. Также стоит проверить состояние свечей зажигания и воздушного фильтра.</p>
+
+<pre><code>Типичные симптомы неисправности:
+<p>- Плавающие обороты холостого хода</p>
+<p>- Потеря динамики разгона</p>
+<p>- Черный нагар на свечах</p>
+<p>- Загорание индикатора Check Engine</code></pre></p>
+
+<p>Не игнорируйте сигналы системы. Даже если автомобиль продолжает ехать, повышенный расход может быть признаком более серьезных проблем, таких как прогоревший катализатор или неисправность лямбда-зонда. Своевременная диагностика сэкономит деньги на топливе и дорогостоящем ремонте в будущем.</p>
+
+<details class="faq-item"><summary>Может ли прошивка ЭБУ снизить расход?</summary><div class="faq-answer"><p>Чип-тюнинг (Stage 1) может оптимизировать работу двигателя, сделав смесь чуть беднее или изменив углы зажигания, что теоретически снижает расход на 5-10%. Однако на старых двигателях с нагаром это может привести к детонации.</p></div></details>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему бортовой компьютер показывает разный расход зимой и летом?</summary>
+<p>Зимой двигателю требуется больше времени на прогрев, работает отопитель салона, используется более вязкое масло и зимняя резина. Кроме того, прогревочные обороты выше. Все эти факторы увеличивают потребление топлива, и БК честно отражает эти изменения.</p>
+</details>
+
+<details>
+<summary>Как сбросить ошибку расхода топлива, если она завышена?</summary>
+<p>Сам по себе БК редко «врет» в плане ошибок, он лишь показывает расчетные данные. Если расход аномально высок, нужно искать механическую или электрическую неисправность (датчики, форсунки). Сброс клеммы аккумулятора может временно обнулить адаптации, но проблема вернется, если не устранить причину.</p>
+</details>
+
+<details>
+<summary>Врет ли бортовой компьютер на Шевроле Круз?</summary>
+<p>БК не врет, он показывает расчетные данные на основе алгоритмов. Однако его погрешность может составлять до 10-15%. Для получения точных данных рекомендуется сравнивать показания БК с расчетом по чекам с АЗС после пробега в 1000 км.</p>
+</details>
+
+<details>
+<summary>Можно ли изменить показания расхода топлива в настройках?</summary>
+<p>В штатном меню <em>Chevrolet Cruze</em> нет возможности вручную корректировать коэффициент расхода. Изменение этих параметров возможно только через перепрошивку ЭБУ (чип-тюнинг) с использованием специализированного оборудования.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#расположение-кнопок-управления-и-навигация-по-меню">Расположение кнопок управления и навигация по меню</a></li><li><a href="#просмотр-мгновенного-и-среднего-расхода-топлива">Просмотр мгновенного и среднего расхода топлива</a></li><li><a href="#таблица-нормативных-показателей-для-разных-двигателей">Таблица нормативных показателей для разных двигателей</a></li><li><a href="#сброс-показателей-и-калибровка-данных">Сброс показателей и калибровка данных</a></li><li><a href="#факторы-влияющие-на-точность-показаний-бк">Факторы, влияющие на точность показаний БК</a></li><li><a href="#диагностика-проблем-при-аномальном-расходе">Диагностика проблем при аномальном расходе</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

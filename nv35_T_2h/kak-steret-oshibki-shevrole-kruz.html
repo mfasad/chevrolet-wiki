@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как стереть ошибки Шевроле Круз: сброс кодов OBD2 и сервис — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция: как стереть ошибки Шевроле Круз через меню, адаптер ELM327 или снятием клеммы. Коды P0300, P0420 и их устранение.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv35_T_2h/kak-steret-oshibki-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как стереть ошибки Шевроле Круз: сброс кодов OBD2 и сервис">
+    <meta property="og:description" content="Подробная инструкция: как стереть ошибки Шевроле Круз через меню, адаптер ELM327 или снятием клеммы. Коды P0300, P0420 и их устранение.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как стереть ошибки Шевроле Круз: сброс кодов OBD2 и сервис</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как стереть ошибки Шевроле Круз: профессиональный подход</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#диагностика-и-чтение-кодов-неисправностей">Диагностика и чтение кодов неисправностей</a></li><li><a href="#программный-сброс-через-диагностический-сканер">Программный сброс через диагностический сканер</a></li><li><a href="#метод-hard-reset-отключение-аккумуляторной-батареи">Метод "Hard Reset": отключение аккумуляторной батареи</a></li><li><a href="#сброс-сервисного-интервала-на-приборной-панели">Сброс сервисного интервала на приборной панели</a></li><li><a href="#типичные-ошибки-и-их-устранение-перед-сбросом">Типичные ошибки и их устранение перед сбросом</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана Chevrolet Cruze часто сталкиваются с загоревшейся лампочкой Check Engine на приборной панели. Этот сигнал свидетельствует о том, что электронный блок управления (ЭБУ) зафиксировал неисправность в одной из систем двигателя. <strong>Самостоятельная диагностика</strong> и сброс ошибок могут временно погасить индикатор, но без устранения первопричины проблема вернется. Современные автомобили семейства GM обладают сложной электроникой, требующей внимательного отношения при вмешательстве в работу бортового компьютера.</p>
+
+<p>Прежде чем приступать к активным действиям, необходимо понять природу возникшего сбоя. Ошибки могут быть связаны с качеством топлива, состоянием свечей зажигания или более серьезными проблемами с катализатором и лямбда-зондами. <em>Инженерная система</em> автомобиля запоминает критические параметры и сохраняет их в памяти даже после выключения зажигания. Правильный алгоритм действий поможет избежать ложных показаний и unnecessary visits to the service center.</p>
+
+<p>═══ ОПРОС ═══</p>
+<div class="poll-widget" id="poll-05da76a7"><div class="poll-widget-question">📊 Как вы обычно реагируете на горящий Check Engine?</div><div class="poll-widget-option" data-poll="05da76a7" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Сразу еду на диагностику/Покупаю сканер и читаю сам/Сбрасываю клемму аккумулятора/Жду пока само пройдет</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+<p>═══ КОНЕЦ ОПРОСА ═══</p>
+
+<h2 id="диагностика-и-чтение-кодов-неисправностей">Диагностика и чтение кодов неисправностей</h2>
+
+<p>Первым этапом любого ремонта является точное определение кода ошибки. В Chevrolet Cruze используется стандартный протокол <strong>OBD-II</strong>, который позволяет считывать данные через специальный диагностический разъем. Он обычно расположен под рулевой колонкой или в районе ног водителя, закрытый пластиковой крышкой. Для подключения вам понадобится адаптер, например, популярный <em>ELM327</em>, и смартфон с установленным приложением вроде Torque или OpenDiag.</p>
+
+<p>После подключения устройства и включения зажигания программа покажет список накопленных кодов. Важно не просто стереть их, а записать или сфотографировать. Часто система хранит как текущие, так и <mark>замороженные (pending)</mark> ошибки, которые еще не привели к постоянному горению лампы, но уже сигнализируют о проблеме. Игнорирование этих данных может привести к усугублению поломки.</p>
+
+<p>Существует несколько типов кодов, с которыми сталкиваются владельцы Круза. Наиболее распространены ошибки по системе зажигания и топливной смеси. Понимание их значения поможет принять решение о методе устранения.</p>
+
+<ul>
+<li>🔥 <strong>P0300-P0304</strong> — пропуски зажигания в цилиндрах, часто требуют замены свечей или катушек.</li>
+<li>⛽ <strong>P0171/P0172</strong> — слишком бедная или богатая смесь, возможен подсос воздуха или неисправность ДМРВ.</li>
+<li>🌡️ <strong>P0117/P0118</strong> — проблемы с датчиком температуры охлаждающей жидкости, влияет на работу вентилятора.</li>
+<li>🚗 <strong>P0420</strong> — низкая эффективность каталитического нейтрализатора, требует проверки выхлопной системы.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ Внимание: Если код ошибки имеет статус "Permanent" (постоянная), просто стереть его программно не получится. ЭБУ заблокирует сброс до тех пор, пока не будет выполнен полный цикл проверки исправности узла.</p>
+</blockquote>
+
+<h2 id="программный-сброс-через-диагностический-сканер">Программный сброс через диагностический сканер</h2>
+
+<p>Наиболее цивилизованный и правильный способ убрать ошибку — использовать диагностический сканер. Это может быть профессиональный мультимарочный прибор в сервисе или личный бюджетный адаптер. В меню приложения необходимо найти функцию <code>Clear Codes</code> или <code>Сброс ошибок</code>. После нажатия кнопки система отправит команду на очистку буфера памяти ЭБУ.</p>
+
+<p>Процесс занимает несколько секунд. Если индикатор Check Engine погас, а при повторном сканировании через 10-15 минут работы двигателя ошибок нет, значит, сбой был эпизодическим. Однако, если лампа загорелась вновь сразу или через короткое время, это означает, что <strong>неисправность активна</strong> и требует физического ремонта. Программное удаление в таком случае лишь маскирует проблему.</p>
+
+<p>Для владельцев с продвинутыми адаптерами (например, ELM327 версии 2.1 и выше с поддержкой CAN-шины) доступен режим работы в реальном времени. Можно наблюдать за параметрами <em>кислородного датчика</em> или углом опережения зажигания. Это помогает понять, работает ли система корректно после сброса.</p>
+
+<pre><code>Пример команды для продвинутых пользователей (через терминал):
+<p>01 0C — запрос оборотов двигателя</p>
+<p>04 — сброс кодов неисправностей</code></pre></p>
+
+<p>═══ СПОЙЛЕР ═══</p>
+<details class="faq-item"><summary>Что такое режим "Ready"</summary><div class="faq-answer"><p>После сброса ошибок статусы мониторов системы переходят в состояние "Not Ready". Это означает, что компьютер еще не проверил все узлы. Для полного цикла нужно проехать определенный цикл движения (City + Highway), чтобы все системы прошли самодиагностику. Пока статусы не станут "Ready", автомобиль может не пройти экологический контроль.</p></div></details>
+<p>═══ КОНЕЦ СПОЙЛЕРА ══</p>
+
+<h2 id="метод-hard-reset-отключение-аккумуляторной-батареи">Метод "Hard Reset": отключение аккумуляторной батареи</h2>
+
+<p>Если под рукой нет сканера, можно воспользоваться методом полного обесточивания бортовой сети. Этот способ часто называют "Hard Reset". Он позволяет сбросить кратковременные ошибки и адаптировать ЭБУ к новым условиям, однако он менее точен, чем работа через диагностический порт.</p>
+
+<p>Для выполнения процедуры необходимо открыть капот и найти аккумуляторную батарею. Используя ключ (обычно на 10 мм), ослабьте клемму минус (черный провод) и снимите её с вывода. <strong>Важно:</strong> перед этим убедитесь, что зажигание выключено и все потребители энергии отключены. Оставьте автомобиль в таком состоянии на 15-20 минут. Это время необходимо для того, чтобы разрядились конденсаторы в блоке управления и стерлась оперативная память.</p>
+
+<p>После подключения клеммы обратно автомобиль может повести себя странно: могут плавать обороты холостого хода, жестко переключаться коробка передач. Это нормальная реакция системы на сброс адаптаций. Двигателю потребуется время (обычно 10-20 км пробега в разных режимах), чтобы заново обучиться и настроить <em>топливные коррекции</em>.</p>
+
+<p>═══ ЧЕК-ЛИСТ ═══</p>
+<div class="checklist-block"><h4>☑️ Алгоритм сброса клеммой</h4><label class="check-item"><input type="checkbox"><span>Заглушить двигатель и вынуть ключ</span></label><label class="check-item"><input type="checkbox"><span>Открутить минусовую клемму АКБ</span></label><label class="check-item"><input type="checkbox"><span>Выждать 20 минут для разряда конденсаторов</span></label><label class="check-item"><input type="checkbox"><span>Подключить клемму и затянуть</span></label><label class="check-item"><input type="checkbox"><span>Прогреть двигатель до рабочей температуры</span></label><label class="check-item"><input type="checkbox"><span>Проехать 5-10 км в спокойном режиме</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 6</div></div>
+<p>═══ КОНЕЦ ЧЕК-ЛИСТА ═══</p>
+
+<h2 id="сброс-сервисного-интервала-на-приборной-панели">Сброс сервисного интервала на приборной панели</h2>
+
+<p>Отдельного внимания заслуживает надпись "Change Oil Soon" или значок масленки, который появляется на дисплее между спидометром и тахометром. Это не ошибка двигателя, а напоминание о плановом техническом обслуживании. Сбросить этот счетчик можно без дополнительных инструментов, используя кнопки на подрулевом переключателе или на самой приборной панели, в зависимости от года выпуска <em>Chevrolet Cruze</em>.</p>
+
+<p>На рестайлинговых моделях с дисплеем в центре приборной панели алгоритм часто выглядит так:</p>
+<p>1. Включите зажигание, но не запускайте двигатель.</p>
+<p>2. Нажимайте кнопку меню на переключателе "крутилке" или отдельную кнопку, пока на экране не появится надпись "Oil Life" или "Срок службы масла".</p>
+<p>3. Нажмите и удерживайте кнопку выбора (центр джойстика или кнопка "Set/Clr") в течение нескольких секунд.</p>
+<p>4. Индикатор должен моргнуть или показать 100%, что подтверждает успешный сброс.</p>
+
+<table>
+<thead>
+<tr>
+<th>Модель / Год</th>
+<th>Метод сброса</th>
+<th>Индикация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cruze J300 (до 2012)</td>
+<td>3 нажатия педалью газа</td>
+<td>MIL мигает 3 раза</td>
+</tr>
+<tr>
+<td>Cruze J300 (после 2012)</td>
+<td>Меню на подрулевом</td>
+<td>Oil Life 100%</td>
+</tr>
+<tr>
+<td>Cruze II (с 2016)</td>
+<td>Экран бортового компьютера</td>
+<td>Сервисный значок гаснет</td>
+</tr>
+</tbody>
+</table>
+
+<p>═══ ПОЛЕЗНЫЙ СОВЕТ ═══</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если после замены масла индикатор не гаснет, попробуйте выполнить процедуру сброса дважды подряд. Иногда электроника требует повторного подтверждения действия для сохранения новых параметров в энергонезависимую память.</p></div>
+<p>═══ КОНЕЦ СОВЕТА ═══</p>
+
+<h2 id="типичные-ошибки-и-их-устранение-перед-сбросом">Типичные ошибки и их устранение перед сбросом</h2>
+
+<p>Просто стереть код ошибки — значит временно убрать симптом. Чтобы проблема не вернулась через 50 километров, нужно знать, какие узлы Chevrolet Cruze наиболее уязвимы. Частая ошибка <strong>P0300</strong> (случайные пропуски зажигания) на двигателях 1.6 и 1.8 часто вызвана не свечами, а трещинами в катушках зажигания или проблемами с проводкой.</p>
+
+<p>Еще одна распространенная беда — ошибка по датчику положения дроссельной заслонки или самой заслонке. На Крузах электронная дроссельная заслонка склонна к загрязнению и износу пластиковых шестерен внутри механизма. Перед сбросом ошибки рекомендуется провести <em>адаптацию дросселя</em> или его механическую чистку, если пробег велик.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Не пытайтесь сбрасывать ошибки подушек безопасности (SRS) или ABS обычным сканером OBD2 без разбора полетов. Эти системы требуют специального доступа и часто блокируются при реальных неисправностях. Лезть в них "наугад" опасно для жизни.</p>
+</blockquote>
+
+<p>═══ КЛЮЧЕВОЙ ВЫВОД ═══</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Сброс ошибки без ремонта — это временная мера. Если код возвращается сразу после очистки, значит, узел физически неисправен и требует замены или восстановления, а не программной маскировки.</p></div>
+<p>═══ КОНЕЦ ВЫВОДА ═══</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли ездить с горящим Check Engine, если машина ведет себя нормально?</summary>
+<p>Кратковременная езда возможна, если не мигает индикатор (мигание означает критические пропуски зажигания, разрушающие катализатор). Однако постоянная работа в аварийном режиме может привести к повышенному расходу топлива и повреждению катализатора из-за неправильной смеси.</p>
+</details>
+
+<details>
+<summary>Почему ошибка возвращается сразу после сброса?</summary>
+<p>Это означает, что неисправность является "активной" в данный момент. Датчик продолжает посылать сигнал вне допустимого диапазона, и ЭБУ мгновенно регистрирует это как новую ошибку. Требуется ремонт узла.</p>
+</details>
+
+<details>
+<summary>Сбросится ли пробег или настройки магнитолы при снятии клеммы?</summary>
+<p>Пробег в ЭБУ сбросить невозможно, он хранится в защищенной памяти. Настройки магнитолы и часов могут сбиться, если в ней нет собственной батарейки-памяти, но основные параметры двигателя (адаптации) сбросятся, что потребует периода обкатки.</p>
+</details>
+
+<details>
+<summary>Какой сканер лучше купить для Chevrolet Cruze?</summary>
+<p>Для базовых задач (чтение и сброс ошибок двигателя) достаточно недорогого адаптера <em>ELM327</em> (версии 1.5 для старых авто или 2.1 для новых с поддержкой CAN). Для глубокой диагностики всех блоков (ABS, Airbag, АКПП) нужны более специализированные решения типа Scanmatik или дилерский софт GMLAN.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#диагностика-и-чтение-кодов-неисправностей">Диагностика и чтение кодов неисправностей</a></li><li><a href="#программный-сброс-через-диагностический-сканер">Программный сброс через диагностический сканер</a></li><li><a href="#метод-hard-reset-отключение-аккумуляторной-батареи">Метод "Hard Reset": отключение аккумуляторной батареи</a></li><li><a href="#сброс-сервисного-интервала-на-приборной-панели">Сброс сервисного интервала на приборной панели</a></li><li><a href="#типичные-ошибки-и-их-устранение-перед-сбросом">Типичные ошибки и их устранение перед сбросом</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

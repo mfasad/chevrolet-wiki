@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Прошивка блока ВСМ Шевроле Круз: методы и риски — Chevrolet-Wiki</title>
+    <meta name="description" content="Как прошить BCM на Chevrolet Cruze: варианты замены, клонирования и прошивки EEPROM. Риски блокировки иммобилайзера и выбор оборудования.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv03_kBGG/chem-proshit-blok-vsm-na-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Прошивка блока ВСМ Шевроле Круз: методы и риски">
+    <meta property="og:description" content="Как прошить BCM на Chevrolet Cruze: варианты замены, клонирования и прошивки EEPROM. Риски блокировки иммобилайзера и выбор оборудования.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Прошивка блока ВСМ Шевроле Круз: методы и риски</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка блока ВСМ Шевроле Круз: методы и риски</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#зачем-требуется-перепрошивка-модуля-управления-кузовом">Зачем требуется перепрошивка модуля управления кузовом</a></li><li><a href="#оборудование-и-программное-обеспечение-для-работы-с-всм">Оборудование и программное обеспечение для работы с ВСМ</a></li><li><a href="#методы-прошивки-obdii-против-работы-с-памятью">Методы прошивки: OBDII против работы с памятью</a></li><li><a href="#процесс-клонирования-и-записи-данных">Процесс клонирования и записи данных</a></li><li><a href="#привязка-ключей-и-иммобилайзера">Привязка ключей и иммобилайзера</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#стоит-ли-прошивать-блок-самостоятельно">Стоит ли прошивать блок самостоятельно</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного компакта <em>Chevrolet Cruze</em> рано или поздно сталкиваются с необходимостью вмешательства в электронную архитектуру автомобиля. Чаще всего вопрос о том, чем прошить блок <strong>ВСМ</strong> (Body Control Module), возникает при выходе из строя штатного модуля или при желании внедрить дополнительный функционал. Штатный контроллер отвечает за управление светом, стеклоподъемниками, климатом и, что критически важно, за работу системы иммобилайзера.</p>
+
+<p>Необходимость перепрограммирования может быть вызвана заменой сгоревшего устройства на новое или б/у. В отличие от простого обмена деталями в механике, здесь требуется синхронизация программных кодов. Без корректной прошивки автомобиль либо не заведется, либо будет работать с ограничениями, такими как отсутствие индикации на панели приборов.</p>
+
+<p>Существует несколько подходов к решению этой задачи, зависящих от ваших технических навыков и наличия оборудования. Можно использовать специализированные программаторы для прямой записи микросхем или попытаться адаптировать блок через диагностический интерфейс OBDII. Выбор метода напрямую влияет на вероятность успешного завершения операции.</p>
+
+<h2 id="зачем-требуется-перепрошивка-модуля-управления-кузовом">Зачем требуется перепрошивка модуля управления кузовом</h2>
+
+<p>Основная причина обращения к процедуре перепрошивки — это <strong>замена неисправного блока</strong>. Электроника <em>Круза</em> чувствительна к скачкам напряжения и коротким замыканиям в цепях освещения. Если сгорел транзистор управления фарами, часто приходится менять весь модуль целиком. Новый блок приходит с завода с"чистой" памятью или ПО, не совместимым с конкретным VIN-кодом вашего авто.</p>
+
+<p>Второй сценарий — это клонирование данных. Если у вас есть донорский блок с точно такой же маркировкой и годом выпуска, теоретически можно перенести данные. Однако, просто скопировать файл недостаточно. Требуется привязка иммобилайзера, так как ключи хранят уникальные коды, которые должны совпадать с записями в <strong>EEPROM</strong> и flash-памяти контроллера.</p>
+
+<p>Третий вариант — обновление программного обеспечения для устранения заводских багов. Иногда производитель выпускает новые версии прошивок, улучшающие стабильность работы электрооборудования. Но в условиях СНГ чаще всего речь идет именно о восстановлении работоспособности после поломки.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Некорректная запись данных в блок ВСМ может привести к блокировке иммобилайзера. В этом случае потребуется замена комплекта: блок + ключи + ЭБУ двигателя.</p>
+</blockquote>
+
+<p>Понимание архитектуры системы безопасности <em>General Motors</em> критически важно. Данные в блоке разделены на несколько областей, и повреждение загрузчика сделает устройство"кирпичом".</p>
+
+<h2 id="оборудование-и-программное-обеспечение-для-работы-с-всм">Оборудование и программное обеспечение для работы с ВСМ</h2>
+
+<p>Для качественной работы с модулем <strong>BCM</strong> на Шевроле Круз одного ноутбука недостаточно. Вам потребуется специализированный аппаратный комплекс. На рынке представлено множество решений, но не все они поддерживают протоколы GM. Наиболее распространенным инструментом является программатор <em>TL866</em> в связке с соответствующей панелькой для микросхем.</p>
+
+<p>Также широко используются профессиональные комплексы вроде <em>Autel</em>, <em>Launch</em> или специализированные решения типа <em>OpenPort 2.0</em> с софтом <em>Tech2Win</em> или <em>GDS2</em>. Последние позволяют проводить программирование через диагностический разъем, без выпаивания чипов, но требуют лицензии и стабильного источника питания.</p>
+
+<p>Для прямой работы с памятью (если блок полностью мертв или требует клонирования) понадобятся:</p>
+<ul>
+<li>🔌 Программатор EEPROM (например, CH341A для простых задач или Xprog для сложных)</li>
+<li>🧰 Паяльное оборудование и флюс для демонтажа микросхем</li>
+<li>💾 Дампы прошивок, соответствующие номеру детали вашего блока</li>
+<li>🔋 Стабилизированный блок питания 12В с защитой от перегрузок</li>
+</ul>
+
+<p>Использование китайских клонов оборудования часто приводит к ошибкам записи. Лучше использовать проверенные оригинальные версии устройств, особенно когда речь идет о таких чувствительных зонах памяти, как <strong>Immobilizer Data</strong>.</p>
+
+<div class="poll-widget" id="poll-99d53ef6"><div class="poll-widget-question">📊 Какой метод работы с электроникой вы предпочитает?</div><div class="poll-widget-option" data-poll="99d53ef6" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Пайка и программатор</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="99d53ef6" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Диагностика через OBDII</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="99d53ef6" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Обращение в сервис</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="99d53ef6" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Покупка готового блока</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="методы-прошивки-obdii-против-работы-с-памятью">Методы прошивки: OBDII против работы с памятью</h2>
+
+<p>Существует два основных пути взаимодействия с блоком управления. Первый — через диагностический разъем. Этот метод менее инвазивен, так как не требует разборки блока и пайки. Вы подключаете интерфейс к порту <code>OBDII</code>, запускаете софт и следуете инструкциям. Однако этот способ работает только если"железо" блока исправно и он хотя бы частично реагирует на запросы.</p>
+
+<p>Второй метод — прямое чтение и запись микросхем памяти. Он необходим, когда блок не выходит на связь, или требуется полное клонирование данных с поврежденного модуля. В этом случае блок ВСМ снимается с автомобиля, вскрывается, и чипы выпаиваются или подключаются через щупы. Это требует высокой квалификации.</p>
+
+<p>Сравнение методов представлено в таблице ниже:</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Через OBDII (Tech2/GDS)</th>
+<th>Прямая запись (Программатор)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Риск повреждения</td>
+<td>Низкий</td>
+<td>Высокий (пайка)</td>
+</tr>
+<tr>
+<td>Необходимое оборудование</td>
+<td>Адаптер, ноутбук, ПО</td>
+<td>Паяльник, программатор, дампы</td>
+</tr>
+<tr>
+<td>Возможность восстановления</td>
+<td>Только конфигурация</td>
+<td>Полное клонирование</td>
+</tr>
+<tr>
+<td>Требование к навыкам</td>
+<td>Базовые</td>
+<td>Профессиональные</td>
+</tr>
+</tbody>
+</table>
+
+<p>Выбор метода зависит от состояния вашего <em>Chevrolet Cruze</em>. Если машина подает признаки жизни, начинайте с попытки программирования через порт.</p>
+
+<h2 id="процесс-клонирования-и-записи-данных">Процесс клонирования и записи данных</h2>
+
+<p>Если вы решили идти по пути прямого чтения памяти, (подготовка) играет ключевую роль. Сначала необходимо аккуратно вскрыть корпус блока ВСМ. Обычно он залит герметиком, который нужно размягчить нагревом. Далее идентифицируем микросхему памяти. На Крузах это часто чипы серии <code>93Cxx</code> или <code>24Cxx</code>.</p>
+
+<p>Процесс записи выглядит следующим образом. Считываем дампы со старого (донорского) блока. Сохраняем их в несколько копий на разных носителях. Затем вставляем новую микросхему в программатор или подпаиваемся к целевому блоку. Загружаем сохраненный файл и запускаем запись. После записи часто требуется коррекция <strong>Checksum</strong> (контрольной суммы), иначе блок может не запуститься.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист перед пайкой</h4><label class="check-item"><input type="checkbox"><span>Обесточить автомобиль</span></label><label class="check-item"><input type="checkbox"><span>Снять клемму АКБ</span></label><label class="check-item"><input type="checkbox"><span>Прогреть плату феном</span></label><label class="check-item"><input type="checkbox"><span>Подготовить флюс и олово</span></label><label class="check-item"><input type="checkbox"><span>Проверить напряжение паяльника</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Важно не перегреть плату при выпаивании. Микросхемы ВСМ чувствительны к температуре, и локальный перегрев может повредить соседние компоненты или саму дорожку. Используйте термовоздушную станцию с точной настройкой температуры.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При клонировании блока убедитесь, что донорский блок полностью исправен. Клонирование ошибки или поврежденного файла приведет к переносу неисправности на новый модуль.</p></blockquote>
+
+<h2 id="привязка-ключей-и-иммобилайзера">Привязка ключей и иммобилайзера</h2>
+
+<p>Самый сложный этап — это синхронизация системы безопасности. Даже если вы идеально перепили содержимое памяти, система может не увидеть ключи. В автомобилях <em>General Motors</em> используется защита, привязывающая ключи к конкретному блоку. При замене ВСМ часто требуется процедура <strong>Relearn</strong> (обучение).</p>
+
+<p>Для проведения процедуры обычно нужен диагностический сканер с функцией <code>Security Access</code>. Вы входите в меню иммобилайзера, выбираете опцию замены модуля и следуете подсказкам. Система запросит PIN-код, который можно рассчитать по VIN-коду через специальные сервисы или получить у официального дилера.</p>
+
+<p>Если ключей два, процедуру нужно повторить для каждого. В процессе обучения старые ключи могут стереться из памяти, поэтому имейте при себе все имеющиеся ключи. После успешной привязки на приборной панели гаснет индикатор замка, и автомобиль заводится.</p>
+
+<details class="faq-item"><summary>Что делать, если PIN-код не подходит?</summary><div class="faq-answer"><p>Если расчетный PIN-код не подходит, возможно, в блоке ЭБУ двигателя прописаны другие данные. В таком случае требуется синхронизация всех трех компонентов: ВСМ, ЭБУ и ключей. Это сложная процедура, требующая сброса защиты через программатор.</p></div></details>
+
+<h2 id="типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</h2>
+
+<p>В процессе прошивки пользователи часто сталкиваются с ошибкой"Programming Failed" или"Security Access Denied". Чаще всего это связано с нестабильным напряжением в бортовой сети. При программировании через OBDII обязательно подключайте внешний источник питания 12В, так как ток, выдаваемый аккумулятором, может проседать в момент записи.</p>
+
+<p>Еще одна распространенная проблема — неверно выбранный тип микросхемы в программаторе. Если вы читаете чип <code>93C66</code>, а в программе выбран <code>93C56</code>, данные запишутся некорректно. Всегда проверяйте маркировку лупой перед началом работы.</p>
+
+<p>Список частых проблем:</p>
+<ul>
+<li>❌ Обрыв связи посередине процесса — проверьте контакты щупов или кабеля</li>
+<li>❌ Блок не видит ключи — не выполнена процедура Relearn или сбит VIN-код</li>
+<li>❌ Не работает центральный замок — повреждена конфигурация в EEPROM</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте U-образный кабель для подключения к разъему OBDII, чтобы обеспечить надежный контакт во время длительной процедуры прошивки.</p></div>
+
+<p>Если после прошивки автомобиль ведет себя странно (мигают фары, не работает стеклоподъемник), возможно, была повреждена конфигурационная область памяти. В этом случае помогает только поиск исходного, заводского дампа для вашей комплектации и повторная запись.</p>
+
+<h2 id="стоит-ли-прошивать-блок-самостоятельно">Стоит ли прошивать блок самостоятельно</h2>
+
+<p>Ответ на этот вопрос зависит от вашей квалификации. Если вы не держали в руках паяльник и не знаете, чем отличается <strong>Hex-код</strong> от Bin-файла, лучше не рисковать. Стоимость нового блока ВСМ высока, а риск превратить его в бесполезный кусок пластика велик.</p>
+
+<p>С другой стороны, для энтузиастов это отличный способ глубоко изучить устройство автомобиля. Наличие правильного дампа и оборудования позволяет восстановить машину за копейки по сравнению с покупкой нового узла у дилера. Главное — иметь под рукой запасной вариант или возможность откатиться назад.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Самостоятельная прошивка оправдана только при наличии донорского исправного блока и опыта работы с электроникой. В остальных случаях дешевле обратиться к профильным специалистам.</p></div>
+
+<p>В заключение, прошивка блока ВСМ на <em>Chevrolet Cruze</em> — это технически сложная, но выполнимая задача. Она требует внимательности, правильного инструмента и понимания процессов, происходящих внутри контроллера.</p>
+
+<details>
+<summary>Можно ли прошить блок ВСМ без снятия с автомобиля?</summary>
+<p>Да, это возможно через диагностический разъем OBDII с помощью адаптера J2534 и ПО типа Tech2Win. Однако это работает только если блок хотя бы частично исправен и выходит на связь. При полной смерти электроники потребуется снятие и пайка.</p>
+</details>
+
+<details>
+<summary>Где взять правильную прошивку для моего Круза?</summary>
+<p>Идеальный вариант — считать дамп со своего старого, даже неисправного блока (если читается память). Также дампы можно найти на специализированных форумах автоэлектриков, ориентируясь по номеру детали на наклейке блока.</p>
+</details>
+
+<details>
+<summary>Сбросится ли пробег при замене блока ВСМ?</summary>
+<p>Пробег хранится в нескольких местах, включая приборную панель и ЭБУ. Замена ВСМ сама по себе не сбросит общий пробег на дисплее, но может обнулить данные о наработке моточасов в самом модуле кузова. Клонирование старого блока сохранит все данные.</p>
+</details>
+
+<details>
+<summary>Что будет, если прервать процесс прошивки?</summary>
+<p>Прерывание записи во Flash-память или EEPROM с высокой вероятностью приведет к повреждению загрузчика. Блок перестанет реагировать на команды и потребует восстановления через программатор (BDM/ISP), если такая возможность предусмотрена архитектурой чипа.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#зачем-требуется-перепрошивка-модуля-управления-кузовом">Зачем требуется перепрошивка модуля управления кузовом</a></li><li><a href="#оборудование-и-программное-обеспечение-для-работы-с-всм">Оборудование и программное обеспечение для работы с ВСМ</a></li><li><a href="#методы-прошивки-obdii-против-работы-с-памятью">Методы прошивки: OBDII против работы с памятью</a></li><li><a href="#процесс-клонирования-и-записи-данных">Процесс клонирования и записи данных</a></li><li><a href="#привязка-ключей-и-иммобилайзера">Привязка ключей и иммобилайзера</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#стоит-ли-прошивать-блок-самостоятельно">Стоит ли прошивать блок самостоятельно</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

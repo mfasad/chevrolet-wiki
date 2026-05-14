@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Мультируль на Шевроле Круз: установка и настройка своими руками — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по установке мультируля на Chevrolet Cruze. Разбор подключения CAN-шины, кнопок и настройки бортового компьютера.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv45_l_Wq/kak-sdelat-multirul-na-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Мультируль на Шевроле Круз: установка и настройка своими руками">
+    <meta property="og:description" content="Подробная инструкция по установке мультируля на Chevrolet Cruze. Разбор подключения CAN-шины, кнопок и настройки бортового компьютера.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Мультируль на Шевроле Круз: установка и настройка своими руками</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Установка мультируля на Шевроле Круз: руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#выбор-комплектующих-и-совместимость">Выбор комплектующих и совместимость</a></li><li><a href="#демонтаж-старого-руля-и-подготовка">Демонтаж старого руля и подготовка</a></li><li><a href="#электрическая-схема-и-подключение-can-шины">Электрическая схема и подключение CAN-шины</a></li><li><a href="#установка-кнопок-и-сборка-руля">Установка кнопок и сборка руля</a></li><li><a href="#активация-функций-через-диагностику">Активация функций через диагностику</a></li><li><a href="#проверка-работоспособности-и-troubleshooting">Проверка работоспособности и troubleshooting</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы Chevrolet Cruze часто сталкиваются с ситуацией, когда базовая комплектация автомобиля не предусматривает наличия кнопок управления мультимедиа и телефоном на руле. Это существенно снижает комфорт вождения, заставляя водителя отвлекаться от дороги для регулировки громкости или переключения треков. Решением проблемы становится установка <strong>мультируля</strong>, что позволяет контролировать основные функции, не убирая рук с рулевого колеса.</p>
+
+<p>Процесс модернизации рулевого колеса на <em>Шевроле Круз</em> включает в себя не только механическую замену обода, но и сложную электрическую часть. Необходимо учитывать совместимость подушек безопасности, шлейфов сигналов и протоколов обмена данными. В этой статье мы детально разберем все этапы, необходимые для успешной реализации проекта.</p>
+
+<p>Стоит отметить, что современные системы автомобиля требуют точной настройки CAN-шины. Ошибки при подключении могут привести к некорректной работе сигналов или появлению ошибок на приборной панели. Поэтому важно строго следовать алгоритму действий и использовать качественные комплектующие.</p>
+
+<h2 id="выбор-комплектующих-и-совместимость">Выбор комплектующих и совместимость</h2>
+
+<p>Первым шагом к успешной установке является подбор правильного руля. Для Chevrolet Cruze подходят рули от старших комплектаций или аналогичные модели от Opel Astra J, так как платформы имеют много общего. Ключевым моментом является наличие мест под кнопки и правильная форма спиц. <strong>Шлейф</strong> кнопок должен соответствовать разъему в вашей проводке, либо потребуется его замена.</p>
+
+<p>Отдельное внимание стоит уделить подушке безопасности. В некоторых случаях геометрия подушки от дорестайлинга и рестайлинга отличается. Убедитесь, что выбранная подушка имеет совместимые пиропатроны и разъемы. Использование неоригинальных компонентов может привести к ошибкам в системе SRS.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Перед началом любых работ с рулем обязательно снимите клемму с аккумулятора и подождите 15 минут для разрядки конденсаторов подушки безопасности.</p>
+</blockquote>
+
+<p>Для подключения функционала кнопок часто требуется установка специального модуля или перепайка шлейфа. Если вы меняете руль на вариант с кнопками, но без поддержки круиз-контроля, функционал может быть ограничен только мультимедиа. Полноценная интеграция требует проверки наличия проводов в общей косе автомобиля.</p>
+
+<h2 id="демонтаж-старого-руля-и-подготовка">Демонтаж старого руля и подготовка</h2>
+
+<p>Процесс снятия руля на <em>Chevrolet Cruze</em> начинается с демонтажа подушки безопасности. Она крепится двумя фиксаторами по бокам или сзади, в зависимости от года выпуска. Аккуратно подденьте их отверткой, чтобы освободить подушку, но не дергайте резко, чтобы не повредить шлейф звукового сигнала.</p>
+
+<p>После снятия подушки отсоедините разъемы. Обычно их два или три: один для сигнала клаксона, другой для подушки и третий для дополнительных функций. Открутите центральную гайку крепления руля ключом на 24 или 22, предварительно выставив колеса ровно. Снимите старый рулевой колесо.</p>
+
+<p>Теперь необходимо осмотреть внутренности рулевой колонки. Нас интересует наличие свободного разъема или проводов для подключения кнопок руля. В базовых комплектациях проводка может отсутствовать полностью, что потребует протяжки отдельных линий от блока управления или магнитолы.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка к установке</h4><label class="check-item"><input type="checkbox"><span>Снять клемму АКБ</span></label><label class="check-item"><input type="checkbox"><span>Подготовить новый руль и кнопки</span></label><label class="check-item"><input type="checkbox"><span>Проверить наличие проводки в колонке</span></label><label class="check-item"><input type="checkbox"><span>Найти схему распиновки</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="электрическая-схема-и-подключение-can-шины">Электрическая схема и подключение CAN-шины</h2>
+
+<p>Самая сложная часть установки мультируля на <em>Шевроле Круз</em> — это электрическое подключение. Кнопки на руле работают не через отдельные провода на каждое действие, а передают цифровой сигнал или сопротивление по двум проводам. В современных авто используется <strong>CAN-шина</strong>, которая передает данные о нажатых кнопках в блок комфорта или магнитолу.</p>
+
+<p>Если в вашей проводке есть провода, идущие от рулевой колонки к блоку управления кузовом (BCM) или магнитоле, вам повезло. Часто требуется подключить два провода от шлейфа кнопок к соответствующим пинам в разъеме рулевой колонки. Распиновку необходимо искать specifically для вашей модели года выпуска.</p>
+
+<table>
+<thead>
+<tr>
+<th>Пин разъема</th>
+<th>Цвет провода (пример)</th>
+<th>Функция</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Серый/Черный</td>
+<td>CAN Low</td>
+<td>Передача данных</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Серый/Белый</td>
+<td>CAN High</td>
+<td>Передача данных</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Красный</td>
+<td>+12V</td>
+<td>Питание подсветки</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Черный</td>
+<td>Ground</td>
+<td>Масса</td>
+</tr>
+</tbody>
+</table>
+
+<p>В случае отсутствия заводской проводки, придется тянуть"витую пару" от места установки кнопок до головного устройства или блока, который умеет читать эти сигналы. Для сторонних магнитол часто используются специальные адаптеры рулевого управления, которые эмулируют нажатия кнопок.</p>
+
+<details class="faq-item"><summary>Тонкости работы CAN-шины</summary><div class="faq-answer"><p>Система CAN (Controller Area Network) позволяет передавать данные с высокой скоростью и минимальным количеством проводов. В Шевроле Круз кнопки руля могут использовать резистивный метод (разное сопротивление для каждой кнопки) или цифровой протокол. Важно определить, какой тип использует ваш автомобиль, купив подходящий шлейф.</p></div></details>
+
+<h2 id="установка-кнопок-и-сборка-руля">Установка кнопок и сборка руля</h2>
+
+<p>Монтаж кнопок в корпус руля требует аккуратности. Пластик на старых рулях может быть хрупким, поэтому при выламывании заглушек действуйте осторожно. Кнопки должны вставать с характерным щелчком и плотно сидеть в посадочных местах. Шлейф кнопок прокладывается внутри руля и фиксируется, чтобы не мешать вращению.</p>
+
+<p>При сборке убедитесь, что все разъемы защелкнуты до конца. Шлейф подушки безопасности должен быть уложен так, чтобы при повороте руля в крайние положения он не натягивался и не перетирался. Обычно для этого предусмотрен специальный канал или зажимы.</p>
+
+<ul>
+<li>🔧 Установите кнопки в посадочные места до щелчка.</li>
+<li>🔌 Подключите шлейф кнопок к разъему в руле.</li>
+<li>🛡️ Аккуратно уложите проводку, избегая перегибов.</li>
+<li>🔩 Зафиксируйте подушку безопасности и проверьте зазоры.</li>
+</ul>
+
+<p>После физической установки руля на вал, закрутите центральную гайку с рекомендуемым усилием. Не забывайте про шлицы — руль должен встать ровно с первого раза. Если руль встал криво, его придется снимать и переставлять, что нежелательно для шлицевого соединения.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При установке нового руля смажьте силиконовой смазкой направляющие подушки безопасности — это облегчит будущий демонтаж и предотвратит появление скрипов.</p></div>
+
+<h2 id="активация-функций-через-диагностику">Активация функций через диагностику</h2>
+
+<p>Физическое подключение — это только половина дела. Часто функции кнопок на руле в <em>Chevrolet Cruze</em> заблокированы программно. Для их активации потребуется диагностический сканер, поддерживающий работу с блоком BCM (Body Control Module) или магнитолой. Популярным инструментом является <strong>Chevrolet Explorer</strong> или дилерский сканер GMDI.</p>
+
+<p>Необходимо войти в конфигурацию автомобиля и найти пункт, отвечающий за наличие кнопок на руле (Steering Wheel Controls). Измените значение с"No" или"Not Installed" на"Yes" или"Installed". После этого сохраните конфигурацию и перезагрузите блок управления.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Неправильное изменение конфигурационных параметров в диагностическом сканере может привести к некорректной работе электроники автомобиля. Сохраните исходный файл конфигурации (дампп) перед внесением изменений.</p>
+</blockquote>
+
+<p>В некоторых случаях, особенно при установке неоригинальной магнитолы, может потребоваться калибровка кнопок. Это делается через меню самой магнитолы или с помощью специализированного ПО, идущего в комплекте с адаптером руля. Процесс заключается в последовательном нажатии кнопок и присвоении им функций.</p>
+
+<div class="poll-widget" id="poll-f5d7a676"><div class="poll-widget-question">📊 Что сложнее всего мультируля?</div><div class="poll-widget-option" data-poll="f5d7a676" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Поиск совместимых деталей</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f5d7a676" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Прокладка проводки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f5d7a676" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Настройка через компьютер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f5d7a676" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Активация функций</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="проверка-работоспособности-и-troubleshooting">Проверка работоспособности и troubleshooting</h2>
+
+<p>После сборки и активации необходимо провести тщательную проверку. Включите зажигание и убедитесь, что на приборной панели не горит ошибка подушки безопасности (значок AIRBAG). Если ошибка есть, проверьте надежность подключения разъема подушки и наличие сопротивления в цепи.</p>
+
+<p>Проверьте работу каждой кнопки: громкость, переключение треков, ответ на звонок, меню. Реакция должна быть мгновенной. Если кнопки работают, но с задержкой или не все, возможно, проблема в контактах шлейфа или настройках сопротивления в адаптере.</p>
+
+<ul>
+<li>🚗 Проверьте работу круиз-контроля (если устанавливался).</li>
+<li>🎵 Убедитесь в переключении треков и регулировке звука.</li>
+<li>📞 Протестируйте принятие и сброс вызовов.</li>
+<li>💡 Проверьте работу подсветки кнопок.</li>
+</ul>
+
+<p>Частой проблемой является отсутствие подсветки кнопок. Это решается проверкой цепи питания подсветки (обычно это отдельный провод, идущий на габариты) или настройкой яркости в меню магнитолы. Если подсветка мигает, проверьте массу.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Успешная установка мультируля зависит на 50% от правильного подбора деталей и на 50% от качественной настройки программной части через диагностический интерфейс.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли установить кнопки круиз-контроля отдельно от кнопок магнитолы?</summary>
+<p>Да, технически это возможно, но требует отдельной проводки и, скорее всего, замены подрулевого переключателя или установки дополнительного джойстика. Программная активация круиз-контроля также обязательна.</p>
+</details>
+
+<details>
+<summary>Подойдет ли руль от Opel Astra J на Chevrolet Cruze?</summary>
+<p>Да, рули от Opel Astra J (рестайлинг) часто становятся на Cruze без проблем, так как платформы унифицированы. Однако шлейфы и разъемы могут отличаться, поэтому лучше примерять или покупать готовый комплект под Cruze.</p>
+</details>
+
+<details>
+<summary>Нужно ли менять шлейф подушки безопасности при установке мультируля?</summary>
+<p>Не всегда. Если новый руль имеет аналогичную конструкцию крепления подушки, старый шлейф подойдет. Замена требуется, если меняется форма подушки или количество контактов в разъеме.</p>
+</details>
+
+<details>
+<summary>Почему после установки горит ошибка AIRBAG?</summary>
+<p>Скорее всего, плохо подключен разъем подушки безопасности, либо сопротивление в цепи не соответствует норме. Также ошибка может возникнуть, если не была сброшена предыдущая ошибка через диагностический сканер.</p>
+</details>
+
+<details>
+<summary>Работают ли кнопки руля с нештатной магнитолой Android?</summary>
+<p>Да, но для этого потребуется специальный адаптер (CAN- decoder) или настройка резистивного входа в меню магнитолы. Без адаптера кнопки работать не будут, так как протоколы отличаются.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#выбор-комплектующих-и-совместимость">Выбор комплектующих и совместимость</a></li><li><a href="#демонтаж-старого-руля-и-подготовка">Демонтаж старого руля и подготовка</a></li><li><a href="#электрическая-схема-и-подключение-can-шины">Электрическая схема и подключение CAN-шины</a></li><li><a href="#установка-кнопок-и-сборка-руля">Установка кнопок и сборка руля</a></li><li><a href="#активация-функций-через-диагностику">Активация функций через диагностику</a></li><li><a href="#проверка-работоспособности-и-troubleshooting">Проверка работоспособности и troubleshooting</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

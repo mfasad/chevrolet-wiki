@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Принцип работы тахометра Шевроле Ланос: схема и диагностика — Chevrolet-Wiki</title>
+    <meta name="description" content="Узнайте, от чего работает тахометр на Шевроле Ланос. Разбор электронной схемы, причин сбоев стрелки и методов диагностики датчика коленвала.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv04_kRc6/ot-chego-rabotaet-takhometr-na-shevrole-lanos.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Принцип работы тахометра Шевроле Ланос: схема и диагностика">
+    <meta property="og:description" content="Узнайте, от чего работает тахометр на Шевроле Ланос. Разбор электронной схемы, причин сбоев стрелки и методов диагностики датчика коленвала.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Принцип работы тахометра Шевроле Ланос: схема и диагностика</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>От чего работает тахометр на Шевроле Ланос: устройство и диагностика</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#основной-источник-сигнала-датчик-положения-коленвала">Основной источник сигнала: Датчик положения коленвала</a></li><li><a href="#роль-электронного-блока-управления-в-передаче-данных">Роль Электронного Блока Управления в передаче данных</a></li><li><a href="#электрическая-схема-от-контроллера-до-стрелки">Электрическая схема: от контроллера до стрелки</a></li><li><a href="#диагностика-неисправностей-пошаговый-алгоритм">Диагностика неисправностей: пошаговый алгоритм</a></li><li><a href="#влияние-системы-зажигания-на-показания-прибора">Влияние системы зажигания на показания прибора</a></li><li><a href="#ремонт-и-замена-элементов-системы">Ремонт и замена элементов системы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владелец автомобиля <em>Chevrolet Lanos</em> часто сталкивается с ситуацией, когда стрелка приборов ведет себя непредсказуемо, прыгает или вовсе замирает в нулевой отметке. Понимание того, от чего именно получает сигнал этот прибор, является ключом к быстрой диагностике без посещения дорогостоящего сервиса. В отличие от карбюраторных классик, где импульс брался с катушки зажигания, в <em>Ланосе</em> с инжекторным двигателем все завязано на электронике и блоке управления.</p>
+
+<p>Основным источником данных для щитка приборов служит электронный блок управления двигателем (ЭБУ), часто называемый "мозгами". Именно <strong>ЭБУ</strong> обрабатывает сырые сигналы с датчиков и формирует четкий импульс для отправки на панель. Если вы заметили, что тахометр не работает, проблема может скрываться не в самом приборе, а в цепочке передачи данных от двигателя к "мозгам" и далее к водителю.</p>
+
+<p>В этой статье мы детально разберем электрическую схему, рассмотрим роль каждого элемента и поможем выявить неисправность. Важно понимать, что <strong>система зажигания</strong> и система управления двигателем здесь неразрывно связаны. Любая ошибка в считывании оборотов коленвала может привести не только к неработающей стрелке, но и к нестабильной работе мотора на холостом ходу.</p>
+
+<h2 id="основной-источник-сигнала-датчик-положения-коленвала">Основной источник сигнала: Датчик положения коленвала</h2>
+
+<p>Сердцем системы измерения оборотов является <strong>датчик положения коленчатого вала</strong> (ДПКВ). Он расположен на шкиве коленвала и считывает прохождение зубьев специального задающего диска. В отличие от старых систем, здесь нет механической связи, все работает на основе магнитной индукции или эффекта Холла, в зависимости от модификации двигателя <em>Daewoo Sens</em> или <em>Chevrolet</em>.</p>
+
+<p>Сигнал от датчика поступает непосредственно в <strong>ЭБУ</strong>, где микропроцессор анализирует частоту вращения вала. На основе этих данных блок управления рассчитывает момент впрыска топлива и искрообразования. Параллельно с этим, для удобства водителя, ЭБУ транслирует усредненное значение оборотов на приборную панель. Если ДПКВ загрязнен или поврежден, тахометр перестанет работать первым, еще до того, как двигатель заглохнет.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Попытка заменить датчик коленвала без предварительной компьютерной диагностики может привести к покупке ненужной запчасти. Часто проблема кроется в обрыве проводки или окислении контактов, а не в самом sensor.</p>
+</blockquote>
+
+<p>Для стабильной работы датчика критически важен зазор между его торцом и зубьями шкива. Если зазор нарушен из-за вибраций или попадания грязи, амплитуда сигнала падает. В результате <strong>ЭБУ</strong> получает искаженные данные, и стрелка на приборной панели начинает "гулять" или показывать заниженные значения. Регулярная проверка состояния шкива и самого датчика помогает избежать внезапных поломок в дороге.</p>
+
+<details class="faq-item"><summary>Технические нюансы работы ДПКВ</summary><div class="faq-answer"><p>Датчик генерирует переменный ток, частота которого прямо пропорциональна скорости вращения коленвала. При пуске двигателя амплитуда сигнала минимальна, но ЭБУ способен считать обороты уже при прокрутке стартером. Если сигнал пропадает на высоких оборотах, это может указывать на межвитковое замыкание в обмотке датчика.</p></div></details>
+
+<h2 id="роль-электронного-блока-управления-в-передаче-данных">Роль Электронного Блока Управления в передаче данных</h2>
+
+<p>После получения сигнала от ДПКВ, <strong>ЭБУ</strong> выполняет роль посредника и процессора. Он не просто передает напряжение, а кодирует информацию. В автомобилях <em>Chevrolet Lanos</em> с 8-клапанным двигателем 1.5 литра сигнал на тахометр обычно подается через отдельный вывод контроллера. Этот сигнал представляет собой последовательность импульсов, частота которых соответствует оборотам двигателя.</p>
+
+<p>Важно отметить, что за исправность цепи отвечает не только сам блок, но и его "земля". Плохой контакт массы двигателя или кузова может вызывать наводки, которые <strong>ЭБУ</strong> воспринимает как хаотичные скачки оборотов. Именно поэтому при диагностике всегда проверяют состояние клемм аккумулятора и точек заземления кузова. Чистый электрический контакт — залог точных показаний приборов.</p>
+
+<p>Если вы проводите замену "мозгов" или их перепрошивку, убедитесь, что конфигурация соответствует вашему автомобилю. Неправильно настроенный <strong>контроллер</strong> может посылать неверный сигнал частоты, из-за чего тахометр будет врать на 10-15%. Это часто встречается после установки неоригинальных блоков управления или кустарного ремонта электроники.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При проверке сигналов ЭБУ используйте осциллограф или мультиметр с режимом измерения частоты (Hz). Простое прозванивание цепи тестером не покажет качество сигнала, которое критично для работы тахометра.</p></div>
+
+<h2 id="электрическая-схема-от-контроллера-до-стрелки">Электрическая схема: от контроллера до стрелки</h2>
+
+<p>Путь сигнала от блока управления до приборной панели проходит через жгут проводов и разъемы. В схеме <em>Шевроле Ланос</em> этот провод часто имеет специфическую маркировку, которую легко найти в электросхемах. Любое повреждение изоляции, перетирание провода о кузов или окисление в разъеме панели приборов приводит к потере сигнала.</p>
+
+<p>Особое внимание следует уделить разъему <code>X2</code> (условное обозначение основного разъема ЭБУ) и разъему на задней части приборной панели. Часто причиной неисправности становится банальное ослабление контактов внутри пластиковой колодки. Вибрация автомобиля годами делает свое дело, и контакт пропадает. Подгибка контактов или обработка спреем для очистки электрики часто решает проблему мгновенно.</p>
+
+<p>Ниже приведена таблица, описывающая основные элементы цепи и возможные неисправности:</p>
+
+<table>
+<thead>
+<tr>
+<th>Элемент цепи</th>
+<th>Функция</th>
+<th>Типичная неисправность</th>
+<th>Метод проверки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Датчик коленвала (ДПКВ)</td>
+<td>Генерация импульсов</td>
+<td>Обрыв обмотки, загрязнение</td>
+<td>Замер сопротивления, осмотр</td>
+</tr>
+<tr>
+<td>ЭБУ (Мозги)</td>
+<td>Обработка и передача</td>
+<td>Сгоревший драйвер выхода</td>
+<td>Диагностика сканером, осциллограф</td>
+</tr>
+<tr>
+<td>Жгут проводов</td>
+<td>Транспорт сигнала</td>
+<td>Перелом, окисление</td>
+<td>Прозвонка, визуальный осмотр</td>
+</tr>
+<tr>
+<td>Тахометр (прибор)</td>
+<td>Отображение данных</td>
+<td>Неисправность шагового мотора</td>
+<td>Подача тестового сигнала</td>
+</tr>
+</tbody>
+</table>
+
+<p>При поиске обрыва провода удобно использовать метод "протяжки" с легким покачиванием жгута. Если в момент шевеления проводки стрелка дергается — вы нашли место плохого контакта. Ремонт в таком случае заключается в восстановлении целостности провода и качественной изоляции места соединения.</p>
+
+<div class="poll-widget" id="poll-055e0fd8"><div class="poll-widget-question">📊 Как часто у вас возникают проблемы с приборами на Ланосе?</div><div class="poll-widget-option" data-poll="055e0fd8" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Ежемесячно</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="055e0fd8" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Раз в год</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="055e0fd8" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Только после зимы</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="055e0fd8" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не было проблем</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="диагностика-неисправностей-пошаговый-алгоритм">Диагностика неисправностей: пошаговый алгоритм</h2>
+
+<p>Если тахометр перестал работать, не стоит паниковать и разбирать пол-автомобиля. Существует четкий алгоритм действий, который позволяет локализовать проблему за 15-20 минут. Первым делом необходимо убедиться, что двигатель работает ровно. Если мотор троит, а стрелка скачет — проблема явно в системе зажигания или ДПКВ.</p>
+
+<p>Проверка начинается с визуального осмотра разъемов. Отсоедините клемму аккумулятора, снимите разъемы с датчика и ЭБУ. Осмотрите контакты на предмет зеленого налета окислов. Зачистите их при необходимости. После этого проверьте целостность проводов, идущих от датчика к блоку управления. Сопротивление исправного провода должно быть близко к нулю.</p>
+
+<ul>
+<li>🔍 Проверьте состояние самого датчика коленвала: он не должен иметь трещин и следов масла.</li>
+<li>🔌 Убедитесь в надежности крепления "массы" двигателя к кузову и АКБ.</li>
+<li>⚡ Прозвоните цепь питания приборной панели, возможно, сгорел предохранитель.</li>
+<li>💻 Считайте ошибки через OBD-II сканер, код ошибки укажет на пропуски зажигания.</li>
+</ul>
+
+<p>Если внешняя проводка цела, а датчик исправен, остается грешить на саму приборную панель. Внутри нее установлен шаговый двигатель или электронный узел, который мог выйти из строя. В условиях гаража его ремонт затруднителен, проще заменить узел целиком или обратиться к автоэлектрику.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист первичной диагностики</h4><label class="check-item"><input type="checkbox"><span>Проверить работу двигателя на слух</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть разъемы на окисление</span></label><label class="check-item"><input type="checkbox"><span>Проверить предохранитель приборной панели</span></label><label class="check-item"><input type="checkbox"><span>Считать ошибки сканером</span></label><label class="check-item"><input type="checkbox"><span>Прозвонить проводку ДПКВ</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="влияние-системы-зажигания-на-показания-прибора">Влияние системы зажигания на показания прибора</h2>
+
+<p>Хотя тахометр на <em>Ланосе</em> берет сигнал с ЭБУ, система зажигания играет косвенную, но важную роль. Модуль зажигания передает информацию о пропуске искры обратно в блок управления. Если высоковольтные провода пробивают или свечи неисправны, <strong>ЭБУ</strong> фиксирует неравномерность вращения коленвала.</p>
+
+<p>В таких случаях стрелка тахометра может не падать в ноль, но ее поведение станет дерганым. Амплитуда колебаний стрелки будет соответствовать пропускам зажигания. Это защитный механизм, который сигнализирует водителю о проблемах с двигателем. Игнорирование таких показаний может привести к выходу из строя катализатора или самого модуля зажигания.</p>
+
+<p>Также стоит помнить, что установка нештатного оборудования, например, мощной аудиосистемы или газобаллонного оборудования (ГБО), может создавать помехи. Если провода проложены рядом с сигнальными цепями тахометра, наводки будут искажать показания. Правильная укладка жгутов и использование экранированных проводов решает эту проблему.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Установка дешевых свечей зажигания или высоковольтных проводов низкого качества — частая причина "гуляния" стрелки тахометра на высоких оборотах. Экономия на этих деталях приводит к нестабильному сигналу.</p>
+</blockquote>
+
+<h2 id="ремонт-и-замена-элементов-системы">Ремонт и замена элементов системы</h2>
+
+<p>Если диагностика выявила неисправность конкретного узла, его необходимо заменить. Замена датчика коленвала на <em>Chevrolet Lanos</em> обычно не требует снятия дополнительных агрегатов, он доступен сверху или снизу (в зависимости от модификации двигателя). Главное — не забыть очистить посадочное место от грязи перед установкой нового элемента.</p>
+
+<p>При замене самой приборной панели или ЭБУ может потребоваться привязка иммобилайзера. Без этой процедуры автомобиль не заведется, даже если тахометр будет работать исправно. Поэтому любые работы с электроникой следует проводить с пониманием последствий и наличием необходимого оборудования для программирования.</p>
+
+<p>В некоторых случаях помогает простая перепайка контактов на обратной стороне платы приборной панели. Со временем олово трескается, и контакт с ножками шагового двигателя пропадает. Аккуратная пайка восстанавливает соединение, и стрелка снова начинает радовать точными показаниями. Это работа для тех, кто умеет держать паяльник в руках.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Качественный ремонт проводки и контактов часто эффективнее дорогой замены датчиков. В 70% случаев проблема кроется именно в плохом контакте, а не в выходе из строя электроники.</p></div>
+
+<p>Подводя итог, можно сказать, что система измерения оборотов на <em>Ланосе</em> достаточно надежна, но чувствительна к состоянию электрических соединений. Регулярный осмотр, использование качественных запчастей и внимательное отношение к сигналам автомобиля помогут избежать внезапных поломок. Понимание принципа работы дает вам преимущество перед теми, кто blindly меняет детали наугад.</p>
+
+<details>
+<summary>Почему тахометр показывает ноль, но двигатель работает?</summary>
+<p>Это классический признак обрыва сигнального провода между ЭБУ и приборной панелью, либо неисправности самого тахометра внутри щитка. Двигатель работает, так как ЭБУ видит датчик коленвала, но не может передать данные на экран.</p>
+</details>
+
+<details>
+<summary>Может ли севший аккумулятор влиять на показания?</summary>
+<p>Да, при низком напряжении в бортовой сети электроника может работать некорректно. Стрелка может дергаться или запаздывать. Проверьте заряд аккумулятора и работу генератора.</p>
+</details>
+
+<details>
+<summary>Как проверить датчик коленвала мультиметром?</summary>
+<p>Необходимо переключить мультиметр в режим измерения сопротивления (Омы). Нормальное сопротивление обмотки ДПКВ для Ланоса обычно составляет в диапазоне 500-700 Ом. Точные значения зависят от температуры и конкретной модели датчика.</p>
+</details>
+
+<details>
+<summary>Влияет ли установка ГБО на работу тахометра?</summary>
+<p>При неправильной установке ГБО могут возникать помехи. Если эмулятор форсунок или жгуты проложены рядом с сигнальным проводом тахометра, возможны скачки показаний. Требуется правильная укладка и экранирование.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#основной-источник-сигнала-датчик-положения-коленвала">Основной источник сигнала: Датчик положения коленвала</a></li><li><a href="#роль-электронного-блока-управления-в-передаче-данных">Роль Электронного Блока Управления в передаче данных</a></li><li><a href="#электрическая-схема-от-контроллера-до-стрелки">Электрическая схема: от контроллера до стрелки</a></li><li><a href="#диагностика-неисправностей-пошаговый-алгоритм">Диагностика неисправностей: пошаговый алгоритм</a></li><li><a href="#влияние-системы-зажигания-на-показания-прибора">Влияние системы зажигания на показания прибора</a></li><li><a href="#ремонт-и-замена-элементов-системы">Ремонт и замена элементов системы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

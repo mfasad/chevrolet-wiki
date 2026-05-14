@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Что такое AQS в Шевроле: функции, датчики и ремонт — Chevrolet-Wiki</title>
+    <meta name="description" content="Полный разбор системы AQS в Chevrolet. Как работает датчик качества воздуха, коды ошибок и диагностика. Почему система отключает забор воздуха.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv13_E0nk/chto-takoe-aqs-v-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Что такое AQS в Шевроле: функции, датчики и ремонт">
+    <meta property="og:description" content="Полный разбор системы AQS в Chevrolet. Как работает датчик качества воздуха, коды ошибок и диагностика. Почему система отключает забор воздуха.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Что такое AQS в Шевроле: функции, датчики и ремонт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Что такое AQS в Шевроле: устройство, диагностика и ремонт</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-системы-автоматического-контроля-качества">Принцип работы системы автоматического контроля качества</a></li><li><a href="#расположение-датчика-и-его-взаимодействие-с-климат-контролем">Расположение датчика и его взаимодействие с климат-контролем</a></li><li><a href="#основные-признаки-неисправности-датчика-aqs">Основные признаки неисправности датчика AQS</a></li><li><a href="#диагностика-и-коды-ошибок-системы-aqs">Диагностика и коды ошибок системы AQS</a></li><li><a href="#инструкция-по-проверке-и-замене-датчика">Инструкция по проверке и замене датчика</a></li><li><a href="#таблица-совместимости-и-параметров-датчиков">Таблица совместимости и параметров датчиков</a></li><li><a href="#профилактика-и-уход-за-системой-вентиляции">Профилактика и уход за системой вентиляции</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Многие владельцы автомобилей марки Chevrolet сталкивались с ситуацией, когда на приборной панели загорается индикатор в виде автомобиля с извилистой стрелкой внутри, или же кондиционер внезапно перестает забирать воздух с улицы. В технической документации и на форумах это явление часто связывают с аббревиатурой <strong>AQS</strong>. Это не просто «каприз» электроники, а важная система, отвечающая за здоровье водителя и пассажиров в салоне.</p>
+
+<p><em>Chevrolet Captiva</em>, <em>Cruze</em>, <em>Orlando</em> и другие популярные модели оснащаются этим модулем для автоматического управления режимом рециркуляции. Понимание принципов работы <strong>AQS</strong> поможет избежать ложных диагнозов при неисправностях климат-контроля и продлить жизнь салонному фильтру. В этой статье мы детально разберем, как работает датчик, почему он может ошибаться и что делать, если система перестала функционировать корректно.</p>
+
+<p>Основная задача системы — мониторинг состава атмосферного воздуха, поступающего в систему вентиляции. Если <strong>AQS</strong> фиксирует наличие вредных примесей, она автоматически перекрывает заслонку, переводя кондиционер в режим рециркуляции. Это критически важно при движении в туннелях, пробках или за грузовиками, выбрасывающими клубы черного дыма.</p>
+
+<h2 id="принцип-работы-системы-автоматического-контроля-качества">Принцип работы системы автоматического контроля качества</h2>
+
+<p>Система <strong>AQS</strong> (Automatic Quality Sensor) представляет собой комплекс, состоящий из чувствительного сенсора и управляющего блока. Сенсор обычно расположен в передней части автомобиля, часто в районе решетки радиатора или под лобовым стеклом, где он имеет прямой доступ к набегающему потоку воздуха. Он непрерывно анализирует концентрацию угарного газа (CO), оксидов азота (NOx) и других летучих органических соединений.</p>
+
+<p>Когда датчик регистрирует превышение допустимых норм загрязнений, он посылает электрический сигнал на блок управления климатической установкой. В ответ блок управления активирует сервопривод заслонки рециркуляции, перекрывая доступ внешнего воздуха. Этот процесс занимает доли секунды, что позволяет эффективно защитить салон от попадания выхлопных газов. Как только уровень загрязнения падает, система снова открывает заслонку для проветривания.</p>
+
+<p>Важно отметить, что в автомобилях <em>Chevrolet</em> с климат-контролем работа <strong>AQS</strong> тесно интегрирована с алгоритмами управления температурой. Система учитывает не только чистоту воздуха, но и влажность, предотвращая запотевание стекол. Если датчик загрязнен или неисправен, он может давать ложные команды, из-за чего в салоне становится душно или, наоборот, окна начинают потеть из-за постоянной работы в режиме рециркуляции.</p>
+
+<p><blockquote>⚠️ Внимание: Не пытайтесь чистить чувствительный элемент датчика агрессивной химией или сжатым воздухом под высоким давлением. Это может безвозвратно повредить мембрану сенсора, и система перейдет в аварийный режим.</blockquote></p>
+
+<p>Эффективность работы <strong>AQS</strong> напрямую зависит от состояния салонного фильтра. Если фильтр давно не менялся и забит пылью, датчик может работать некорректно из-за нарушения аэродинамики потока или попадания частиц грязи на чувствительную поверхность. Регулярная замена фильтра — это первый шаг в обслуживании системы качества воздуха.</p>
+
+<h2 id="расположение-датчика-и-его-взаимодействие-с-климат-контролем">Расположение датчика и его взаимодействие с климат-контролем</h2>
+
+<p>В большинстве моделей Chevrolet, таких как <em>Captiva</em> или <em>Cruze</em>, датчик <strong>AQS</strong> интегрирован в блок забора воздуха или расположен отдельно в моторном отсеке near the windshield cowl area. Доступ к нему часто требует демонтажа пластиковых накладок под лобовым стеклом (жабо) или снятия решетки радиатора. Конструктивно он представляет собой небольшой пластиковый корпус с перфорацией для забора воздуха и электрическим разъемом.</p>
+
+<p>Взаимодействие с климатической системой происходит через CAN-шину или прямую аналоговую линию связи. Блок управления климатом (HVAC) постоянно опрашивает статус датчика. Если в настройках климат-контроля активирована кнопка рециркуляции вручную, приоритет отдается действи водителя, и <strong>AQS</strong> временно игнорируется до тех пор, пока кнопка не будет отжата или не истечет таймер автоматического возврата.</p>
+
+<p>Существует также зависимость от скорости движения автомобиля. На высоких скоростях система может игнорировать кратковременные скачки загрязнения, чтобы избежать постоянного «хлопанья» заслонки, которое создает дискомфортный шум и перепады давления в салоне. Логика работы <strong>AQS</strong> запрограммирована с учетом инерционности процесса смешивания воздуха.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При покупке нового салонного фильтра обращайте внимание на наличие угольного слоя. Угольные фильтры значительно снижают нагрузку на датчик AQS, так как задерживают часть вредных примесей еще до попадания на сенсор.</p></div>
+
+<p>В некоторых модификациях автомобилей датчик совмещен с датчиком температуры наружного воздуха. Это компактное решение позволяет сэкономить место в подкапотном пространстве, но усложняет диагностику. Если выходит из строя один из параметров, часто приходится менять узел в сборе. Точное расположение для вашей модели лучше всего искать в сервисном мануале, так как в зависимости от года выпуска <em>Chevrolet</em> компоновка может отличаться.</p>
+
+<h2 id="основные-признаки-неисправности-датчика-aqs">Основные признаки неисправности датчика AQS</h2>
+
+<p>Определить, что система <strong>AQS</strong> работает некорректно, можно по ряду косвенных признаков. Чаще всего водители замечают проблему, когда в салоне появляется стойкий запах выхлопных газов даже при движении по чистой дороге, или когда стекла начинают активно потеть в сырую погоду из-за того, что воздух не обновляется.</p>
+
+<p>Среди основных симптомов неисправности можно выделить:</p>
+<ul>
+<li>🚗 Кондиционер постоянно работает в режиме рециркуляции и не переключается на забор воздуха с улицы, даже если кнопка авто-режима активна.</li>
+<li>💨 Появление запаха гари или выхлопных газов в салоне при работающем вентиляторе.</li>
+<li>❄️ Запотевание стекол в дождливую погоду из-за высокой влажности воздуха внутри салона (отсутствие притока свежего воздуха).</li>
+<li>🔌 Загорание индикатора неисправности климат-контроля на приборной панели (в некоторых моделях).</li>
+</ul>
+
+<p>Еще одним признаком может быть странное поведение заслонки. Если прислушаться, можно услышать, как она постоянно открывается и закрывается без видимой причины. Это говорит о том, что <strong>AQS</strong> посылает хаотичные сигналы или «плавает» напряжение на контактах датчика. В таких случаях система переходит в аварийный алгоритм, пытаясь усреднить показания, что и вызывает циклические переключения.</p>
+
+<p><blockquote>⚠️ Внимание: Если вы заметили, что стекла потеют постоянно, не игнорируйте это. Влажный воздух способствует коррозии электронных компонентов в торпедо и появлению плесени в испарителе кондиционера, что может вызвать аллергию.</blockquote></p>
+
+<p>Часто неисправность <strong>AQS</strong> путают с поломкой самого сервопривода заслонки или моторчика печки. Однако, если вентиляция работает, но воздух не переключается между режимами «улица» и «салон» автоматически, проблема кроится именно в логике управления или датчике качества. Диагностика должна начинаться с проверки ошибок в системе HVAC.</p>
+
+<h2 id="диагностика-и-коды-ошибок-системы-aqs">Диагностика и коды ошибок системы AQS</h2>
+
+<p>Для точного определения причины сбоя необходимо подключить диагностический сканер, поддерживающий работу с блоком климат-контроля (<em>HVAC module</em>). В автомобилях <em>Chevrolet</em> часто используется протокол OBD-II, но для глубокой диагностики климата могут потребоваться специализированные адаптеры или ПО вроде <em>GM MDI</em> или <em>Chevrolet Explorer</em>.</p>
+
+<p>При сканировании системы могут быть выявлены следующие типы ошибок, связанные с <strong>AQS</strong>:</p>
+<ul>
+<li>🔌 <strong>B1370</strong> — Неисправность цепи датчика качества воздуха (обрыв или короткое замыкание).</li>
+<li>📉 <strong>B1371</strong> — Сигнал датчика вне допустимого диапазона (низкое или высокое напряжение).</li>
+<li>🛑 <strong>B1372</strong> — Неверные показания датчика (логическая ошибка данных).</li>
+<li>🔄 <strong>B1373</strong> — Ошибка калибровки или несоответствие показаний эталонным значениям.</li>
+</ul>
+
+<p>Если сканер показывает ошибку обрыва цепи, в первую очередь проверяется целостность проводки от разъема датчика до блока управления. Часто провода перетираются в местах прохода через кузов или окисляются контакты из-за попадания влаги. В случае ошибок диапазона или логики, вероятнее всего, вышел из строя сам чувствительный элемент сенсора.</p>
+
+<div class="poll-widget" id="poll-e297bc93"><div class="poll-widget-question">📊 Сталкивались ли вы с проблемой запотевания стекол в Chevrolet?</div><div class="poll-widget-option" data-poll="e297bc93" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, постоянно</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e297bc93" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Бывает в дождь</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e297bc93" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не было</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e297bc93" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Не знаю, у меня механика</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>В некоторых случаях ошибка может быть «плавающей». Это происходит, когда датчик загрязнен, но еще не вышел из строя окончательно. Сброс ошибки программным путем дает лишь временный эффект. Если после сброса и короткого тестового пробега ошибка возвращается, замена или чистка датчика неизбежны. Также стоит проверить напряжение в бортовой сети, так как скачки напряжения могут искажать аналоговый сигнал <strong>AQS</strong>.</p>
+
+<h2 id="инструкция-по-проверке-и-замене-датчика">Инструкция по проверке и замене датчика</h2>
+
+<p>Процесс замены датчика <strong>AQS</strong> варьируется в зависимости от модели автомобиля, но общий алгоритм действий схож для большинства автомобилей <em>Chevrolet</em>. Перед началом работ обязательно отсоедините минусовую клемму аккумулятора, чтобы избежать короткого замыкания и сброса настроек электронных блоков.</p>
+
+<p>Базовая последовательность действий выглядит следующим образом:</p>
+<ol>
+<li>Демонтируйте пластиковую накладку (жабо) под лобовым стеклом. Обычно она крепится на пластиковых клипсах и саморезах.</li>
+<li>Найдите датчик <strong>AQS</strong>. Он выглядит как небольшая черная или серая коробочка с решеткой, часто расположенная рядом с датчиком температуры.</li>
+<li>Отсоедините электрический разъем. Будьте осторожны, пластик на морозе может быть хрупким.</li>
+<li>Открутите крепежный болт или освободите фиксаторы корпуса датчика.</li>
+<li>Установите новый датчик, подключите разъем и проверьте работу системы до окончательной сборки пластика.</li>
+</ol>
+
+<p>После установки нового компонента может потребоваться калибровка системы. В некоторых моделях <em>Chevrolet</em> она проходит автоматически после нескольких циклов включения зажигания и запуска двигателя. В других случаях необходима активация через диагностический сканер в разделе «Special Functions» или «Calibration».</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист перед заменой датчика AQS</h4><label class="check-item"><input type="checkbox"><span>Отключить клемму АКБ</span></label><label class="check-item"><input type="checkbox"><span>Подготовить новый датчик</span></label><label class="check-item"><input type="checkbox"><span>Найти схему расположения</span></label><label class="check-item"><input type="checkbox"><span>Проверить состояние проводки</span></label><label class="check-item"><input type="checkbox"><span>Снять пластиковую накладку</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p><blockquote>⚠️ Внимание: При установке нового датчика убедитесь, что уплотнительные резинки сидят плотно. Попадание воды непосредственно в корпус датчика через неплотности монтажа — частая причина повторной поломки.</blockquote></p>
+
+<h2 id="таблица-совместимости-и-параметров-датчиков">Таблица совместимости и параметров датчиков</h2>
+
+<p>При выборе запчасти важно учитывать совместимость. Датчики <strong>AQS</strong> могут отличаться по типу разъема, длине провода и программному обеспечению. Ниже приведена таблица с ориентировочными параметрами для популярных моделей.</p>
+
+<table>
+<thead>
+<tr>
+<th>Модель Chevrolet</th>
+<th>Тип датчика</th>
+<th>Расположение</th>
+<th>Ориентировочная цена</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Captiva (C100/C140)</em></td>
+<td>Отдельный блок</td>
+<td>Под жабо, справа</td>
+<td>$$</td>
+</tr>
+<tr>
+<td><em>Cruze (J300)</em></td>
+<td>Интегрированный</td>
+<td>В блоке забора воздуха</td>
+<td>$$$</td>
+</tr>
+<tr>
+<td><em>Orlando</em></td>
+<td>Отдельный блок</td>
+<td>Под лобовым стеклом</td>
+<td>$$</td>
+</tr>
+<tr>
+<td><em>Equinox</em></td>
+<td>Отдельный блок</td>
+<td>В моторном отсеке</td>
+<td>$$$</td>
+</tr>
+<tr>
+<td><em>Trax</em></td>
+<td>Комбинированный</td>
+<td>За решеткой радиатора</td>
+<td>$$</td>
+</tr>
+</tbody>
+</table>
+
+<p>Стоит отметить, что оригинальные запчасти <em>GM</em> часто имеют высокую стоимость, поэтому владельцы часто рассматривают аналоги. Однако с датчиками <strong>AQS</strong> экспериментировать рискованно. Дешевые китайские аналоги могут некорректно работать с протоколом обмена данными, из-за чего система будет игнорировать датчик и работать в постоянном режиме рециркуляции.</p>
+
+<details class="faq-item"><summary>Можно ли ездить с неисправным AQS?</summary><div class="faq-answer"><p>Ездить можно, автомобиль не потеряет ходовые качества. Однако вы будете дышать загрязненным воздухом в пробках, а стекла будут потеть быстрее. Рекомендуется перевести климат в ручной режим рециркуляции при необходимости.</p></div></details>
+
+<h2 id="профилактика-и-уход-за-системой-вентиляции">Профилактика и уход за системой вентиляции</h2>
+
+<p>Что система <strong>AQS</strong> работала долго и безотказно, необходимо соблюдать простые правила эксплуатации климатической установки. В первую очередь, это регулярная замена салонного фильтра. Рекомендуется менять его каждые 10-15 тысяч километров, а в условиях мегаполиса — еще чаще. Забитый фильтр создает сопротивление, которое может нарушить работу сенсора.</p>
+
+<p>Также полезно периодически проводить профилактическую чистку системы вентиляции. Использование специальных антибактериальных спреев через воздухозаборник помогает удалить пыль и масляный налет с поверхности датчика. Однако делать это нужно аккуратно, следуя инструкции к чистящему средству, чтобы не повредить чувствительные элементы.</p>
+
+<p>Если вы часто ездите по грунтовым дорогам или в условиях сильной запыленности, имеет смысл визуально осматривать область воздухозаборника. Наличие листьев, пуха или грязи в районе датчика может блокировать поток воздуха, делая показания <strong>AQS</strong> неактуальными. Простая уборка мусора из-под жабо может решить проблему без замены деталей.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Своевременная замена салонного фильтра — самый эффективный способ продлить жизнь датчику AQS и сохранить здоровье дыхательной системы.</p></div>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+
+<details>
+<summary>Можно ли отключить AQS permanently, если датчик постоянно глючит?</summary>
+<p>Технически отключить датчик можно, разорвав цепь или заклеив его, но система перейдет в аварийный режим. Чаще всего это означает постоянную работу в режиме рециркуляции или, наоборот, постоянный забор воздуха с улицы. Полноценное решение — замена датчика или установка эмулятора, если такой доступен для вашей модели.</p>
+</details>
+
+<details>
+<summary>Почему после мойки двигателя перестал работать автоматический режим кондиционера?</summary>
+<p>Вероятнее всего, вода попала в разъем датчика <strong>AQS</strong> или на сам сенсор, вызвав короткое замыкание или окисление контактов. Необходимо просушить разъем, проверить предохранители и, возможно, считать ошибки сканером. Вода в подкапотном пространстве часто становится причиной сбоев электроники.</p>
+</details>
+
+<details>
+<summary>Влияет ли неисправность AQS на расход топлива?</summary>
+<p>Прямого влияния на расход топлива датчик не оказывает. Однако, если система ошибочно держит заслонку в режиме рециркуляции, в салоне повышается влажность и концентрация CO2, что может вызвать сонливость водителя. Косвенно это влияет на безопасность, но не на экономику расхода бензина.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять датчик качества воздуха?</summary>
+<p>Ресурс датчика <strong>AQS</strong> обычно составляет 5-7 лет или 100-150 тысяч км пробега. Однако в условиях агрессивной среды (промышленные зоны, пыль) он может выйти из строя раньше. Меняют его только по факту неисправности, регламентной замены у этого узла нет.</p>
+</details>
+
+<details>
+<summary>Почему в Chevrolet Captiva AQS работает только на прогретом двигателе?</summary>
+<p>Это может быть связано с особенностями прогрева чувствительного элемента сенсора (если он термокаталитический) или с программной логикой блока HVAC, которая игнорирует показания до стабилизации напряжения в бортовой сети. Если проблема проявляется постоянно, требуется диагностика.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-системы-автоматического-контроля-качества">Принцип работы системы автоматического контроля качества</a></li><li><a href="#расположение-датчика-и-его-взаимодействие-с-климат-контролем">Расположение датчика и его взаимодействие с климат-контролем</a></li><li><a href="#основные-признаки-неисправности-датчика-aqs">Основные признаки неисправности датчика AQS</a></li><li><a href="#диагностика-и-коды-ошибок-системы-aqs">Диагностика и коды ошибок системы AQS</a></li><li><a href="#инструкция-по-проверке-и-замене-датчика">Инструкция по проверке и замене датчика</a></li><li><a href="#таблица-совместимости-и-параметров-датчиков">Таблица совместимости и параметров датчиков</a></li><li><a href="#профилактика-и-уход-за-системой-вентиляции">Профилактика и уход за системой вентиляции</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Chevrolet Aveo T300: чем прошить ЭБУ и доработать — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробный разбор прошивок Chevrolet Aveo T300. Сравнение версий ПО, методы чип-тюнинга, устранение ошибок и повышение мощности двигателя 1.6.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv21_jJKh/chevrolet-aveo-t300-chem-proshit.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Chevrolet Aveo T300: чем прошить ЭБУ и доработать">
+    <meta property="og:description" content="Подробный разбор прошивок Chevrolet Aveo T300. Сравнение версий ПО, методы чип-тюнинга, устранение ошибок и повышение мощности двигателя 1.6.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Chevrolet Aveo T300: чем прошить ЭБУ и доработать</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка Chevrolet Aveo T300: выбор версии и методы обновления</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#заводские-версии-по-и-их-особенности">Заводские версии ПО и их особенности</a></li><li><a href="#цели-и-преимущества-чип-тюнинга-aveo-t300">Цели и преимущества чип-тюнинга Aveo T300</a></li><li><a href="#необходимое-оборудование-и-программаторы">Необходимое оборудование и программаторы</a></li><li><a href="#процесс-записи-и-восстановление-после-сбоев">Процесс записи и восстановление после сбоев</a></li><li><a href="#типичные-проблемы-и-их-решение-через-по">Типичные проблемы и их решение через ПО</a></li><li><a href="#выбор-тюнинг-ателье-или-самостоятельная-работа">Выбор тюнинг-ателье или самостоятельная работа</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы седана Chevrolet Aveo в кузове T300 часто сталкиваются с необходимостью программного вмешательства в работу двигателя. Это может быть связано как с желанием повысить динамические характеристики автомобиля, так и с потребностью устранить ошибки, связанные с экологическими стандартами или некорректной работой <em>ECM</em>. Заводская калибровка часто бывает излишне консервативной, что особенно заметно в городском цикле движения.</p>
+
+<p>Современные методы диагностики позволяют безопасно обновить программное обеспечение блока управления двигателем. Однако, прежде чем приступать к процедуре, необходимо четко понимать, какую именно цель вы преследуете. <strong>Чип-тюнинг</strong> и восстановление заводских параметров — это два разных процесса, требующих разного подхода и инструментов.</p>
+
+<p>В этой статье мы детально разберем, какое программное обеспечение актуально для двигателей 1.4 и 1.6 литра, какие риски существуют при перепрограммировании и стоит ли вообще вмешиваться в штатную логику работы <em>Siemens Simtec 71</em> или <em>Delphi</em>. Правильный выбор версии прошивки может существенно изменить характер автомобиля.</p>
+
+<h2 id="заводские-версии-по-и-их-особенности">Заводские версии ПО и их особенности</h2>
+
+<p>Автомобили Chevrolet Aveo T300, поставляемые на различные рынки, комплектовались блоками управления с разным программным обеспечением. Идентификация текущей версии — это первый шаг, который необходимо сделать перед любым вмешательством. Заводские прошивки имеют уникальные коды, по которым можно определить регион и экологический класс.</p>
+
+<p>Наиболее распространенной проблемой ранних версий ПО является некорректная работа системы рециркуляции выхлопных газов и чувствительность к качеству топлива. <strong>Электронный дроссель</strong> в таких случаях может реагировать с задержкой, создавая эффект "турбоямы" на низких оборотах. Владельцы часто путают это с механической неисправностью.</p>
+
+<blockquote>⚠️ Внимание: Несоответствие версии прошивки типу двигателя (например, попытка залить ПО от мотора 1.4 в блок 1.6) приведет к полной неработоспособности силового агрегата и возможному выходу из строя электроники.</blockquote>
+
+<p>Для точного определения текущей конфигурации используется диагностический сканер. Подключившись через разъем OBD-II, вы сможете считать идентификаторы <em>Calibration ID</em> и <em>Software Part Number</em>. Эти данные необходимы для подбора корректного файла для обновления.</p>
+
+<details class="faq-item"><summary>Как расшифровать VIN для подбора прошивки</summary><div class="faq-answer"><p>Первые три символа VIN-кода указывают на производителя, следующие шесть — на модель и характеристики двигателя. Последовательность символов с 10 по 17 является уникальным серийным номером автомобиля. Для подбора прошивки важнее всего 8-й символ (код двигателя) и 10-й символ (модельный год).</p></div></details>
+
+<h2 id="цели-и-преимущества-чип-тюнинга-aveo-t300">Цели и преимущества чип-тюнинга Aveo T300</h2>
+
+<p>Основной мотивацией для владельцев при поиске ответа на вопрос "чем прошить" является желание улучшить динамику. Стандартная программа часто "душит" двигатель в угоду экологическим нормам Euro-4 или Euro-5. Персонализированная прошивка позволяет раскрыть скрытый потенциал мотора.</p>
+
+<p>Качественный <strong>Stage 1</strong> тюнинг дает ощутимый прирост мощности и крутящего момента. Это особенно важно для обгонов на трассе или уверенного старта со светофора. Кроме того, правильная калибровка позволяет улучшить отзывчивость педали газа, делая вождение более комфортным.</p>
+
+<p>Список преимуществ, которые можно получить после грамотного перепрограммирования:</p>
+<ul>
+<li>🚀 Увеличение мощности двигателя на 10-15% без механических доработок.</li>
+<li>⛽ Снижение расхода топлива при спокойной езде за счет оптимизации смесеобразования.</li>
+<li>🌡️ Улучшение работы системы охлаждения и вентилятора радиатора.</li>
+<li>🛑 Возможность отключения катализатора (Euro-2) без появления ошибок на панели приборов.</li>
+</ul>
+
+<p>Важно понимать, что "волшебной таблетки" не существует. Если двигатель технически неисправен, прошивка лишь скроет симптомы, но не решит проблему. <em>Датчики кислорода</em> и катушки зажигания должны быть в исправном состоянии перед началом работ.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Чип-тюнинг имеет смысл только на полностью исправном двигателе. В противном случае вы рискуете усугубить имеющиеся механические проблемы.</p></div>
+
+<h2 id="необходимое-оборудование-и-программаторы">Необходимое оборудование и программаторы</h2>
+
+<p>Для работы с электроникой Chevrolet Aveo T300 требуется специализированное оборудование. Рынок предлагает множество решений, от дешевых китайских клонов до профессиональных комплексов. Выбор инструмента напрямую влияет на стабильность результата и риск "окирпичивания" блока.</p>
+
+<p>Наиболее популярным и надежным решением для работы с блоками <em>Simtec 71</em> и <em>Delphi</em> является программатор <strong>OpenPort 2.0</strong> от компании Tactrix. Он обеспечивает стабильную связь по протоколу K-Line и CAN-bus. Дешевые аналоги часто обрывают связь посередине процесса, что критично опасно.</p>
+
+<table>
+<thead>
+<tr>
+<th>Оборудование</th>
+<th>Протокол связи</th>
+<th>Риск ошибок</th>
+<th>Рекомендуемое ПО</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tactrix OpenPort 2.0</td>
+<td>J2534 / K-Line</td>
+<td>Низкий</td>
+<td>PCMflash, ChipTuning Pro</td>
+</tr>
+<tr>
+<td>K-Line VAG 409.1</td>
+<td>K-Line</td>
+<td>Средний</td>
+<td>OpenDiag, Galletto</td>
+</tr>
+<tr>
+<td>ELM327 (дешевый)</td>
+<td>OBDII</td>
+<td>Высокий</td>
+<td>Только для чтения ошибок</td>
+</tr>
+<tr>
+<td>Bosch BDM100</td>
+<td>BDM (вскрытие)</td>
+<td>Низкий (для восстановления)</td>
+<td>Для работы с EEPROM</td>
+</tr>
+</tbody>
+</table>
+
+<p>Помимо аппаратной части, необходим качественный ноутбук с установленным драйвером и софтом для записи. <strong>Стабильность напряжения</strong> бортовой сети во время процедуры — критический фактор. Рекомендуется использовать зарядное устройство в режиме "Источник питания" с током не менее 20 Ампер.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка оборудования</h4><label class="check-item"><input type="checkbox"><span>Проверить заряд аккумулятора авто</span></label><label class="check-item"><input type="checkbox"><span>Подключить стабилизатор напряжения</span></label><label class="check-item"><input type="checkbox"><span>Установить драйверы программатора</span></label><label class="check-item"><input type="checkbox"><span>Закрыть все лишние программы на ПК</span></label><label class="check-item"><input type="checkbox"><span>Проверить надежность соединения кабелей</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="процесс-записи-и-восстановление-после-сбоев">Процесс записи и восстановление после сбоев</h2>
+
+<p>Сам процесс перепрошивки занимает от 15 до 40 минут в зависимости от объема памяти блока и скорости интерфейса. В это время категорически запрещено прерывать соединение или выключать зажигание. Любое вмешательство в этот момент может привести к повреждению загрузчика.</p>
+
+<p>Алгоритм действий обычно выглядит следующим образом: подключение сканера, чтение стоковой прошивки (обязательно сохраните ее!), модификация или выбор готового файла, запись, проверка контрольных сумм. Если в процессе записи произошел сбой, блок может перейти в режим <em>Bootloader</em>.</p>
+
+<blockquote>⚠️ Внимание: Если во время записи погас индикатор прогресса или пропала связь, не спешите вынимать кабель. Попробуйте повторно инициировать соединение в режиме восстановления, не выключая зажигание.</blockquote>
+
+<p>Для восстановления "упавшего" блока часто требуется процедура, называемая "BDM прошивка". Она подразумевает физическое вскрытие корпуса ЭБУ и подключение программатора напрямую к контактным площадкам на плате. Это сложная процедура, требующая навыков пайки и наличия оборудования типа <em>BootMaster</em> или <em>BDM100</em>.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Всегда делайте резервную копию оригинальной (стоковой) прошивки перед началом любых работ. Это единственная гарантия, что вы сможете вернуть автомобиль в заводское состояние в случае продажи или проблем с гарантией.</p></div>
+
+<h2 id="типичные-проблемы-и-их-решение-через-по">Типичные проблемы и их решение через ПО</h2>
+
+<p>Chevrolet Aveo T300 известен рядом "детских болезней", которые часто решаются программным путем. Одна из самых распространенных — плавающие обороты холостого хода и рывки при переключении передач на АКПП. Часто причина кроется в адаптациях <strong>дроссельной заслонки</strong>.</p>
+
+<p>Еще одна частая проблема — загорание лампы <em>Check Engine</em> с ошибками по катализатору (P0420) или лямбда-зонду. Владельцы, удаляющие катализатор, обязаны программно отключить второй датчик кислорода. Без этой процедуры система будет пытаться корректировать смесь, основываясь на данных несуществующего фильтра, что приведет к перерасходу топлива.</p>
+
+<p>Основные ошибки, устраняемые прошивкой:</p>
+<ul>
+<li>🔥 P0300-P0304: Пропуски зажигания (часто лечатся обновлением таблиц опережения).</li>
+<li>🌬️ P0171/P0172: Слишком бедная или богатая смесь (корректировка топливных карт).</li>
+<li>🚦 P2135: Неверный сигнал педали акселератора (калибровка дросселя).</li>
+<li>⚙️ P0700: Ошибка управления трансмиссией (сброс адаптаций АКПП).</li>
+</ul>
+
+<p>Стоит отметить, что программное решение эффективно только тогда, когда устранена физическая причина. Если, например, подсос воздуха впускного коллектора не устранен, никакая прошивка не поможет стабилизировать работу двигателя на долгий срок.</p>
+
+<div class="poll-widget" id="poll-3f743df2"><div class="poll-widget-question">📊 Сталкивались ли вы с ошибками двигателя после чип-тюнинга?</div><div class="poll-widget-option" data-poll="3f743df2" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, было много проблем/Нет, все прошло идеально/Не делал чип-тюнинг/Только планирую</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="выбор-тюнинг-ателье-или-самостоятельная-работа">Выбор тюнинг-ателье или самостоятельная работа</h2>
+
+<p>Принимая решение о прошивке, владелец Aveo T300 встает перед выбором: довериться профессионалам или попробовать силы самостоятельно. Самостоятельная прошивка возможна, но требует глубокого погружения в теорию работы ДВС и наличия дорогого оборудования.</p>
+
+<p>Профессиональный тюнер не просто заливает файл, а проводит диагностику, настраивает параметры под конкретный экземпляр автомобиля и несет ответственность за результат. <strong>Готовые решения</strong> из интернета могут не учитывать износ вашего двигателя или региональные особенности топлива.</p>
+
+<p>Если вы решили действовать самостоятельно, начните с изучения мануалов по работе с софтом <em>PCMflash</em> или <em>BitEditor</em>. Практикуйтесь на безопасных параметрах, не затрагивая критические зоны памяти. Помните, что экономия на этапе выбора прошивки может вылиться в costly ремонт.</p>
+
+<p>В конечном итоге, правильно подобранная программа превращает спокойный Aveo в более отзывчивый автомобиль, способный дарить больше эмоций от вождения. Главное — соблюдать технологию и не гнаться за максимальными цифрами в ущерб ресурсу.</p>
+
+<details>
+<summary>Можно ли прошить Aveo T300 через разъем OBD без вскрытия блока?</summary>
+<p>Да, в 95% случаев прошивка производится через диагностический разъем OBD-II без необходимости вскрывать блок управления. Вскрытие требуется только для восстановления блоков после неудачной попытки записи или смены процессора.</p>
+</details>
+
+<details>
+<summary>Сбросится ли прошивка при снятии клеммы аккумулятора?</summary>
+<p>Нет, программное обеспечение записывается в энергонезависимую память (EEPROM/Flash). Снятие клеммы сбрасывает только кратковременные адаптации и ошибки, но основная прошивка остается неизменной.</p>
+</details>
+
+<details>
+<summary>Влияет ли чип-тюнинг на ресурс двигателя Chevrolet?</summary>
+<p>Грамотный Stage 1, не предполагающий экстремального повышения давления наддува (для турбо) или критического обеднения смеси, не сокращает ресурс. На атмосферных моторах Aveo 1.6 ресурс даже может вырасти за счет более оптимальных температурных режимов.</p>
+</details>
+
+<details>
+<summary>Как узнать, была ли машина уже прошита до меня?</summary>
+<p>Это можно сделать с помощью диагностического сканера, сравнив идентификаторы калибровок (Calibration ID) с заводскими каталогами для данного VIN-кода. Также косвенным признаком может быть отсутствие реакции на педаль газа в режиме "эко" или специфическое поведение дросселя.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#заводские-версии-по-и-их-особенности">Заводские версии ПО и их особенности</a></li><li><a href="#цели-и-преимущества-чип-тюнинга-aveo-t300">Цели и преимущества чип-тюнинга Aveo T300</a></li><li><a href="#необходимое-оборудование-и-программаторы">Необходимое оборудование и программаторы</a></li><li><a href="#процесс-записи-и-восстановление-после-сбоев">Процесс записи и восстановление после сбоев</a></li><li><a href="#типичные-проблемы-и-их-решение-через-по">Типичные проблемы и их решение через ПО</a></li><li><a href="#выбор-тюнинг-ателье-или-самостоятельная-работа">Выбор тюнинг-ателье или самостоятельная работа</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

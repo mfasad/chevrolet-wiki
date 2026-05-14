@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Прошивка ЭБУ Chevrolet Lanos MR-140: выбор софта и чипов — Chevrolet-Wiki</title>
+    <meta name="description" content="Чем прошить Chevrolet Lanos MR-140? Обзор версий прошивок D155, D165, E2, чипов памяти и оборудования для тюнинга и ремонта.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv37_uf3L/shevrole-lanos-mr140-chem-proshit.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Прошивка ЭБУ Chevrolet Lanos MR-140: выбор софта и чипов">
+    <meta property="og:description" content="Чем прошить Chevrolet Lanos MR-140? Обзор версий прошивок D155, D165, E2, чипов памяти и оборудования для тюнинга и ремонта.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Прошивка ЭБУ Chevrolet Lanos MR-140: выбор софта и чипов</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка ЭБУ Chevrolet Lanos MR-140: выбор софта и чипов</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#идентификация-версии-прошивки-и-типа-эбу">Идентификация версии прошивки и типа ЭБУ</a></li><li><a href="#основные-версии-программного-обеспечения-для-mr-140">Основные версии программного обеспечения для MR-140</a></li><li><a href="#аппаратная-часть-чипы-памяти-и-их-замена">Аппаратная часть: чипы памяти и их замена</a></li><li><a href="#необходимое-оборудование-и-программаторы">Необходимое оборудование и программаторы</a></li><li><a href="#инструкция-по-прошивке-через-k-line">Инструкция по прошивке через K-Line</a></li><li><a href="#типичные-проблемы-и-способы-их-решения">Типичные проблемы и способы их решения</a></li><li><a href="#сравнительная-таблица-популярных-прошивок">Сравнительная таблица популярных прошивок</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы автомобилей Chevrolet Lanos, оснащенных двигателем объемом 1.5 литра и электронной системой впрыска топлива, рано или поздно сталкиваются с необходимостью перепрограммирования контроллера. Электронный блок управления (ЭБУ) серии <em>MR-140</em> является одним из самых распространенных и, одновременно, капризных узлов в системе управления двигателем. Основной вопрос, который возникает перед автолюбителем или мастером автосервиса: чем именно прошивать этот блок, чтобы устранить ошибки или повысить эффективность работы мотора?</p>
+
+<p>Выбор программного обеспечения зависит от множества факторов, включая текущую версию прошивки, установленную на заводе, и цели, которые вы преследуете. Это может быть простое восстановление работоспособности после сбоя, удаление системы <strong>EGR</strong> или переход на более экологичные стандарты <strong>Евро-3</strong>. Неправильный выбор софта может привести к нестабильной работе двигателя, поэтому важно разбираться в номенклатуре доступных решений.</p>
+
+<p>В данной статье мы подробно разберем все аспекты выбора прошивки для <em>Chevrolet Lanos</em>. Мы рассмотрим различные модификации программного обеспечения, типы микросхем памяти, а также оборудование, необходимое для проведения процедуры. Вы узнаете о нюансах, которые часто упускаются новичками, и получите ответы на самые распространенные технические вопросы.</p>
+
+<h2 id="идентификация-версии-прошивки-и-типа-эбу">Идентификация версии прошивки и типа ЭБУ</h2>
+
+<p>Прежде чем приступать к поиску подходящего файла для прошивки, необходимо точно определить, с какой модификацией блока управления вы имеете дело. ЭБУ <em>MR-140</em> выпускались в различных исполнениях, и программное обеспечение для них не всегда взаимозаменяемо. Первым шагом всегда должна быть диагностика с помощью сканера или ноутбука с установленным <strong>OBD-2</strong> софтом.</p>
+
+<p>Наиболее распространенной версией для автомобилей с нормами токсичности <strong>Евро-2</strong> является прошивка <code>D155</code> (или <code>D155LR</code>). Именно этот софт устанавливался на большинство Ланосов, собранных в Украине и Польше в период с 2005 по 2008 годы. Он характеризуется определенной картой зажигания и топливоподачи, заточенной под штатный катализатор и один лямбда-зонд.</p>
+
+<p>Более поздние модели, соответствующие стандарту <strong>Евро-3</strong>, часто оснащались версией <code>D165</code> или <code>E2</code>. Эти прошивки требуют наличия второго кислородного датчика и имеют более сложную логику работы системы самодиагностики. Попытка залить софт от <em>Евро-3</em> на автомобиль с конфигурацией <em>Евро-2</em> приведет к постоянному горению лампы <code>Check Engine</code> и некорректной работе двигателя.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед прошивкой обязательно считайте идентификационный номер (ID) текущей версии ПО через диагностический разъем. Записывайте его на бумагу — это ваш «якорь», к которому можно будет откатиться в случае неудачи.</p></div>
+
+<p>Для точного определения версии можно использовать специализированные программы, такие как <em>OpenDiag</em> или <em>ScanTool</em>. В блоке данных ЭБУ ищите строку"Calibration ID" или"Software Version". Там будет указан буквенно-цифровой код, например, <code>A15SMS</code> или <code>A16SMS</code>, который соответствует конкретной калибровке.</p>
+
+<h2 id="основные-версии-программного-обеспечения-для-mr-140">Основные версии программного обеспечения для MR-140</h2>
+
+<p>Рынок прошивок для <em>Chevrolet Lanos</em> предлагает множество вариантов, от заводских стоковых версий до глубоко модифицированных тюнинговых решений. Понимание различий между ними критически важно для выбора оптимального варианта.</p>
+
+<p>Самой массовой и проверенной временем версией остается <code>D155</code>. Это базовая прошивка, которая обеспечивает стабильную работу двигателя <em>A15SMS</em>. Многие мастера предпочитают возвращать автомобили именно к этой версии, так как она наименее требовательна к качеству топлива и состоянию свечей зажигания.</p>
+
+<p>Для тех, кто ищет улучшения в динамике, существуют модифицированные версии, такие как <code>D155 v55</code> или <code>Паулюс</code>. В этих прошивках изменены углы опережения зажигания (УОЗ) и карты наполнения цилиндров. Это позволяет двигателю работать мягче и отзывчивее, особенно на низких оборотах.</p>
+
+<p>Отдельного внимания заслуживают версии с отключенным клапаном рециркуляции выхлопных газов (<strong>EGR</strong>). Штатная система <em>EGR</strong> на Ланосах часто доставляет проблемы, обрастая нагаром. Прошивки с физическим и программным отключением этого узла избавляют владельца от необходимости чистить коллектор каждые 20 тысяч километров.</p>
+
+<div class="poll-widget" id="poll-9ff6e83b"><div class="poll-widget-question">📊 Какая цель прошивки вашего Ланоса?</div><div class="poll-widget-option" data-poll="9ff6e83b" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Удаление EGR и экологии</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9ff6e83b" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Увеличение мощности</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9ff6e83b" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Восстановление после сбоя</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9ff6e83b" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Чип-тюнинг для экономии топлива</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Существуют также специфические версии для работы на газе (<strong>ГБО</em>). Если ваш автомобиль переоборудован для работы на пропане или метане, установка прошивки <code>LPG</code> или <code>CNG</code> обязательна. Она корректирует работу форсунок и датчиков под другие характеристики горения смеси.</p>
+
+<h2 id="аппаратная-часть-чипы-памяти-и-их-замена">Аппаратная часть: чипы памяти и их замена</h2>
+
+<p>Процесс прошивки напрямую зависит от того, какая микросхема памяти установлена внутри вашего ЭБУ <em>MR-140</em>. В разных годах выпуска и на разных заводах-изготовителях использовались различные типы чипов, что требует индивидуального подхода.</p>
+
+<p>Наиболее часто встречаются блоки с флеш-памятью типа <strong>29F400</strong> или <strong>29LV400</strong>. Эти чипы позволяют проводить запись программно, без выпаивания, при наличии соответствующего адаптера (BDM или через K-Line). Однако, если чип памяти имеет маркировку <strong>27C</strong> или <strong>29C</strong> с оконцем (хотя в MR-140 это редкость, чаще это EPROM), может потребоваться программатор.</p>
+
+<p>В некоторых случаях, особенно при восстановлении «кирпичей» (блоков с поврежденной загрузочной областью), требуется выпаивание чипа. Для этого используется паяльная станция и программатор, поддерживающий работу с внешними микросхемами. После прошивки чип запаивается обратно на плату.</p>
+
+<p>Современные методы позволяют перепаивать чипы памяти на более современные аналоги с большим объемом, что теоретически позволяет записывать более сложные алгоритмы управления. Однако для повседневной эксплуатации <em>Chevrolet Lanos</em> емкости штатного чипа вполне достаточно.</p>
+
+<details class="faq-item"><summary>Технические нюансы чипов памяти</summary><div class="faq-answer"><p>Внутри ЭБУ MR-140 часто используется микросхема Motorola MC68HC912B32 в качестве процессора, а осуществляется во внешней Flash-памяти. При прошивке важно не повредить дорожки, идущие к ножкам чипа, так как они очень тонкие.</p></div></details>
+
+<p>Важно отметить, что при замене чипа или перепрошивке необходимо контролировать целостность контрольной суммы (<strong>Checksum</strong>). Если сумма не сходится, блок управления откажется запускать двигатель, считая программное обеспечение поврежденным.</p>
+
+<h2 id="необходимое-оборудование-и-программаторы">Необходимое оборудование и программаторы</h2>
+
+<p>Для качественной прошивки <em>Chevrolet Lanos MR-140</code> недостаточно просто скачать файл из интернета. Вам потребуется специализированный hardware, который обеспечит надежную связь между компьютером и ЭБУ автомобиля.</p>
+
+<p>Самым популярным и доступным решением является адаптер <strong>K-Line</em> (часто на базе чипа <em>VAG-COM 409.1</em> или более современных <em>FTDI</em>). Он подключается к диагностическому разъему OBD-II и к USB-порту ноутбука. Для работы с ним используется программное обеспечение <em>OpenDiag</em> или <em>ChipTuning Pro</em>.</p>
+
+<p>Для более глубокой работы, включая восстановление заблокированных блоков, часто используют адаптеры <strong>BDM</strong> (Background Debug Mode). Они подключаются напрямую к контактным площадкам на плате ЭБУ, для чего блок приходится снимать и вскрывать. Это более сложный, но и более надежный метод.</p>
+
+<p>Профессионалы часто используют универсальные программаторы, такие как <em>Combiloader</em> или <em>Galletto</em>. Эти устройства поддерживают широкий спектр протоколов и могут работать с различными семействами контроллеров, включая <em>MR-140</em>. Они обеспечивают высокую скорость записи и имеют защиту от сбоев питания.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка к прошивке</h4><label class="check-item"><input type="checkbox"><span>Проверить заряд аккумулятора (не менее 12.5В)</span></label><label class="check-item"><input type="checkbox"><span>Подключить стабилизатор напряжения</span></label><label class="check-item"><input type="checkbox"><span>Установить драйверы адаптера</span></label><label class="check-item"><input type="checkbox"><span>Сделать бэкап старой прошивки</span></label><label class="check-item"><input type="checkbox"><span>Проверить целостность жгута проводов</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Не забывайте, что ноутбук, используемый для прошивки, должен иметь стабильное питание. Использование беспроводных мышей и отключение энергосберегающих режимов USB-портов — обязательное требование для предотвращения обрыва связи в критический момент.</p>
+
+<h2 id="инструкция-по-прошивке-через-k-line">Инструкция по прошивке через K-Line</h2>
+
+<p>Процесс перепрограммирования ЭБУ через диагностический разъем является наименее инвазивным и наиболее распространенным. Ниже приведена последовательность действий, которой следует придерживаться для минимизации рисков.</p>
+
+<p>Сначала необходимо подключить адаптер K-Line к диагностическому разъему автомобиля и запустить программу-загрузчик на компьютере. Убедитесь, что в диспетчере устройств порт COM определен верно и конфликтów ресурсов нет.</p>
+
+<pre><code>1. Включите зажигание (двигатель не заводить).
+<p>2. Запустите программу (например, OpenDiag Loader).</p>
+<p>3. Выберите тип ЭБУ: MR-140.</p>
+<p>4. Нажмите кнопку"Считать" для загрузки текущей прошивки.</p>
+<p>5. Сохраните копию на жесткий диск и в облако.</p>
+<p>6. Выберите новый файл прошивки (.bin или.frf).</p>
+<p>7. Нажмите"Записать" и дождитесь окончания процесса.</code></pre></p>
+
+<p>Во время записи индикатор прогресса не должен замирать. Если процесс встал на 10% или 90%, не паникуйте сразу, но и не выключайте зажигание. Часто программа пытается восстановить связь. Однако, если тайм-аут превышен, возможно, потребуется переходить в режим <strong>Bootloader</strong> вручную, замыкая определенные контакты на плате ЭБУ.</p>
+
+<p>После успешной записи обязательно выполните сброс адаптаций. Для этого в меню диагностической программы выберите пункт"Сброс адаптаций" или"Обучение ХХ". Без этого шага двигатель может работать нестабильно первые несколько десятков километров.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Золотое правило чипмейкера: никогда не прерывайте процесс записи принудительно. Если прошивка прервалась — блок может превратиться в"кирпич", восстановление которого потребует вскрытия ЭБУ и пайки.</p></div>
+
+<h2 id="типичные-проблемы-и-способы-их-решения">Типичные проблемы и способы их решения</h2>
+
+<p>Даже при соблюдении всех инструкций могут возникнуть непредвиденные ситуации. Понимание природы ошибок поможет быстро диагностировать и устранить неисправность.</p>
+
+<p>Одной из частых проблем является несовместимость версий. Если после прошивки двигатель троит или глохнет, скорее всего, залита прошивка от двигателя другого объема (например, 1.6 вместо 1.5) или другой экологической нормы. В этом случае поможет только возврат к резервной копии.</p>
+
+<p>Еще одна распространенная ошибка — повреждение сектора иммобилайзера. В ЭБУ <em>MR-140</em> записаны данные, привязанные к блоку иммобилайзера и ключам. При некорректной прошивке автомобиль может перестать заводиться, выдавая сигнал о блокировке. Решается это либо восстановлением данных иммобилайзера из бэкапа, либо программным отключением иммобилайзера (что делает автомобиль уязвимым).</p>
+
+<p>Проблемы с"плавающими" оборотами после прошивки часто решаются регулировкой положения дроссельной заслонки и чисткой самого узла. Новая прошивка может иначе интерпретировать положение заслонки, и старые нагары начинают мешать.</p>
+
+<h2 id="сравнительная-таблица-популярных-прошивок">Сравнительная таблица популярных прошивок</h2>
+
+<p>Для удобства выбора приведем сравнительную характеристику основных типов программного обеспечения, доступного для <em>Chevrolet Lanos MR-140</em>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Версия прошивки</th>
+<th>Эко-норма</th>
+<th>Характеристики</th>
+<th>Рекомендация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>D155</code></td>
+<td>Евро-2</td>
+<td>Штатная, стабильная</td>
+<td>Для восстановления стока</td>
+</tr>
+<tr>
+<td><code>D165</code></td>
+<td>Евро-3</td>
+<td>Два лямбда-зонда, EGR</td>
+<td>Для авто с катализатором</td>
+</tr>
+<tr>
+<td><code>Паулюс v55</code></td>
+<td>Евро-2/3</td>
+<td>Улучшена динамика, отключен EGR</td>
+<td>Для городской езды</td>
+</tr>
+<tr>
+<td><code>LPG/CNG</code></td>
+<td>Евро-2</td>
+<td>Оптимизация под газ</td>
+<td>Для авто с ГБО 4 поколения</td>
+</tr>
+</tbody>
+</table>
+
+<details class="faq-item"><summary>Влияние прошивки на расход топлива</summary><div class="faq-answer"><p>Многие ожидают снижения расхода на 2-3 литра после чип-тюнинга. Реальность такова, что экономия возможна только при спокойной манере вождения. Агрессивная прошивка, наоборот, может увеличить аппетит двигателя на 10-15% за счет обогащения смеси.</p></div></details>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+
+<details>
+<summary>Можно ли прошить Ланос MR-140 без снятия блока с автомобиля?</summary>
+<p>Да, в большинстве случаев это возможно. Если блок не заблокирован и версия ПО позволяет, прошивка осуществляется через диагностический разъем OBD-II с помощью K-Line адаптера. Снятие требуется только в сложных случаях восстановления или замены чипа памяти.</p>
+</details>
+
+<details>
+<summary>Сбросится ли пробег на приборной панели после прошивки ЭБУ?</summary>
+<p>Нет, пробег на спидометре хранится в отдельной микросхеме памяти приборной панели или в блоке иммобилайзера, но не в самом ЭБУ двигателя. Прошивка мотора не влияет на показания одометра.</p>
+</details>
+
+<details>
+<summary>Что делать, если после прошивки загорелся Check Engine?</summary>
+<p>Сначала выполните сброс ошибок через диагностический сканер. Если ошибка возвращается сразу, проверьте, та ли версия прошивки была залита (Евро-2 или Евро-3). Также проверьте лямбда-зонд и герметичность выпускной системы.</p>
+</details>
+
+<details>
+<summary>Нужно ли менять свечи после чип-тюнинга Ланоса?</summary>
+<p>Желательно. Новая прошивка может изменить температурный режим и характер искрообразования. Установка свежих свечей с правильным калильным числом (обычно <code>A15SMS</code> требует <code>NGK BPR6ES</code> или аналогов) обеспечит корректную работу двигателя.</p>
+</details>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Все действия по перепрограммированию ЭБУ вы выполняете на свой страх и риск. Неумелое вмешательство в программный код может привести к выходу из строя электронного блока управления, стоимость которого может быть сопоставима с стоимостью половины двигателя.</p>
+</blockquote></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#идентификация-версии-прошивки-и-типа-эбу">Идентификация версии прошивки и типа ЭБУ</a></li><li><a href="#основные-версии-программного-обеспечения-для-mr-140">Основные версии программного обеспечения для MR-140</a></li><li><a href="#аппаратная-часть-чипы-памяти-и-их-замена">Аппаратная часть: чипы памяти и их замена</a></li><li><a href="#необходимое-оборудование-и-программаторы">Необходимое оборудование и программаторы</a></li><li><a href="#инструкция-по-прошивке-через-k-line">Инструкция по прошивке через K-Line</a></li><li><a href="#типичные-проблемы-и-способы-их-решения">Типичные проблемы и способы их решения</a></li><li><a href="#сравнительная-таблица-популярных-прошивок">Сравнительная таблица популярных прошивок</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как проверить CAN шину мультиметром Шевроле Каптива: пошаговая инструкция — Chevrolet-Wiki</title>
+    <meta name="description" content="Детальное руководство по диагностике CAN-шины Шевроле Каптива мультиметром. Измеряем напряжение, ищем обрывы и замыкания High/Low линий.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv40_gTvo/kak-proverit-kan-shinu-multimetrom-shevrole-kaptiva.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как проверить CAN шину мультиметром Шевроле Каптива: пошаговая инструкция">
+    <meta property="og:description" content="Детальное руководство по диагностике CAN-шины Шевроле Каптива мультиметром. Измеряем напряжение, ищем обрывы и замыкания High/Low линий.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как проверить CAN шину мультиметром Шевроле Каптива: пошаговая инструкция</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Диагностика CAN-шины Шевроле Каптива мультиметром</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#теоретические-основы-и-подготовка-к-измерениям">Теоретические основы и подготовка к измерениям</a></li><li><a href="#поиск-диагностического-разъема-и-контактов-can">Поиск диагностического разъема и контактов CAN</a></li><li><a href="#методика-измерения-напряжения-в-статике-и-динамике">Методика измерения напряжения в статике и динамике</a></li><li><a href="#диагностика-сопротивления-и-поиск-обрывов">Диагностика сопротивления и поиск обрывов</a></li><li><a href="#анализ-таблицы-нормативных-значений">Анализ таблицы нормативных значений</a></li><li><a href="#типичные-неисправности-и-способы-их-устранения">Типичные неисправности и способы их устранения</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Современный <em>Chevrolet Captiva</em> представляет собой сложный комплекс электронных систем, где CAN-шина выступает в роли нервной системы автомобиля. Любая неисправность в этой сети может привести к хаотичному поведению приборов, отказу запуска двигателя или потере связи с диагностическим сканером. Владельцы часто сталкиваются с ситуацией, когда специализированное оборудование недоступно, а проблему нужно локализовать прямо сейчас.</p>
+
+<p>В таких случаях на помощь приходит обычный цифровой мультиметр, который способен дать первичную, но крайне важную информацию о состоянии линий связи. Мы рассмотрим методику проверки напряжения, сопротивления и целостности проводов, что позволит отсеять простые механические повреждения. Грамотное использование прибора сэкономит время и поможет понять, стоит ли искать проблему в блоках управления или в проводке.</p>
+
+<p>Прежде чем приступать к измерениям, необходимо четко понимать, что <strong>CAN-шина</strong> — это дифференциальная система, состоящая из двух линий: <strong>CAN-High</strong> и <strong>CAN-Low</strong>. Именно их взаимодействие обеспечивает помехоустойчивую передачу данных. Ошибки в измерениях или игнорирование техники безопасности могут привести к выходу из строя дорогостоящих блоков <em>ECU</em>, поэтому каждое действие должно быть осознанным и точным.</p>
+
+<h2 id="теоретические-основы-и-подготовка-к-измерениям">Теоретические основы и подготовка к измерениям</h2>
+
+<p>Для успешной диагностики <em>Chevrolet Captiva</em> важно знать стандартные параметры напряжения в сети. В состоянии покоя, когда зажигание включено, а двигатель заглушен, на линии <strong>CAN-High</strong> должно присутствовать напряжение около 2.5–2.6 Вольта. Линия <strong>CAN-Low</strong> в это же время показывает значение приблизительно 2.4–2.5 Вольта. Суммарное напряжение между этими двумя проводами в идеале составляет около 5 Вольт, что является эталонным показателем для низкоскоростных и среднескоростных сетей.</p>
+
+<p>Если вы наблюдаете значительные отклонения от этих значений, например, падение до 0 Вольт или скачок до бортового напряжения 12 Вольт, это свидетельствует о коротком замыкании. Часто причиной становится перетертая изоляция в местах прохождения жгутов через кузовные элементы. <em>Мультиметр</em> в режиме вольтметра позволяет мгновенно зафиксировать такие аномалии без подключения к разъемам блоков управления.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Перед началом любых работ с электропроводкой обязательно снимите минусовую клемму с аккумулятора, если требуется прозвонка цепей на сопротивление. Работа под напряжением в режиме омметра гарантированно выведет прибор из строя.</p>
+</blockquote>
+
+<p>Подготовка инструмента требует переключения мультиметра в режим измерения постоянного тока (<strong>DC Voltage</strong>) с пределом 20 Вольт. Щупы должны быть острыми и надежными, чтобы обеспечить хороший контакт с клеммами разъема <em>OBD-II</em> или контактами в жгуте. Некачественный контакт может внести погрешность в измерения, что приведет к ложным выводам о состоянии системы.</p>
+
+<div class="poll-widget" id="poll-2bdf5325"><div class="poll-widget-question">📊 С какой проблемой CAN-шины вы столкнулись?</div><div class="poll-widget-option" data-poll="2bdf5325" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Машина не заводится</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2bdf5325" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Горит Check Engine</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2bdf5325" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Не работает приборная панель</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2bdf5325" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Отказала АКПП</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2bdf5325" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другое</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="поиск-диагностического-разъема-и-контактов-can">Поиск диагностического разъема и контактов CAN</h2>
+
+<p>Основной точкой входа для первичной проверки служит стандартный 16-пиновый разъем <em>OBD-II</em>, расположенный под панелью приборов со стороны водителя. В <em>Chevrolet Captiva</em> он обычно находится в нише слева от рулевой колонки или под декоративной накладкой. Для доступа к контактам может потребоваться снять пластиковую крышку, но часто достаточно просто подсветить фонариком.</p>
+
+<p>Согласно стандарту ISO, за передачу данных в сети CAN отвечают конкретные пины. В большинстве случаев для <em>Captiva</em> актуальны контакты номер 6 и 14. Пин 6 соответствует линии <strong>CAN-High</strong>, а пин 14 — линии <strong>CAR-Low</strong>. Однако в некоторых модификациях или при наличии дополнительных шлюзов распиновка может отличаться, поэтому визуальная проверка маркировки на самом разъеме или в электросхеме будет не лишней.</p>
+
+<p>Для проведения измерений аккуратно введите щупы мультиметра в разъем, стараясь не повредить и не отогнуть контакты. Черный щуп (<strong>COM</strong>) соедините с массой (кузовом автомобиля или пином 4/5 разъема), а красный щуп поочередно касайтесь исследуемых контактов. Стабильность показаний на экране прибора говорит о целостности соединения в данной точке.</p>
+
+<details class="faq-item"><summary>Альтернативные пины CAN-шины</summary><div class="faq-answer"><p>В некоторых комплектациях Chevrolet Captiva могут использоваться дополнительные линии CAN для мультимедиа или климат-контроля. Они могут располагаться на пинах 1, 9 или 13, но основная диагностическая и двигательная сеть всегда находится на 6 и 14 пинах стандарта OBD-II.</p></div></details>
+
+<h2 id="методика-измерения-напряжения-в-статике-и-динамике">Методика измерения напряжения в статике и динамике</h2>
+
+<p>Первый этап проверки — измерение напряжения в статическом режиме. Включите зажигание, но не запускайте двигатель. Подключите черный щуп мультиметра к надежной массе, а красный прижмите к контакту 6 (<strong>CAN-High</strong>). Зафиксируйте показания. Затем повторите процедуру для контакта 14 (<strong>CAN-Low</strong>). Нормой считается симметричное отклонение от среднего значения 2.5 Вольта.</p>
+
+<p>Если на одном из контактов напряжение равно 0 Вольт, это может указывать на обрыв линии или короткое замыкание на массу. Если же прибор показывает 12 Вольт, значит, произошло замыкание на борт, что часто случается при повреждении жгута в моторном отсеке. Критически важно проверить напряжение между контактами 6 и 14 напрямую: оно должно быть близко к 5 Вольтам.</p>
+
+<p>Второй этап — динамическая проверка. Запустите двигатель <em>Chevrolet Captiva</em> и наблюдайте за показаниями мультиметра. При работающем двигателе и включенных потребителях (фары, печка) напряжение может незначительно колебаться, но не должно падать ниже 2.2 Вольта или превышать 2.8 Вольта на каждой из линий. Резкие скачки напряжения свидетельствуют о неисправном генераторе или плохом контакте массы блока управления.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте режим мин/макс (Min/Max) на мультиметре во время прогазовки двигателя. Это поможет зафиксировать кратковременные провалы напряжения, которые не видно при обычном наблюдении за цифрами на экране.</p></div>
+
+<h2 id="диагностика-сопротивления-и-поиск-обрывов">Диагностика сопротивления и поиск обрывов</h2>
+
+<p>Для проверки сопротивления необходимо полностью обесточить автомобиль, отключив аккумуляторную батарею. Это обязательное условие, так как измерение сопротивления в цепи под напряжением приведет к сгоранию предохранителя внутри мультиметра. Переключите прибор в режим измерения сопротивления (Омы) с пределом 2 кОм.</p>
+
+<p>Терминальное сопротивление CAN-шины в исправном состоянии составляет 60 Ом. Оно образуется двумя резисторами по 120 Ом, которые находятся на концах сети (обычно в блоке двигателя и блоке ABS или приборной панели). Измерение проводится между пинами 6 и 14 разъема <em>OBD-II</em>. Если мультиметр показывает 120 Ом, значит, один из терминаторов отсутствует или сгорел.</p>
+
+<p>Показатель сопротивления, стремящийся к бесконечности (единица на экране), указывает на полный обрыв цепи. В этом случае необходимо искать место разрыва провода. Если сопротивление близко к нулю, значит, произошло короткое замыкание между линиями <strong>High</strong> и <strong>Low</strong>. Такая ситуация часто возникает после неквалифицированного вмешательства в проводку или установки дополнительного оборудования.</p>
+
+<div class="checklist-block"><h4>☑️ Алгоритм поиска обрыва</h4><label class="check-item"><input type="checkbox"><span>Отключить аккумулятор</span></label><label class="check-item"><input type="checkbox"><span>Замерить сопротивление между 6 и 14 пином</span></label><label class="check-item"><input type="checkbox"><span>Отключить блоки по очереди</span></label><label class="check-item"><input type="checkbox"><span>Найти участок с изменением показаний</span></label><label class="check-item"><input type="checkbox"><span>Восстановить целостность провода</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="анализ-таблицы-нормативных-значений">Анализ таблицы нормативных значений</h2>
+
+<p>Для удобства сравнения полученных данных с эталонными показателями используйте приведенную ниже таблицу. Она поможет быстро классифицировать неисправность и определить дальнейший вектор поиска. Помните, что небольшие отклонения в десятых долях вольта допустимы из-за погрешности прибора.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Нормальное значение</th>
+<th>Критическое отклонение</th>
+<th>Вероятная причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Напряжение CAN-H (зажигание вкл.)</td>
+<td>2.5 – 2.6 В</td>
+<td>0 В или > 3.0 В</td>
+<td>Обрыв, КЗ на массу/борт</td>
+</tr>
+<tr>
+<td>Напряжение CAN-L (зажигание вкл.)</td>
+<td>2.4 – 2.5 В</td>
+<td>0 В или > 3.0 В</td>
+<td>Обрыв, КЗ на массу/борт</td>
+</tr>
+<tr>
+<td>Сопротивление между CAN-H и CAN-L</td>
+<td>60 Ом (±5 Ом)</td>
+<td>120 Ом или ∞</td>
+<td>Отсутствует терминатор, обрыв</td>
+</tr>
+<tr>
+<td>Разность потенциалов H и L</td>
+<td>~ 5.0 В</td>
+<td>< 4.0 В</td>
+<td>Неисправность блоков ECU</td>
+</tr>
+</tbody>
+</table>
+
+<p>Анализируя данные таблицы, можно сделать вывод о состоянии всей сети. Если значения в норме, но машина не работает, проблема может крыться в программном сбое или неисправности конкретного узла, который не выходит на связь, хотя физически линия цела. В таком случае требуется более глубокая диагностика осциллографом.</p>
+
+<h2 id="типичные-неисправности-и-способы-их-устранения">Типичные неисправности и способы их устранения</h2>
+
+<p>Одной из самых распространенных проблем для <em>Chevrolet Captiva</em> является окисление контактов в разъемах, расположенных в нижней части кузова. Влага и реагенты приводят к появлению зеленого налета, который увеличивает сопротивление и искажает сигнал. Визуальный осмотр разъемов и их очистка контактным спреем часто решают проблему.</p>
+
+<p>Еще одна частая причина — выход из строя одного из блоков управления, который «кладет» всю шину. Чтобы найти виновника, применяют метод исключения. При включенном зажигании и зафиксированном аномальном напряжении, начинают поочередно отключать разъемы от блоков <em>ECU</em>, <em>ABS</em>, <em>АКПП</em>. Если после отключения какого-либо блока напряжение на шине восстановилось до нормы, значит, неисправен именно этот узел.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Отключать разъемы от блоков управления можно только при выключенном зажигании. Коммутация под нагрузкой может вызвать скачок тока и повредить электронную начинку блоков, что приведет к дорогостоящему ремонту.</p>
+</blockquote>
+
+<p>Также стоит обратить внимание на целостность проводов в гофре между кузовом и дверьми, если речь идет о шине комфорта, или в местах прохождения жгута рядом с горячим коллектором. Термическое разрушение изоляции — бич автомобилей с пробегом. Восстановление проводки требует пайки и качественной изоляции, скрутки в современных авто недопустимы.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли проверить CAN-шину обычным тестером без осциллографа?</summary>
+<p>Да, мультиметр позволяет проверить целостность линий, наличие напряжения и сопротивление. Однако он не покажет форму сигнала и наличие помех (шумов), которые видны только на осциллограмме. Для первичной диагностики мультиметра достаточно.</p>
+</details>
+
+<details>
+<summary>Что делать, если сопротивление показывает 120 Ом?</summary>
+<p>Это означает, что в сети остался только один terminating resistor (терминатор) вместо двух. Скорее всего, один из блоков управления (обычно двигатель или ABS) отключен, сгорел или в нем сгорел внутренний резистор. Необходимо искать отсутствующий блок.</p>
+</details>
+
+<details>
+<summary>Почему мультиметр показывает скачущие цифры?</summary>
+<p>Скачущие значения напряжения могут указывать на активный обмен данными (что нормально), но если амплитуда скачков велика, это признак сильных помех в бортовой сети, неисправного генератора или плохого контакта массы двигателя с кузовом.</p>
+</details>
+
+<details>
+<summary>Где находятся терминаторы в Шевроле Каптива?</summary>
+<p>В большинстве случаев один резистор на 120 Ом находится в блоке управления двигателем (<em>ECU</em>), а второй — в блоке антиблокировочной системы (<em>ABS</em>) или в приборной панели, в зависимости от года выпуска и модификации.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#теоретические-основы-и-подготовка-к-измерениям">Теоретические основы и подготовка к измерениям</a></li><li><a href="#поиск-диагностического-разъема-и-контактов-can">Поиск диагностического разъема и контактов CAN</a></li><li><a href="#методика-измерения-напряжения-в-статике-и-динамике">Методика измерения напряжения в статике и динамике</a></li><li><a href="#диагностика-сопротивления-и-поиск-обрывов">Диагностика сопротивления и поиск обрывов</a></li><li><a href="#анализ-таблицы-нормативных-значений">Анализ таблицы нормативных значений</a></li><li><a href="#типичные-неисправности-и-способы-их-устранения">Типичные неисправности и способы их устранения</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

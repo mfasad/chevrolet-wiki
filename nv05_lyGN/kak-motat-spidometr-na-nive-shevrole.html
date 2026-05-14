@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как мотать спидометр на Ниве Шевроле: методы и нюансы — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробный разбор способов, как мотать спидометр на Ниве Шевроле. Электронный блок, CAN-шина, риски и особенности калибровки.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv05_lyGN/kak-motat-spidometr-na-nive-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как мотать спидометр на Ниве Шевроле: методы и нюансы">
+    <meta property="og:description" content="Подробный разбор способов, как мотать спидометр на Ниве Шевроле. Электронный блок, CAN-шина, риски и особенности калибровки.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как мотать спидометр на Ниве Шевроле: методы и нюансы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как мотать спидометр на Ниве Шевроле: методы и нюансы</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-электронного-спидометра-нива-шевроле">Принцип работы электронного спидометра Нива Шевроле</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#методика-коррекции-через-obd-ii-разъем">Методика коррекции через OBD-II разъем</a></li><li><a href="#использование-генератора-импульсов">Использование генератора импульсов</a></li><li><a href="#прямое-вмешательство-в-память-панели-приборов">Прямое вмешательство в память панели приборов</a></li><li><a href="#нюансы-работы-с-блоком-abs-и-другими-модулями">Нюансы работы с блоком ABS и другими модулями</a></li><li><a href="#юридические-и-технические-риски-процедуры">Юридические и технические риски процедуры</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Вопрос о том, как мотать спидометр на Ниве Шевроле, часто возникает у владельцев внедорожников, чьи пробеги уже достигли внушительных значений или, наоборот, требуют искусственного увеличения для служебных отчетов. Современный автомобильный рынок диктует свои условия, где пробег является одним из ключевых факторов, влияющих на остаточную стоимость транспортного средства. Именно поэтому манипуляции с показаниями одометра остаются актуальной темой для обсуждения среди автолюбителей и профессиональных диагностов.</p>
+
+<p>Стоит понимать, что <strong>электронная система</strong> управления двигателем в Chevrolet Niva устроена сложнее, чем в старых карбюраторных моделях ВАЗ. Здесь данные о скорости накапливаются в различных блоках, и простая физическая прокрутка троса уже не даст желаемого результата. Владельцам приходится искать способы вмешательства в цифровую архитектуру автомобиля, чтобы изменить заветные цифры на приборной панели.</p>
+
+<p>Процесс коррекции показаний требует не только технических знаний, но и понимания рисков, связанных с вмешательством в работу штатной электроники. Неправильные действия могут привести к рассинхронизации данных или даже выходу из строя дорогостоящих узлов. В этой статье мы подробно разберем существующие методики и технические нюансы, с которыми придется столкнуться.</p>
+
+<h2 id="принцип-работы-электронного-спидометра-нива-шевроле">Принцип работы электронного спидометра Нива Шевроле</h2>
+<p>Для того чтобы качественно выполнить работу, необходимо четко представлять, откуда берутся данные о скорости. В отличие от механических приводов, в <em>Chevrolet Niva</em> используется <strong>электронный датчик скорости</strong>, который передает импульсы на контроллер. Эти импульсы обрабатываются и транслируются на стрелочный указатель и цифровой счетчик.</p>
+
+<p>Основным накопителем информации о пробеге является <strong>электронный блок управления</strong> (ЭБУ), а также сама панель приборов, которая может иметь собственную память. Сигнал формируется на основе вращения колес, и любые манипуляции направлены на имитацию этого вращения или прямую правку ячеек памяти.</p>
+
+<p>Важно отметить, что система защиты данных в современных версиях Нивы Шевроле становится все более совершенной. <strong>Каналы связи</strong> между модулями часто дублируются, что делает невозможным изменение показаний только в одном месте без риска возникновения ошибок в бортовой системе.</p>
+
+<p>Сигнал скорости передается по специальной шине, и его частота напрямую зависит от реальной скорости движения автомобиля. Любое внешнее воздействие должно быть синхронизировано с этими параметрами, чтобы не вызвать подозрений у бортового компьютера или диагностического сканера.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Вмешательство в работу штатной электроники без должной квалификации может привести к некорректному отображению других параметров, таких как расход топлива или уровень масла.</p>
+</blockquote>
+
+<h2 id="необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</h2>
+<p>Решая задачу, как мотать спидометр на Ниве Шевроле, нельзя обойтись без специализированного инструментария. Базовым элементом является <strong>диагностический адаптер</strong>, который подключается к разъему OBD-II. Для работы с отечественными автомобилями часто используются интерфейсы K-Line или CAN-USB.</p>
+
+<p>Кроме аппаратной части, критически важным является программное обеспечение. Существуют специализированные утилиты, такие как <em>Combiloader</em> или <strong>OpenBox</strong>, которые позволяют считывать и записывать дампы памяти контроллера. Для работы с панелью приборов могут потребоваться программы-калькуляторы пробега.</p>
+
+<p>В некоторых случаях, особенно при работе с блоками Bosch, может потребоваться выпаивание микросхемы памяти для прямого чтения данных программатором. Это более сложный метод, требующий навыков пайки и работы с <strong>электронными компонентами</strong> на уровне микросхем.</p>
+
+<p>Ниже приведена таблица, демонстрирующая совместимость оборудования с типами блоков, встречающихся на Нивах:</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип оборудования</th>
+<th>Совместимость с ЭБУ</th>
+<th>Сложность использования</th>
+<th>Необходимость пайки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K-Line адаптер</td>
+<td>Январь, Bosch 1.5.4</td>
+<td>Низкая</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>CAN-USB интерфейс</td>
+<td>Bosch ME17.9.7</td>
+<td>Средняя</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Программатор чипов</td>
+<td>Все типы (при выпаивании)</td>
+<td>Высокая</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Генератор импульсов</td>
+<td>Панель приборов</td>
+<td>Средняя</td>
+<td>Нет</td>
+</tr>
+</tbody>
+</table>
+
+<div class="poll-widget" id="poll-feabd963"><div class="poll-widget-question">📊 Какой метод коррекции вы считаете наиболее безопасным?</div><div class="poll-widget-option" data-poll="feabd963" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Через OBD-II разъем</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="feabd963" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">С выпаиванием чипа</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="feabd963" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Замена панели приборов</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="feabd963" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Обращение в сервис</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="методика-коррекции-через-obd-ii-разъем">Методика коррекции через OBD-II разъем</h2>
+<p>Наиболее распространенным и менее инвазивным способом является подключение через диагностический разъем. Этот метод позволяет изменить пробег, не разбирая полностью приборную панель и не выпаивая детали. Вам потребуется ноутбук, кабель и соответствующее ПО.</p>
+
+<p>Процесс начинается с подключения адаптера к разъему, расположенному под торпедой. После включения зажигания необходимо запустить программу и установить связь с <strong>блоком управления</strong>. Важно выбрать правильную модель автомобиля и тип двигателя.</p>
+
+<p>Следующим шагом идет чтение калибровок или данных о пробеге. Программа покажет текущее значение, записанное в памяти. Пользователь вводит желаемое значение, после чего происходит процедура записи. В этот момент <strong>напряжение в бортовой сети</strong> должно быть стабным, поэтому рекомендуется использовать зарядное устройство.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист подготовки к прошивке</h4><label class="check-item"><input type="checkbox"><span>Зарядить аккумулятор</span></label><label class="check-item"><input type="checkbox"><span>Найти стабильное ПО</span></label><label class="check-item"><input type="checkbox"><span>Проверить контакт в разъеме OBD</span></label><label class="check-item"><input type="checkbox"><span>Отключить лишние потребители энергии</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Стоит учитывать, что не все блоки позволяют изменить пробег через разъем без специальных разрешений или "мастер-паролей". В некоторых случаях система может заблокировать попытку записи, если обнаружит несоответствие контрольных сумм.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Прерывание процесса записи данных через OBD-II может привести к "окирпичиванию" блока управления, после чего автомобиль перестанет заводиться.</p>
+</blockquote>
+
+<h2 id="использование-генератора-импульсов">Использование генератора импульсов</h2>
+<p>Альтернативным методом, который часто применяется для намотки, является использование специального устройства — генератора импульсов. Этот прибор подключается к проводке датчика скорости и имитирует вращение колес, заставляя панель приборов увеличивать показания.</p>
+
+<p>Для реализации этого способа необходимо получить доступ к сигнальному проводу, идущему от датчика скорости к панели приборов или ЭБУ. На Ниве Шевроле это часто требует частичной разборки торпеды или доступа к жгутам проводов в моторном отсеке.</p>
+
+<p>Генератор настраивается на выдачу определенной частоты импульсов, соответствующей желаемой скорости "движения". Запустив устройство, вы наблюдаете, как цифры на одометре начинают быстро расти. Этот метод хорош тем, что он имитирует реальный процесс эксплуатации.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте генератор импульсов с регулируемой частотой, чтобы не перегрузить входной каскад панели приборов слишком высоким сигналом.</p></div>
+
+<p>Однако у этого метода есть существенный недостаток: он крутит только панель приборов. Если в автомобиле пробег дублируется в ЭБУ двигателя или других модулях (например, ABS), то рассинхронизация данных станет очевидной при глубокой диагностике.</p>
+
+<h2 id="прямое-вмешательство-в-память-панели-приборов">Прямое вмешательство в память панели приборов</h2>
+<p>Самым радикальным, но и наиболее надежным методом является физическое вмешательство в панель приборов. Этот способ подразумевает демонтаж щитка, его разборку и работу с печатной платой. Внутри находится микросхема памяти, хранящая данные о пробеге.</p>
+
+<p>Существует два пути: замена микросхемы на новую с нулевым пробегом или перепрошивка существующей. Для перепрошки микросхему часто выпаивают и вставляют в программатор, либо подключаются к ней контактами прямо на плате, если конструкция позволяет.</p>
+
+<p>Данные в памяти хранятся в шестнадцатеричном формате. Специалист вычисляет адрес ячейки, отвечающей за пробег, и изменяет значение. После этого необходимо пересчитать <strong>контрольную сумму</strong>, иначе панель может не заработать или показывать ошибки.</p>
+
+<details class="faq-item"><summary>Риски при пайке микросхем</summary><div class="faq-answer"><p>При перегреве микросхемы паяльником можно повредить соседние элементы или саму память, что сделает восстановление данных невозможным без дорогостоящего оборудования.</p></div></details>
+
+<p>После сборки и установки панели приборов на место, автомобиль готов к эксплуатации с новыми показаниями. Этот метод считается наиболее профессиональным, так как позволяет изменить пробег именно там, где он отображается визуально.</p>
+
+<h2 id="нюансы-работы-с-блоком-abs-и-другими-модулями">Нюансы работы с блоком ABS и другими модулями</h2>
+<p>Современные автомобили, включая рестайлинговые Нивы Шевроле, имеют распределенную систему хранения данных. Пробег может записываться не только в ЭБУ и панель, но и в блок <strong>ABS</strong> (антиблокировочной системы) или модуль кузова.</p>
+
+<p>При проверке автомобиля дилерским сканером может всплыть информация о реальном пробеге из этих скрытых модулей. Поэтому полноценная коррекция требует проверки всех доступных через диагностику блоков управления.</p>
+
+<p>Если данные в разных блоках будут сильно отличаться, это станет сигналом для потенциального покупателя или специалиста сервиса о вмешательстве в показания. <em>Chevrolet Niva</em> в этом плане менее защищена, чем премиальные иномарки, но базовая логика сохраняется.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Полная коррекция пробега требует синхронизации данных во всех связанных блоках управления, а не только на панели приборов.</p></div>
+
+<h2 id="юридические-и-технические-риски-процедуры">Юридические и технические риски процедуры</h2>
+<p>Важно осознавать, что изменение показаний одометра является юридически серой зоной. При продаже автомобиля скрученный пробег может стать основанием для расторжения сделки или судебного разбирательства, если факт будет доказан.</p>
+
+<p>С технической стороны, неправильная калибровка может повлиять на работу систем, зависящих от пробега, например, напоминания о техническом обслуживании. Интервалы замены масла и фильтров могут сбиваться, что приведет к несвоевременному уходу за автомобилем.</p>
+
+<p>Кроме того, любые манипуляции с электроникой снимают гарантийные обязательства, если автомобиль еще находится на гарантии. Дилер легко обнаружит следы вмешательства в программный код при плановом ТО.</p>
+
+<p>В заключение, подход к вопросу должен быть взвешенным. Если вы меняете панель приборов из-за неисправности, коррекция пробега — это необходимость. Если же цель — скрыть реальную историю автомобиля, стоит подумать о последствиях.</p>
+
+<details>
+<summary>Можно ли скрутить пробег без компьютера?</summary>
+<p>Без использования специализированного оборудования (компьютера, программатора или генератора импульсов) изменить цифровой пробег на Ниве Шевроле невозможно. Механические методы здесь не работают.</p>
+</details>
+
+<details>
+<summary>Сбрасываются ли настройки при отключении аккумулятора?</summary>
+<p>Нет, данные о пробеге хранятся в энергонезависимой памяти (EEPROM). Отключение питания или снятие клеммы аккумулятора не приведет к изменению или сбросу показаний одометра.</p>
+</details>
+
+<details>
+<summary>Видно ли скрученный пробег при диагностике?</summary>
+<p>Да, опытный диагност может увидеть историю ошибок, время наработки двигателя и данные в других блоках (ABS, ЭБУ), которые будут противоречить показаниям на панели приборов.</p>
+</details>
+
+<details>
+<summary>Сколько времени занимает процедура коррекции?</summary>
+<p>При наличии оборудования и навыков процедура через OBD-II занимает от 15 до 40 минут. Метод с выпаиванием чипа может потребовать нескольких часов работы.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-электронного-спидометра-нива-шевроле">Принцип работы электронного спидометра Нива Шевроле</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#методика-коррекции-через-obd-ii-разъем">Методика коррекции через OBD-II разъем</a></li><li><a href="#использование-генератора-импульсов">Использование генератора импульсов</a></li><li><a href="#прямое-вмешательство-в-память-панели-приборов">Прямое вмешательство в память панели приборов</a></li><li><a href="#нюансы-работы-с-блоком-abs-и-другими-модулями">Нюансы работы с блоком ABS и другими модулями</a></li><li><a href="#юридические-и-технические-риски-процедуры">Юридические и технические риски процедуры</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

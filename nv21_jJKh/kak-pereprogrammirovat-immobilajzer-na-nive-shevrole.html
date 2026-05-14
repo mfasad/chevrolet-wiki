@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как перепрограммировать иммобилайзер на Ниве Шевроле — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по перепрограммированию АПС-6 на Chevrolet Niva. Обучение ключей, сброс пароля и устранение неисправностей своими руками.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv21_jJKh/kak-pereprogrammirovat-immobilajzer-na-nive-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как перепрограммировать иммобилайзер на Ниве Шевроле">
+    <meta property="og:description" content="Подробная инструкция по перепрограммированию АПС-6 на Chevrolet Niva. Обучение ключей, сброс пароля и устранение неисправностей своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как перепрограммировать иммобилайзер на Ниве Шевроле</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как перепрограммировать иммобилайзер на Ниве Шевроле: полное руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-штатного-иммобилайзера-апс-6">Принцип работы штатного иммобилайзера АПС-6</a></li><li><a href="#необходимые-инструменты-и-подготовка-к-процедуре">Необходимые инструменты и подготовка к процедуре</a></li><li><a href="#стандартная-процедура-обучения-новых-ключей">Стандартная процедура обучения новых ключей</a></li><li><a href="#методика-сброса-и-перепрограммирования-апс-6">Методика сброса и перепрограммирования АПС-6</a></li><li><a href="#диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</a></li><li><a href="#типичные-ошибки-при-перепрограммировании">Типичные ошибки при перепрограммировании</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владение внедорожником <em>Chevrolet Niva</em> подразумевает не только удовольствие от поездок по бездорожью, но и ответственность за техническое состояние автомобиля. Одной из систем, которая часто вызывает вопросы у владельцев, является штатная противоугонная система, известная как иммобилайзер. В моделях разных лет выпуска могут устанавливаться различные модификации охранных комплексов, но наиболее распространенным остается <strong>АПС-6</strong>. Необходимость в его перепрограммировании или обучении новых ключей возникает при утере штатных чип-карт, замене блока управления или сбоях в электронике.</p>
+
+<p>Процедура активации или сброса настроек требует строгой последовательности действий и понимания принципов работы системы. Неправильные манипуляции могут привести к блокировке запуска двигателя, что потребует обращения в специализированный сервис. В этой статье мы детально разберем алгоритмы действий для различных ситуаций, рассмотрим необходимые инструменты и ответим на часто задаваемые вопросы, чтобы вы могли самостоятельно решить проблему с иммобилайзером.</p>
+
+<h2 id="принцип-работы-штатного-иммобилайзера-апс-6">Принцип работы штатного иммобилайзера АПС-6</h2>
+<p>Штатный иммобилайзер на <em>Нива Шевроле</em> представляет собой электронное устройство, которое блокирует запуск двигателя при отсутствии авторизованного ключа. Основным элементом системы является транспондер, встроенный в пластиковую головку ключа зажигания. При повороте ключа в замке считыватель опрашивает чип, и если коды совпадают, блок управления разрешает работу стартера и топливного насоса. <strong>Обмен данными</strong> происходит по однопроводной линии связи, что делает систему уязвимой к помехам, но достаточно надежной в штатных режимах.</p>
+
+<p>Важно понимать, что система АПС-6 имеет два режима работы: активный и пассивный. В пассивном режиме иммобилайзер просто считывает код, не издавая звуковых сигналов, если все в порядке. Однако при попытке несанкционированного доступа или при разряде батареи ключа система переходит в активный режим, начиная подавать сигналы через зуммер, встроенный в панель приборов. <em>Блок управления</em> хранит в памяти коды до четырех обученных ключей, что позволяет иметь запасные варианты на случай утери основного.</p>
+
+<blockquote>⚠️ Внимание: Попытка завести двигатель ключом без чипа или с не обученным ключом приведет к блокировке системы и миганию индикатора на панели приборов. Для разблокировки потребуется выполнение процедуры обучения.</blockquote>
+
+<p>Работа системы тесно связана с блоком управления двигателем (ЭБУ). Именно ЭБУ получает сигнал от иммобилайзера о разрешении запуска. Если связь между ними нарушена или коды не совпадают, <strong>топливные форсунки</strong> и катушка зажигания не будут активированы, даже если стартер будет крутить двигатель. Это основная причина, почему автомобиль может не заводиться при исправной механике и аккумуляторе.</p>
+
+<h2 id="необходимые-инструменты-и-подготовка-к-процедуре">Необходимые инструменты и подготовка к процедуре</h2>
+<p>Перед началом любых работ с охранными системами автомобиля необходимо тщательно подготовиться. Вам потребуется не только набор инструментов, но и определенные условия для успешного проведения процедуры. Основным требованием является наличие исправного <strong>аккумулятора</strong>. Напряжение в бортовой сети должно быть стабильным, так как скачки напряжения во время программирования могут привести к ошибке записи кодов в память ЭБУ.</p>
+
+<p>Для работы вам понадобятся:</p>
+<ul>
+<li>🔑 Комплект ключей с чипами (минимум два, так как обучение проводится попарно).</li>
+<li>🔧 Набор отверток для снятия декоративных накладок рулевой колонки (если потребуется доступ к разъемам).</li>
+<li>🔌 Диагностический сканер или адаптер <em>K-Line</em> (для некоторых методов сброса и диагностики).</li>
+<li>💡 Фонарик для лучшего визуального контроля индикаторов на панели приборов.</li>
+</ul>
+
+<p>Особое внимание стоит уделить состоянию ключей. Пластик не должен иметь трещин, а сам чип внутри должен быть целым. Если вы используете дубликаты, убедитесь, что они предназначены именно для систем <em>VAG</em> или <em>GM</em>, совместимых с <em>Chevrolet Niva</em>. Использование дешевых китайских аналогов без предварительной проверки может привести к тому, что система не увидит ключ, и процедуру придется начинать заново.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед началом процедуры полностью зарядите аккумулятор автомобиля или подключите внешнее пусковое устройство, чтобы исключить риск разряда батареи в процессе обучения ключей.</p></div>
+
+<h2 id="стандартная-процедура-обучения-новых-ключей">Стандартная процедура обучения новых ключей</h2>
+<p>Процесс обучения ключей является штатной процедурой, которая позволяет "познакомить" иммобилайзер с новыми чипами. Эта операция необходима, если вы потеряли один из ключей и хотите исключить его из памяти, или при покупке нового автомобиля с необученными ключами. Важно выполнять все действия в строгой последовательности и соблюдать временные интервалы, так как система имеет таймауты на выполнение каждого шага.</p>
+
+<p>Алгоритм действий выглядит следующим образом:</p>
+<ul>
+<li>🚗 Сядьте в автомобиль и закройте все двери. Убедитесь, что в зоне действия считывателя нет других ключей с чипами.</li>
+<li>🔑 Вставьте "мастер-ключ" (красный или ключ с меткой обучения) в замок зажигания и включите зажигание. Индикатор иммобилайзера на панели должен загореться и гореть постоянно.</li>
+<li>⏱️ Выключите зажигание. Индикатор должен начать быстро мигать (примерно 5 раз в секунду). Это означает, что система перешла в режим обучения.</li>
+<li>🔑 Пока индикатор мигает (у вас есть около 6 секунд), вставьте рабочий ключ (черный) и включите зажигание. Зуммер должен издать три коротких сигнала, подтверждая успешное считывание.</li>
+</ul>
+
+<p>После успешного выполнения шагов для первого ключа, процедуру необходимо повторить для второго и последующих ключей, если их нужно прописать. Если в какой-то момент вы не успели вставить ключ или допустили ошибку, система выйдет из режима обучения, и все действия придется начинать сначала. <strong>Время реакции</strong> системы ограничено, поэтому все движения должны быть уверенными и быстрыми.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист обучения ключей</h4><label class="check-item"><input type="checkbox"><span>Закрыть все двери автомобиля</span></label><label class="check-item"><input type="checkbox"><span>Включить зажигание мастер-ключом</span></label><label class="check-item"><input type="checkbox"><span>Дождаться мигания индикатора</span></label><label class="check-item"><input type="checkbox"><span>Вставить рабочий ключ за 6 секунд</span></label><label class="check-item"><input type="checkbox"><span>Проверить работу всех ключей</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="методика-сброса-и-перепрограммирования-апс-6">Методика сброса и перепрограммирования АПС-6</h2>
+<p>В ситуациях, когда стандартное обучение невозможно (например, утерян мастер-ключ или произошла рассинхронизация блоков), требуется полный сброс системы. Этот процесс часто называют "разучиванием" иммобилайзера. Для этого может потребоваться специальное программное обеспечение, такое как <em>OpenPort</em> или <em>Chiploader</em>, подключенное через диагностический разъем <strong>OBD-II</strong>.</p>
+
+<p>Существует метод сброса с помощью эмулятора или программной очистки EEPROM памяти блока управления. Однако для рядового пользователя более доступен метод, связанный с заменой блока управления или использованием функции "Clean ECU" в диагностических программах. При очистке памяти ЭБУ удаляет привязку к иммобилайзеру, что позволяет заводить автомобиль любым ключом, но при этом функция охраны перестает работать.</p>
+
+<p>Если вы решились на программный сброс через ноутбук:</p>
+<ul>
+<li>💻 Подключите адаптер K-Line к разъему диагностики и ноутбуку.</li>
+<li>⚙️ Запустите программу для работы с ЭБУ (например, <em>OpenBox</em> или специализированный софт для <em>Bosch</em>).</li>
+<li>🗑️ Выберите опцию "Очистить EEPROM" или "Сбросить иммобилайзер".</li>
+<li>🔄 После завершения операции выключите зажигание и подождите 10-15 секунд перед повторным включением.</li>
+</ul>
+
+<details class="faq-item"><summary>Что происходит при очистке EEPROM?</summary><div class="faq-answer"><p>При очистке EEPROM стираются адаптационные данные двигателя, такие как коррекции топливоподачи и положение дроссельной заслонки. После процедуры может потребоваться процедура адаптации дроссельного узла и поездка для восстановления холостого хода.</p></div></details>
+
+<p>Стоит отметить, что после сброса иммобилайзера штатная функция блокировки дверей при начале движения и разблокировки при выключении зажигания также перестанет функционировать, так как она завязана на тот же модуль. Для восстановления полной функциональности потребуется повторное обучение системы с новым мастер-ключом.</p>
+
+<h2 id="диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</h2>
+<p>Понимание сигналов, которые подает система, помогает быстро диагностировать проблему. Индикатор на панели приборов и звуковой зуммер — основные источники информации о состоянии <strong>АПС-6</strong>. Если вы видите необычное поведение индикатора, это прямой сигнал о необходимости проверки.</p>
+
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Возможная причина</th>
+<th>Действия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Индикатор горит постоянно</td>
+<td>Неисправность цепи считывателя или обрыв провода</td>
+<td>Проверка целостности проводки кольца</td>
+</tr>
+<tr>
+<td>Индикатор мигает, двигатель не запускается</td>
+<td>Ключ не распознан или сел элемент питания</td>
+<td>Замена батарейки или перепрограммирование</td>
+</tr>
+<tr>
+<td>Тройной звуковой сигнал</td>
+<td>Ошибка при обучении ключа</td>
+<td>Повторить процедуру обучения</td>
+</tr>
+<tr>
+<td>Индикатор не загорается</td>
+<td>Перегорела лампа или неисправен блок АПС</td>
+<td>Замена лампочки или диагностика блока</td>
+</tr>
+</tbody>
+</table>
+
+<p>Частой проблемой является окисление контактов в разъеме, который находится за панелью приборов или в районе рулевой колонки. Вибрация при движении по бездорожью, характерная для <em>Нивы</em>, способствует ослаблению контактов. Перед тем как грешить на электронику, стоит визуально осмотреть разъемы и при необходимости обработать их <strong>контакт спреем</strong>.</p>
+
+<blockquote>⚠️ Внимание: Если индикатор мигает с высокой частотой сразу после включения зажигания, это может указывать на конфликт кодов между ЭБУ и иммобилайзером. В этом случае простое обучение ключей может не помочь, потребуется синхронизация блоков.</blockquote>
+
+<h2 id="типичные-ошибки-при-перепрограммировании">Типичные ошибки при перепрограммировании</h2>
+<p>Даже следуя инструкции, новички часто допускают ошибки, которые сводят все усилия на нет. Самая распространенная из них — нарушение временных интервалов. Система иммобилайзера <em>Chevrolet</em> довольно требовательна ко времени между переключениями зажигания. Если вы замешкались более чем на 6-10 секунд, процесс прерывается, и индикатор меняет режим мигания.</p>
+
+<p>Еще одна ошибка — наличие посторонних ключей в салоне. Электромагнитное поле считывателя может захватить сигнал от запасного ключа, лежащего в бардачке или в кармане куртки на соседнем сиденье. Это сбивает алгоритм, и система не понимает, какой именно чип нужно прописывать. Всегда убирайте все металлические предметы и другие ключи подальше от замка зажигания.</p>
+
+<p>Также стоит упомянуть проблему некачественных чипов. Рынок насыщен дешевыми дубликатами, которые могут работать нестабильно. Если вы пытаетесь прописать такой ключ, система может выдать ошибку, хотя сам алгоритм выполнен верно. <mark>Используйте только оригинальные ключи GM или проверенные аналоги с чипом PCF7936</mark>, чтобы гарантировать результат с первого раза.</p>
+
+<div class="poll-widget" id="poll-52513b77"><div class="poll-widget-question">📊 Сталкивались ли вы с проблемами иммобилайзера на Ниве?</div><div class="poll-widget-option" data-poll="52513b77" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, ключ перестал видеться</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="52513b77" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, сбивалась синхронизация</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="52513b77" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Нет, работает без нареканий</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="52513b77" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Пока не знаю, машина новая</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли полностью отключить иммобилайзер на Ниве Шевроле?</summary>
+<p>Да, это возможно программным путем. Для этого необходимо подключить ноутбук к диагностическому разъему и с помощью специального ПО (например, <em>Chimera</em> или <em>OpenBox</em>) очистить EEPROM память блока управления двигателем. После этой процедуры автомобиль будет заводиться любым ключом, но функция охраны и автоматического запирания дверей исчезнет.</p>
+</details>
+
+<details>
+<summary>Что делать, если сел аккумулятор в ключе?</summary>
+<p>В ключах зажигания <em>Chevrolet Niva</em> обычно используется батарейка типа CR2016 или CR2032. Для ее замены нужно аккуратно вскрыть корпус ключа, используя тонкую отвертку. После замены элемента питания процедуру обучения проводить не нужно, если ключ уже был прописан в системе. Если автомобиль перестал реагировать, возможно, сбились настройки, и потребуется повторное обучение.</p>
+</details>
+
+<details>
+<summary>Сколько ключей можно прописать в память иммобилайзера?</summary>
+<p>Система АПС-6, устанавливаемая на большинство моделей <em>Нива Шевроле</em>, позволяет хранить в памяти коы до четырех уникальных ключей. При проведении процедуры обучения все старые ключи стираются из памяти, и записываются только те, которые предъявляются в текущем сеансе. Поэтому важно иметь на руках все ключи, которые вы планируете использовать в будущем, перед началом процедуры.</p>
+</details>
+
+<details>
+<summary>Почему после замены аккумулятора машина не заводится?</summary>
+<p>Если после замены аккумулятора или снятия клемм автомобиль перестал заводиться и мигает индикатор иммобилайзера, возможно, произошло кратковременное пропадание питания в момент опроса ключа, и система ушла в защитный режим. Попробуйте выполнить процедуру обучения ключей заново. Если это не помогло, проверьте целостность предохранителей, отвечающих за систему впрыска и иммобилайзер.</p>
+</details>
+
+<details>
+<summary>Подойдет ли ключ от Chevrolet Cruze на Ниву Шевроле?</summary>
+<p>Физически ключи могут быть похожи, но их электронная начинка и частота работы могут отличаться в зависимости от года выпуска и типа системы. Ключи от <em>Cruze</em> более современных годов могут не поддерживаться старыми блоками АПС-6. Рекомендуется использовать ключи, специально предназначенные для платформы <em>Vaz-Chevrolet</em> или универсальные программируемые ключи с поддержкой нужного протокола.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-штатного-иммобилайзера-апс-6">Принцип работы штатного иммобилайзера АПС-6</a></li><li><a href="#необходимые-инструменты-и-подготовка-к-процедуре">Необходимые инструменты и подготовка к процедуре</a></li><li><a href="#стандартная-процедура-обучения-новых-ключей">Стандартная процедура обучения новых ключей</a></li><li><a href="#методика-сброса-и-перепрограммирования-апс-6">Методика сброса и перепрограммирования АПС-6</a></li><li><a href="#диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</a></li><li><a href="#типичные-ошибки-при-перепрограммировании">Типичные ошибки при перепрограммировании</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

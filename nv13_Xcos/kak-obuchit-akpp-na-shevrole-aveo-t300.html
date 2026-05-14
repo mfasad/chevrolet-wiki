@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Обучение АКПП Шевроле Авео Т300: инструкция и адаптация — Chevrolet-Wiki</title>
+    <meta name="description" content="Пошаговое руководство по адаптации и обучению автомата на Chevrolet Aveo T300. Методы сброса ECU, регулировка дроссельной заслонки и устранение рывков.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv13_Xcos/kak-obuchit-akpp-na-shevrole-aveo-t300.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Обучение АКПП Шевроле Авео Т300: инструкция и адаптация">
+    <meta property="og:description" content="Пошаговое руководство по адаптации и обучению автомата на Chevrolet Aveo T300. Методы сброса ECU, регулировка дроссельной заслонки и устранение рывков.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Обучение АКПП Шевроле Авео Т300: инструкция и адаптация</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как обучить АКПП на Шевроле Авео Т300: полное руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#зачем-нужно-обучение-автоматической-коробки-передач">Зачем нужно обучение автоматической коробки передач</a></li><li><a href="#подготовка-автомобиля-к-процедуре-адаптации">Подготовка автомобиля к процедуре адаптации</a></li><li><a href="#методика-сброса-адаптации-через-дроссельную-заслонку">Методика сброса адаптации через дроссельную заслонку</a></li><li><a href="#ручной-способ-обучения-ездой-дорожная-адаптация">Ручной способ обучения ездой (Дорожная адаптация)</a></li><li><a href="#использование-диагностического-сканера-для-сброса">Использование диагностического сканера для сброса</a></li><li><a href="#типичные-ошибки-и-проблемы-при-обучении">Типичные ошибки и проблемы при обучении</a></li><li><a href="#частые-вопросы-по-адаптации-акпп-faq">Частые вопросы по адаптации АКПП (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана <em>Chevrolet Aveo</em> в кузове T300 часто сталкиваются с некорректной работой автоматической трансмиссии после замены масла, замены аккумулятора или проведения ремонтных работ. <strong>Адаптация АКПП</strong> — это не миф, а необходимая процедура, позволяющая блоку управления трансмиссией заново выучить точки переключения и характер износа фрикционных дисков. Без этого шага коробка может работать рывками, с задержками или пинками, что существенно снижает комфорт вождения.</p>
+
+<p>Многие ошибочно полагают, что достаточно просто поменять жидкость, но электроника продолжает работать по старым, возможно уже неактуальным алгоритмам. В данной статье мы подробно разберем, как правильно обучить <strong>автоматическую коробку передач</strong> на Шевроле Авео третьего поколения, чтобы восстановить плавность хода и продлить ресурс агрегата.</p>
+
+<p>Процесс обучения может варьироваться в зависимости от типа двигателя и года выпуска вашего автомобиля, однако базовые принципы остаются схожими. Мы рассмотрим как программные методы сброса через диагностический сканер, так и мануальные способы, доступные каждому водителю без сложного оборудования.</p>
+
+<h2 id="зачем-нужно-обучение-автоматической-коробки-передач">Зачем нужно обучение автоматической коробки передач</h2>
+
+<p>Современные трансмиссии, устанавливаемые на <em>Daewoo</em> и <em>Chevrolet</em>, управляются сложной электроникой. Блок управления (TCU или ECM) постоянно считывает данные о нагрузке на двигатель, положении дроссельной заслонки и скорости вращения колес. Со временем он подстраивает давление в магистрали и время переключения передач под текущее состояние <strong>фрикционов</strong> и <strong>соленоидов</strong>.</p>
+
+<p>Когда вы меняете масло или ремонтируете коробку, физические параметры работы агрегата меняются. Старая жидкость могла быть густой из-за продуктов износа, а новая обладает другими фрикционными свойствами. Если не провести сброс адаптаций, электроника будет пытаться компенсировать износ, которого больше нет, что приведет к ударам при переключении.</p>
+
+<p>Кроме того, обучение необходимо после:</p>
+<ul>
+<li>🔧 Замены масла в АКПП или фильтрующего элемента.</li>
+<li>🔋 Отключения аккумулятора или скачков напряжения в бортовой сети.</li>
+<li>🛠️ Замены дроссельной заслонки или проведения чистки впускного тракта.</li>
+<li>⚙️ Перепрошивки ЭБУ двигателя или трансмиссии.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ Внимание: Игнорирование процедуры адаптации может привести к ускоренному износу фрикционных дисков и перегреву трансмиссионной жидкости из-за повышенного проскальзывания пакетов.</p>
+</blockquote>
+
+<h2 id="подготовка-автомобиля-к-процедуре-адаптации">Подготовка автомобиля к процедуре адаптации</h2>
+
+<p>Перед тем как начать процесс обучения, необходимо убедиться, что автомобиль полностью готов к этому. <strong>Температура трансмиссионной жидкости</strong> является критическим параметром. На холодном масле алгоритмы работы коробки отличаются от тех, что используются при рабочей температуре, поэтому все манипуляции проводятся только на прогретом двигателе.</p>
+
+<p>Проверьте уровень масла в АКПП. На моделях <em>Aveo T300</em> часто встречаются щупы или контрольные отверстия. Если уровень ниже нормы, адаптация пройдет некорректно, так как давление в системе будет недостаточным для четкой работы <strong>гидротрансформатора</strong>. Также убедитесь, что в системе нет ошибок, которые могут блокировать процесс обучения.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед адаптацией</h4><label class="check-item"><input type="checkbox"><span>Прогреть двигатель до рабочей температуры</span></label><label class="check-item"><input type="checkbox"><span>Проверить уровень масла в АКПП</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в отсутствии горящего "Check Engine"</span></label><label class="check-item"><input type="checkbox"><span>Остановить все энергопотребители (фары, кондиционер)</span></label><label class="check-item"><input type="checkbox"><span></span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Важно отключить все лишние потребители электроэнергии. Кондиционер, подогрев сидений и мощная акустика могут создавать колебания напряжения, что чувствительно для электроники <em>Chevrolet</em>. Стабильное напряжение бортовой сети — залог успешной записи новых параметров в память контроллера.</p>
+
+<h2 id="методика-сброса-адаптации-через-дроссельную-заслонку">Методика сброса адаптации через дроссельную заслонку</h2>
+
+<p>Одним из ключевых моментов в работе связки "двигатель-трансмиссия" является положение дроссельной заслонки. ЭБУ считывает угол открытия дросселя для определения нагрузки и момента переключения передачи. Если заслонка загрязнена или ее положение сбито, коробка будет переключаться невпопад.</p>
+
+<p>Процедура сброса адаптации дросселя на <em>Шевроле Авео Т300</em> часто помогает решить проблему пинков. Для этого необходимо выполнить последовательность действий с зажиганием и педалью газа. Сначала включите зажигание, но не запускайте двигатель. Подождите 3 секунды, пока не погаснут индикаторы на панели приборов.</p>
+
+<p>Затем выполните следующие действия:</p>
+<ul>
+<li>👣 Плавно нажмите педаль акселератора до упора и удерживайте 2 секунды.</li>
+<li>👣 Отпустите педаль и подождите еще 2 секунды.</li>
+<li>👣 Повторите цикл нажатия и отпускания еще два раза.</li>
+<li>🔑 Выключите зажигание и подождите 10 секунд перед запуском двигателя.</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если после сброса дроссельной заслонки обороты холостого хода плавают, дайте автомобилю поработать на холостом ходу 10-15 минут без нагрузки — ЭБУ самостоятельно калибрует положение заслонки.</p></div>
+
+<p>После запуска двигателя не трогайте педаль газа в течение первой минуты. ЭБУ должен считать базовое положение "нулевого" хода заслонки. Только после этого можно начинать движение. Этот метод особенно эффективен, если рывки наблюдаются при трогании с места.</p>
+
+<h2 id="ручной-способ-обучения-ездой-дорожная-адаптация">Ручной способ обучения ездой (Дорожная адаптация)</h2>
+
+<p>Самый распространенный и часто необходимый метод — это дорожная адаптация. Блок управления <strong>автоматической трансмиссией</strong> должен в реальных условиях проехать определенный цикл, чтобы записать новые значения времени наполнения гидротрансформатора и давления в каналах.</p>
+
+<p>Для начала движения прогрейте коробку до температуры 60-80 градусов Цельсия. Найдите ровный участок дороги с минимальным трафиком. Двигайтесь в спокойном режиме, избегая резких ускорений и торможений. Ваша задача — дать электронике самой выбрать моменты переключения.</p>
+
+<p>Алгоритм дорожной адаптации выглядит так:</p>
+<ol>
+<li>Разгонитесь до 60 км/ч и плавно отпустите газ, позволяя коробке переключиться на повышенную передачу.</li>
+<li>Затем снова плавно нажмите газ, чтобы коробка понизила передачу (кик-даун не нужен, просто легкое нажатие).</li>
+<li>Повторите этот цикл разгона и торможения двигателем 10-15 раз.</li>
+<li>Попробуйте проехать несколько километров с разной скоростью, имитируя городской трафик.</li>
+</ol>
+
+<blockquote>
+<p>⚠️ Внимание: Не пытайтесь форсировать процесс адаптации резкими стартами с пробуксовкой. Это может привести к ошибочной записи параметров и ухудшению работы коробки в штатных режимах.</p>
+</blockquote>
+
+<p>В процессе этого этапа <strong>TCU</strong> (блок управления трансмиссией) корректирует время открытия клапанов и давление в контурах. Если вы чувствуете, что после определенного цикла переключения стали мягче, значит, процесс идет успешно. Полный цикл обучения может занять от 50 до 100 километров пробега в смешанном режиме.</p>
+
+<div class="poll-widget" id="poll-1f03017e"><div class="poll-widget-question">📊 Как ведет себя ваша АКПП после замены масла?</div><div class="poll-widget-option" data-poll="1f03017e" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Работает идеально</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="1f03017e" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Есть легкие пинки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="1f03017e" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Сильные рывки при переключении</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="1f03017e" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Вообще не переключает передачи</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="использование-диагностического-сканера-для-сброса">Использование диагностического сканера для сброса</h2>
+
+<p>Наиболее точным и профессиональным методом является использование диагностического оборудования. Для <em>Chevrolet Aveo T300</em> отлично подходят сканеры типа <em>GM MDI</em>, <em>Op-COM</em> или мультимарочные комплексы с поддержкой протокола <strong>OBD-II</strong>. Через специализированный софт можно принудительно сбросить адаптации.</p>
+
+<p>Подключите сканер к разъему диагностики, который на Авео Т300 обычно расположен под торпедой слева от руля или в бардачке. Выберите модель автомобиля, год выпуска и перейдите в раздел "Трансмиссия" или "ECM". Найдите функцию "Сброс адаптаций" или "Reset TCM Adaptation".</p>
+
+<p>Сравнение методов сброса:</p>
+
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Необходимое оборудование</th>
+<th>Точность</th>
+<th>Время выполнения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ручной (Дроссель)</td>
+<td>Нет</td>
+<td>Средняя</td>
+<td>5-10 минут</td>
+</tr>
+<tr>
+<td>Дорожная адаптация</td>
+<td>Автомобиль</td>
+<td>Высокая</td>
+<td>50-100 км</td>
+</tr>
+<tr>
+<td>Диагностический сканер</td>
+<td>Ноутбук + Адаптер</td>
+<td>Максимальная</td>
+<td>10-15 минут</td>
+</tr>
+<tr>
+<td>Снятие клеммы АКБ</td>
+<td>Ключ</td>
+<td>Низкая</td>
+<td>30+ минут</td>
+</tr>
+</tbody>
+</table>
+
+<p>При использовании сканера важно не прерывать связь с автомобилем. Если процесс сброса прервется, в памяти могут остаться фрагментарные данные, что приведет к хаотичному поведению коробки. После аппаратного сброса обязательно проведите процедуру дорожной адаптации, описанную выше.</p>
+
+<h2 id="типичные-ошибки-и-проблемы-при-обучении">Типичные ошибки и проблемы при обучении</h2>
+
+<p>Даже при соблюдении всех инструкций могут возникнуть сложности. Часто владельцы забывают, что <strong>адаптация дроссельной заслонки</strong> и адаптация коробки — это связанные, но разные процессы. Если дроссель "врет" о положении педали газа, коробка не получит корректный сигнал о нагрузке.</p>
+
+<p>Еще одна распространенная ошибка — проведение обучения на неисправной коробке. Если внутри АКПП уже есть механический износ, загрязнен гидроблок или неисправен один из соленоидов, никакое обучение не поможет. Электроника не сможет компенсировать физическую поломку программными методами.</p>
+
+<details class="faq-item"><summary>Что делать, если адаптация не помогает?</summary><div class="faq-answer"><p>Если после всех процедур рывки сохраняются, необходимо проверить давление в магистрали АКПП манометром. Нестабильное давление указывает на износ масляного насоса или загрязнение гидроблока, что требует ремонта, а не обучения.</p></div></details>
+
+<p>Также стоит обратить внимание на состояние опор двигателя. На <em>Aveo T300</em> при изношенных подушках силовой агрегат может сильно смещаться при переключении передач. Водитель воспринимает это как пенок коробки, хотя на самом деле это удар металла о металл кузова.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если после замены масла и попытки адаптации коробка перешла в аварийный режим (горит индикатор шестеренки или "Check Engine"), немедленно прекратите движение и проведите компьютерную диагностику.</p>
+</blockquote>
+
+<h2 id="частые-вопросы-по-адаптации-акпп-faq">Частые вопросы по адаптации АКПП (FAQ)</h2>
+
+<details>
+<summary>Сколько времени занимает полное обучение коробки?</summary>
+<p>Полный цикл адаптации может занять от 50 до 200 километров пробега. Первые улучшения обычно заметны уже через 10-15 км спокойной езды, но окончательная "шлифовка" алгоритмов происходит в течение нескольких дней эксплуатации в разных режимах.</p>
+</details>
+
+<details>
+<summary>Нужно ли сбрасывать клемму аккумулятора?</summary>
+<p>Сброс клеммы на <em>Chevrolet Aveo</em> часто помогает сбросить кратковременные ошибки, но для глубокой адаптации АКПП этого недостаточно. ЭБУ хранит основные параметры в энергонезависимой памяти. Лучше использовать диагностический сканер или метод дорожной адаптации.</p>
+</details>
+
+<details>
+<summary>Можно ли обучить коробку без прогрева?</summary>
+<p>Категорически не рекомендуется. Холодное масло имеет высокую вязкость, и гидравлика работает иначе. Адаптация, проведенная на холодную, приведет к некорректной работе коробки после прогрева, так как параметры будут записаны неверно.</p>
+</details>
+
+<details>
+<summary>Поможет ли обучение, если коробка буксует?</summary>
+<p>Если коробка буксует, это признак физического износа фрикционов или падения давления. Обучение в таком случае может временно улучшить ситуацию, изменив давление, но это лишь отсрочит ремонт. <mark>Буксование — это прямой путь к быстрому выходу АКПП из строя</mark>, требующий механического вмешательства.</p>
+</details>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Успешное обучение АКПП на Шевроле Авео Т300 требует комплексного подхода: исправный двигатель, чистый дроссель, прогретое масло и спокойный стиль вождения в первые 100 км после процедуры.</p></div></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#зачем-нужно-обучение-автоматической-коробки-передач">Зачем нужно обучение автоматической коробки передач</a></li><li><a href="#подготовка-автомобиля-к-процедуре-адаптации">Подготовка автомобиля к процедуре адаптации</a></li><li><a href="#методика-сброса-адаптации-через-дроссельную-заслонку">Методика сброса адаптации через дроссельную заслонку</a></li><li><a href="#ручной-способ-обучения-ездой-дорожная-адаптация">Ручной способ обучения ездой (Дорожная адаптация)</a></li><li><a href="#использование-диагностического-сканера-для-сброса">Использование диагностического сканера для сброса</a></li><li><a href="#типичные-ошибки-и-проблемы-при-обучении">Типичные ошибки и проблемы при обучении</a></li><li><a href="#частые-вопросы-по-адаптации-акпп-faq">Частые вопросы по адаптации АКПП (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

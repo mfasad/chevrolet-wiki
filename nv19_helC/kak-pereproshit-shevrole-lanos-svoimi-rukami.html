@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Прошивка ЭБУ Chevrolet Lanos своими руками: пошаговая алгоритм — Chevrolet-Wiki</title>
+    <meta name="description" content="Как перепрошить Chevrolet Lanos (ECU Sirius или Delphi). Выбор софта, чип-тюнинг, список оборудования и устранение ошибок OBDII.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv19_helC/kak-pereproshit-shevrole-lanos-svoimi-rukami.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Прошивка ЭБУ Chevrolet Lanos своими руками: пошаговая алгоритм">
+    <meta property="og:description" content="Как перепрошить Chevrolet Lanos (ECU Sirius или Delphi). Выбор софта, чип-тюнинг, список оборудования и устранение ошибок OBDII.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Прошивка ЭБУ Chevrolet Lanos своими руками: пошаговая алгоритм</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как перепрошить Chevrolet Lanos своими руками: алгоритм и софт</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#выбор-оборудования-и-подготовка-интерфейса">Выбор оборудования и подготовка интерфейса</a></li><li><a href="#обзор-программного-обеспечения-для-чип-тюнинга">Обзор программного обеспечения для чип-тюнинга</a></li><li><a href="#процесс-подключения-к-эбу-и-считывание-данных">Процесс подключения к ЭБУ и считывание данных</a></li><li><a href="#алгоритм-записи-новой-прошивки-в-блок-управления">Алгоритм записи новой прошивки в блок управления</a></li><li><a href="#адаптация-и-сброс-параметров-после-перепрошивки">Адаптация и сброс параметров после перепрошивки</a></li><li><a href="#диагностика-возможных-ошибок-и-неисправностей">Диагностика возможных ошибок и неисправностей</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+<p>Владельцы автомобилей Daewoo и Chevrolet Lanos часто сталкиваются с необходимостью модернизации программного обеспечения электронного блока управления (ЭБУ). Это может быть вызвано желанием повысить динамику разгона, снизить расход топлива или устранить программные ошибки штатной версии.</p>
+<p>Самостоятельная перепрошивка требует понимания процессов работы <strong>инжекторной системы</strong> и наличия специализированного оборудования. Процесс не терпит спешки, так как прерывание записи данных может привести к полной неработоспособности двигателя.</p>
+<p>В этой статье мы разберем техническую сторону вопроса, выбор оборудования и программного обеспечения для работы с контроллерами Sirius и Delphi. <em>Соблюдение последовательности действий</em> является критическим фактором успеха.</p>
+
+<h2 id="выбор-оборудования-и-подготовка-интерфейса">Выбор оборудования и подготовка интерфейса</h2>
+<p>Для успешного взаимодействия с блоком управления вам потребуется надежный диагностический адаптер. Рынок предлагает множество вариантов, но для Lanos наиболее подходят специализированные решения, поддерживающие протоколы K-Line. Использование дешевых китайских аналогов может привести к обрыву связи в критический момент.</p>
+<p>Надежность соединения обеспечивается качественным кабелем KKL 409.1 или профессиональным сканером типа <em>OpenPort 2.0</em>. Важно проверить совместимость адаптера с операционной системой вашего компьютера перед началом работ.</p>
+<p>Также необходимо обеспечить стабильное питание. <mark>Напряжение бортовой сети при прошивке не должно падать ниже 12 вольт</mark>, иначе процесс прервется. Рекомендуется использовать зарядное устройство с режимом стабилизации напряжения.</p>
+<ul>
+<li>🔌 Диагностический кабель KKL 409.1 или OpenPort 2.0 для подключения к OBDII</li>
+<li>🔋 Зарядное устройство или блок питания 12В с током не менее 5А</li>
+<li>💻 Ноутбук с установленной ОС Windows (предпочтительно 7, 10 или XP)</li>
+<li>🔧 Исправная проводка автомобиля без окисленных контактов в разъеме диагностики</li>
+</ul>
+<p>Проверьте состояние аккумулятора. Если он старый или разряжен, подключите внешний источник питания параллельно клеммам.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед началом работ</h4><label class="check-item"><input type="checkbox"><span>Установлены драйверы адаптера</span></label><label class="check-item"><input type="checkbox"><span>Ноутбук заряжен или подключен к сети</span></label><label class="check-item"><input type="checkbox"><span>Аккумулятор авто заряжен</span></label><label class="check-item"><input type="checkbox"><span>Скачана прошивка и софт</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="обзор-программного-обеспечения-для-чип-тюнинга">Обзор программного обеспечения для чип-тюнинга</h2>
+<p>Софт для работы с ЭБУ делится на редакторы калибровок и загрузчики. Для <strong>Chevrolet Lanos</strong> чаще всего используются программы, умеющие работать с контроллерами Sirius и Delphi. Выбор конкретного инструмента зависит от версии прошивки, установленной в автомобиле.</p>
+<p>Популярным решением является утилита <em>ChipTuning Pro</em> или специализированные загрузчики вроде <em>GMLan</em> или <em>Dallas</em>. Они позволяют считывать дампы памяти и записывать новые данные. Важно использовать проверенные версии программ, так как модифицированный софт может содержать вирусы.</p>
+<p>Для редактирования карт впрыска и зажигания профессионалы используют <em>WinOLS</em> или <em>ChipTuning Editor</em>. Эти инструменты требуют глубоких знаний процессов смесеобразования.</p>
+<details class="faq-item"><summary>Какие версии ПО наиболее стабильны?</summary><div class="faq-answer"><p>Наиболее стабными считаются версии прошивок от ведущих тюнинг-ателье, прошедшие обкатку. Избегайте "сырых" бета-версий, найденных на сомнительных форумах, так как они могут вызвать детонацию двигателя.</p></div></details>
+<p>Не забывайте делать резервные копии. Перед записью нового файла обязательно считайте оригинальный дамп и сохраните его в надежном месте.</p>
+
+<h2 id="процесс-подключения-к-эбу-и-считывание-данных">Процесс подключения к ЭБУ и считывание данных</h2>
+<p>Подключение к диагностическому разъему OBDII, расположенному под торпедой у левой ноги водителя, должно производиться при выключенном зажигании. После подключения кабеля включите зажигание, но не запускайте двигатель.</p>
+<p>Запустите программу-загрузчик и выберите тип контроллера. Для Lanos это обычно <strong>Sirius T200-R</strong> или <em>Delphi MT80</em>. Нажмите кнопку подключения. Индикатор связи должен загореться, подтверждая успешный handshake.</p>
+<blockquote>
+<p>⚠️ Внимание: Если программа пишет "Нет связи", проверьте пин-коды разъема. Часто проблема кроется в отсутствии контакта на линии K-Line или неправильной установке драйверов COM-порта.</p>
+</blockquote>
+<p>После установления соединения выполните полное чтение EEPROM и Flash-памяти. Сохраните полученные файлы с именами, содержащими VIN-код и дату. Это ваша страховка на случай неудачной записи.</p>
+<pre><code>Процесс чтения:
+<p>1. Connect</p>
+<p>2. Read Full</p>
+<p>3. Save as: Lanos_VIN_12345_Original.bin</code></pre></p>
+<p>Убедитесь, что контрольная сумма (Checksum) считанного файла корректна. Некоторые программы делают это автоматически.</p>
+
+<div class="poll-widget" id="poll-085499e6"><div class="poll-widget-question">📊 С каким ЭБУ вы столкнулись?</div><div class="poll-widget-option" data-poll="085499e6" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Sirius T200-R</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="085499e6" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Delphi MT80</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="085499e6" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Я не знаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="085499e6" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">У меня карбюратор</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="алгоритм-записи-новой-прошивки-в-блок-управления">Алгоритм записи новой прошивки в блок управления</h2>
+<p>Запись данных — самый ответственный этап. Откройте подготовленный файл прошивки в загрузчике. Убедитесь, что он соответствует типу вашего ЭБУ. Попытка залить прошивку от Delphi в Sirius приведет к фатальной ошибке.</p>
+<p>Нажмите кнопку "Записать" (Write/Program). Процесс может занять от 5 до 20 минут. В это время на экране будет отображаться прогресс-бар. Категорически запрещается шевелить кабель или выключать ноутбук.</p>
+<p>После завершения записи программа предложит выполнить проверку (Verify). Обязательно согласитесь на эту процедуру. Она сравнит записанные данные с исходным файлом.</p>
+<ul>
+<li>🚀 Выберите файл новой прошивки в меню программы</li>
+<li>📥 Нажмите кнопку "Write" и дождитесь окончания процесса</li>
+<li>✅ Выполните проверку контрольных сумм (Checksum)</li>
+<li>🔄 Выключите зажигание на 10-15 секунд для сброса ЭБУ</li>
+</ul>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Успешная запись подтверждается сообщением "Programming Successful" и отсутствием ошибок при проверке.</p></div>
+<p>Если возникла ошибка, не паникуйте. Попробуйте повторить процедуру. В некоторых случаях требуется переводить контроллер в режим Bootloader перемычкой на плате.</p>
+
+<h2 id="адаптация-и-сброс-параметров-после-перепрошивки">Адаптация и сброс параметров после перепрошивки</h2>
+<p>После установки нового ПО необходимо выполнить сброс адаптаций. ЭБУ хранит в памяти корректировки, накопленные за время работы со старой программой. Их наличие может вызывать нестабильный холостой ход.</p>
+<p>Используйте диагностический сканер для входа в меню специальных функций. Выберите пункт "Сброс адаптаций" или "Clear Adaptive Memory". Также полезно сбросить ошибки, если они накопились в процессе экспериментов.</p>
+<p>Процедура адаптации дроссельной заслонки выполняется путем трехкратного включения и выключения зажигания с паузой в 10 секунд. Затем запустите двигатель и дайте ему поработать 5-10 минут без нагрузки.</p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>До сброса</th>
+<th>После сброса</th>
+<th>Норма</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Обороты ХХ</td>
+<td>850-950</td>
+<td>750-850</td>
+<td>800 ± 50</td>
+</tr>
+<tr>
+<td>Угол опережения</td>
+<td>Плавающий</td>
+<td>Стабильный</td>
+<td>8-12 град</td>
+</tr>
+<tr>
+<td>Коррекция СО</td>
+<td>Активная</td>
+<td>Нулевая</td>
+<td>0 ± 2</td>
+</tr>
+<tr>
+<td>Положение ДЗ</td>
+<td>4-5%</td>
+<td>0-2%</td>
+<td>< 3%</td>
+</tr>
+</tbody>
+</table>
+<p>Прокатитесь на автомобиле в разных режимах. ЭБУ должен заново обучиться вашим привычкам вождения и условиям окружающей среды.</p>
+
+<h2 id="диагностика-возможных-ошибок-и-неисправностей">Диагностика возможных ошибок и неисправностей</h2>
+<p>Если после перепрошивки двигатель работает нестабильно, горит лампа Check Engine. Считайте коды ошибок. Частые проблемы связаны с неправильным подбором калибровок под модифицированное железо.</p>
+<p>Проверьте датчик положения дроссельной заслонки (ДПДЗ) и регулятор холостого хода (РХХ). Их показания должны быть в пределах допустимых значений. Несоответствие может вызывать рывки при разгоне.</p>
+<blockquote>
+<p>⚠️ Внимание: Если автомобиль перестал заводиться, возможно, сбилась иммобилайзерная защита. В этом случае требуется привязка ключей или отключение иммобилайзера программным методом.</p>
+</blockquote>
+<p>Используйте осциллограф или мультиметр для проверки сигналов датчиков. Программные ошибки часто маскируют аппаратные неисправности.</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если горит Check Engine сразу после запуска, проверьте разъемы датчиков. При перепрошивке часто забывают проверить плотность контактов, и вибрация приводит к пропаданию сигнала.</p></div>
+<p>В сложных случаях может потребоваться откат к заводской версии прошивки. Именно поэтому наличие бэкапа критически важно.</p>
+
+<details>
+<summary>Можно ли перепрошить Ланос через смартфон?</summary>
+<p>Теоретически существуют приложения для Android с поддержкой ELM327, но для полноценной перепрошивки ЭБУ (записи Flash) мощности и стабильности Bluetooth-канала недостаточно. Высокий риск прерывания делает этот метод неприемлемым.</p>
+</details>
+<details>
+<summary>Сколько времени занимает весь процесс?</summary>
+<p>При наличии готового оборудования и файла прошивки чтение занимает 3-5 минут, запись — 10-15 минут. Вместе с подготовкой и адаптацией заложите около 40-60 минут.</p>
+</details>
+<details>
+<summary>Сбрасывается ли пробег при перепрошивке?</summary>
+<p>Нет, пробег хранится в отдельной микросхеме EEPROM или приборной панели. Перепрошивка основного процессора (Flash) не влияет на показания одометра.</p>
+</details>
+<details>
+<summary>Что делать, если прошивка прервалась?</summary>
+<p>Если процесс прервался на этапе записи, ЭБУ может перейти в режим Bootloader. В этом случае потребуется подключение программатора напрямую к контактам платы (BDM или JTAG) для восстановления.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#выбор-оборудования-и-подготовка-интерфейса">Выбор оборудования и подготовка интерфейса</a></li><li><a href="#обзор-программного-обеспечения-для-чип-тюнинга">Обзор программного обеспечения для чип-тюнинга</a></li><li><a href="#процесс-подключения-к-эбу-и-считывание-данных">Процесс подключения к ЭБУ и считывание данных</a></li><li><a href="#алгоритм-записи-новой-прошивки-в-блок-управления">Алгоритм записи новой прошивки в блок управления</a></li><li><a href="#адаптация-и-сброс-параметров-после-перепрошивки">Адаптация и сброс параметров после перепрошивки</a></li><li><a href="#диагностика-возможных-ошибок-и-неисправностей">Диагностика возможных ошибок и неисправностей</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

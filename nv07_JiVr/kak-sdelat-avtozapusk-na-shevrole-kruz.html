@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Автозапуск на Шевроле Круз: настройка сигнализации и обходчика — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по установке и настройке автозапуска на Chevrolet Cruze. Настройка сигнализации, программирование обходчика иммобилайзера и частые ошибки.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv07_JiVr/kak-sdelat-avtozapusk-na-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Автозапуск на Шевроле Круз: настройка сигнализации и обходчика">
+    <meta property="og:description" content="Подробная инструкция по установке и настройке автозапуска на Chevrolet Cruze. Настройка сигнализации, программирование обходчика иммобилайзера и частые ошибки.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Автозапуск на Шевроле Круз: настройка сигнализации и обходчика</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как сделать автозапуск на Шевроле Круз: полная инструкция</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#необходимое-оборудование-для-реализации-автозапуска">Необходимое оборудование для реализации автозапуска</a></li><li><a href="#подготовка-автомобиля-и-поиск-точек-подключения">Подготовка автомобиля и поиск точек подключения</a></li><li><a href="#установка-и-программирование-обходчика-иммобилайзера">Установка и программирование обходчика иммобилайзера</a></li><li><a href="#настройка-алгоритмов-работы-и-параметров-запуска">Настройка алгоритмов работы и параметров запуска</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#эксплуатация-и-меры-безопасности">Эксплуатация и меры безопасности</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владение современным автомобилем подразумевает не только удовольствие от вождения, но и комфорт в любое время года. Для владельцев <strong>Шевроле Круз</strong> особенно актуальным становится вопрос дистанционного прогрева двигателя зимой. Штатная система часто не позволяет запустить мотор без ключа в замке зажигания, что создает определенные неудобства при низких температурах.</p>
+
+<p>Решением этой проблемы становится установка или грамотная настройка системы <em>автозапуска</em>. Это может быть как сложная охранная система с телематикой, так и простой модуль, интегрируемый в штатную проводку. Важно понимать, что процесс требует внимательности к деталям электрической схемы и алгоритмам работы иммобилайзера.</p>
+
+<p>В этой статье мы разберем технические аспекты реализации функции, необходимые компоненты и пошаговый алгоритм действий. Вы узнаете, как правильно запрограммировать обходчик и избежать распространенных ошибок при монтаже. Грамотный подход обеспечит стабильную работу двигателя в любую погоду.</p>
+
+<h2 id="необходимое-оборудование-для-реализации-автозапуска">Необходимое оборудование для реализации автозапуска</h2>
+
+<p>Прежде чем приступать к монтажу, необходимо подготовить весь перечень оборудования. Основой системы является сигнализация с функцией дистанционного запуска или отдельный модуль автозапуска. Для автомобилей <em>Chevrolet Cruze</em> критически важно наличие качественного обходчика иммобилайзера, так как штатная система безопасности блокирует запуск без считывания чипа ключа.</p>
+
+<p>Выбор конкретного комплекта зависит от ваших потребностей и бюджета. Современные системы часто поддерживают управление через GSM-канал или Bluetooth, что позволяет запускать двигатель со смартфона. Однако даже базовые модели с брелоком могут обеспечить необходимый функционал при правильной установке.</p>
+
+<ul>
+<li>🔑 Основной блок сигнализации с модулем автозапуска и набором проводов.</li>
+<li>📡 Модуль обхода иммобилайзера (статический или динамический, в зависимости от года выпуска).</li>
+<li>🔌 Дополнительные реле и предохранители для защиты цепей управления.</li>
+<li>🛠️ Инструменты: мультиметр, набор отверток, изолента, термоусадка.</li>
+</ul>
+
+<p>Особое внимание стоит уделить типу обходчика. На ранних моделях Круза часто требовалось прятать второй ключ в блоке обхода, тогда как новые системы позволяют программировать виртуальный ключ. Это упрощает процесс и повышает безопасность, так как вам не нужно носить с собой два комплекта ключей или жертвовать одним из них.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Использование некачественных обходчиков может привести к сбоям в работе штатной электроники и потере гарантии на автомобиль. Выбирайте проверенные бренды.</p>
+</blockquote>
+
+<h2 id="подготовка-автомобиля-и-поиск-точек-подключения">Подготовка автомобиля и поиск точек подключения</h2>
+
+<p>Начало работ всегда должно сопровождаться подготовительным этапом. В первую очередь необходимо <strong>обесточить автомобиль</strong>, сняв минусовую клемму с аккумуляторной батареи. Это обязательное условие безопасности, которое предотвратит короткое замыкание и повреждение электронных блоков управления (ЭБУ).</p>
+
+<p>Далее следует демонтировать необходимые элементы салона для доступа к проводке. На <em>Шевроле Круз</em> чаще всего требуется снятие пластиковых панелей вокруг рулевой колонки и доступ к блоку предохранителей. Тщательно изучите электрическую схему вашего конкретного года выпуска, так как цвета проводов могут отличаться в разных комплектациях.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед началом работ</h4><label class="check-item"><input type="checkbox"><span>Снять минусовую клемму АКБ</span></label><label class="check-item"><input type="checkbox"><span>Подготовить мультиметр для прозвонки</span></label><label class="check-item"><input type="checkbox"><span>Изучить схему распиновки разъема BCM</span></label><label class="check-item"><input type="checkbox"><span>Проверить целостность штатной проводки</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Поиск точек подключения осуществляется с помощью мультиметра в режиме измерения напряжения. Вам необходимо найти провода управления стартером, зажиганием, габаритными огнями и концевиком капота. Ошибочное подключение к CAN-шине без соответствующего модуля может вывести из строя бортовой компьютер.</p>
+
+<p>Для точного определения сигналов используйте метод"тыка" с осторожностью или обратитесь к специализированным картам установок. Надежность всей системы зависит от качества соединения проводов. Все скрутки должны быть пропаяны или соединены с помощью специализированных коннекторов, а затем надежно заизолированы.</p>
+
+<h2 id="установка-и-программирование-обходчика-иммобилайзера">Установка и программирование обходчика иммобилайзера</h2>
+
+<p>Самым сложным этапом является настройка обхода штатной системы защиты. На автомобилях <strong>Шевроле Круз</strong> используется транспондерная защита, которая не позволит двигателю запуститься без подтверждения от чипа ключа. Современные обходчики позволяют эмулировать этот сигнал без физического наличия ключа в салоне.</p>
+
+<p>Процесс программирования зависит от модели установленного модуля. Обычно он заключается в последовательном включении зажигания и нажатии кнопки программирования. В некоторых случаях требуется считатьывать данные с родного ключа и записывать их в память обходчика через специальный адаптер.</p>
+
+<details class="faq-item"><summary>Нюансы работы с CAN-шиной</summary><div class="faq-answer"><p>На современных версиях Cruze обмен данными с иммобилайзером происходит по CAN-шине. Старые аналоговые методы обхода здесь не сработают. Требуется модуль, умеющий"общаться" с автомобилем на цифровом уровне, эмулируя ответ иммобилайзера в нужный момент времени. Ошибка в выборе модуля приведет к тому, что машина заведется и сразу заглохнет.</p></div></details>
+
+<p>После физической установки модуля необходимо провести тестирование. Вставьте ключ в замок, включите зажигание и попробуйте запустить двигатель. Если мотор работает стабильно, выньте ключ и попробуйте повторить запуск с брелока сигнализации. Если автомобиль заводится и работает, значит обходчик функционирует корректно.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип системы</th>
+<th>Необходимость ключа</th>
+<th>Сложность установки</th>
+<th>Стабильность работы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Аналоговый обходчик</td>
+<td>Требуется 2-й ключ</td>
+<td>Низкая</td>
+<td>Высокая</td>
+</tr>
+<tr>
+<td>Цифровой обходчик (CAN)</td>
+<td>Не требуется</td>
+<td>Средняя</td>
+<td>Высокая</td>
+</tr>
+<tr>
+<td>Клонирование чипа</td>
+<td>Требуется копия</td>
+<td>Высокая</td>
+<td>Средняя</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="настройка-алгоритмов-работы-и-параметров-запуска">Настройка алгоритмов работы и параметров запуска</h2>
+
+<p>После успешного монтажа наступает этап тонкой настройки логики работы системы. Программное обеспечение сигнализации позволяет задать множество параметров, адаптирующих автозапуск под ваши нужды. Для <em>Chevrolet Cruze</em> важно правильно настроить время работы стартера и контроль работы двигателя.</p>
+
+<p>В меню настроек необходимо выбрать тип контроля заведенного двигателя. Это может быть контроль по напряжению бортовой сети, по тахометру (сигнал с форсунки или катушки) или по CAN-шине. Наиболее точным и безопасным методом является контроль по CAN, так как он исключает ложные срабатывания и не требует вмешательства в электрические цепи.</p>
+
+<ul>
+<li>⏱️ <strong>Время работы стартера:</strong> устанавливается индивидуально, обычно от 0.8 до 2 секунд.</li>
+<li>🌡️ <strong>Температурный запуск:</strong> активация двигателя при падении температуры ниже заданного порога.</li>
+<li>🔋 <strong>Контроль напряжения:</strong> запуск при разряде аккумулятора для его подзарядки.</li>
+<li>⏰ <strong>Запуск по таймеру:</strong> периодический прогрев через равные промежутки времени.</li>
+</ul>
+
+<p>Также стоит обратить внимание на функцию"программной нейтрал". Поскольку на механической коробке передач автомобиль может остаться на передаче, система должна гарантировать, что перед автозапуском рычаг КПП переведен в нейтральное положение. Игнорирование этого пункта может привести к неконтролируемому движению автомобиля.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> На автомобилях с механической трансмиссией обязательно активируйте функцию контроля"программной нейтрали". Запуск двигателя на передаче может привести к аварийной ситуации и повреждению стартера.</p>
+</blockquote>
+
+<div class="poll-widget" id="poll-e1cf5a56"><div class="poll-widget-question">📊 Какой способ контроля двигателя вы предпочитаете?</div><div class="poll-widget-option" data-poll="e1cf5a56" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">По тахометру</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e1cf5a56" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">По напряжению</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e1cf5a56" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">По CAN-шине</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e1cf5a56" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">По генератору</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</h2>
+
+<p>Даже при инструкции могут возникнуть проблемы. Часто владельцы <strong>Шевроле Круз</strong> сталкиваются с ситуацией, когда стартер крутит, но двигатель не схватывает. Это может указывать на неправильную работу обходчика иммобилайзера или ошибку в программировании.</p>
+
+<p>Еще одной распространенной проблемой является"уход" автомобиля в режим блокировки после нескольких неудачных попыток запуска. В этом случае необходимо снять клемму аккумулятора на 10-15 минут для сброса ошибок ЭБУ. Также стоит проверить качество контактов и отсутствие окислений в местах соединения.</p>
+
+<p>Если система запускается, но сразу глохнет после отпускания стартера, проверьте настройку контроля работы двигателя. Возможно, сигнализация"не видит" обороты или напряжение, считая, что двигатель не запустился, и прекращает подачу питания.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При частых ошибках запуска попробуйте увеличить время работы стартера на 0.2-0.4 секунды. Зимой масло густеет, и двигателю требуется больше времени для уверенного старта.</p></div>
+
+<h2 id="эксплуатация-и-меры-безопасности">Эксплуатация и меры безопасности</h2>
+
+<p>Использование автозапуска накладывает определенные обязательства на владельца. Необходимо регулярно проверять исправность выхлопной системы, так как работа двигателя в закрытом пространстве (гараже) опасна для жизни. Убедитесь, что выхлопные газы не попадают в салон или помещение.</p>
+
+<p>Зимой рекомендуется использовать качественные синтетические масла, которые сохраняют текучесть при низких температурах. Это облегчит холодный пуск и снизит износ деталей двигателя <em>Chevrolet Cruze</em>. Также следите за уровнем заряда аккумулятора, так как частые запуски без движения могут его разрядить.</p>
+
+<p>Не забывайте о правилах парковки. Оставляя автомобиль с включенным автозапуском, убедитесь, что он припаркован согласно правилам дорожного движения и не мешает другим участникам движения. Ответственное отношение к технике безопасности продлит срок службы вашего автомобиля.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Регулярное техническое обслуживание и правильная настройка параметров запуска — залог долгой и безотказной службы системы автозапуска на вашем Шевроле Круз.</p></div>
+
+<details>
+<summary>Можно ли сделать автозапуск без установки дополнительного оборудования?</summary>
+<p>Штатно функция автозапуска на Chevrolet Cruze не предусмотрена. Реализация возможна только путем установки сторонних охранных комплексов или модулей. Попытки изменить программное обеспечение штатного блока управления без соответствующего оборудования не дадут результата.</p>
+</details>
+
+<details>
+<summary>Сколько времени работает двигатель при автозапуске?</summary>
+<p>Время работы программируется пользователем через брелок сигнализации или мобильное приложение. Стандартные настройки обычно предлагают интервалы: 5, 10, 20 или 30 минут. После истечения этого времени двигатель автоматически глохнет.</p>
+</details>
+
+<details>
+<summary>Безопасно ли оставлять ключ в машине при использовании обходчика?</summary>
+<p>При использовании современных цифровых обходчиков ключ остается у вас, в машине прячется только его электронная копия или данные. Если же используется аналоговый метод с прятанием второго ключа в салоне, риск угона теоретически возрастает, но современные сигнализации блокируют руль и педали, сводя этот риск к минимуму.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#необходимое-оборудование-для-реализации-автозапуска">Необходимое оборудование для реализации автозапуска</a></li><li><a href="#подготовка-автомобиля-и-поиск-точек-подключения">Подготовка автомобиля и поиск точек подключения</a></li><li><a href="#установка-и-программирование-обходчика-иммобилайзера">Установка и программирование обходчика иммобилайзера</a></li><li><a href="#настройка-алгоритмов-работы-и-параметров-запуска">Настройка алгоритмов работы и параметров запуска</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#эксплуатация-и-меры-безопасности">Эксплуатация и меры безопасности</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Pro XL 4 Шевроле Круз: что это и как влияет на двигатель — Chevrolet-Wiki</title>
+    <meta name="description" content="Разбор кода Pro XL 4 Шевроле Круз. Влияние прошивки и калибровок на мощность, расход топлива и работу АКПП Chevrolet Cruze.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv41_ip8m/pro-xl-4-shevrole-kruz-chto-eto.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Pro XL 4 Шевроле Круз: что это и как влияет на двигатель">
+    <meta property="og:description" content="Разбор кода Pro XL 4 Шевроле Круз. Влияние прошивки и калибровок на мощность, расход топлива и работу АКПП Chevrolet Cruze.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Pro XL 4 Шевроле Круз: что это и как влияет на двигатель</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Pro XL 4 Шевроле Круз: что это и как влияет на характеристики авто</h1>
+                    
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы <em>Chevrolet Cruze</em> часто сталкиваются с загадочными обозначениями в технической документации, диагностических отчетах или при общении на профильных форумах. Одним из таких терминов, вызывающим множество вопросов, является сочетание "Pro XL 4". Многие водители ошибочно полагают, что речь идет о какой-то конкретной модификации кузова или комплектации, однако реальность кроется глубже, в программном обеспечении и калибровках <strong>блока управления двигателем</strong>.</p>
+
+<p>Понимание того, что скрывается за этим кодом, критически важно для правильного обслуживания автомобиля. Это знание помогает избежать ошибок при выборе запчастей, проведении чип-тюнинга или диагностике неисправностей. Владельцу <em>Шевроле Круз</em> необходимо четко осознавать, что многие параметры работы его машины определяются именно программными настройками, которые могут маркироваться подобными идентификаторами.</p>
+
+<p>В данной статье мы подробно разберем, что означает этот термин в контексте современных автомобилей Chevrolet. Мы затронем вопросы совместимости, влияния на технические характеристики и нюансы, которые стоит учитывать при обслуживании. <mark>Код Pro XL 4 чаще всего относится к версии калибровочных данных для двигателей семейства Ecotec объемом 1.6 или 1.8 литра</mark>, используемых в разных годах выпуска модели.</p>
+
+<h2>Техническая природа обозначения Pro XL 4</
+
+<p>Термин "Pro XL 4" не является официальным маркетинговым названием комплектации, которое вы найдете в brochure дилера. Скорее всего, это внутреннее обозначение версии <strong>прошивки (software calibration)</strong> или специфического пакета настроек для электронного блока управления (ЭБУ). В мире автомобильной инженерии такие коды используются для идентификации конкретного набора параметров, управляющих работой двигателя, трансмii и вспомогательных систем.</p>
+
+<p>Для <em>Chevrolet Cruze</em> эти данные хранятся в памяти контроллера и определяют, как именно мотор будет реагировать на нажатие педали газа, как будет формироваться топливно-воздушная смесь и при каких условиях включится вентилятор охлаждения. Ошибочная интерпретация этого кода может привести к тому, что владелец будет искать несуществующие внешние отличия автомобиля, вместо того чтобы обратить внимание на программную часть.</p>
+
+<details class="faq-item"><summary>Почему коды прошивок часто путают с комплектациями?</summary><div class="faq-answer"><p>Владельцы часто видят наклейки с кодами в сервисной книжке или на стойке кузова и думают, что это название версии авто. На самом деле, это служебные идентификаторы для дилерских сканеров, которые указывают на установленный пакет программного обеспечения, адаптированный под конкретный регион или экологический класс.</p></div></details>
+
+<p>Различия между версиями прошивок могут быть существенными. Одна версия может быть оптимизирована под топливо с октановым числом 92, другая — требовать 95-й бензин для достижения паспортной мощности. Третья версия может иметь более "душевную" настройку акселератора, что субъективно воспринимается как улучшение динамики, хотя физически мотор остается тем же.</p>
+
+<h2>Влияние прошивки на работу двигателя и АКПП</
+
+<p>Когда речь заходит о <em>Шевроле Круз</em>, нельзя игнорировать связь между программным обеспечением и поведением автомобиля на дороге. Калибровки, скрываемые под кодом Pro XL 4, напрямую диктуют алгоритмы работы <strong>автоматической коробки передач</strong> и системы зажигания. Именно от них зависит, насколько плавно будут переключаться передачи и как быстро автомобиль наберет скорость при обгоне.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Программные калибровки определяют не только мощность, но и температурный режим работы двигателя, что напрямую влияет на ресурс мотора и склонность к перегреву в пробках.</p></div>
+
+<p>Рассмотрим основные параметры, которые могут изменяться в зависимости от версии ПО:</p>
+<ul>
+<li>🚀 <strong>Карта дроссельной заслонки:</strong> определяет отзывчивость педали газа. В "экономичных" прошивках отклик может быть deliberately замедлен для снижения расхода.</li>
+<li>⚙️ <strong>Точки переключения АКПП:</strong> алгоритм решает, когда переходить на следующую передачу. Агрессивные настройки держат обороты выше, повышая динамику, но увеличивая шум.</li>
+<li>🌡️ <strong>Температурный режим:</strong> настройки включения вентиляторов и термостата. Для российских условий часто требуются специфические калибровки, чтобы избежать кипения антифриза.</li>
+</ul>
+
+<p>Некоторые версии прошивок для <em>Chevrolet Cruze</em> имели программные ошибки, которые приводили к нестабильному холостому ходу или рывкам при движении. Именно поэтому при покупке подержанного автомобиля или после ремонта ЭБУ так важно проверять актуальность версии ПО. Иногда простая перепрошивка на более свежую версию устраняет проблемы, которые владельцы годами пытаются решить заменой свечей или датчиков.</p>
+
+<h2>Совместимость и поиск запчастей по коду</
+
+<p>Один из самых частых вопросов, возникающих у владельцев <em>Шевроле Круз</em>: "Нужно ли мне знать этот код при покупке запчастей?". В большинстве случаев для покупки фильтров, колодок или элементов подвески знание версии прошивки не требуется. Однако, если речь идет о компонентах, связанных с двигателем и электроникой, ситуация меняется.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При заказе блоков управления, дроссельных заслонок или катушек зажигания всегда указывайте VIN-код автомобиля. Продавец по VIN-коду сам определит, какая версия прошивки и какие компоненты установлены на вашем Cruze.</p></div>
+
+<p>Существуют нюансы, когда версия ПО указывает на конкретную модификацию двигателя. Например, двигатели 1.6 литра могли оснащаться разными фазами газораспределения или типами фазовращателей в зависимости от года выпуска и региона. Код прошивки часто коррелирует с этими физическими изменениями.</p>
+
+<p>Ниже приведена таблица, демонстрирующая, как различные параметры могут зависеть от версии программного обеспечения и комплектации:</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Базовая версия ПО</th>
+<th>Версия Pro XL 4 (пример)</th>
+<th>Влияние на водителя</th>
+</tr>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Октановое число</td>
+<td>АИ-92</td>
+<td>АИ-95</td>
+<td>Необходимость использования более качественного топлива</td>
+</tr>
+<tr>
+<td>Холостой ход</td>
+<td>800 об/мин</td>
+<td>750 об/мин</td>
+<td>Снижение вибраций и расхода в пробках</td>
+</tr>
+<tr>
+<td>Режим Kick-down</td>
+<td>Стандартный</td>
+<td>Спортивный</td>
+<td>Более резкое ускорение при полном нажатии газа</td>
+</tr>
+<tr>
+<td>Экология (Евро)</td>
+<td>Евро-4</td>
+<td>Евро-5</td>
+<td>Требования к качеству топлива и состоянию катализатора</td>
+</tr>
+</tbody>
+</table>
+
+<p>При заказе чип-тюнинга знание текущей версии прошивки (например, той самой Pro XL 4) является обязательным. Мастеру необходимо понимать, с какой базовой программой он работает, чтобы правильно рассчитать новые калибровки и не навредить двигателю.</p>
+
+<h2>Диагностика и чтение кодов ошибок</
+
+<p>Если на панели приборов <em>Chevrolet Cruze</em> загорелся индикатор "Check Engine", диагностический сканер часто выдает коды ошибок, которые могут быть интерпретированы только с привязкой к версии ПО. Код ошибки P0300 (пропуски зажигания) в одной версии прошивки может игнорироваться системой, а в другой — сразу переводить двигатель в аварийный режим.</p>
+
+<div class="poll-widget" id="poll-24a97df5"><div class="poll-widget-question">📊 Сталкивались ли вы с ошибкой Check Engine на Chevrolet Cruze?</div><div class="poll-widget-option" data-poll="24a97df5" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, часто / Бывает редко / Только при запуске / Никогда не было</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Для проведения качественной диагностики специалисту необходимо подключиться к разъему OBD-II и считать не только текущие ошибки, но и идентификаторы калибровок (CAL ID). Это позволяет понять, соответствует ли установленная в блоке программа заводским спецификациям для данного VIN-кода.</p>
+
+<p>Вот список ситуаций, когда версия прошивки играет решающую роль в диагностике:</p>
+<ul>
+<li>🔍 <strong>Плавающие обороты:</strong> часто лечится обновлением ПО до последней версии, где исправлены алгоритмы работы РХХ (регулятора холостого хода).</li>
+<li>📉 <strong>Потеря мощности:</strong> может быть следствием работы системы защиты двигателя, активированной некорректными данными в прошивке.</li>
+<li>🔄 <strong>Проблемы с адаптацией АКПП:</strong> после замены масла или ремонта коробки часто требуется сброс адаптаций, алгоритмы которых зависят от версии ПО.</li>
+</ul>
+
+<p>Игнорирование программной составляющей при диагностике <em>Шевроле Круз</em> часто приводит к "лечению симптомов", когда меняются исправные датчики, а проблема кроется в "кривых" калибровках блока управления.</p>
+
+<h2>Чип-тюнинг и модификация Pro XL 4</
+
+<p>Многие владельцы <em>Chevrolet Cruze</em> задумываются о повышении мощности автомобиля. Чип-тюнинг — это процесс изменения программных калибровок в ЭБУ. Если ваш автомобиль работает на стоковой прошивке с идентификатором Pro XL 4, тюнинг-ателье будет использовать её как точку отсчета (baseline) для создания новой, более производительной карты.</p>
+
+<div class="checklist-block"><h4>☑️ Готовность к чип-тюнингу</h4><label class="check-item"><input type="checkbox"><span>Проверка состояния свечей и катушек</span></label><label class="check-item"><input type="checkbox"><span>Замер компрессии в цилиндрах</span></label><label class="check-item"><input type="checkbox"><span>Проверка актуальности версии ПО</span></label><label class="check-item"><input type="checkbox"><span>Отсутствие активных ошибок двигателя</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Стоит понимать разницу между Stage 1, Stage 2 и Stage 3.</p>
+<p>На первом этапе (Stage 1) изменения касаются только программного обеспечения. Инженеры оптимизируют угол опережения зажигания и состав смеси. Это безопасно для мотора и дает прирост мощности около 10-15%.</p>
+<p>Второй этап (Stage 2) уже требует физических изменений, например, установки более производительного выхлопа или интеркулера, и соответствующей перенастройки прошивки под эти изменения.</p>
+
+<p>⚠️ <strong>Внимание:</strong> Самостоятельная перепрошивка ЭБУ без профессионального оборудования и знаний может привести к необратимым последствиям. Некорректно записанная прошивка может "заблокировать" блок управления, и восстановить его работоспособность сможет только специализированный сервис с программаторами.</p>
+
+<h2>Обновление программного обеспечения у дилера</
+
+<p>Официальные дилеры Chevrolet периодически выпускают сервисные кампании по обновлению программного обеспечения. Если вы владелец <em>Круза</em>, вам стоит периодически интересоваться, есть ли новые версии прошивок для вашей модели. Часто такие обновления решают мелкие, но раздражающие проблемы, такие как дерганье при переключении передач или некорректное отображение температуры.</p>
+
+<details class="faq-item"><summary>Можно ли обновиться самостоятельно?</summary><div class="faq-answer"><p>Теоретически, имея кабель OBD-II и лицензионное ПО (например, GM MDI или совместимые аналоги с GDS2), можно попробовать обновиться. Однако риск прерывания процесса или скачка напряжения высок. Для рядового пользователя безопаснее обратиться к профессионалам.</p></div></details>
+
+<p>Процесс обновления у дилера обычно выглядит следующим образом:</p>
+<p>1. Автомобиль подключают к диагностическому компьютеру.</p>
+<p>2. Считывается текущий VIN и версии всех блоков.</p>
+<p>3. Сервер проверяет наличие обновлений (TSB - Technical Service Bulletins).</p>
+<p>4. Происходит загрузка и запись новых данных в ЭБУ, АКПП и другие модули.</p>
+
+<p>⚠️ <strong>Внимание:</strong> Перед началом процедуры обновления убедитесь, что аккумуляторная батарея полностью заряжена и подключен внешний источник питания (бустер). Прерывание записи прошивки из-за разряда АКБ может вывести блок управления из строя.</p>
+
+<h2>Часто задаваемые вопросы (FAQ)</
+
+<details>
+<summary>Влияет ли код Pro XL 4 на расход топлива?</summary>
+<p>Да, напрямую. Разные версии калибровок могут иметь разные карты топливоподачи. Более экологичные или "динамичные" версии могут расходовать больше топлива, в то время как "экономичные" прошивки жертвуют динамикой ради экономии.</p>
+</details>
+
+<details>
+<summary>Где можно узнать точную версию прошивки моего Chevrolet Cruze?</summary>
+<p>Самый надежный способ — подключить диагностический сканер OBD-II (например, ELM327 с приложением типа Torque или профессиональный сканер) и посмотреть параметры ЭБУ. Также эту информацию могут предоставить у официального дилера при проведении диагностики.</p>
+</details>
+
+<details>
+<summary>Может ли неправильная прошивка стать причиной перегрева двигателя?</summary>
+<p>Да, это возможно. Если в калибровках неверно заданы пороги включения вентиляторов охлаждения или работа термостата, двигатель может работать при повышенных температурах, что опасно для <em>Chevrolet Cruze</em> с его склонностью к нагреву в пробках.</p>
+</details>
+
+<details>
+<summary>Нужно ли сбрасывать адаптации после перепрошивки?</summary>
+<p>В большинстве случаев да. После изменения программного обеспечения ЭБУ и АКПП должны заново обучиться работе с текущим состоянием механизмов. Сброс адаптаций помогает избежать рывков и нестабильной работы сразу после чип-тюнинга.</p>
+</details>
+
+<details>
+<summary>Является ли Pro XL 4 признаком конкретной страны-производителя?</summary>
+<p>Не обязательно. Хотя региональные особенности (климат, топливо) влияют на прошивки, один и тот же код калибровки может встречаться на автомобилях, собранных в России, Корее или Китае, если они предназначены для схожих рынков сбыта.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

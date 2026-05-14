@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Chevrolet Aveo: как посмотреть температуру двигателя — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция, как узнать температуру двигателя на Chevrolet Aveo T250 и T300. Методы через бортовой компьютер, скрытое меню и сканер OBD2.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv61_CHxl/chevrolet-aveo-kak-posmotret-temperaturu-dvigatelya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Chevrolet Aveo: как посмотреть температуру двигателя">
+    <meta property="og:description" content="Подробная инструкция, как узнать температуру двигателя на Chevrolet Aveo T250 и T300. Методы через бортовой компьютер, скрытое меню и сканер OBD2.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Chevrolet Aveo: как посмотреть температуру двигателя</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как посмотреть температуру двигателя на Chevrolet Aveo</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#штатный-указатель-температуры-и-его-особенности">Штатный указатель температуры и его особенности</a></li><li><a href="#активация-инженерного-меню-на-приборной-панели">Активация инженерного меню на приборной панели</a></li><li><a href="#использование-диагностического-сканера-obd2">Использование диагностического сканера OBD2</a></li><li><a href="#нормальные-и-критические-показатели-для-aveo">Нормальные и критические показатели для Aveo</a></li><li><a href="#диагностика-проблем-с-перегревом">Диагностика проблем с перегревом</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана <em>Chevrolet Aveo</em> часто сталкиваются с ситуацией, когда стрелка штатного указателя на приборной панели ведет себя неинформативно. Она может замирать на определенной отметке или показывать усредненные значения, что затрудняет точную диагностику состояния системы охлаждения в реальном времени. Понимание того, <strong>как посмотреть температуру двигателя</strong>, становится критически важным при покупке подержанного автомобиля или при первых признаках перегрева.</p>
+
+<p>Точные данные необходимы для оценки эффективности работы термостата и вентилятора радиатора. В отличие от современных автомобилей с цифровыми дисплеями, где цифры выводятся на экран, в <em>Aveo</em> эта информация часто скрыта от глаз водителя в стандартном режиме работы. Однако существуют проверенные способы обойти это ограничение и получить доступ к реальным показаниям датчиков.</p>
+
+<p>В этой статье мы разберем все доступные методы: от активации инженерного меню на приборной панели до использования профессиональных сканеров. Вы научитесь интерпретировать показания и поймете, какие значения являются нормой для двигателей объемом 1.2, 1.4 и 1.6 литра. Это знание поможет предотвратить дорогостоящий ремонт головки блока цилиндров.</p>
+
+<h2 id="штатный-указатель-температуры-и-его-особенности">Штатный указатель температуры и его особенности</h2>
+
+<p>На автомобилях <em>Chevrolet Aveo</em> первого (T250) и второго (T300) поколений установлен аналоговый стрелочный указатель. Его главная особенность заключается в нелинейной шкале. Стрелка начинает подниматься от минимума только после прогрева антифриза до определенной температуры, обычно около 60-70 градусов Цельсия. До этого момента она остается лежать на нижнем упоре, создавая иллюзию, что двигатель холодный.</p>
+
+<p>Зона "нормальной" работы на шкале прибора искусственно растянута. Даже если реальная температура охлаждающей жидкости колеблется в диапазоне от 85 до 105 градусов, стрелка будет стоять ровно посередине. Это сделано производителем специально, чтобы не пугать водителя постоянными колебаниями цифры во время движения. <strong>Нормальная рабочая температура</strong> для этих моторов варьируется в зависимости от нагрузки и времени года.</p>
+
+<blockquote>⚠️ Внимание: Если стрелка указателя на приборной панели <em>Chevrolet Aveo</em> поднялась выше середины или, тем более, ушла в красную зону, это означает, что реальная температура двигателя уже достигла критических 110-115 градусов. В этот момент система уже работает в аварийном режиме.</blockquote>
+
+<p>Полагаться только на визуальный контроль стрелки при диагностике неисправностей нельзя. Для точного понимания процессов теплообмена необходимо использовать дополнительные инструменты. Особенно это актуально при проверке автомобиля перед покупкой, когда продавец может утверждать, что "термостат меняли недавно", а факты говорят об обратном.</p>
+
+<div class="poll-widget" id="poll-9a511457"><div class="poll-widget-question">📊 Как вы обычно контролируете температуру двигателя?</div><div class="poll-widget-option" data-poll="9a511457" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Только по стрелке на панели</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9a511457" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Через бортовой компьютер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9a511457" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">С помощью OBD2 сканера</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9a511457" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">По ощущениям (печка/шум вентилятора)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="активация-инженерного-меню-на-приборной-панели">Активация инженерного меню на приборной панели</h2>
+
+<p>Один из самых доступных способов увидеть точные цифры без покупки дополнительного оборудования — это вход в сервисное меню комбинации приборов. На многих моделях <em>Aveo</em>, оснащенных монохромным дисплеем бортового компьютера, скрыта функция отображения технических параметров. Для активации этого режима не требуется разборка панели, достаточно выполнить определенную последовательность действий с кнопками.</p>
+
+<p>Процедура входа может отличаться в зависимости от года выпуска и типа установленной приборной панели. Чаще всего используется метод с зажатием кнопки сброса суточного пробега. На некоторых версиях необходимо одновременно зажать кнопку настройки времени и кнопку сброса, а затем включить зажигание. Экран должен моргнуть или изменить индикацию, перейдя в режим тестирования.</p>
+
+<p>После входа в режим диагностики экран начнет показывать различные сегменты дисплея, после чего можно листать параметры. Нас интересует показатель, часто обозначаемый как <code>COOLANT</code> или просто цифровое значение в градусах. Перелистывание осуществляется короткими нажатиями на кнопку сброса пробега. Найдя нужный параметр, вы сможете наблюдать за нагревом в реальном времени.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка режима диагностики</h4><label class="check-item"><input type="checkbox"><span>Выключить зажигание полностью</span></label><label class="check-item"><input type="checkbox"><span>Зажать кнопку сброса пробега</span></label><label class="check-item"><input type="checkbox"><span>Включить зажигание, не отпуская кнопку</span></label><label class="check-item"><input type="checkbox"><span>Дождаться появления символов на экране</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p> В таком случае единственным вариантом остается внешний диагностический прибор. Также стоит быть осторожным при навигации по меню, чтобы случайно не сбросить адаптации или не изменить настройки часов, если такая возможность предусмотрена программным обеспечением.</p>
+
+<h2 id="использование-диагностического-сканера-obd2">Использование диагностического сканера OBD2</h2>
+
+<p>Наиболее точным и универсальным методом, позволяющим посмотреть температуру на любом <em>Aveo</em>, является подключение сканера к диагностическому разъему. Разъем OBD2 в этом автомобиле расположен под панелью приборов, обычно слева от рулевой колонки или в нижней части центральной консоли, закрытый пластиковой заглушкой. Для подключения подойдет любой адаптер ELM327 и смартфон с соответствующим ПО.</p>
+
+<p>Популярные приложения, такие как <em>Torque Pro</em>, <em>OpenDiag</em> или <em>Car Scanner</em>, позволяют выводить на экран смартфона данные с датчиков в реальном времени. Вас интересует параметр <strong>Engine Coolant Temperature (ECT)</strong>. Приложение считывает информацию напрямую с электронного блока управления (ЭБУ), минуя приборную панель, что гарантирует высокую точность показаний.</p>
+
+<p>Преимущество этого метода заключается в возможности построения графика нагрева. Вы можете запустить двигатель, прогреть его и увидеть, как быстро растет температура, в какой момент открывается термостат и когда включается вентилятор. Это незаменимый инструмент для поиска неисправностей в системе охлаждения, которые невозможно обнаружить по стрелке на панели.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Нормальное значение</th>
+<th>Критическое значение</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Холодный двигатель</td>
+<td>15-25 °C</td>
+<td>-</td>
+<td>Прогрев</td>
+</tr>
+<tr>
+<td>Рабочая температура</td>
+<td>87-95 °C</td>
+<td>-</td>
+<td>Норма</td>
+</tr>
+<tr>
+<td>Открытие термостата</td>
+<td>85-88 °C</td>
+<td>-</td>
+<td>Циркуляция</td>
+</tr>
+<tr>
+<td>Включение вентилятора</td>
+<td>96-99 °C</td>
+<td>-</td>
+<td>Охлаждение</td>
+</tr>
+<tr>
+<td>Перегрев</td>
+<td>-</td>
+<td>>105 °C</td>
+<td>Остановка</td>
+</tr>
+</tbody>
+</table>
+
+<p>При использовании сканера обратите внимание на поведение датчика при резком нажатии на газ. Если температура резко скачет, это может свидетельствовать о попадании воздуха в систему или неисправности самого датчика. Стабильность показаний — ключевой признак исправности системы.</p>
+
+<details class="faq-item"><summary>Какой адаптер выбрать для Aveo?</summary><div class="faq-answer"><p>Для Chevrolet Aveo подходят любые адаптеры ELM327 версии 1.5. Версии 2.1 могут работать нестабильно с некоторыми блоками управления GM. Рекомендуется использовать Bluetooth или Wi-Fi модули для подключения к смартфону.</p></div></details>
+
+<h2 id="нормальные-и-критические-показатели-для-aveo">Нормальные и критические показатели для Aveo</h2>
+
+<p>Двигатели, устанавливаемые на <em>Chevrolet Aveo</em> (серии B12D1, F14D3, F16D3, A16DMS), имеют свои температурные особенности. Оптимальным режимом работы для них считается диапазон от 87 до 95 градусов Цельсия. Именно в этом промежутке обеспечивается наилучшее смесеобразование и минимальный износ деталей цилиндро-поршневой группы.</p>
+
+<p>Система охлаждения настроена так, что термостат начинает открываться при температуре около 85 градусов, обеспечивая циркуляцию жидкости по большому кругу. Включение электрического вентилятора радиатора происходит позже, обычно при достижении 96-99 градусов, и выключение — при снижении до 92-94 градусов. В пробках или при включенном кондиционере температура может кратковременно подниматься до 100-102 градусов, что не является критичным.</p>
+
+<blockquote>⚠️ Внимание: Показания выше 105 градусов на прогретом двигателе <em>Aveo</em> свидетельствуют о неисправности. Дальнейшая эксплуатация автомобиля при таких температурах может привести к заклиниванию поршней или деформации головки блока цилиндров.</blockquote>
+
+<p>Зимой, в сильные морозы, температура может опускаться до 80-82 градусов, особенно на трассе при высокой скорости. Это допустимо, но может повлиять на расход топлива и динамику разгона. Если вы видите, что двигатель не может прогреться выше 70 градусов даже в городе, скорее всего, термостат "завис" в открытом положении и требует замены.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Установите виджет температуры на главный экран смартфона при подключенном сканере — так вы сможете следить за параметрами двигателя, не отвлекаясь от дороги и не держа телефон в руках.</p></div>
+
+<h2 id="диагностика-проблем-с-перегревом">Диагностика проблем с перегревом</h2>
+
+<p>Если вы заметили, что температура двигателя <em>Chevrolet Aveo</em> регулярно превышает норму, необходимо провести комплексную проверку. Первым делом следует убедиться в уровне охлаждающей жидкости в расширительном бачке. Низкий уровень антифриза приводит к образованию воздушных пробок, которые искажают показания датчиков и нарушают циркуляцию.</p>
+
+<p>Частой причиной перегрева является загрязнение радиатора охлаждения снаружи (пух, грязь, насекомые) или внутри (накипь, продукты коррозии). Также стоит проверить работу вентилятора: он должен включаться четко при достижении определенной температуры. Если вентилятор молчит, а температура растет, проблема может быть в реле, предохранителе или самом моторчике вентилятора.</p>
+
+<p>Еще одной скрытой проблемой может быть пробой прокладки головки блока цилиндров. В этом случае в систему охлаждения попадают выхлопные газы, создавая давление и нарушая теплоотвод. Признаками такого состояния являются белый дым из выхлопной трубы, бурление в расширном бачке и быстрое повышение температуры сразу после запуска двигателя.</p>
+
+<p>Для точной диагностики используйте метод исключения. Проверьте термостат (на ощупь нижний патрубок радиатора должен быть холодным до момента открытия), проверьте крышку радиатора на предмет работы клапанов, убедитесь в чистоте системы. Только комплексный подход позволит выявить истинную причину аномалий в работе системы охлаждения.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему на Chevrolet Aveo нет цифрового индикатора температуры?</summary>
+<p>Инженеры <em>General Motors</em> при разработке <em>Aveo</em> ориентировались на бюджетный сегмент рынка. Отсутствие цифрового дисплея и наличие усредненной стрелки призвано снизить стоимость автомобиля и упростить восприятие информации водителем, избавляя его от лишних переживаний по поводу колебаний температуры в рабочем диапазоне.</p>
+</details>
+
+<details>
+<summary>Можно ли ездить, если стрелка температуры стоит на минимуме?</summary>
+<p>Ездить можно, но не рекомендуется давать высокую нагрузку на двигатель, пока он не прогреется. Если стрелка не поднимается даже после 15-20 минут активной езды по городу, это указывает на неисправность термостата (он постоянно открыт). Длительная эксплуатация в таком режиме приведет к повышенному расходу топлива и износу двигателя.</p>
+</details>
+
+<details>
+<summary>Где находится датчик температуры на Aveo T250 и T300?</summary>
+<p>На большинстве двигателей <em>Aveo</em> датчик температуры охлаждающей жидкости вкручен в корпус термостата или в головку блока цилиндров рядом с ним. Он имеет характерный разъем с двумя или четырьмя контактами (в зависимости от года выпуска и типа ЭБУ) и расположен в верхней части двигателя, куда подходят патрубки системы охлаждения.</p>
+</details>
+
+<details>
+<summary>Какую жидкость заливать в систему охлаждения Aveo?</summary>
+<p>Для <em>Chevrolet Aveo</em> рекомендуется использовать антифризы класса G12+ или G12++, обычно красного или розового цвета. Смешивать их с зелеными антифризами класса G11 нежелательно, так как это может привести к выпадению осадка и ухудшению теплопроводности жидкости. Лучше всего следовать рекомендациям, указанным в сервисной книжке.</p>
+</details>
+
+<details>
+<summary>Что делать, если температура резко подскочила в пробке?</summary>
+<p>Немедленно включите печку на максимальную температуру и максимальный обдув. Это поможет отвести часть тепла от двигателя через радиатор отопителя. Если через минуту температура не начала падать, остановитесь, откройте капот (осторожно, может быть горячо) и дайте двигателю поработать на холостых оборотах. Глушить сразу не стоит, чтобы избежать теплового удара, если только не наблюдается кипение антифриза.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#штатный-указатель-температуры-и-его-особенности">Штатный указатель температуры и его особенности</a></li><li><a href="#активация-инженерного-меню-на-приборной-панели">Активация инженерного меню на приборной панели</a></li><li><a href="#использование-диагностического-сканера-obd2">Использование диагностического сканера OBD2</a></li><li><a href="#нормальные-и-критические-показатели-для-aveo">Нормальные и критические показатели для Aveo</a></li><li><a href="#диагностика-проблем-с-перегревом">Диагностика проблем с перегревом</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

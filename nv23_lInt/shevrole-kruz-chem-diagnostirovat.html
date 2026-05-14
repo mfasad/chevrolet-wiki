@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Диагностика Chevrolet Cruze: чем считать ошибки и как — Chevrolet-Wiki</title>
+    <meta name="description" content="Чем диагностировать Шевроле Круз: обзор сканеров, адаптеров ELM327, программ для ПК и смартфона. Разбор кодов ошибок, проверка ABS и подушек.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv23_lInt/shevrole-kruz-chem-diagnostirovat.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Диагностика Chevrolet Cruze: чем считать ошибки и как">
+    <meta property="og:description" content="Чем диагностировать Шевроле Круз: обзор сканеров, адаптеров ELM327, программ для ПК и смартфона. Разбор кодов ошибок, проверка ABS и подушек.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Диагностика Chevrolet Cruze: чем считать ошибки и как</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Диагностика Шевроле Круз: инструменты и методы проверки</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#стандартный-разъем-obd-ii-и-его-расположение">Стандартный разъем OBD-II и его расположение</a></li><li><a href="#мобильные-приложения-и-bluetooth-адаптеры">Мобильные приложения и Bluetooth-адаптеры</a></li><li><a href="#программное-обеспечение-для-пк-scanmatik-и-другие">Программное обеспечение для ПК: Scanmatik и другие</a></li><li><a href="#профессиональные-сканеры-autel-launch-и-дилерские-инструменты">Профессиональные сканеры: Autel, Launch и дилерские инструменты</a></li><li><a href="#диагностика-конкретных-систем-двигатель-abs-акпп">Диагностика конкретных систем: Двигатель, ABS, АКПП</a></li><li><a href="#расшифровка-популярных-кодов-ошибок-и-действия">Расшифровка популярных кодов ошибок и действия</a></li><li><a href="#частые-вопросы-владельцев-faq">Частые вопросы владельцев (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана или хэтчбека часто сталкиваются с необходимостью проверить техническое состояние своего автомобиля <em>Chevrolet Cruze</em>. Когда на приборной панели загорается индикатор <strong>Check Engine</strong>, паниковать рано, но и игнорировать сигнал нельзя. Современные системы управления двигателем способны самостоятельно отслеживать сотни параметров, но для их расшифровки требуется специальное оборудование.</p>
+
+<p>Самостоятельная <strong>диагностика</strong> позволяет сэкономить время и деньги на посещении сервиса для первичного осмотра. Зная, чем именно считать ошибки, вы сможете понять серьезность проблемы: требуется ли немедленная остановка или можно доехать до гаража. В этой статье мы разберем все доступные методы, от простых Bluetooth-адаптеров до профессиональных сканеров.</p>
+
+<p>Важно понимать, что <em>Chevrolet Cruze</em> первого и второго поколения (J300) имеет свои особенности в протоколах обмена данными. Для двигателей объемом 1.6 и 1.8 литра, а также для турбированных версий 1.4 Turbo, могут потребоваться разные подходы к чтению блоков управления. Ниже мы подробно рассмотрим инструменты, которые помогут вам стать ближе к своему автомобилю.</p>
+
+<h2 id="стандартный-разъем-obd-ii-и-его-расположение">Стандартный разъем OBD-II и его расположение</h2>
+
+<p>Прежде чем подключать любое устройство, необходимо найти диагностический порт. На <em>Chevrolet Cruze</em> разъем <strong>OBD-II</strong> (On-Board Diagnostics) стандартизирован, но его расположение может варьироваться в зависимости от года выпуска и рынка сбыта. Чаще всего он находится в нижней части торпедо со стороны водителя, рядом с блоком предохранителей.</p>
+
+<p>В некоторых модификациях доступ к порту может быть слегка затруднен ковровым покрытием или пластиковой накладкой. Для подключения адаптера вам не понадобятся инструменты, однако визуальный осмотр разъема на предмет окисления контактов будет не лишним. Именно через этот интерфейс происходит обмен данными между ЭБУ (электронным блоком управления) и внешним сканером.</p>
+
+<blockquote>⚠️ Внимание: Никогда не оставляйте подключенный дешевый адаптер в разъеме на длительное время, когда автомобиль стоит без движения. Некоторые модели могут потреблять ток и разрядить аккумулятор за несколько дней простоя.</blockquote>
+
+<p>Протокол связи, используемый в <em>Cruze</em>, обычно соответствует стандарту <code>ISO 15765-4 (CAN)</code> или более старым <code>KWP2000</code> для ранних версий. Понимание того, какой протокол поддерживает ваш адаптер, критически важно для успешного соединения. Если сканер не видит автомобиль, проблема часто кроется именно в несовместимости протоколов или плохом контакте в порту.</p>
+
+<h2 id="мобильные-приложения-и-bluetooth-адаптеры">Мобильные приложения и Bluetooth-адаптеры</h2>
+
+<p>Самый доступный способ провести <strong>диагностику</strong> — использовать смартфон и недорогой Bluetooth-сканер. Рынок переполнен адаптерами на базе чипа <em>ELM327</em>, которые стоят весьма дешево. Для их работы потребуются специальные приложения, устанавливаемые на Android или iOS.</p>
+
+<p>Одним из самых популярных и функциональных приложений является <em>OpenDiag</em> или <em>Torque Pro</em>. Эти программы позволяют не только считывать коды ошибок, но и наблюдать за параметрами работы двигателя в реальном времени. Вы сможете отслеживать положение дроссельной заслонки, температуру охлаждающей жидкости и лямбда-зондов.</p>
+
+<ul>
+<li>📱 <strong>OpenDiag Mobile</strong> — отличное решение для автомобилей постсоветского пространства, имеет русифицированный интерфейс и поддержку специфических блоков <em>Chevrolet</em>.</li>
+<li>🔧 <strong>Car Scanner ELM OBD2</strong> — универсальное приложение с возможностью настройки приборной панели и подробными графиками.</li>
+<li>💻 <strong>Torque Pro</strong> — мощный инструмент для энтузиастов, позволяющий создавать собственные дашборды и выводить данные на внешний экран.</li>
+</ul>
+
+<p>При выборе адаптера стоит отдать предпочтение версиям с прошивкой 1.5, так как они стабильнее работают с современными автомобилями. Дешевые копии версии 1.2 часто не могут корректно подключиться к блоку управления <em>Cruze</em>, особенно если речь идет о чтении ошибок в ABS или подушках безопасности.</p>
+
+<div class="poll-widget" id="poll-64993a10"><div class="poll-widget-question">📊 Какой адаптер вы планируете использовать?</div><div class="poll-widget-option" data-poll="64993a10" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">ELM327 Bluetooth (Китай)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">ELM327 Wi-Fi (Качественный)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">OBDLink MX+</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный сканер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Пока не знаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="программное-обеспечение-для-пк-scanmatik-и-другие">Программное обеспечение для ПК: Scanmatik и другие</h2>
+
+<p>Для более глубокого анализа, который не под силу мобильным приложениям, владельцы <em>Chevrolet Cruze</em> часто используют ноутбуки. Связка кабель <strong>KL-Line</strong> или качественный адаптер <em>ELM327 USB</em> вместе с мощным ПО на базе Windows открывает доступ к скрытым функциям автомобиля.</p>
+
+<p>Одной из самых авторитетных программ в русскоязычном сегменте является <em>Scanmatik 2</em>. Она позволяет проводить полноценную диагностику, адаптировать узлы и даже выполнять некоторые сервисные функции. Интерфейс программы может показаться сложным новичку, но наличие готовых профилей для <em>Cruze</em> значительно упрощает задачу.</p>
+
+<p>Также стоит упомянуть программу <em>Chevrolet Explorer</em>, которая заточена specifically под автомобили концерна GM. Она умеет читать не только двигатель, но и коробку передач, блок ABS и климат-контроль. Для работы с этим софтом часто требуется более серьезный интерфейс, чем простой "свисток" с AliExpress.</p>
+
+<details class="faq-item"><summary>Почему ноутбук лучше смартфона?</summary><div class="faq-answer"><p>Ноутбук обладает большей вычислительной мощностью, что позволяет строить сложные графики в реальном времени без задержек. Кроме того, экран большего размера удобнее для детального анализа параметров, а наличие физических портов USB обеспечивает более стабное соединение с диагностическим кабелем.</p></div></details>
+
+<p>Использование ПК особенно актуально при поиске плавающих неисправностей, когда ошибку нужно "поймать" в движении. Стационарная установка позволяет закрепить ноутбук в салоне и записывать лог параметров на протяжении долгой поездки для последующего анализа.</p>
+
+<h2 id="профессиональные-сканеры-autel-launch-и-дилерские-инструменты">Профессиональные сканеры: Autel, Launch и дилерские инструменты</h2>
+
+<p>Если вы планируете заниматься ремонтом серьезно или владеете несколькими автомобилями, стоит рассмотреть покупку мультимарочного сканера. Устройства брендов <strong>Autel</strong>, <em>Launch</em> или <em>ThinkDiag</em> представляют собой полноценные планшеты с мощным ПО.</p>
+
+<p>Главное преимущество таких гаджетов — возможность не просто читать ошибки, но и проводить <strong>активную диагностику</strong>. Вы можете программно включать и выключать вентиляторы, проверять работу форсунок, проводить тесты исполнительных механизмов прямо с экрана устройства. Это незаменимо при поиске обрывов цепи.</p>
+
+<table>
+<thead>
+<tr>
+<th>Модель сканера</th>
+<th>Поддержка систем</th>
+<th>Функционал</th>
+<th>Цена (ориент.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autel MaxiCOM MK808</td>
+<td>Все системы</td>
+<td>Кодирование, адаптации</td>
+<td>Высокая</td>
+</tr>
+<tr>
+<td>ThinkDiag 2</td>
+<td>Зависит от ПО</td>
+<td>Полная диагностика</td>
+<td>Средняя</td>
+</tr>
+<tr>
+<td>Launch X431</td>
+<td>Все системы</td>
+<td>Расширенные тесты</td>
+<td>Высокая</td>
+</tr>
+<tr>
+<td>ELM327 (Китай)</td>
+<td>Двигатель (часто)</td>
+<td>Чтение кодов</td>
+<td>Низкая</td>
+</tr>
+</tbody>
+</table>
+
+<p>Дилерские сканеры уровня <em>MDI</em> (Multiple Diagnostic Interface) обеспечивают доступ к заводским настройкам, но их стоимость и сложность лицензирования делают их уделом профессиональных СТО. Для домашнего мастера вполне достаточно качественного мультимарочника среднего сегмента.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Профессиональный сканер окупается, если вы планируете диагностировать не только свой автомобиль, но и помогать друзьям или заниматься ремонтом полупрофессионально.</p></div>
+
+<h2 id="диагностика-конкретных-систем-двигатель-abs-акпп">Диагностика конкретных систем: Двигатель, ABS, АКПП</h2>
+
+<p>При сканировании <em>Chevrolet Cruze</em> важно проверять не только двигатель. Часто проблемы с динамикой или расходом топлива кроются в смежных системах. Блок управления <strong>ABS</strong> (антиблокировочная система) хранит историю ошибок датчиков скорости колес, что влияет и на работу ESP.</p>
+
+<p>Автоматическая коробка передач (особенно <em>6T30/6T40</em>) также имеет свой блок управления, который может сообщать о проблемах с соленоидами или температурой масла. Игнорирование этих ошибок может привести к дорогостоящему ремонту трансмиссии. В двигателях 1.6 часто встречаются ошибки по датчику положения распредвала, которые легко считываются любым сканером.</p>
+
+<ul>
+<li>🛑 <strong>ABS/ESP</strong>: Проверьте целостность проводов к датчикам колес, часто окисляется фишка.</li>
+<li>⚙️ <strong>АКПП</strong>: Обратите внимание на температуру масла и давление в магистрали.</li>
+<li>🔥 <strong>Двигатель</strong>: Следите за коррекциями топливной смеси и углом опережения зажигания.</li>
+</ul>
+
+<p>Особое внимание стоит уделить системе охлаждения. <em>Cruze</em> известен своей чувствительностью к перегреву, и электронный блок управления может фиксировать кратковременные скачки температуры, которые не всегда сразу видны на приборной панели, но сохраняются в памяти ошибок.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист перед диагностикой</h4><label class="check-item"><input type="checkbox"><span>Проверить заряд аккумулятора</span></label><label class="check-item"><input type="checkbox"><span>Найти разъем OBD-II</span></label><label class="check-item"><input type="checkbox"><span>Включить зажигание (не запуская мотор)</span></label><label class="check-item"><input type="checkbox"><span>Запустить приложение или программу</span></label><label class="check-item"><input type="checkbox"><span>Считать и записать коды ошибок</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="расшифровка-популярных-кодов-ошибок-и-действия">Расшифровка популярных кодов ошибок и действия</h2>
+
+<p>После считывания данных вы получите набор кодов, например, <code>P0300</code> или <code>P0171</code>. Понимание их значения — ключ к решению проблемы. Код <strong>P0300</strong> указывает на множественные пропуски зажигания, что может быть вызвано свечами, катушками или форсунками.</p>
+
+<p>Ошибка <code>P0171</code> свидетельствует о слишком бедной смеси. В случае с <em>Cruze</em> это часто связано с подсосом неучтенного воздуха через трещины во впускном коллекторе или патрубки вентиляции картера. Также стоит проверить давление топливного насоса.</p>
+
+<blockquote>⚠️ Внимание: Не спешите сбрасывать ошибки сразу после их считывания. Сначала запишите их или сфотографируйте. После ремонта нужно будет проверить, исчезла ли ошибка и не возвращается ли она снова.</blockquote>
+
+<p>Для двигателей 1.4 Turbo характерны ошибки, связанные с системой рециркуляции выхлопных газов (EGR) и турбокомпрессором. Здесь диагностика должна быть комплексной: проверка вакуумных магистралей и состояния самой турбины на предмет люфтов.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При поиске подсоса воздуха используйте очиститель карбюратора. Побрызгайте на подозрительные места работающего двигателя — если обороты изменятся, значит, там идет подсос.</p></div>
+
+<h2 id="частые-вопросы-владельцев-faq">Частые вопросы владельцев (FAQ)</h2>
+
+<details>
+<summary>Можно ли ездить с горящим Check Engine на Chevrolet Cruze?</summary>
+<p>Если индикатор горит ровным светом и поведение машины не изменилось, доехать до сервиса можно. Если же лампочка мигает или чувствуется потеря мощности, движение лучше прекратить, так как это может привести к разрушению катализатора.</p>
+</details>
+
+<details>
+<summary>Почему сканер не видит автомобиль?</summary>
+<p>Проверьте, включено ли зажигание. Убедитесь, что адаптер поддерживает протокол CAN, который используется в Крузе. Также проблема может быть в перегоревшем предохранителе, питающем диагностический порт.</p>
+</details>
+
+<details>
+<summary>Нужно ли сбрасывать адаптации после чистки дросселя?</summary>
+<p>Да, на <em>Chevrolet Cruze</em> после чистки дроссельной заслонки желательно выполнить процедуру адаптации через сканер или специальным способом с помощью педали газа, чтобы обороты холостого хода стабилизировались.</p>
+</details>
+
+<details>
+<summary>Какой адаптер лучше для Android: Wi-Fi или Bluetooth?</summary>
+<p>Bluetooth потребляет меньше энергии и проще в подключении. Wi-Fi адаптеры часто работают стабильнее на старых телефонах, но быстрее сажают батарею смартфона. Для <em>Cruze</em> разница в скорости работы минимальна.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#стандартный-разъем-obd-ii-и-его-расположение">Стандартный разъем OBD-II и его расположение</a></li><li><a href="#мобильные-приложения-и-bluetooth-адаптеры">Мобильные приложения и Bluetooth-адаптеры</a></li><li><a href="#программное-обеспечение-для-пк-scanmatik-и-другие">Программное обеспечение для ПК: Scanmatik и другие</a></li><li><a href="#профессиональные-сканеры-autel-launch-и-дилерские-инструменты">Профессиональные сканеры: Autel, Launch и дилерские инструменты</a></li><li><a href="#диагностика-конкретных-систем-двигатель-abs-акпп">Диагностика конкретных систем: Двигатель, ABS, АКПП</a></li><li><a href="#расшифровка-популярных-кодов-ошибок-и-действия">Расшифровка популярных кодов ошибок и действия</a></li><li><a href="#частые-вопросы-владельцев-faq">Частые вопросы владельцев (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Проверка контроллера ЭБУ Шевроле Нива: признаки и методы — Chevrolet-Wiki</title>
+    <meta name="description" content="Как проверить контроллер Шевроле Нива своими руками. Диагностика ЭБУ BOSCH M7.9.7, распиновка, коды ошибок и признаки неисправности.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv56_pPTd/kak-proverit-kontroller-shevrole-niva.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Проверка контроллера ЭБУ Шевроле Нива: признаки и методы">
+    <meta property="og:description" content="Как проверить контроллер Шевроле Нива своими руками. Диагностика ЭБУ BOSCH M7.9.7, распиновка, коды ошибок и признаки неисправности.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Проверка контроллера ЭБУ Шевроле Нива: признаки и методы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как проверить контроллер Шевроле Нива: полная диагностика ЭБУ</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#основные-признаки-неисправности-эбу">Основные признаки неисправности ЭБУ</a></li><li><a href="#визуальный-осмотр-и-проверка-питания">Визуальный осмотр и проверка питания</a></li><li><a href="#диагностика-сканером-obd-ii">Диагностика сканером OBD-II</a></li><li><a href="#проверка-выходных-сигналов-и-цепей-управления">Проверка выходных сигналов и цепей управления</a></li><li><a href="#таблица-кодов-ошибок-и-их-значение">Таблица кодов ошибок и их значение</a></li><li><a href="#процедура-замены-и-привязки-контроллера">Процедура замены и привязки контроллера</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+<p>Современный автомобиль <em>Chevrolet Niva</em> представляет собой сложный технический комплекс, где управление всеми ключевыми процессами двигателя берет на себя электронный блок управления (ЭБУ). Водители часто называют этот узел просто «контроллер» или «мозги». Когда двигатель начинает работать нестабильно, троить или глохнуть, первым делом возникает подозрение именно на этот элемент. Однако прежде чем покупать дорогостоящую замену, необходимо провести грамотную диагностику, чтобы исключить другие причины неисправности.</p>
+<p>Проверка контроллера Шевроле Нива — это процесс, требующий внимательности и базового понимания принципов работы электрооборудования. Ошибочная диагностика может привести к замене исправной детали, что лишь увеличит расходы на ремонт. В этой статье мы разберем основные симптомы выхода из строя ЭБУ, методы визуального осмотра, способы аппаратной проверки и расшифровку кодов ошибок.</p>
+
+<h2 id="основные-признаки-неисправности-эбу">Основные признаки неисправности ЭБУ</h2>
+<p>Первым сигналом о том, что <strong>контроллер ЭБУ</strong> работает некорректно, является загорание индикатора <code>Check Engine</code> на приборной панели. Однако лампа может загораться и при проблемах с датчиками, поэтому важно обращать внимание на поведение самого автомобиля. Если двигатель теряет тягу, появляются провалы при нажатии на педаль газа или мотор работает на высоких оборотах холостого хода без видимой причины, это может указывать на сбой в программном обеспечении или «железе» блока управления.</p>
+<p>Более серьезные повреждения, такие как пробой драйверов форсунок или катушек зажигания, часто сопровождаются физическими симптомами. Вы можете почувствовать запах гари в салоне или под капотом, заметить дым, идущий из-под торпеды со стороны пассажира. В некоторых случаях контроллер перестает подавать импульсы на бензонасос, и стартер крутит впустую, хотя искра и топливо в системе есть.</p>
+<blockquote>⚠️ <strong>Внимание:</strong> Если вы чувствуете запах горелой проводки или пластика, немедленно заглушите двигатель и отключите клемму аккумулятора. Продолжение эксплуатации может привести к возгоранию автомобиля.</blockquote>
+<p>Также стоит обратить внимание на работу вентилятора охлаждения радиатора. На исправной Шевроле Нива с контроллером <em>BOSCH M7.9.7</em> или <em>Siemens</em> включение вентилятора происходит строго по температуре. Если вентилятор гудит постоянно при включенном зажигании или, наоборот, не включается при кипении антифриза, это прямой признак неисправности выходных цепей контроллера.</p>
+
+<h2 id="визуальный-осмотр-и-проверка-питания">Визуальный осмотр и проверка питания</h2>
+<p>Диагностика начинается с визуального осмотра. Контроллер в Chevrolet Niva обычно расположен за бардачком (в торпеде) или под капотом, в зависимости от года выпуска и комплектации. Вам необходимо аккуратно извлечь блок, открутив крепежные болты. При осмотре платы обращайте внимание на состояние разъемов: окисление контактов часто приводит к появлению «плавающих» ошибок, которые сложно отловить сканером.</p>
+<p>Особое внимание уделите состоянию самой электронной платы. Ищите следы коррозии, вздувшиеся конденсаторы или почерневшие дорожки. Часто внутрь блока попадает влага через неплотно закрытый лючок или микротрещины в корпусе. Даже небольшое количество воды способно вызвать короткое замыкание и выжечь дорожки питания.</p>
+<ul>
+ <li>🔍 Осмотрите разъемы на наличие окислов и зеленоватого налета.</li>
+ <li>🔍 Проверьте целостность предохранителей, отвечающих за питание ЭБУ (обычно F1, F2, F3 в блоке под капотом).</li>
+ <li>🔍 Оцените состояние жгута проводки на предмет перетертостей и оплавлений.</li>
+</ul>
+<p>Если визуально дефектов не обнаружено, переходите к замерам напряжения. Для этого потребуется мультиметр. На разъеме контроллера должно присутствовать стабильное напряжение бортовой сети (около 12-14 Вольт при работающем двигателе) на соответствующих контактах. Также проверяется «масса» — контакт между корпусом ЭБУ и кузовом автомобиля должен быть идеальным, с минимальным сопротивлением.</p>
+
+<h2 id="диагностика-сканером-obd-ii">Диагностика сканером OBD-II</h2>
+<p>Наиболее информативным способом проверки является компьютерная диагностика через разъем <code>OBD-II</code>, который находится под панелью приборов справа от рулевой колонки. Подключив сканер или адаптер <em>ELM327</em> с ноутбуком/смартфоном, вы получаете доступ к самодиагностике системы. Контроллер хранит в памяти коды ошибок, которые указывают на конкретный узел, вызвавший сбой.</p>
+<p>Однако стоит понимать разницу между ошибкой датчика и ошибкой контроллера. Если сканер показывает ошибку «Обрыв цепи датчика кислорода», это не значит, что сгорел ЭБУ. Скорее всего, неисправен сам датчик или проводка к нему. Тревогу стоит бить, если сканер показывает ошибки внутренних цепей процессора, ошибки контрольной суммы (Checksum) или ошибки EEPROM.</p>
+<div class="poll-widget" id="poll-92e64127"><div class="poll-widget-question">📊 Сталкивались ли вы с ошибками ЭБУ на Ниве?</div><div class="poll-widget-option" data-poll="92e64127" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, менял блок/Да, чинил проводку/Нет, только датчики/Пока только читаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+<p>Важным параметром для проверки является возможность чтения и записи данных в реальном времени. Вы можете наблюдать за показаниями датчиков (ДМРВ, ДПДЗ, ДАД) и сравнивать их с эталонными значениями. Резкие скачки напряжения или невозможность считать показания с исправного датчика могут свидетельствовать о повреждении входных цепей самого «мозга».</p>
+
+<h2 id="проверка-выходных-сигналов-и-цепей-управления">Проверка выходных сигналов и цепей управления</h2>
+<p>Более глубокая проверка требует анализа выходных сигналов контроллера. ЭБУ управляет форсунками, катушками зажигания, клапаном холостого хода и адсорбером. Для проверки используется осциллограф или мотор-тестер, но в гаражных условиях можно обойтись и более простыми методами. Например, можно проверить наличие импульсов на разъеме форсунок при прокрутке стартером.</p>
+<p>Если контроллер не подает напряжение на бензонасос при включении зажигания (характерный гул насоса на 2-3 секунды), это может быть признаком неисправности реле внутри ЭБУ или обрыва цепи управления. В блоках <em>BOSCH</em> часто выходит из строя главное реле, которое встроено в плату или находится в непосредственной близости.</p>
+<details class="faq-item"><summary>Как проверить форсунки без стенда?</summary><div class="faq-answer"><p>Можно использовать простую контрольную лампочку. Подключите её к разъему форсунки. При прокрутке стартером лампа должна кратковременно вспыхивать в такт работе двигателя. Если лампа горит постоянно или не горит вовсе — проблема в цепи управления ЭБУ.</p></div></details>
+<p>Отдельного внимания заслуживает проверка цепи зажигания. Если искра пропала на всех цилиндрах сразу, а датчик положения коленвала (ДПКВ) исправен, высока вероятность пробоя модуля зажигания внутри контроллера или выхода из строя драйвера. В таких случаях замена ЭБУ часто является единственным решением, так как ремонт драйверов в домашних условиях практически невозможен.</p>
+
+<h2 id="таблица-кодов-ошибок-и-их-значение">Таблица кодов ошибок и их значение</h2>
+<p>При диагностике вы столкнетесь с четырехзначными кодами ошибок. Ниже приведена таблица с наиболее частыми кодами, которые могут указывать как на проблемы с периферией, так и на неисправность самого контроллера Шевроле Нива.</p>
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание</th>
+<th>Возможная причина (ЭБУ)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0601</td>
+<td>Неверная контрольная сумма ПЗУ</td>
+<td>Повреждение памяти или прошивки контроллера</td>
+</tr>
+<tr>
+<td>P0603</td>
+<td>Ошибка EEPROM</td>
+<td>Неисправность внутренней памяти ЭБУ</td>
+</tr>
+<tr>
+<td>P0604</td>
+<td>Ошибка ОЗУ (RAM)</td>
+<td>Сбой процессора или памяти блока управления</td>
+</tr>
+<tr>
+<td>P0606</td>
+<td>Неисправность процессора</td>
+<td>Критический сбой процессора ЭБУ, требуется замена</td>
+</tr>
+<tr>
+<td>P1602</td>
+<td>Прерывание напряжения бортовой сети</td>
+<td>Проблемы с питанием или внутренним стабилизатором ЭБУ</td>
+</tr>
+</tbody>
+</table>
+<p>Наличие кодов серии <code>P06xx</code> практически всегда указывает на то, что проблема кроется внутри самого блока управления. Если после сброса ошибок эти коды появляются снова немедленно, без воздействия на внешние датчики, то <mark>вероятность неисправности контроллера составляет 95%</mark>. В таких случаях ремонт часто нецелесообразен, проще заменить узел на новый или исправный б/у с последующей привязкой иммобилайзера.</p>
+
+<h2 id="процедура-замены-и-привязки-контроллера">Процедура замены и привязки контроллера</h2>
+<p>Если проверка подтвердила смерть контроллера, его необходимо заменить. Важно знать, что просто «воткнуть» новый блок не получится из-за системы иммобилайзера <em>APS</em>. Двигатель будет запускаться и глохнуть через несколько секунд. Вам потребуется процедура согласования нового ЭБУ с иммобилайзером и блоком комфорта.</p>
+<div class="checklist-block"><h4>☑️ Алгоритм замены ЭБУ</h4><label class="check-item"><input type="checkbox"><span>Снять клемму АКБ</span></label><label class="check-item"><input type="checkbox"><span>Демонтировать старый ЭБУ</span></label><label class="check-item"><input type="checkbox"><span>Установить новый блок</span></label><label class="check-item"><input type="checkbox"><span>Подключить сканер для привязки</span></label><label class="check-item"><input type="checkbox"><span>Прописать ключи</span></label><label class="check-item"><input type="checkbox"><span>Проверить работу двигателя</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 6</div></div>
+<p>Для привязки используется специализированное программное обеспечение, например, <em>OpenBox</em> или дилерский сканер <em>GM-12</em>. Процесс involves clearing the immobilizer flags and writing new keys data. Если у вас нет опыта работы с софтом для чип-тюнинга, лучше обратиться к специалистам, так как есть риск «запереть» блок или иммобилайзер.</p>
+<p>После установки нового контроллера необходимо выполнить процедуру обучения дроссельной заслонки (если она электронная) и адаптацию состава смеси. Для этого двигатель прогревают до рабочей температуры, затем дают поработать на холостом ходу определенное время, периодически повышая обороты. Только после этого ЭБУ начнет корректно управлять двигателем.</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Замена ЭБУ требует обязательной программной привязки к иммобилайзеру, иначе автомобиль не поедет.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+<details>
+<summary>Можно ли отремонтировать сгоревший контроллер Шевроле Нива?</summary>
+<p>Теоретически ремонт возможен, если сгорели только внешние элементы (драйверы, резисторы). Однако в условиях гаража это сделать крайне сложно из-за необходимости пайки мелких SMD-компонентов и наличия схемы. Чаще всего дешевле и надежнее купить б/у исправный блок.</p>
+</details>
+<details>
+<summary>Почему после замены аккумулятора сбился контроллер?</summary>
+<p>Резкий скачок напряжения при отключении клемм под нагрузкой или использование «пускового» устройства низкого качества могло повредить цепи питания ЭБУ. Всегда отключайте массу перед работами с электрикой.</p>
+</details>
+<details>
+<summary>Какой контроллер лучше стоит на Ниве: Bosch или Siemens?</summary>
+<p>Оба варианта надежны при исправной проводке. <em>Bosch M7.9.7</em> считается более распространенным и простым в настройке. <em>Siemens</em> (Januar 7.2) часто хвалят за стабильность, но он сложнее в диагностике без оригинального оборудования.</p>
+</details>
+<details>
+<summary>Влияет ли плохой бензин на выход из строя ЭБУ?</summary>
+<p>Сам по себе бензин не сжигает «мозги», но детонация, вызванная плохим топливом, может повредить датчик детонации. Неисправный датчик посылает неверные сигналы, заставляя ЭБУ работать в аварийном режиме, что косвенно влияет на ресурс блока.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#основные-признаки-неисправности-эбу">Основные признаки неисправности ЭБУ</a></li><li><a href="#визуальный-осмотр-и-проверка-питания">Визуальный осмотр и проверка питания</a></li><li><a href="#диагностика-сканером-obd-ii">Диагностика сканером OBD-II</a></li><li><a href="#проверка-выходных-сигналов-и-цепей-управления">Проверка выходных сигналов и цепей управления</a></li><li><a href="#таблица-кодов-ошибок-и-их-значение">Таблица кодов ошибок и их значение</a></li><li><a href="#процедура-замены-и-привязки-контроллера">Процедура замены и привязки контроллера</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

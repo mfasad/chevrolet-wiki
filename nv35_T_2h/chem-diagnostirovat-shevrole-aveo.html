@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Диагностика Шевроле Авео: сканеры, коды ошибок и софт — Chevrolet-Wiki</title>
+    <meta name="description" content="Полный гид по диагностике Chevrolet Aveo. Обзор сканеров, расшифровка кодов ошибок, настройка ПО и устранение неисправностей своими руками.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv35_T_2h/chem-diagnostirovat-shevrole-aveo.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Диагностика Шевроле Авео: сканеры, коды ошибок и софт">
+    <meta property="og:description" content="Полный гид по диагностике Chevrolet Aveo. Обзор сканеров, расшифровка кодов ошибок, настройка ПО и устранение неисправностей своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Диагностика Шевроле Авео: сканеры, коды ошибок и софт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Чем диагностировать Шевроле Авео: профессиональный подход</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#интерфейсы-и-протоколы-связи-chevrolet-aveo">Интерфейсы и протоколы связи Chevrolet Aveo</a></li><li><a href="#аппаратные-сканеры-от-бюджетных-до-профессиональных">Аппаратные сканеры: от бюджетных до профессиональных</a></li><li><a href="#программное-обеспечение-для-диагностики-на-пк-и-смартфоне">Программное обеспечение для диагностики на ПК и смартфоне</a></li><li><a href="#расшифровка-основных-кодов-ошибок-и-неисправностей">Расшифровка основных кодов ошибок и неисправностей</a></li><li><a href="#диагностика-живых-параметров-и-адаптации">Диагностика живых параметров и адаптации</a></li><li><a href="#типичные-проблемы-электрики-и-их-выявление">Типичные проблемы электрики и их выявление</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного бюджетного седана или хетчбэка часто сталкиваются с необходимостью проверить техническое состояние автомобиля. <strong>Диагностика Шевроле Авео</strong> позволяет выявить скрытые проблемы в работе двигателя, трансмиссии и систем безопасности задолго до того, как они приведут к дорогостоящему ремонту. Современные автомобили этой марки оснащены развитой системой электронного управления, которая фиксирует любые отклонения от нормы.</p>
+
+<p>Для проведения качественной проверки владельцу не обязательно сразу ехать в автосервис. Используя правильный <em>OBD-II сканер</em> и специализированное программное обеспечение, можно самостоятельно считать коды ошибок и понять причину загорания лампы <code>Check Engine</code>. Это дает возможность принять взвешенное решение о дальнейших действиях и избежать навязывания лишних услуг.</p>
+
+<p>В этой статье мы подробно разберем, какое оборудование и софт лучше всего подходят для модели Aveo T250 и T300. Вы узнаете о нюансах подключения, совместимости протоколов и методах интерпретации полученных данных для эффективного устранения неисправностей.</p>
+
+<h2 id="интерфейсы-и-протоколы-связи-chevrolet-aveo">Интерфейсы и протоколы связи Chevrolet Aveo</h2>
+
+<p>Автомобили Chevrolet Aveo, выпускавшиеся в разные годы, могут использовать различные протоколы обмена данными. Большинство моделей, особенно после 2005 года, оснащаются стандартным разъемом <strong>OBD-II</strong>, который обычно расположен под панелью приборов слева от рулевой колонки. Однако важно понимать, что стандартный протокол может не открывать доступ ко всем блокам управления.</p>
+
+<p>Для глубокой диагностики систем комфорта, ABS или подушек безопасности часто требуется поддержка специфических протоколов GM. В частности, для старых моделей актуален протокол <em>KWP2000</em>, а для более новых версий двигателя Ecotec может потребоваться поддержка <strong>GMLAN</strong>. Не все дешевые китайские адаптеры корректно работают с этими стандартами.</p>
+
+<p>При выборе устройства обращайте внимание на поддержку чипов FTDI или PIC, так как они обеспечивают стабильную связь с бортовым компьютером. Дешевые клоны на базе чипов CH340 часто вызывают обрывы связи при чтении параметров в реальном времени.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При подключении сканера убедитесь, что зажигание выключено. Резкий скачок напряжения в цепи OBD-II может повредить блок управления двигателем (ECU).</p>
+</blockquote>
+
+<h2 id="аппаратные-сканеры-от-бюджетных-до-профессиональных">Аппаратные сканеры: от бюджетных до профессиональных</h2>
+
+<p>Рынок диагностического оборудования предлагает широкий спектр устройств. Для владельца Шевроле Авео выбор зависит от глубины планируемого вмешательства. Бюджетные решения подходят для быстрого считывания кодов, тогда как профессиональные инструменты позволяют проводить адаптации и кодирование.</p>
+
+<p>Наиболее популярным вариантом для домашнего использования остается адаптер <strong>ELM327</strong>. Однако для автомобилей GM критически важно выбирать версию прошивки 1.5, так как более новые версии (2.1) часто не поддерживают старые протоколы, используемые в Aveo первого поколения. Более продвинутым решением является сканер <em>Scanmatic 2</em> или <strong>OpenPort 2.0</strong>, которые обеспечивают прямой доступ к памяти блоков.</p>
+
+<p>Для тех, кто планирует заниматься ремонтом профессионально, стоит рассмотреть мультимарочные комплексы типа <em>Launch X431</em> или оригинальный дилерский сканер <strong>Tech2</strong> (или его современные аналоги). Они позволяют не только читать ошибки, но и проводить тесты исполнительных механизмов, например, включать вентилятор охлаждения или проверять форсунки.</p>
+
+<ul>
+<li>🔌 ELM327 (версия 1.5) — идеальный бюджетный вариант для базового мониторинга двигателя и коробки.</li>
+<li>🛠️ Scanmatic 2 — отличный выбор для российской сборки, поддерживает специфические блоки GM.</li>
+<li>💻 OpenPort 2.0 — универсальный инструмент для работы с профессиональным софтом на ПК.</li>
+</ul>
+
+<div class="poll-widget" id="poll-557bc7dd"><div class="poll-widget-question">📊 Каким сканером вы пользуетесь для диагностики?</div><div class="poll-widget-option" data-poll="557bc7dd" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Дешевый ELM327 с AliExpress</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="557bc7dd" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный мультимарочник (Launch/Autel)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="557bc7dd" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Оригинальный дилерский сканер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="557bc7dd" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Только смартфон с Bluetooth-адаптером</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="программное-обеспечение-для-диагностики-на-пк-и-смартфоне">Программное обеспечение для диагностики на ПК и смартфоне</h2>
+
+<p>Железо — это только половина успеха. Ключевым элементом является программное обеспечение, которое интерпретирует данные. Для платформы GM одним из самых мощных инструментов считается программа <strong>Chevrolet Explorer</strong>. Она позволяет работать с большинством блоков, включая иммобилайзер и панель приборов, что недоступно обычным сканерам.</p>
+
+<p>Для мобильных устройств на базе Android и iOS существует множество приложений. Лидером в сегменте работы с протоколами GM является <em>CarScanner ELM OBD2</em>. В настройках профиля необходимо выбрать именно <code>Chevrolet Aveo</code> или <strong>Daewoo Gentra</strong> (для кузовов T250), чтобы активировать правильный набор PID-параметров. Также популярны приложения <strong>Torque Pro</strong> и <em>HobDrive</strong>, которые отлично подходят для построения графиков в реальном времени.</p>
+
+<p>Если вам требуется перепрошивка блока управления или глубокая настройка, используется софт <code>GM DDS</code> или <strong>SensiDiag</strong>. Эти программы требуют более сложной настройки и часто платной активации, но предоставляют доступ инженера к системе.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Использование пиратских версий профессионального софта может привести к некорректной записи данных в ЭБУ, что выведет блок управления из строя.</p>
+</blockquote>
+
+<details class="faq-item"><summary>Почему программа не видит машину?</summary><div class="faq-answer"><p>Часто проблема кроется в неверно выбранном порте COM в диспетчере устройств Windows. Также убедитесь, что драйверы для вашего адаптера установлены корректно и не конфликтуют с системой. Попробуйте изменить скорость соединения (Baud rate) в настройках программы на 38400 или 9600.</p></p></div></details>
+
+<h2 id="расшифровка-основных-кодов-ошибок-и-неисправностей">Расшифровка основных кодов ошибок и неисправностей</h2>
+
+<p>Получив код ошибки, многие водители впадают в панику. Однако система OBD-II стандартизирована, и коды имеют четкую структуру. Для Шевроле Авео наиболее частыми являются ошибки, связанные с системой зажигания и топливной смесью. Например, код <strong>P0300</em> указывает на случайные пропуски воспламенения, что может быть вызвано свечами, катушками или подсосом воздуха.</p>
+
+<p>Ошибки датчиков кислорода, такие как <em>P0130-P0160</em>, часто свидетельствуют о выходе из строя лямбда-зонда или проблемах с катализатором. Важно отличать электрическую неисправность цепи от механического износа элемента. Код <strong>P0420</strong> говорит о низкой эффективности каталитического нейтрализатора, что часто требует его замены или программной коррекции.</p>
+
+<p>Ниже приведена таблица наиболее распространенных кодов для двигателей 1.2, 1.4 и 1.6 литра:</p>
+
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание</th>
+<th>Возможная причина</th>
+<th>Метод решения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0171</td>
+<td>Слишком бедная смесь (Банк 1)</td>
+<td>Подсос воздуха, низкое давление топлива</td>
+<td>Проверка вакуумных шлангов, замена фильтра</td>
+</tr>
+<tr>
+<td>P0340</td>
+<td>Неисправность цепи датчика положения распредвала</td>
+<td>Обрыв проводки, неисправен датчик</td>
+<td>Прозвонка цепи, замена датчика CMP</td>
+</tr>
+<tr>
+<td>P0443</td>
+<td>Неисправность цепи клапана продувки адсорбера</td>
+<td>Заклинил клапан, обрыв провода</td>
+<td>Замена клапана EVAP</td>
+</tr>
+<tr>
+<td>P0500</td>
+<td>Неисправность датчика скорости автомобиля</td>
+<td>Поврежден датчик на КПП, проблемы с проводкой</td>
+<td>Замена датчика скорости (VSS)</td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед заменой дорогостоящих датчиков всегда проверяйте целостность проводки и качество контактов. Часто проблема кроется в окислившемся разъеме, а не в самой детали.</p></p></div>
+
+<h2 id="диагностика-живых-параметров-и-адаптации">Диагностика живых параметров и адаптации</h2>
+
+<p>Статические коды ошибок не всегда дают полную картину. Для точной диагностики необходимо анализировать <strong>Live Data</strong> (живые данные). В первую очередь обращайте внимание на коррекции топливной смеси (Long Term и Short Term Fuel Trim). Если значения выходят за пределы ±10%, это сигнализирует о проблеме с приготовлением смеси.</p>
+
+<p>Также критически важен параметр положения дроссельной заслонки и напряжение на датчике кислорода. На прогретом двигателе Шевроле Авео напряжение лямбда-зонда должно быстро меняться в диапазоне от 0.1 до 0.9 Вольта. Если график превратился в прямую линию, датчик требует замены.</p>
+
+<p>После замены некоторых компонентов, таких как дроссельная заслонка или аккумулятор, может потребоваться процедура адаптации. Она выполняется через меню специальных функций в диагностическом ПО. Без этой процедуры двигатель может работать нестабильно на холостом ходу.</p>
+
+<div class="checklist-block"><h4>☑️ Алгоритм поиска подсоса воздуха</h4><label class="check-item"><input type="checkbox"><span>Визуальный осмотр всех патрубков</span></label><label class="check-item"><input type="checkbox"><span>Проверка дымогенератором</span></label><label class="check-item"><input type="checkbox"><span>Анализ долгосрочных коррекций топлива</span></label><label class="check-item"><input type="checkbox"><span>Проверка давления в топливной рампе</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="типичные-проблемы-электрики-и-их-выявление">Типичные проблемы электрики и их выявление</h2>
+
+<p>Шевроле Авео, как и многие автомобили этого класса, имеет ряд "болячек" в электрической части. Частой проблемой является плохой контакт массы двигателя с кузовом, что вызывает хаотичные ошибки по различным датчикам. Диагностика начинается с проверки основных точек заземления и очистки контактов от окислов.</p>
+
+<p>Еще одна распространенная проблема — неисправность катушек зажигания, особенно на двигателях 1.4 и 1.6 литра. Симптомы проявляются в троении двигателя под нагрузкой. Диагностика проводится путем поочередного отключения форсунок или катушек при работающем двигателе (если ПО позволяет) или визуальным осмотром свечей на предмет пробоя.</p>
+
+<p>Не стоит игнорировать состояние аккумулятора. Низкое напряжение в бортовой сети (менее 11.5 В при заглушенном двигателе) может приводить к появлению ложных ошибок в системе ABS и подушек безопасности. Перед глубокой диагностикой убедитесь, что батарея заряжена.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При "прозвонке" цепей мультиметром никогда не пробивайте изоляцию проводов иглами. Влага, попавшая внутрь провода, вызовет коррозию и обрыв цепи через несколько месяцев.</p>
+</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Качественная диагностика 80% проблем решает на этапе анализа данных, не требуя замены дорогостоящих узлов. Всегда начинайте с простого: проверки контактов и зарядки АКБ.</p></p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли сбросить ошибку Check Engine без сканера на Шевроле Авео?</summary>
+<p>Да, существует метод "трех ключей" или снятие клеммы аккумулятора на 15-20 минут. Однако это лишь временно погасит лампу. Если причина неисправности не устранена, ошибка вернется после нескольких циклов работы двигателя. Кроме того, сброс клеммой может привести к сбросу настроеки магнитолы и адаптаций ЭБУ.</p>
+</details>
+
+<details>
+<summary>Какой адаптер лучше купить для Aveo T250 с двигателем 1.4?</summary>
+<p>Для этой модели оптимальным выбором будет качественный адаптер ELM327 версии 1.5 с чипом PIC. Он поддерживает необходимые протоколы и стоит недорого. Если вы планируете заниматься ремонтом профессионально, рассмотрите Scanmatic 2.</p>
+</details>
+
+<details>
+<summary>Почему сканер не подключается к автомобилю?</summary>
+<p>Проверьте наличие питания в разъеме OBD (контакты 16 и 4/5). Убедитесь, что выбран правильный порт COM и скорость передачи данных. Также возможно, что адаптер не поддерживает протокол вашего года выпуска (например, отсутствие поддержки K-Line для старых моделей).</p>
+</details>
+
+<details>
+<summary>Вредно ли часто проводить полную диагностику всех систем?</summary>
+<p>Нет, процесс считывания информации безопасен для электроники автомобиля. Опасность представляет только запись данных или изменение калибровок без должной квалификации. Чтение кодов и параметров в реальном времени можно проводить регулярно для мониторинга состояния.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#интерфейсы-и-протоколы-связи-chevrolet-aveo">Интерфейсы и протоколы связи Chevrolet Aveo</a></li><li><a href="#аппаратные-сканеры-от-бюджетных-до-профессиональных">Аппаратные сканеры: от бюджетных до профессиональных</a></li><li><a href="#программное-обеспечение-для-диагностики-на-пк-и-смартфоне">Программное обеспечение для диагностики на ПК и смартфоне</a></li><li><a href="#расшифровка-основных-кодов-ошибок-и-неисправностей">Расшифровка основных кодов ошибок и неисправностей</a></li><li><a href="#диагностика-живых-параметров-и-адаптации">Диагностика живых параметров и адаптации</a></li><li><a href="#типичные-проблемы-электрики-и-их-выявление">Типичные проблемы электрики и их выявление</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

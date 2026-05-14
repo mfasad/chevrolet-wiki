@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Температура АКПП Chevrolet Cruze через ELM327: полная инструкция — Chevrolet-Wiki</title>
+    <meta name="description" content="Как посмотреть температуру коробки автомат на Шевроле Круз с помощью ELM327. Настройка Torque Pro, PID-коды и расшифровка показаний датчиков.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv49_tmT-/kak-posmotret-temperaturu-akpp-na-elm-327-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Температура АКПП Chevrolet Cruze через ELM327: полная инструкция">
+    <meta property="og:description" content="Как посмотреть температуру коробки автомат на Шевроле Круз с помощью ELM327. Настройка Torque Pro, PID-коды и расшифровка показаний датчиков.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Температура АКПП Chevrolet Cruze через ELM327: полная инструкция</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как посмотреть температуру АКПП на Шевроле Круз через ELM327</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#необходимость-контроля-температуры-в-акпп-cruze">Необходимость контроля температуры в АКПП Cruze</a></li><li><a href="#выбор-оборудования-и-программного-обеспечения">Выбор оборудования и программного обеспечения</a></li><li><a href="#подключение-адаптера-и-сопряжение">Подключение адаптера и сопряжение</a></li><li><a href="#настройка-pid-параметров-для-трансмиссии">Настройка PID-параметров для трансмиссии</a></li><li><a href="#интерпретация-показаний-и-таблица-значений">Интерпретация показаний и таблица значений</a></li><li><a href="#типичные-проблемы-и-их-решение">Типичные проблемы и их решение</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Контроль температурных режимов в автоматической трансмиссии является критически важным аспектом эксплуатации современного автомобиля, особенно в условиях плотного городского трафика. Для владельцев популярного седана <em>Chevrolet Cruze</em> с классической гидротрансформаторной коробкой передач 6T30 или 6T40, своевременное выявление перегрева может спасти дорогостоящий агрегат от капитального ремонта. Многие автолюбители даже не подозревают, что бортовой компьютер их машины постоянно считывает данные с внутренних датчиков, но просто не выводит эту информацию на приборную панель в штатном режиме.</p>
+
+<p>К счастью, инженеры General Motors предусмотрели диагностический интерфейс OBD-II, который позволяет получить доступ к скрытым параметрам работы двигателя и трансмиссии. Используя бюджетный адаптер <strong>ELM327</strong> и специализированное программное обеспечение на смартфоне, можно в реальном времени отслеживать нагрев масла в коробке передач. Это особенно актуально при буксировке прицепов, длительных подъемах в гору или агрессивной езде, когда штатная система охлаждения может не справляться с возросшей нагрузкой.</p>
+
+<p>В данной статье мы подробно разберем процесс подключения, выбора правильных PID-параметров и интерпретации полученных данных. Вы научитесь отличать нормальные рабочие температуры от критических значений, а также узнаете, как настроить автоматическое предупреждение о перегреве. <mark>Нормальный рабочий диапазон для АКПП Chevrolet Cruze составляет от 80 до 105 градусов Цельсия, при превышении 120 градусов начинается ускоренная деградация масла.</mark> Глубокое понимание этих процессов позволит вам продлить ресурс трансмиссии и избежать внезапных поломок на дороге.</p>
+
+<h2 id="необходимость-контроля-температуры-в-акпп-cruze">Необходимость контроля температуры в АКПП Cruze</h2>
+
+<p>Автоматические коробки передач, устанавливаемые на <em>Шевроле Круз</em>, отличаются высокой чувствительностью к температурному режиму работы трансмиссионной жидкости. Масляная основа ATF (Automatic Transmission Fluid) выполняет не только функцию передачи крутящего момента, но и отводит тепло от трущихся пар, смазывает подшипники и защищает фрикционные диски. При повышении температуры выше допустимых пределов вязкость масла падает, защитная пленка истончается, и начинается интенсивный износ внутренних компонентов механизма.</p>
+
+<p>Основной причиной перегрева часто становится загрязненный радиатор охлаждения АКПП или неисправный термостат. В отличие от механики, где перегрев заметить проще по запаху гари или заклиниванию, "автомат" может долго скрывать проблему до момента критического отказа. Именно поэтому мониторинг через <strong>OBD-II сканер</strong> становится единственным надежным способом превентивной диагностики. Регулярная проверка помогает выявить проблемы с теплообменом на ранних стадиях.</p>
+
+<p>Особенно важен контроль температуры при использовании неоригинальных масел или после замены гидроблока. Некоторые владельцы, пытаясь сэкономить, заливают жидкости с неподходящим допуском Dexron, что приводит к изменению температурных характеристик работы фрикционов. В таких случаях визуальный контроль показаний датчика через смартфон становится обязательной процедурой при каждом выезде на трассу или в пробку.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Длительная эксплуатация АКПП при температуре выше 130°C приводит к необратимым химическим изменениям в составе ATF, образованию лаковых отложений на соленоидах и быстрому выходу из строя фрикционных накладок.</p>
+</blockquote>
+
+<h2 id="выбор-оборудования-и-программного-обеспечения">Выбор оборудования и программного обеспечения</h2>
+
+<p>Для успешного чтения данных с блока управления трансмиссией (TCM) вам потребуется качественный адаптер ELM327. Рынок переполнен дешевыми китайскими клонами, которые часто работают нестабильно или не поддерживают протоколы GM. Для <em>Chevrolet Cruze</em> лучше всего зарекомендовали себя версии адаптеров на чипе PIC18F25K80, которые обеспечивают стабильную связь и поддержку расширенных протоколов CAN-bus. Избегайте самых дешевых синих пластиковых версий, так как они часто не могут корректно опросить модуль коробки передач.</p>
+
+<p>Что касается программного обеспечения, то стандартные приложения типа "Torque Lite" могут не отображать специфические PID-коды трансмиссии без ручной настройки. Оптимальным выбором для владельцев автомобилей GM является приложение <strong>Torque Pro</strong> (для Android) или <em>Car Scanner ELM OBD2</em>. Эти программы позволяют создавать пользовательские датчики, вводя hex-коды запросов, и выводить их на экран в виде графиков или цифровых значений. Также существуют специализированные приложения вроде <em>ScanMaster-ELM</em>, заточенные под протоколы GM.</p>
+
+<p>Важно убедиться, что ваш смартфон имеет достаточную производительность для обработки потока данных в реальном времени. Задержка обновления показаний (лаг) может составлять от 0.5 до 2 секунд в зависимости от скорости Bluetooth-соединения и версии адаптера. Для точного мониторинга в динамике рекомендуется использовать устройства с поддержкой Bluetooth 4.0 (Low Energy) или Wi-Fi версии адаптеров, которые обеспечивают более высокую скорость передачи пакетов данных.</p>
+
+<ul>
+<li>📱 <strong>Torque Pro</strong> — наиболее гибкое приложение с возможностью создания кастомных PID.</li>
+<li>🚗 <strong>Car Scanner</strong> — имеет готовые профили для Chevrolet и понятный интерфейс.</li>
+<li>🔌 <strong>ELM327 v2.1 (PIC)</strong> — рекомендованная версия адаптера для стабильной работы с GM.</li>
+<li>💻 <strong>ScanMaster-ELM</strong> — профессиональный инструмент с поддержкой глубокой диагностики.</li>
+</ul>
+
+<div class="poll-widget" id="poll-360db045"><div class="poll-widget-question">📊 Какой адаптер ELM327 вы используете?</div><div class="poll-widget-option" data-poll="360db045" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Оригинальный ELM327 v1.5</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="360db045" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Китайская копия v2.1 (синий)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="360db045" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный сканер типа Launch</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="360db045" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Пока не покупал(а)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="360db045" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другой вариант</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="подключение-адаптера-и-сопряжение">Подключение адаптера и сопряжение</h2>
+
+<p>Процесс подключения начинается с поиска диагностического разъема OBD-II. В <em>Chevrolet Cruze</em> первого поколения (рестайлинг и дорестайлинг) разъем обычно расположен под торпедой со стороны водителя, чуть ниже рулевой колонки, иногда прикрытый пластиковой заглушкой. Во втором поколении (Cruze J300) разъем может находиться в бардачке или под центральной консолью, что зависит от года выпуска и рынка сбыта. Убедитесь, что зажигание выключено перед вставкой адаптера, чтобы избежать скачков напряжения.</p>
+
+<p>После физического подключения адаптера включите зажигание (положение ON), но не обязательно заводить двигатель. На адаптере должны загореться индикаторы питания и связи. Далее откройте настройки Bluetooth на вашем смартфоне и выполните поиск новых устройств. Стандартный пароль для большинства адаптеров ELM327 — <code>1234</code> или <code>0000</code>. Если сопряжение прошло успешно, индикатор на адаптере начнет мигать с определенной периодичностью, сигнализируя о готовности к передаче данных.</p>
+
+<p>Запустите выбранное диагностическое приложение и нажмите кнопку подключения. В списке протоколов выберите "Automatic" или вручную укажите протокол GM/Chevrolet (обычно это ISO 15765-4 CAN или GM SW-CAN). Приложение должно определить VIN-код автомобиля и список поддерживаемых блоков управления. Если связь с блоком TCM (Transmission Control Module) не устанавливается, попробуйте переподключить адаптер или проверить настройки брандмауэра в приложении.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка подключения ELM327</h4><label class="check-item"><input type="checkbox"><span>Адаптер плотно вставлен в разъем OBD-II</span></label><label class="check-item"><input type="checkbox"><span>Индикаторы на адаптере горят или мигают</span></label><label class="check-item"><input type="checkbox"><span>Bluetooth сопряжен со смартфоном</span></label><label class="check-item"><input type="checkbox"><span>Приложение видит VIN-код автомобиля</span></label><label class="check-item"><input type="checkbox"><span>Статус соединения "Connected"</span></label><label class="check-item"><input type="checkbox"><span></span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 6</div></div>
+
+<h2 id="настройка-pid-параметров-для-трансмиссии">Настройка PID-параметров для трансмиссии</h2>
+
+<p>Самый сложный этап для новичков — это добавление пользовательских параметров, так как штатный набор датчиков в приложениях часто не включает температуру АКПП. Вам потребуется добавить новый датчик вручную, используя специфические Hex-коды запросов для протокола GM. В приложении Torque Pro это делается через меню "Settings" -> "Manage User Defined PIDs". Здесь создается новая запись, куда вносятся данные о длине ответа и формуле преобразования.</p>
+
+<p>Для Chevrolet Cruze с двигателями 1.6 и 1.8 часто используется стандартный PID запрос температуры трансмиссионной жидкости. Код запроса обычно выглядит как <code>22 1156</code> или <code>22 1157</code> (в зависимости от года выпуска и типа ЭБУ). Однако, более универсальным методом для GM является использование режима <code>01</code> с конкретным PID, либо режим <code>21</code> (Manufacturer Enhanced). Формула пересчета полученных байтов в градусы Цельсия также критична: обычно она выглядит как <code>A*1 - 40</code> или <code>((A*256)+B)*0.1 - 40</code>, где A и B — полученные байты данных.</p>
+
+<p>Если вы не уверены в кодах, можно воспользоваться функцией автоматического сканирования в продвинутых приложениях или найти готовый профиль для <em>Chevrolet Cruze</em> в интернете и импортировать его. После добавления PID-параметра, выведите его на главный экран мониторинга. Данные должны обновляться в реальном времени. Если вместо чисел отображаются прочерки или нули, значит, ваш ЭБУ не поддерживает данный конкретный запрос, и нужно попробовать альтернативный код.</p>
+
+<details class="faq-item"><summary>Технические детали PID запросов</summary><div class="faq-answer"><p>Для многих автомобилей GM актуален PID 22 1156. Формула: (A*256 + B) * 0.01 - 40. Однако, на некоторых версиях ПО блока TCM температура может передаваться через другой байт. Экспериментальным путем установлено, что для Cruze J300 часто работает запрос 22 1234, но это требует индивидуальной проверки.</p></div></details>
+
+<h2 id="интерпретация-показаний-и-таблица-значений">Интерпретация показаний и таблица значений</h2>
+
+<p>Получив доступ к данным, важно правильно их интерпретировать. Цифры на экране смартфона — это не просто абстрактные значения, а прямой индикатор здоровья вашей трансмиссии. Температура масла в АКПП <em>Cruze</em> меняется динамически: при холодном пуске она равна температуре окружающей среды, затем быстро растет до рабочей зоны. Критически важно следить за скоростью нагрева и максимальными пиками при нагрузке.</p>
+
+<p>Ниже приведена таблица, помогающая классифицировать состояние трансмиссии по температурным показаниям. Обратите внимание, что кратковременные скачки до 110°C при активной работе двигателя допустимы, но длительное нахождение в красной зоне недопустимо.</p>
+
+<table>
+<thead>
+<tr>
+<th>Диапазон (°C)</th>
+<th>Статус</th>
+<th>Рекомендуемые действия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Менее 40</td>
+<td>Холодная АКПП</td>
+<td>Движение в щадящем режиме, избегать резких ускорений</td>
+</tr>
+<tr>
+<td>80 — 105</td>
+<td>Норма (Рабочая)</td>
+<td>Штатная эксплуатация, оптимальные условия смазки</td>
+</tr>
+<tr>
+<td>110 — 120</td>
+<td>Повышенная</td>
+<td>Проверить уровень масла, нагрузку на авто, работу вентиляторов</td>
+</tr>
+<tr>
+<td>Более 125</td>
+<td>Критическая</td>
+<td>Немедленно остановиться, дать остыть, проверить радиатор и помпу</td>
+</tr>
+</tbody>
+</table>
+
+<p>Стоит отметить, что показания могут иметь погрешность в 3-5 градусов в зависимости от качества самого датчика и калибровки ЭБУ. Поэтому не стоит паниковать, если вы увидели 106°C вместо 100°C. Важнее динамика: если температура растет лавинообразно при включении кондиционера или подъеме в гору, это явный признак проблемы с теплоотводом. В таких случаях помогает установка дополнительного радиатора АКПП.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для более точного контроля установите в приложении звуковое предупреждение (Alert), которое сработает, если температура превысит 115 градусов. Это позволит вам среагировать на перегрев, не отвлекаясь от дороги на экран смартфона.</p></div>
+
+<h2 id="типичные-проблемы-и-их-решение">Типичные проблемы и их решение</h2>
+
+<p>Одной из частых проблем при диагностике является отсутствие связи с блоком TCM, в то время как двигатель опрашивается успешно. На <em>Шевроле Круз</em> это часто связано с тем, что шина CAN, соединяющая трансмиссию, может "засыпать" при работающем двигателе, если нет активной нагрузки. Попробуйте включить передачу, нажать на тормоз или слегка добавить газу во время попытки подключения, чтобы "разбудить" модуль коробки.</p>
+
+<p>Другая распространенная ситуация — "плавающие" показания или резкие скачки значений. Это может указывать на плохой контакт в разъеме адаптера, наводки от генератора или низкий заряд аккумулятора. weak voltage (слабое напряжение) в бортовой сети часто приводит к некорректной работе электроники и искажению данных датчиков. Перед глубокой диагностикой убедитесь, что аккумулятор заряжен, а контакты адаптера чистые.</p>
+
+<p>Также пользователи часто путают температуру двигателя и трансмиссии. Убедитесь, что вы смотрите именно на PID трансмиссии. Температура масла в двигателе обычно выше (90-105°C) и меняется иначе, чем температура ATF, которая нагревается дольше, но и остывает медленнее из-за большего объема жидкости и конструкции теплообменника.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если приложение показывает температуру -40°C или 255°C, это означает ошибку считывания (No Data), а не реальную температуру. Проверьте правильность введенной формулы пересчета PID.</p>
+</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Стабильность показаний важнее абсолютных цифр. Резкие скачки или постоянный рост температуры при одинаковых условиях движения — верный признак неисправности системы охлаждения АКПП.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли смотреть температуру АКПП через штатный бортовой компьютер без ELM327?</summary>
+<p>На Chevrolet Cruze штатное меню бортового компьютера не имеет скрытой инженерной секции для вывода температуры трансмиссии на экран приборной панели. Для этого обязательно требуется внешний OBD-II сканер и стороннее ПО. Некоторые умельцы перепрошивают приборную панель, но это рискованно и может привести к потере гарантии.</p>
+</details>
+
+<details>
+<summary>Почему адаптер ELM327 не видит коробку передач, хотя двигатель опрашивается?</summary>
+<p>Скорее всего, ваш адаптер не поддерживает протокол GM SW-CAN или имеет урезанную прошивку. Бюджетные версии часто умеют читать только базовые параметры двигателя (ECU). Для диагностики TCM (коробки) нужен адаптер с поддержкой расширенных протоколов и правильной реализацией команды <code>AT SP 0</code> (автопоиск).</p>
+</details>
+
+<details>
+<summary>Какая максимальная температура допустима для АКПП 6T30/6T40?</summary>
+<p>Кратковременно коробка может выдержать нагрев до 130-135°C, после чего ЭБУ может включить аварийный режим (Limp Mode), ограничивая число передач. Длительная работа выше 120°C резко сокращает ресурс фрикционов. Идеальный диапазон — до 100°C.</p>
+</details>
+
+<details>
+<summary>Нужно ли прогревать АКПП перед поездкой зимой?</summary>
+<p>Да, холодное масло густое и плохо циркулирует. Рекомендуется после запуска двигателя постоять 1-2 минуты на месте, затем двигаться плавно, без резких ускорений, пока температура ATF не поднимется хотя бы до 40-50°C. Резкие рывки на холодной коробке могут повредить тефлоновые кольца поршней.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#необходимость-контроля-температуры-в-акпп-cruze">Необходимость контроля температуры в АКПП Cruze</a></li><li><a href="#выбор-оборудования-и-программного-обеспечения">Выбор оборудования и программного обеспечения</a></li><li><a href="#подключение-адаптера-и-сопряжение">Подключение адаптера и сопряжение</a></li><li><a href="#настройка-pid-параметров-для-трансмиссии">Настройка PID-параметров для трансмиссии</a></li><li><a href="#интерпретация-показаний-и-таблица-значений">Интерпретация показаний и таблица значений</a></li><li><a href="#типичные-проблемы-и-их-решение">Типичные проблемы и их решение</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

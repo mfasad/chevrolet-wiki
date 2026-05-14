@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как узнать марку ЭБУ на Шевроле Нива: методы и таблицы — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по определению производителя ЭБУ на Chevrolet Niva. Считывание ID блока, расшифровка маркировок Январь, Bosch и Итэлма.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv45_l_Wq/kak-uznat-marku-ebu-na-shevrole-niva.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как узнать марку ЭБУ на Шевроле Нива: методы и таблицы">
+    <meta property="og:description" content="Подробная инструкция по определению производителя ЭБУ на Chevrolet Niva. Считывание ID блока, расшифровка маркировок Январь, Bosch и Итэлма.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как узнать марку ЭБУ на Шевроле Нива: методы и таблицы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как узнать марку ЭБУ на Шевроле Нива: полное руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#визуальная-идентификация-по-наклейке-на-блоке">Визуальная идентификация по наклейке на блоке</a></li><li><a href="#диагностика-через-obdii-сканер">Диагностика через OBDII сканер</a></li><li><a href="#таблица-соответствия-моделей-эбу-и-годов-выпуска">Таблица соответствия моделей ЭБУ и годов выпуска</a></li><li><a href="#особенности-блоков-bosch-на-шевроле-нива">Особенности блоков Bosch на Шевроле Нива</a></li><li><a href="#специфика-контроллеров-январь-и-итэлма">Специфика контроллеров Январь и Итэлма</a></li><li><a href="#чип-тюнинг-и-выбор-прошивки">Чип-тюнинг и выбор прошивки</a></li><li><a href="#распространенные-проблемы-и-их-решение">Распространенные проблемы и их решение</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы внедорожников Chevrolet Niva часто сталкиваются с необходимостью точной идентификации электронного блока управления (ЭБУ), особенно при планировании чип-тюнинга или диагностике неисправностей двигателя. Знание точной модели контроллера критически важно, так как программное обеспечение для <em>Bosch</em> и <em>Janus</em> (Январь) пишется совершенно разное, и ошибка в выборе прошивки может привести к неработоспособности системы впрыска.</p>
+
+<p>Существует несколько проверенных способов определить, какой именно блок установлен на вашем автомобиле: визуальный осмотр, использование диагностического сканера и расшифровка заводских маркировок. В этой статье мы детально разберем каждый метод, чтобы вы могли безошибочно идентифицировать «мозги» вашей машины.</p>
+
+<p>Для начала стоит отметить, что на разных годах выпуска и модификациях двигателей устанавливались различные системы управления. <strong>Шевроле Нива</strong> за свою историю сменила несколько поколений контроллеров, от старых систем <code>Bosch M1.5.4</code> до современных <code>Janus 7.2+</code>.</p>
+
+<h2 id="визуальная-идентификация-по-наклейке-на-блоке">Визуальная идентификация по наклейке на блоке</h2>
+
+<p>Самый надежный и быстрый способ узнать производителя — это физический доступ к самому блоку управления. ЭБУ на Шевроле Нива обычно расположен в моторном отсеке, за аккумулятором, или под панелью приборов со стороны пассажира, в зависимости от года выпуска модели.</p>
+
+<p>Вам потребуется снять защитный кожух и извлечь блок. На верхней части металлического корпуса всегда имеется заводская наклейка. Именно на ней содержится вся необходимая информация. Ищите поле <strong>«Аппаратный номер»</strong> или <strong>«Part Number»</strong>.</p>
+
+<ul>
+    <li>🔍 <strong>Bosch:</strong> Номер обычно начинается с префикса <code>0 261 20...</code> или <code>0 261 22...</code>. Также часто встречается маркировка <code>MP7.0</code> или <code>M7.9.7</code>.</li>
+    <li>🔍 <strong>Январь (Itelma/Avtoel):</strong> Маркировка часто содержит обозначение <code>J5...</code>, <code>J7...</code> или прямое указание <code>Janus</code>. Номер может начинаться с <code>21126...</code> или <code>2123...</code>.</li>
+    <li>🔍 <strong>Итэлма:</strong> Блоки могут маркироваться как <code>I414</code>, <code>I414DB</code> или иметь коды, начинающиеся на <code>113...</code>.</li>
+</ul>
+
+<blockquote>
+    <p>⚠️ Внимание: При снятии ЭБУ обязательно отключайте минусовую клемму аккумулятора. Кратковременное замыкание контактов при подключенной батарее может вывести из строя не только блок управления, но и проводку автомобиля.</p>
+</blockquote>
+
+<p>Часто наклейка бывает затерта или залита маслом, поэтому используйте лупу или сделайте фото при хорошем освещении. Если наклейка отсутствует, переходите к программным методам.</p>
+
+<h2 id="диагностика-через-obdii-сканер">Диагностика через OBDII сканер</h2>
+
+<p>Если вскрывать блок нет возможности или желания, узнать его тип можно через диагностический разъем. Для этого вам понадобится ноутбук с установленным софтом (например, <em>OpenDiag</em>, <em>Scanmaster</em>) и адаптер <strong>ELM327</strong> или профессиональный K-Line кабель.</p>
+
+<p>Подключите адаптер к разъему OBDII, который на Шевроле Нива находится под торпедой слева от руля или под заглушкой в районе ног пассажира. После включения зажигания запустите программу и выполните сканирование.</p>
+
+<div class="poll-widget" id="poll-bde23d55"><div class="poll-widget-question">📊 Какой адаптер вы используете для диагностики?</div><div class="poll-widget-option" data-poll="bde23d55" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">ELM327 Bluetooth</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bde23d55" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">K-Line кабель</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bde23d55" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный сканер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bde23d55" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Смартфон с Wi-Fi адаптером</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>В окне соединения программа автоматически считает <strong>ID контроллера</strong>. Это самый точный программный метод. В списке параметров ищите строку «Идентификатор ЭБУ» или «Calibration ID».</p>
+
+<ul>
+    <li>📟 Если в ID присутствует слово <code>BOSCH</code> — у вас блок немецкого производства или лицензионный аналог.</li>
+    <li>📟 Наличие кодов <code>JANUS</code>, <code>J5</code>, <code>J7</code> указывает на продукцию <em>Итэлма/Автэл</em>.</li>
+    <li>📟 Коды <code>M74</code>, <code>M75</code> также относятся к семейству <em>Janus</em>, но более новых версий.</li>
+</ul>
+
+<p>Некоторые китайские адаптеры ELM327 могут некорректно работать с протоколами старых блоков Бош. Если связь не устанавливается, попробуйте сменить протокол в настройках программы или использовать специализированный K-Line адаптер.</p>
+
+<h2 id="таблица-соответствия-моделей-эбу-и-годов-выпуска">Таблица соответствия моделей ЭБУ и годов выпуска</h2>
+
+<p>Понимание того, какие блоки устанавливались в разные годы, помогает сузить круг поиска. Хотя на конвейере могли быть исключения, существует устоявшаяся практика оснащения моделей.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Годы выпуска</th>
+            <th>Тип двигателя</th>
+            <th>Вероятный ЭБУ</th>
+            <th>Нормы экологии</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2002 – 2004</td>
+            <td>ВАЗ-2123 (1.7i)</td>
+            <td>Bosch M1.5.4 / Январь 5.1</td>
+            <td>Евро-2</td>
+        </tr>
+        <tr>
+            <td>2004 – 2008</td>
+            <td>ВАЗ-2123 (1.7i)</td>
+            <td>Bosch M7.9.7 / Январь 7.2</td>
+            <td>Евро-3</td>
+        </tr>
+        <tr>
+            <td>2009 – 2015</td>
+            <td>ВАЗ-2123 (1.7i)</td>
+            <td>Janus 7.2+ / Bosch ME17.9.7</td>
+            <td>Евро-3 / Евро-4</td>
+        </tr>
+        <tr>
+            <td>2016 – 2020</td>
+            <td>ВАЗ-2123 (1.7i)</td>
+            <td>Janus 7.2+ (M74)</td>
+            <td>Евро-4 / Евро-5</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Обратите внимание, что переход на новые экологические стандарты часто влек за собой смену производителя ЭБУ. Например, для перехода на <strong>Евро-4</strong> часто использовались блоки <em>Janus</em> с новой архитектурой.</p>
+
+<blockquote>
+    <p>⚠️ Внимание: Год выпуска автомобиля в ПТС и фактический год сборки могут отличаться. Всегда ориентируйтесь на дату производства, указанную на кузове, а не только на год регистрации.</p>
+</blockquote>
+
+<p>Эта таблица носит справочный характер. На практике в один и тот же год могли устанавливаться разные блоки в зависимости от комплектации и поставщиков компонентов.</p>
+
+<h2 id="особенности-блоков-bosch-на-шевроле-нива">Особенности блоков Bosch на Шевроле Нива</h2>
+
+<p>Блоки управления <strong>Bosch</strong> долгое время считались эталоном надежности для отечественного автопрома. На Нивах чаще всего встречались версии <code>M1.5.4</code> и <code>M7.9.7</code>.</p>
+
+<p>Главная особенность этих блоков — высокая устойчивость к внешним воздействиям и качественная элементная база. Однако они сложнее в перепрограммировании. Для работы с ними часто требуется специальное оборудование, такое как <em>K-Line</em> с поддержкой специфических протоколов Бош.</p>
+
+<details class="faq-item"><summary>Технические детали протокола Bosch M7.9.7</summary><div class="faq-answer"><p>Протокол связи KWP2000. Скорость обмена данными может варьироваться. Для чтения и записи часто требуется переводить блок в режим бутлоадера, что иногда требует замыкания контактов на плате (boot-mode).</p></div></details>
+
+<p>При диагностике блоков Бош важно следить за напряжением в бортовой сети. Эти контроллеры чувствительны к скачкам напряжения, и <mark>критическим порогом считается падение ниже 10.5 Вольт</mark> в процессе записи.</p>
+
+<p>Если вы планируете чип-тюнинг, то для Бош существует множество проверенных прошивок от известных тюнинг-ателье, что делает их популярными среди энтузиастов.</p>
+
+<h2 id="специфика-контроллеров-январь-и-итэлма">Специфика контроллеров Январь и Итэлма</h2>
+
+<p>С середины 2000-х годов доля российских контроллеров <strong>Janus (Январь)</strong> и <em>Itelma</em> на конвейере значительно выросла. Они дешевле в производстве и проще в адаптации под меняющиеся экологические нормы.</p>
+
+<p>Блоки серии <code>J7</code> и <code>M74</code> обладают хорошей ремонтопригодностью. Многие неисправности, такие как выход из строя драйверов форсунок или катушек зажигания, можно устранить заменой компонентов на плате.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед перепрошивкой</h4><label class="check-item"><input type="checkbox"><span>Проверить заряд аккумулятора (не менее 12.5В)</span></label><label class="check-item"><input type="checkbox"><span>Подключить стабилизатор напряжения</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в целостности жгута проводки</span></label><label class="check-item"><input type="checkbox"><span>Сделать резервную копию стоковой прошивки</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Программное обеспечение для этих блоков часто более доступно и дешевле. Многие диагностические комплексы, такие как <em>OpenDiag</em>, поддерживают полный функционал работы с этими ЭБУ.</p>
+
+<p>Визуально блоки Итэлма часто имеют черный пластиковый корпус разъема, в то время как старые Боши могли иметь серые или зеленые разъемы, хотя это не всегда так.</p>
+
+<h2 id="чип-тюнинг-и-выбор-прошивки">Чип-тюнинг и выбор прошивки</h2>
+
+<p>Знание марки ЭБУ — это первый шаг к улучшению характеристик автомобиля. Чип-тюнинг позволяет убрать провалы в тяге, снизить расход топлива и адаптировать работу двигателя под использование газа (ГБО).</p>
+
+<p>Для каждого типа блока существует свой софт. Прошивка, предназначенная для <em>Janus 7.2</em>, категорически не подойдет для <em>Bosch M7.9.7</em>. Попытка залить несовместимый файл приведет к «окирпичиванию» блока.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед покупкой прошивки всегда отправляйте мастеру файл с идентификатором вашего ЭБУ, считанный диагностической программой. Это гарантирует совместимость ПО.</p></div>
+
+<p>Популярные модификации прошивок включают отключение катализатора (Евро-2), коррекцию фаз газораспределения и изменение алгоритмов работы вентилятора охлаждения.</p>
+
+<blockquote>
+    <p>⚠️ Внимание: Внесение изменений в программное обеспечение ЭБУ может привести к потере гарантии на автомобиль, если она еще действует. Также возможно увеличение токсичности выхлопа.</p>
+</blockquote>
+
+<p>Если вы не уверены в своих силах, лучше обратиться к профессионалам, имеющим опыт работы именно с внедорожниками Нива.</p>
+
+<h2 id="распространенные-проблемы-и-их-решение">Распространенные проблемы и их решение</h2>
+
+<p>Владельцы Нив часто сталкиваются с проблемой «потери» ЭБУ после неудачной перепрошивки или скачка напряжения. Блок перестает выходить на связь.</p>
+
+<p>В случае с блоками <strong>Январь</strong> часто помогает метод «BLO» (Boot Loader On) — замыкание определенных контактов на плате для принудительного входа в режим загрузчика. Для Бош этот метод сложнее и требует более глубокого вмешательства.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Самая частая причина проблем с ЭБУ на Ниве — плохая масса двигателя. Перед заменой блока проверьте и зачистите контакты заземления.</p></div>
+
+<p>Также встречается проблема с «глюками» датчиков после замены ЭБУ без привязки иммобилайзера. В таких случаях требуется процедура обучения ключей.</p>
+
+<p>Своевременная диагностика и знание типа вашего блока управления позволят избежать многих проблем и сэкономить деньги на ненужном ремонте.</p>
+
+<details>
+    <summary>Можно ли заменить ЭБУ Bosch на Январь?</summary>
+    <p>Да, такая замена возможна, но она требует переделки проводки (перепайки разъемов или замены жгута) и установки нового иммобилайзера, совместимого с новым блоком. Просто «вставить и поехать» не получится.</p>
+</details>
+
+<details>
+    <summary>Где находится диагностический разъем на Шевроле Нива?</summary>
+    <p>На большинстве моделей разъем OBDII расположен под панелью приборов слева от рулевой колонки. На ранних моделях он может быть закрыт декоративной заглушкой или находиться в районе ног переднего пассажира.</p>
+</details>
+
+<details>
+    <summary>Что означает мигающий индикатор Check Engine?</summary>
+    <p>Мигающий «Чек» обычно свидетельствует о критических пропусках зажигания, которые могут быстро вывести из строя каталитический нейтрализатор. Необходимо срочно провести диагностику и считать коды ошибок.</p>
+</details>
+
+<details>
+    <summary>Нужно ли сбрасывать адаптации после замены ЭБУ?</summary>
+    <p>Да, после установки нового или перепрошитого блока необходимо выполнить сброс адаптаций и процедуру обучения холостому ходу, иначе двигатель может работать нестабильно.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#визуальная-идентификация-по-наклейке-на-блоке">Визуальная идентификация по наклейке на блоке</a></li><li><a href="#диагностика-через-obdii-сканер">Диагностика через OBDII сканер</a></li><li><a href="#таблица-соответствия-моделей-эбу-и-годов-выпуска">Таблица соответствия моделей ЭБУ и годов выпуска</a></li><li><a href="#особенности-блоков-bosch-на-шевроле-нива">Особенности блоков Bosch на Шевроле Нива</a></li><li><a href="#специфика-контроллеров-январь-и-итэлма">Специфика контроллеров Январь и Итэлма</a></li><li><a href="#чип-тюнинг-и-выбор-прошивки">Чип-тюнинг и выбор прошивки</a></li><li><a href="#распространенные-проблемы-и-их-решение">Распространенные проблемы и их решение</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

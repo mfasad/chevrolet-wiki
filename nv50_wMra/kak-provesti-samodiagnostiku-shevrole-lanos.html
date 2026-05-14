@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Самодиагностика Шевроле Ланос: коды ошибок и режимы — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по проведению самодиагностики Шевроле Ланос. Как войти в режим Service, расшифровать коды ошибок двигателя и панели приборов своими руками.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv50_wMra/kak-provesti-samodiagnostiku-shevrole-lanos.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Самодиагностика Шевроле Ланос: коды ошибок и режимы">
+    <meta property="og:description" content="Полная инструкция по проведению самодиагностики Шевроле Ланос. Как войти в режим Service, расшифровать коды ошибок двигателя и панели приборов своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Самодиагностика Шевроле Ланос: коды ошибок и режимы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Самодиагностика Шевроле Ланос: коды ошибок и режимы</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-автомобиля-к-тестированию-систем">Подготовка автомобиля к тестированию систем</a></li><li><a href="#вход-в-режим-самодиагностики-через-индикатор-check-engine">Вход в режим самодиагностики через индикатор Check Engine</a></li><li><a href="#диагностика-панели-приборов-проверка-стрелок-и-ламп">Диагностика панели приборов: проверка стрелок и ламп</a></li><li><a href="#использование-диагностического-сканера-obd-ii">Использование диагностического сканера OBD-II</a></li><li><a href="#расшифровка-основных-кодов-неисправностей">Расшифровка основных кодов неисправностей</a></li><li><a href="#сброс-ошибок-и-завершение-диагностики">Сброс ошибок и завершение диагностики</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+<p>Владельцы популярного бюджетного седана часто сталкиваются с необходимостью проверить техническое состояние своего автомобиля без обращения в дорогостоящий автосервис. <strong>Самодиагностика Шевроле Ланос</strong> — это встроенная функция бортового компьютера, позволяющая выявить неисправности в системе управления двигателем и приборной панели. Умение пользоваться этим инструментом экономит время и деньги, давая четкое понимание того, что происходит под капотом.</p>
+<p>Электронный блок управления (ЭБУ) в моделях <em>Daewoo Lanos</em> и <em>Chevrolet Lanos</em> постоянно мониторит работу датчиков и исполнительных механизмов. При выходе параметров за допустимые пределы система фиксирует ошибку и сохраняет ее в памяти. <mark>Ключевой особенностью Ланоса является возможность считывания этих кодов напрямую через индикатор «Check Engine» или цифровое табло одометра</mark>, без использования сложного сканера OBD-II, хотя последний и предпочтителен для глубокого анализа.</p>
+<p>В этой статье мы подробно разберем алгоритмы входа в сервисный режим для различных модификаций, включая двигатели 1.5 и 1.6 литра с системами впрыска <em>MEMS</em> и <em>Micras</em>. Вы научитесь различать текущие и сохраненные ошибки, а также поймете, когда можно сбросить их самостоятельно, а когда требуется вмешательство мастера. Грамотная интерпретация сигналов лампочек — первый шаг к успешному ремонту.</p>
+
+<h2 id="подготовка-автомобиля-к-тестированию-систем">Подготовка автомобиля к тестированию систем</h2>
+<p>Прежде чем приступать к активации диагностических режимов, необходимо обеспечить стабильные условия для работы электроники. <strong>Напряжение в бортовой сети</strong> не должно быть низким, так как при разряженном аккумуляторе показания могут быть некорректными или система вовсе не войдет в режим тестирования. Рекомендуется предварительно зарядить батарею или подключить пусковое устройство, если машина долго стояла без движения.</p>
+<p>Для проведения процедуры вам потребуется найти специальный диагностический разъем. В Шевроле Ланос он обычно расположен под торпедой со стороны водителя, часто скрыт декоративной заглушкой или находится в районе педального узла. <em>Коннектор K-Line</em> имеет специфическую форму и цвет, отличающий его от других электрических соединений в салоне. Точное расположение зависит от года выпуска и комплектации автомобиля.</p>
+<blockquote>
+<p>⚠️ Внимание: Перед началом любых манипуляций с электрикой убедитесь, что зажигание выключено. Подключение диагностического оборудования на «горячую» может привести к короткому замыканию или повреждению контроллера ЭБУ.</p>
+</blockquote>
+<p>Также стоит проверить целостность проводов, идущих к разъему. Окисленные контакты или перетертая изоляция могут исказить передаваемые сигналы, и вы получите ложную информацию о состоянии систем. Если визуальный осмотр выявил повреждения, их необходимо устранить до начала диагностики.</p>
+
+<h2 id="вход-в-режим-самодиагностики-через-индикатор-check-engine">Вход в режим самодиагностики через индикатор Check Engine</h2>
+<p>Самый доступный способ первичной оценки состояния двигателя — использование штатной индикации на приборной панели. Этот метод работает на большинстве моделей Ланос с инжекторными двигателями. Для активации режима необходимо замкнуть определенные контакты в диагностическом разъеме, после чего включить зажигание, не запуская стартер.</p>
+<p>После включения зажигания лампочка <strong>«Check Engine»</strong> начнет выдавать серийные вспышки. Каждая серия соответствует определенному коду неисправности. Обычно код состоит из двух цифр: сначала следует количество вспышек, обозначающее первую цифру, затем пауза, и снова вспышки для второй цифры. Между разными кодами делается длинный перерыв.</p>
+<div class="poll-widget" id="poll-604952f3"><div class="poll-widget-question">📊 Как часто загорается Check Engine на вашем Ланосе?</div><div class="poll-widget-option" data-poll="604952f3" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Только при запуске</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="604952f3" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Постоянно горит</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="604952f3" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Мигает в движении</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="604952f3" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Редко, при морозе</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+<p>Расшифровка миганий требует внимательности. Например, код «12» (одна вспышка, пауза, две вспышки) указывает на отсутствие сигналов от датчика оборотов, что часто бывает при старте диагностики, так как двигатель не запущен. Это нормальное поведение системы в режиме теста.</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Записывайте последовательность вспышек на диктофон или бумагу. В спешке легко сбиться со счета, особенно если кодов ошибок много.</p></div>
+<p>Если лампа горит постоянно без мигания, это может свидетельствовать о коротком замыкании в цепи сигнальной лампы или критической ошибке самого ЭБУ. В такой ситуации <em>компьютерная диагностика</em> через ноутбук становится обязательной, так как ручное считывание невозможно.</p>
+
+<h2 id="диагностика-панели-приборов-проверка-стрелок-и-ламп">Диагностика панели приборов: проверка стрелок и ламп</h2>
+<p>Шевроле Ланос оснащен встроенной функцией проверки исправности самой приборной панели. Этот режим полезен, когда перестают работать отдельные индикаторы или стрелки ведут себя неадекватно. Для входа в этот режим требуется замкнуть контакты в разъеме подключения приборной панели или использовать комбинацию кнопок на самом «бортовике», если он установлен.</p>
+<p>При успешном входе в тестовый режим все сегменты дисплея загораются одновременно, а стрелки указателей температуры и топлива совершают полный ход от минимума к максимуму и обратно. Это позволяет визуально оценить целостность шаговых двигателей и ламп подсветки.</p>
+<ul>
+<li>🔴 Проверка загораются все контрольные лампы: ABS, Airbag, Oil, Battery.</li>
+<li>🟢 Тест ЖК-дисплея: отображаются все сегменты цифр и символов.</li>
+<li>🔵 Звуковой тест: при нажатии кнопок должен раздаваться характерный писк.</li>
+<li>🟡 Проверка связи: отображение версии прошивки панели приборов.</li>
+</ul>
+<p>Если какой-то сегмент не загорается, возможно, перегорел светодиод или поврежден шлейф подключения. В моделях с <em>электронным спидометром</strong> также проверяется сигнал скорости, который передается от датчика на коробке передач.</p>
+
+<h2 id="использование-диагностического-сканера-obd-ii">Использование диагностического сканера OBD-II</h2>
+<p>Для более глубокого анализа, особенно на автомобилях выпуска после 2008 года с нормами <strong>Евро-3</em>, рекомендуется использовать внешний сканер. Стандартный разъем OBD-II позволяет подключиться к ЭБУ через адаптер ELM327 и смартфон или ноутбук. Это дает доступ к реальным параметрам работы двигателя в режиме реального времени.</p>
+<p>С помощью программного обеспечения (например, OpenDiag или Scanmaster) можно увидеть не только код ошибки, но и текущее напряжение датчиков, угол опережения зажигания и состав топливной смеси. Это значительно упрощает поиск причины неисправности, которая может быть вызвана не поломкой детали, а, например, подсосом воздуха.</p>
+<pre><code>PO133 - Кислородный датчик: медленный отклик
+<p>PO171 - Система топливоподачи: слишком бедная смесь</p>
+<p>PO300 - Случайные пропуски воспламенения</code></pre></p>
+<blockquote>
+<p>⚠️ Внимание: Не сбрасывайте ошибки сразу после их считывания. Сначала зафиксируйте их, чтобы понять, в каком режиме (холодный/горячий двигатель) они возникают. Сброс без устранения причины приведет к их повторному появлению через несколько циклов работы двигателя.</p>
+</blockquote>
+<p>При подключении сканера важно выбрать правильный тип протокола связи. Для Ланосов это чаще всего протокол <em>GM OBD-I</em> или <em>OBD-II ISO</em>. Автоматический поиск иногда ошибается, поэтому лучше вручную указать тип ЭБУ (MemS, Micras, Simtec).</p>
+<details class="faq-item"><summary>Почему сканер не видит ЭБУ?</summary><div class="faq-answer"><p>Если сканер не подключается, проверьте целостность контактов 4 (масса), 16 (питание) и 7 (K-Line) в диагностическом разъеме. Часто проблема кроется в окислении именно контакта K-Line.</p></p></p></div></details>
+
+<h2 id="расшифровка-основных-кодов-неисправностей">Расшифровка основных кодов неисправностей</h2>
+<p>Понимание кодов ошибок — ключевой навык для владельца. Ошибки делятся на несколько категорий: связанные с датчиками, системой зажигания, топливоподачей и дополнительным оборудованием. Ниже приведена таблица наиболее частых проблем, с которыми сталкиваются водители Ланосов.</p>
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание проблемы</th>
+<th>Вероятная причина</th>
+<th>Метод решения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0016</td>
+<td>Датчик положения распредвала</td>
+<td>Обрыв цепи или неисправность датчика</td>
+<td>Проверка проводки, замена датчика</td>
+</tr>
+<tr>
+<td>0053</td>
+<td>Кислородный датчик (лямбда)</td>
+<td>Выход из строя нагревателя или сигнала</td>
+<td>Замена лямбда-зонда, проверка катализатора</td>
+</tr>
+<tr>
+<td>0117</td>
+<td>Датчик температуры охлаждающей жидкости</td>
+<td>Низкий уровень сигнала</td>
+<td>Проверка контактов, замена ДТОЖ</td>
+</tr>
+<tr>
+<td>0500</td>
+<td>Датчик скорости автомобиля</td>
+<td>Отсутствие сигнала с КПП</td>
+<td>Замена датчика скорости, проверка шлейфа</td>
+</tr>
+</tbody>
+</table>
+<p>Ошибки, начинающиеся на <strong>P0</strong>, относятся к силовому агрегату и трансмиссии. Коды <strong>P1</strong> часто указывают на проблемы с системой охлаждения или топливной системой. </p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Самодиагностика указывает на зону поиска неисправности, но не всегда называет точную деталь. Всегда проверяйте электрические цепи перед заменой узлов.</p></div>
+<p>При наличии ошибки <em>0133</em> (медленный отклик лямбды) не спешите менять датчик. Часто проблема кроется в качестве топлива или подсосе воздуха во впускном коллекторе, из-за чего смесь становится слишком бедной или богатой.</p>
+
+<h2 id="сброс-ошибок-и-завершение-диагностики">Сброс ошибок и завершение диагностики</h2>
+<p>После проведения ремонтных работ или замены деталей необходимо сбросить сохраненные коды ошибок из памяти ЭБУ. Если этого не сделать, лампа «Check Engine» продолжит гореть, даже если неисправность устранена. Сброс можно выполнить несколькими способами в зависимости от имеющегося оборудования.</p>
+<p>Самый простой метод — отключение клеммы аккумулятора. Необходимо снять минусовую клемму на 10-15 минут. Однако этот способ имеет недостаток: вместе с ошибками сбрасываются настройки адаптации <strong>дроссельной заслонки</strong> и коррекции топливоподачи, а также время на магнитоле. Машине потребуется некоторое время для повторного обучения.</p>
+<div class="checklist-block"><h4>☑️ Алгоритм завершения работ</h4><label class="check-item"><input type="checkbox"><span>Прочитать и записать коды:Устранить физическую неисправность:Сбросить ошибки сканером:Прогреть двигатель до рабочей температуры:Проверить отсутствие ошибок повторно:</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 1</div></div>
+<p>Более профессиональный подход предполагает использование сканера для программного сброса. В меню диагностической программы выбирается опция «Clear DTC» или «Сбросить коды». Это позволяет очистить память без потери других адаптационных параметров системы управления.</p>
+<p>После сброса обязательно запустите двигатель и дайте ему поработать на холостых оборотах 5-10 минут. В это время ЭБУ проводит первичную самодиагностику всех систем. Если лампа «Check Engine» загорелась вновь, значит, проблема не устранена или есть сопутствующие неисправности.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+<details>
+<summary>Можно ли ездить, если горит Check Engine?</summary>
+<p>Если лампа горит ровно и поведение машины не изменилось, доехать до сервиса можно. Если лампа мигает или двигатель троит — движение продолжать опасно, это может привести к разрушению катализатора или серьезным поломкам.</p>
+</details>
+<details>
+<summary>Почему самодиагностика показывает ошибку, которой нет?</summary>
+<p>Это может быть следствием кратковременного скачка напряжения, плохого контакта в разъеме датчика или «глюка» ЭБУ. Попробуйте сбросить ошибку и проехать несколько циклов. Если она возвращается — ищите неисправность.</p>
+</details>
+<details>
+<summary>Нужен ли специальный сканер для Ланос 1.5?</summary>
+<p>Для базовой диагностики достаточно мигания лампы. Для точной настройки и просмотра параметров в реальном времени желателен сканер, поддерживающий протоколы GM/Daewoo, но подойдет и универсальный ELM327 с правильным софтом.</p>
+</details>
+<details>
+<summary>Как отличить ошибку двигателя от ошибки панели?</summary>
+<p>Ошибка двигателя влияет на работу мотора и фиксируется в ЭБУ. Ошибка панели (например, не горит индикатор поворота) касается только приборного щитка и проверяется через тест самодиагностики дисплея.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-автомобиля-к-тестированию-систем">Подготовка автомобиля к тестированию систем</a></li><li><a href="#вход-в-режим-самодиагностики-через-индикатор-check-engine">Вход в режим самодиагностики через индикатор Check Engine</a></li><li><a href="#диагностика-панели-приборов-проверка-стрелок-и-ламп">Диагностика панели приборов: проверка стрелок и ламп</a></li><li><a href="#использование-диагностического-сканера-obd-ii">Использование диагностического сканера OBD-II</a></li><li><a href="#расшифровка-основных-кодов-неисправностей">Расшифровка основных кодов неисправностей</a></li><li><a href="#сброс-ошибок-и-завершение-диагностики">Сброс ошибок и завершение диагностики</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

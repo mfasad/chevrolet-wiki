@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Установка штатного БК на Ниву Шевроле: пошаговая инструкция — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробный гид по установке штатного бортового компьютера на Ниву Шевроле. Подключение, настройка мультиметра и калибровка датчиков своими руками.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv20_TP3L/kak-ustanovit-bortovoj-kompyuter-shtat-na-nivu-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Установка штатного БК на Ниву Шевроле: пошаговая инструкция">
+    <meta property="og:description" content="Подробный гид по установке штатного бортового компьютера на Ниву Шевроле. Подключение, настройка мультиметра и калибровка датчиков своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Установка штатного БК на Ниву Шевроле: пошаговая инструкция</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Установка штатного бортового компьютера на Ниву Шевроле</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#выбор-оборудования-и-подготовка-инструментов">Выбор оборудования и подготовка инструментов</a></li><li><a href="#демонтаж-панели-приборов-и-доступ-к-разъемам">Демонтаж панели приборов и доступ к разъемам</a></li><li><a href="#схема-подключения-и-распиновка-проводов">Схема подключения и распиновка проводов</a></li><li><a href="#замена-датчика-уровня-топлива-дут">Замена датчика уровня топлива (ДУТ)</a></li><li><a href="#настройка-и-калибровка-системы">Настройка и калибровка системы</a></li><li><a href="#диагностика-возможных-неисправностей">Диагностика возможных неисправностей</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Модернизация салона <em>Niva Chevrolet</em> — популярный шаг для владельцев, желающих получить больше информации о состоянии автомобиля. Штатный <strong>бортовой компьютер</strong> (БК) позволяет контролировать расход топлива, напряжение в сети и температуру двигателя без установки дополнительных приборов. В отличие от универсальных моделей, штатное устройство гармонично вписывается в интерьер и управляется через штатные кнопки.</p>
+
+<p>Процесс установки требует внимательности к деталям, так как involves работу с электрической цепью и панелью приборов. Главная задача — правильно подключить разъемы и, при необходимости, заменить датчик уровня топлива для корректной работы. <mark>Ключевым моментом является точное совпадение распиновки коннекторов, чтобы избежать короткого замыкания.</mark> Эта статья поможет вам пройти все этапы инсталляции.</p>
+
+<h2 id="выбор-оборудования-и-подготовка-инструментов">Выбор оборудования и подготовка инструментов</h2>
+<p>Перед началом работ необходимо приобрести совместимое устройство. Для автомобилей <em>ВАЗ-2123</em> чаще всего используются модели серии <strong>Штат X1</strong> или аналоги от <em>Multitronics</em>, адаптированные под эту платформу. Важно убедиться, что выбранная модель поддерживает протокол обмена данными вашего ЭБУ, будь то <em>Bosch M7.9.7</em> или <em>Siemens</em>.</p>
+
+<p>Помимо самого устройства, вам потребуется стандартный набор инструментов. Не стоит пренебрегать качеством инструмента, так как пластиковые элементы салона <em>Niva</em> довольно хрупкие. Для работы подготовьте:</p>
+<ul>
+<li>🔧 Набор отверток (крестовые и плоские) для снятия панелей.</li>
+<li>✂️ Бокорезы или нож для зачистки проводов при необходимости.</li>
+<li>🔌 Изоленту высокого качества или термоусадку для изоляции соединений.</li>
+<li>🧤 Перчатки, чтобы не испачкать светлый пластик салона.</li>
+</ul>
+
+<p>Также рекомендуется заранее проверить целостность проводки в месте установки. Если вы планируете расширенную функциональность, например, контроль температуры в салоне, убедитесь, что датчик идет в комплекте. Отсутствие нужного инструмента может затянуть процесс на несколько часов.</p>
+
+<div class="poll-widget" id="poll-eec6ca71"><div class="poll-widget-question">📊 Какой тип БК вы планируете установить?</div><div class="poll-widget-option" data-poll="eec6ca71" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Штатный (в панель)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="eec6ca71" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Универсальный (на торпеду)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="eec6ca71" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Смартфон через OBD2</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="eec6ca71" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Мне это не нужно</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="демонтаж-панели-приборов-и-доступ-к-разъемам">Демонтаж панели приборов и доступ к разъемам</h2>
+<p>Для доступа к месту установки потребуется частичная разборка передней панели. Начните с снятия декоративных накладок вокруг блока управления отопителем. Действуйте аккуратно, отщелкивая пластиковые фиксаторы, чтобы не сломать их. На некоторых моделях <em>Chevrolet Niva</em> может потребоваться снятие магнитолы для лучшего доступа к внутренним полостям.</p>
+
+<p>После снятия лицевых панелей откроется доступ к задней части приборной панели. Здесь находится основной жгут проводов. Найдите штатную заглушку или место, где должен располагаться БК. Обычно это область рядом с кнопками управления светом или отоплением. Внимательно осмотрите пространство:</p>
+<ul>
+<li>👀 Убедитесь, что провода не перекручены и не имеют следов оплавления.</li>
+<li>🔍 Найдите свободный разъем, соответствующий вашему устройству.</li>
+<li>📏 Проверьте, достаточно ли места для установки корпуса нового прибора.</li>
+</ul>
+
+<blockquote>⚠️ Внимание: Перед началом любых работ с электропроводкой обязательно снимите минусовую клемму с аккумуляторной батареи. Это предотвратит случайное короткое замыкание и сгорание предохранителей.</blockquote>
+
+<p>Если штатного разъема нет, его придется формировать самостоятельно, ориентируясь на схему подключения вашего конкретного автомобиля. Схема проводки может отличаться в зависимости от года выпуска <em>Нивы</em>, поэтому сверка с мануалом обязательна.</p>
+
+<h2 id="схема-подключения-и-распиновка-проводов">Схема подключения и распиновка проводов</h2>
+<p>Самый ответственный этап — подключение проводов. Стандартный интерфейс подключения БК к <em>ВАЗ-2123</em> обычно включает линии питания, управления подсветкой и диагностическую линию <strong>K-Line</strong>. Ошибки на этом этапе могут привести к некорректной работе электроники или даже повреждению ЭБУ.</p>
+
+<p>Рассмотрим основные контакты, которые необходимо соединить. Цвета проводов могут варьироваться, поэтому всегда проверяйте их мультиметром. Ниже приведена таблица типовых соединений для большинства моделей штатных компьютеров:</p>
+
+<table>
+<thead>
+<tr>
+<th>Контакт</th>
+<th>Функция</th>
+<th>Тип подключения</th>
+<th>Цвет провода (пример)</th>
+</tr>
+<tr>
+<th>1</th>
+<th>Питание (+12В)</th>
+<th>Постоянный ток</th>
+<th>Красный</th>
+</tr>
+<tr>
+<th>2</th>
+<th>Масса (GND)</th>
+<th>Кузов</th>
+<th>Черный</th>
+</tr>
+<tr>
+<th>3</th>
+<th>Подсветка</th>
+<th>Габариты</th>
+<th>Оранжевый</th>
+</tr>
+<tr>
+<th>4</th>
+<th>K-Line</th>
+<th>Диагностика</th>
+<th>Зеленый/Белый</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Плюс аккумулятора</td>
+<td>Через предохранитель</td>
+<td>Красный</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Заземление</td>
+<td>На кузов</td>
+<td>Черный</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Управление яркостью</td>
+<td>Параллельно лампам</td>
+<td>Оранжевый</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Данные ЭБУ</td>
+<td>Диагностический разъем</td>
+<td>Зеленый</td>
+</tr>
+</tbody>
+</table>
+
+<p>Для подключения линии <code>K-Line</code> часто требуется найти соответствующий пин в диагностическом разъеме <em>OBD-II</em> или непосредственно в жгуте за приборной панелью. Используйте мультиметр в режиме прозвонки, чтобы найти нужный провод, идущий от ЭБУ. Если вы не уверены в своих силах, лучше воспользоваться готовыми переходниками, которые продаются для конкретных моделей БК.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте концевик для обжима проводов вместо простой скрутки — это обеспечит надежный контакт и защитит от окисления в условиях вибрации внедорожника.</p></div>
+
+<h2 id="замена-датчика-уровня-топлива-дут">Замена датчика уровня топлива (ДУТ)</h2>
+<p>Одной из частых проблем при установке БК на <em>Ниву Шевроле</em> является некорректное отображение уровня топлива. Штатные реостатные датчики имеют высокое сопротивление, которое может не считываться новым компьютером. В таких случаях требуется замена ДУТ на более современный аналог с низким сопротивлением или установка дополнительного согласующего резистора.</p>
+
+<p>Процесс замены involves снятие топливного модуля из бака. Это трудоемкая операция, требующая доступа к топливному баку, который в <em>Niva</em> расположен под днищем или в салоне (в зависимости от модификации). Перед снятием модуля обязательно сбросьте давление в топливной системе, вынув предохранитель бензонасоса и дав двигателю заглохнуть.</p>
+
+<p>После демонтажа старого датчика установите новый, соблюдая осторожность с поплавком. Неправильная установка может привести к заеданию поплавка и искажению показаний. Также проверьте состояние сетки бензонасоса — при такой возможности ее лучше почистить.</p>
+
+<details class="faq-item"><summary>Что делать если стрелка все равно врет?</summary><div class="faq-answer"><p>Если после замены датчика показания некорректны, попробуйте откалибровать БК через сервисное меню. В некоторых моделях есть функция"Калибровка бака", где нужно проехать от полного бака до пустого (или имитировать это изменением сопротивления).</p></div></details>
+
+<h2 id="настройка-и-калибровка-системы">Настройка и калибровка системы</h2>
+<p>После физического подключения и сборки панели необходимо активировать и настроить устройство. При первом включении <strong>бортовой компьютер</strong> обычно предлагает выбрать тип двигателя и объем. Для <em>Chevrolet Niva</em> чаще всего выбирается 8-клапанный двигатель объемом 1.7 литра.</p>
+
+<p>Далее следует процедура калибровки. Она необходима для точного расчета расхода топлива и пробега до пустого бака. Вам потребуется ввести данные о залитом топливе или проехать определенный цикл. Меню настройки вызывается (длительным нажатием) определенных кнопок, комбинация которых указана в инструкции к вашей модели БК.</p>
+
+<ul>
+<li>🛠️ Установите правильный тип форсунок (обычно <code>112 cc/min</code> для стока).</li>
+<li>⛽ Введите тару бака (стандарт <em>58 литров</em>, но лучше замерить реальный объем).</li>
+<li>🌡️ Проверьте корректность отображения температуры ОЖ, сравнив с показаниями штатного указателя.</li>
+</ul>
+
+<blockquote>⚠️ Внимание: Не сбрасывайте настройки ЭБУ (адаптации) без крайней необходимости. Бортовой компьютер должен сам обучиться работе с двигателем в процессе эксплуатации.</blockquote>
+
+<h2 id="диагностика-возможных-неисправностей">Диагностика возможных неисправностей</h2>
+<p>В процессе эксплуатации могут возникнуть сбои в работе устройства. Чаще всего они связаны с плохим контактом или помехами в бортовой сети. Если экран гаснет или показания скачут, проверьте надежность соединения массы. Вибрация — главный враг электроники в <em>Ниве</em>.</p>
+
+<p>Если БК показывает ошибку связи с ЭБУ, проверьте целостность <code>K-Line</code>. Обрыв этой линии приведет к невозможности считать параметры двигателя. Также стоит проверить напряжение в сети при работающем двигателе — оно должно быть в пределах <code>13.5–14.5 В</code>. Скачки напряжения могут вызывать перезагрузки компьютера.</p>
+
+<p>Для глубокой диагностики можно использовать ноутбук с программой <em>OpenDiag</em> и адаптером <em>ELM327</em>. Подключившись через тот же разъем, куда идет БК, можно увидеть, есть ли ошибки в логах самого ЭБУ, которые могут мешать передаче данных на дисплей.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка после установки</h4><label class="check-item"><input type="checkbox"><span>Экран включается при повороте ключа</span></label><label class="check-item"><input type="checkbox"><span>Показания температуры растут при прогреве</span></label><label class="check-item"><input type="checkbox"><span>Расход топлива отображается в движении</span></label><label class="check-item"><input type="checkbox"><span>Подсветка работает при включении габаритов</span></label><label class="check-item"><input type="checkbox"><span>Нет ошибок связи с ЭБУ</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Совместим ли штатный БК с газобаллонным оборудованием (ГБО)?</summary>
+<p>Да, большинство современных моделей, таких как <em>Штат X1</em>, поддерживают переключение видов топлива. В настройках необходимо активировать режим"Газ/Бензин" и правильно настроить тарировку баков. Компьютер будет суммировать расход обоих видов топлива.</p>
+</details>
+
+<details>
+<summary>Сбрасывает ли БК настройки при снятии клеммы аккумулятора?</summary>
+<p>Нет, все настройки, включая калибровку расхода и объем бака, сохраняются в энергонезависимой памяти. Однако текущие показания (мгновенный расход, время поездки) могут сброситься, что является нормальным поведением.</p>
+</details>
+
+<details>
+<summary>Можно ли подключить БК, если в машине стоит нештатная сигнализация?</summary>
+<p>Да, можно. Однако иногда сигнализация может создавать помехи в цепи зажигания или блокировать диагностическую линию. Если наблюдаются сбои, попробуйте запитать БК через отдельный предохранитель непосредственно от замка зажигания.</p>
+</details>
+
+<details>
+<summary>Почему БК показывает температуру воздуха -40 или 99 градусов?</summary>
+<p>Это свидетельствует об обрыве цепи датчика температуры воздуха (если он внешний) или неисправности самого датчика. Проверьте целостность проводов, идущих к датчику, который обычно установлен в бампере или под капотом.</p>
+</details>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Правильная установка и калибровка бортового компьютера превращает его из простой игрушки в мощный инструмент диагностики и экономии топлива для вашего внедорожника.</p></div></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#выбор-оборудования-и-подготовка-инструментов">Выбор оборудования и подготовка инструментов</a></li><li><a href="#демонтаж-панели-приборов-и-доступ-к-разъемам">Демонтаж панели приборов и доступ к разъемам</a></li><li><a href="#схема-подключения-и-распиновка-проводов">Схема подключения и распиновка проводов</a></li><li><a href="#замена-датчика-уровня-топлива-дут">Замена датчика уровня топлива (ДУТ)</a></li><li><a href="#настройка-и-калибровка-системы">Настройка и калибровка системы</a></li><li><a href="#диагностика-возможных-неисправностей">Диагностика возможных неисправностей</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

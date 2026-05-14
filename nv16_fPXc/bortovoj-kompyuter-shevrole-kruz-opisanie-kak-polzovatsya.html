@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Бортовой компьютер Шевроле Круз: описание и управление — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по настройке бортового компьютера Chevrolet Cruze. Как сбросить расход, настроить время, расшифровать коды ошибок и пользоваться меню.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv16_fPXc/bortovoj-kompyuter-shevrole-kruz-opisanie-kak-polzovatsya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Бортовой компьютер Шевроле Круз: описание и управление">
+    <meta property="og:description" content="Полная инструкция по настройке бортового компьютера Chevrolet Cruze. Как сбросить расход, настроить время, расшифровать коды ошибок и пользоваться меню.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Бортовой компьютер Шевроле Круз: описание и управление</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Бортовой компьютер Шевроле Круз: полное руководство пользователя</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#основные-функции-и-интерфейс-дисплея">Основные функции и интерфейс дисплея</a></li><li><a href="#управление-через-кнопки-на-руле">Управление через кнопки на руле</a></li><li><a href="#настройка-времени-и-даты">Настройка времени и даты</a></li><li><a href="#мониторинг-расхода-топлива-и-запаса-хода">Мониторинг расхода топлива и запаса хода</a></li><li><a href="#счетчики-пробега-trip-a-и-trip-b">Счетчики пробега Trip A и Trip B</a></li><li><a href="#диагностика-и-коды-ошибок-на-дисплее">Диагностика и коды ошибок на дисплее</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Современный автомобиль — это не просто средство передвижения, а сложный электронный комплекс, где <strong>бортовой компьютер</strong> играет роль центрального информационного узла. Владельцы популярного седана Chevrolet Cruze часто сталкиваются с необходимостью быстро узнать текущий расход топлива, остаток пробега до сервисного обслуживания или точное время в пути, не отрываясь от дороги. Именно для этого инженеры General Motors оснастили модель <em>Cruze</em> продвинутой системой мониторинга, интегрированной в приборную панель.</p>
+
+<p>Интерфейс взаимодействия водителя с электроникой автомобиля реализован через кнопки на рулевом колесе и дисплей между стрелками спидометра и тахометра. <mark>Правильная настройка единиц измерения и пороговых значений предупреждений может существенно повысить комфорт эксплуатации</mark>, позволяя водителю всегда быть в курсе технического состояния машины. Понимание логики работы меню избавит от лишнего стресса при появлении различных индикаторов на экране.</p>
+
+<p>В этой статье мы детально разберем функционал штатного маршрутизатора, способы сброса статистики и методы диагностики неисправностей. Вы узнаете, как адаптировать показания системы под свой стиль вождения и какие скрытые функции доступны через стандартное меню. Грамотное использование этих инструментов помогает экономить топливо и своевременно реагировать на изменения в работе двигателя.</p>
+
+<h2 id="основные-функции-и-интерфейс-дисплея">Основные функции и интерфейс дисплея</h2>
+<p>Центральным элементом системы является монохромный или цветной LCD-дисплей (в зависимости от комплектации <em>Cruze</em>), расположенный в нижней части приборной панели. Он отображает текущее время, температуру за бортом, уровень топлива и мгновенный расход. Переключение между экранами осуществляется кнопками со стрелками, расположенными на правой спице руля, что позволяет управлять системой, не убирая рук от рулевого колеса.</p>
+
+<p>Система предоставляет водителю доступ к нескольким ключевым параметрам в реальном времени. <strong>Мгновенный расход</strong> показывает, сколько литров топлива потребляет двигатель прямо сейчас, что полезно при обучении экономичному вождению. Также доступен <strong>средний расход</strong>, который рассчитывается за весь период с последнего сброса, и <strong>запас хода</strong>, вычисляемый алгоритмами на основе текущего уровня топлива в баке и средней скорости движения.</p>
+
+<ul>
+<li>🚗 <strong>Trip A / Trip B:</strong> Два независимых счетчика пробега для разделения поездок (например, работа и личный пробег).</li>
+<li>⛽ <strong>Fuel Economy:</strong> Детальная статистика потребления топлива в литрах на 100 км или милях на галлон.</li>
+<li>🌡️ <strong>Outside Temp:</strong> Показатели температуры окружающего воздуха с предупреждением о возможном обледенении.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Показания температуры воздуха могут быть неточными сразу после запуска двигателя или при движении с низкой скоростью, так как датчик расположен в бампере и нагревается от работающего мотора.</p>
+</blockquote>
+
+<p>Важно понимать, что расчет запаса хода является усредненным. Если вы только что залили полный бак после длительной езды по трассе, а затем встали в городскую пробку, компьютер <em>Cruze</em> пересчитает остаток километров в меньшую сторону, так как средний расход резко вырастет. Это нормальное поведение алгоритма, а не неисправность.</p>
+
+<div class="poll-widget" id="poll-97a7889c"><div class="poll-widget-question">📊 Как часто вы сбрасываете показания бортового компьютера?</div><div class="poll-widget-option" data-poll="97a7889c" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не сбрасываю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="97a7889c" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">После каждой заправки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="97a7889c" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Раз в месяц</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="97a7889c" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Только перед продажей авто</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="управление-через-кнопки-на-руле">Управление через кнопки на руле</h2>
+<p>Навигация по меню бортового компьютера Chevrolet Cruze спроектирована интуитивно, однако требует привыкания к последовательности действий. Основной блок управления находится на правой стороне руля. Здесь расположена кнопка <code>MENU</code> (или <code>SET/CLR</code> в некоторых версиях), которая служит для входа в настройки и подтверждения выбора, а также кнопки со стрелками вверх и вниз для прокрутки списков.</p>
+
+<p>Для перехода между основными экранами (время, температура, пробег) достаточно кратковременно нажимать кнопку переключения режимов. Чтобы попасть в глубокое меню настроек, необходимо нажать и удерживать кнопку <code>MENU</code> несколько секунд, пока на экране не появится соответствующее меню. В этом режиме стрелки позволяют выбирать пункты, такие как установка времени, языка интерфейса или формат отображения расхода топлива.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка функционала кнопок руля</h4><label class="check-item"><input type="checkbox"><span>Нажать MENU для входа в настройки</span></label><label class="check-item"><input type="checkbox"><span>Пролистать стрелками все пункты меню</span></label><label class="check-item"><input type="checkbox"><span>Изменить формат времени</span></label><label class="check-item"><input type="checkbox"><span>Сбросить счетчик Trip A</span></label><label class="check-item"><input type="checkbox"><span>Выйти в главное меню</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>При настройке времени или даты система переходит в режим редактирования конкретного поля (часы, минуты, год). Кнопками со стрелками вы изменяете значение, а коротким нажатием <code>SET/CLR</code> переходите к следующему параметру. После завершения всех изменений необходимо дождаться автоматического выхода или подтвердить сохранение, в зависимости от версии программного обеспечения вашей приборной панели.</p>
+
+<p>Некоторые функции, такие как звуковое подтверждение кнопок или яркость подсветки дисплея, могут быть недоступны через руль и требовать использования центральной консоли или диагностического сканера. Это зависит от года выпуска <em>Cruze</em> и рынка, для которого автомобиль был изготовлен (США, Европа или Азия).</p>
+
+<h2 id="настройка-времени-и-даты">Настройка времени и даты</h2>
+<p>Корректное время необходимо не только для комфорта водителя, но и для правильной работы журнала событий в бортовом компьютере. Если время сбивается после отключения аккумулятора, его можно легко восстановить вручную. Для этого перейдите в меню настроек, используя кнопку <code>MENU</code>, и найдите пункт"Time Settings" или"Время".</p>
+
+<p>Процесс установки занимает менее минуты. Сначала выбирается формат времени (12 или 24 часа), затем устанавливаются часы и минуты. В автомобилях с навигационной системой или подключением к сотовой сети время может обновляться автоматически через сигнал GPS или GSM, но в базовых комплектациях <em>Cruze</em> эту процедуру приходится выполнять вручную.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Действие</th>
+<th>Кнопка управления</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Вход в меню</td>
+<td>Длительное нажатие</td>
+<td>MENU</td>
+</tr>
+<tr>
+<td>Выбор параметра</td>
+<td>Краткое нажатие</td>
+<td>Стрелки Вверх/Вниз</td>
+</tr>
+<tr>
+<td>Изменение значения</td>
+<td>Краткое нажатие</td>
+<td>Стрелки Вверх/Вниз</td>
+</tr>
+<tr>
+<td>Сохранение</td>
+<td>Автоматически / SET</td>
+<td>SET/CLR</td>
+</tr>
+</tbody>
+</table>
+
+<p>Обратите внимание, что переход на летнее и зимнее время в большинстве моделей не происходит автоматически. Водителю необходимо самостоятельно корректировать время дважды в год, чтобы данные в логе неисправностей совпадали с реальным временем суток. Это особенно важно при диагностике intermittent faults (плавающих неисправностей).</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если время постоянно сбрасывается после глушения двигателя, проверьте состояние аккумулятора или целостность цепи питания приборной панели, возможно, окислились контакты.</p></div>
+
+<h2 id="мониторинг-расхода-топлива-и-запаса-хода">Мониторинг расхода топлива и запаса хода</h2>
+<p>Одной из главных функций бортового компьютера является контроль экономичности. Система <em>Cruze</em> отображает средний расход, который рассчитывается с момента последнего сброса. Чтобы получить объективную картину, опытные водители сбрасывают этот показатель сразу после заправки полного бака и проезжают привычные маршруты.</p>
+
+<p>Функция"Distance to Empty" (Запас хода) является динамической. Она не просто делит объем топлива в баке на средний расход, а учитывает текущий стиль вождения. Если вы резко ускоритесь или начнете движение в гору, значение запаса хода может уменьшаться быстрее, чем пробег автомобиля. Это помогает планировать заправку заранее, избегая ситуаций, когда бензин заканчивается внезапно.</p>
+
+<ul>
+<li>📉 <strong>Анализ динамики:</strong> Следите, как меняется средний расход при разных скоростях (город, трасса, пробки).</li>
+<li>🛢️ <strong>Качество топлива:</strong> Резкое увеличение расхода без изменения стиля езды может сигнализировать о низком качестве бензина.</li>
+<li>🔧 <strong>Диагностика:</strong> Аномально высокий расход может указывать на проблемы с лямбда-зондом, свечами или давлением в шинах.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Не доверяйте показаниям запаса хода слепо, особенно если стрелка уровня топлива уже близка к нулю. Всегда планируйте заправку, когда компьютер показываетток 50-70 км, так как реальный остаток может быть меньше заявленного из-за погрешности датчика уровня.</p>
+</blockquote>
+
+<p>Для точной калибровки расхода можно использовать метод ручного расчета: заправьтесь"до отстрела", сбросьте бортовой компьютер, проедьте 300-400 км и снова заправьтесь до полного бака. Разделите литры, вошедшие во второй раз, на пройденные километры и умножьте на 100. Сравните полученную цифру с показаниями дисплея <em>Cruze</em>.</p>
+
+<h2 id="счетчики-пробега-trip-a-и-trip-b">Счетчики пробега Trip A и Trip B</h2>
+<p>В арсенале водителя Chevrolet Cruze есть два независимых счетчика пробега: Trip A и Trip B. Это чрезвычайно удобный инструмент для разделения статистики. Например, в Trip A можно отслеживать пробег от замены масла, а в Trip B — расстояние, пройденное в командировке или отпуске, чтобы потом рассчитать затраты.</p>
+
+<p>Переключение между счетчиками осуществляется через меню или отдельной кнопкой (в зависимости от года выпуска). Сброс каждого счетчика производится индивидуально. Для этого нужно выбрать нужный Trip, нажать и удерживать кнопку <code>SET/CLR</code> (или аналогичную) в течение нескольких секунд, пока цифры не обнулятся. Это действие не затрагивает общий пробег автомобиля (Odometer), который защищен от сброса.</p>
+
+<details class="faq-item"><summary>Скрытый счетчик Odometer</summary><div class="faq-answer"><p>Общий пробег автомобиля хранится в EEPROM памяти приборной панели и не может быть сброшен через меню пользователя. Попытки изменить его требуют специального оборудования и часто являются признаком скручивания пробега при продаже.</p></div></details>
+
+<p>Использование двух трекеров позволяет вести более детальную статистику эксплуатации. Вы можете точно знать, сколько километров вы проехали на зимней резине или какой реальный пробег был совершен между двумя техническими обслуживаниями. Это особенно актуально для тех, кто использует автомобиль для работы и должен отчитываться за километраж.</p>
+
+<h2 id="диагностика-и-коды-ошибок-на-дисплее">Диагностика и коды ошибок на дисплее</h2>
+<p>Бортовой компьютер постоянно опрашивает датчики двигателя, коробки передач и других систем. При обнаружении неисправности на дисплее появляется соответствующее сообщение или загорается индикатор <strong>Check Engine</strong>. В некоторых случаях система выдает текстовое предупреждение, например,"Low Oil Pressure" (Низкое давление масла) или"Engine Hot AC Off" (Двигатель горячий, кондиционер отключен).</p>
+
+<p>Если на экране появилось сообщение"Change Engine Oil Soon", это не всегда означает аварийную ситуацию. В большинстве случаев это запрограммированный интервал замены масла, который можно сбросить вручную после проведения ТО. Однако игнорировать другие предупреждения, особенно связанные с температурой или давлением, категорически нельзя.</p>
+
+<ul>
+<li>🔴 <strong>Красный индикатор:</strong> Критическая ошибка, требующая немедленной остановки (перегрев, падение давления масла).</li>
+<li>🟡 <strong>Желтый индикатор:</strong> Предупреждение, позволяющее доехать до сервиса (неисправность датчика, низкий уровень топлива).</li>
+<li>🔵 <strong>Зеленый/Синий:</strong> Индикация работы систем (поворотники, дальний свет, круиз-контроль).</li>
+</ul>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Если загорелся индикатор"Engine Hot", немедленно остановитесь и заглушите двигатель. Продолжение движения может привести к заклиниванию поршней и капитальному ремонту двигателя <em>Cruze</em>.</p>
+</blockquote>
+
+<p>Для более глубокой диагностики, выходящей за рамки текстовых сообщений на дисплее, рекомендуется использовать OBDII сканер. Он позволит считать точные коды ошибок (например, P0300 — пропуски зажигания), которые помогут мастеру в сервисе быстро определить причину поломки. Бортовой компьютер лишь сигнализирует о наличии проблемы, но не всегда детализирует её источник.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Текстовые сообщения на дисплее — это первый уровень защиты. Игнорирование предупреждений о температуре или давлении масла может привести к необратимым повреждениям двигателя за считанные минуты.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Как сбросить интервал замены масла на Chevrolet Cruze?</summary>
+<p>Для сброса включите зажигание (двигатель не запускать). Нажмите кнопку со стрелкой на руле, чтобы пролистать меню до пункта"Oil Life" (Ресурс масла). Нажмите и удерживайте кнопку <code>SET/CLR</code> несколько секунд, пока не произойдет звуковой сигнал и значение не изменится на 100%. Выключите зажигание.</p>
+</details>
+
+<details>
+<summary>Почему бортовой компьютер показывает разный расход топлива?</summary>
+<p>Расход зависит от множества факторов: пробок, стиля вождения, качества топлива, давления в шинах и даже включенного кондиционера. Бортовой компьютер <em>Cruze</em> усредняет данные за определенный период, поэтому резкие изменения стиля езды сразу отражаются на цифрах.</p>
+</details>
+
+<details>
+<summary>Что делать, если пропали показания температуры или времени?</summary>
+<p>Чаще всего это связано с разрядом аккумулятора или его отключением. Время и дату нужно установить заново через меню. Если проблема повторяется часто, проверьте клеммы аккумулятора на предмет окисления или плохого контакта массы.</p>
+</details>
+
+<details>
+<summary>Можно ли через бортовой компьютер узнать VIN-код автомобиля?</summary>
+<p>В штатном меню пользовательского уровня VIN-код обычно не отображается. Он записан в памяти ЭБУ и может быть считан только через диагностический разъем OBDII с помощью специального сканера или приложения для смартфона с адаптером ELM327.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#основные-функции-и-интерфейс-дисплея">Основные функции и интерфейс дисплея</a></li><li><a href="#управление-через-кнопки-на-руле">Управление через кнопки на руле</a></li><li><a href="#настройка-времени-и-даты">Настройка времени и даты</a></li><li><a href="#мониторинг-расхода-топлива-и-запаса-хода">Мониторинг расхода топлива и запаса хода</a></li><li><a href="#счетчики-пробега-trip-a-и-trip-b">Счетчики пробега Trip A и Trip B</a></li><li><a href="#диагностика-и-коды-ошибок-на-дисплее">Диагностика и коды ошибок на дисплее</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

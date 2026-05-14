@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Чем диагностировать Шевроле Лачетти: выбор сканера и софта — Chevrolet-Wiki</title>
+    <meta name="description" content="Полный обзор оборудования для диагностики Chevrolet Lacetti. Сравнение адаптеров ELM327, K-Line, Scanmatik. Выбор ПО для двигателей 1.4, 1.6, 1.8.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv49_tmT-/chem-diagnostirovat-shevrole-lachetti.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Чем диагностировать Шевроле Лачетти: выбор сканера и софта">
+    <meta property="og:description" content="Полный обзор оборудования для диагностики Chevrolet Lacetti. Сравнение адаптеров ELM327, K-Line, Scanmatik. Выбор ПО для двигателей 1.4, 1.6, 1.8.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Чем диагностировать Шевроле Лачетти: выбор сканера и софта</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Профессиональная и любительская диагностика Шевроле Лачетти</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#частые-вопросы-faq">Частые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярных корейских седанов под брендом Chevrolet часто сталкиваются с необходимостью проверки электронных систем автомобиля. Вопрос о том, чем диагностировать Шевроле Лачетти, встает ребром при загорании лампы Check Engine или появлении плавающих оборотов. Современные автомобили напичканы электроникой, и без специального оборудования найти неисправность практически невозможно.</p>
+
+<p>Для <em>Chevrolet Lacetti</em>, выпускавшегося с двигателями объемом 1.4, 1.6 и 1.8 литра, существует несколько протоколов обмена данными. Основным стандартом здесь выступает <strong>OBD-II</strong>, но реализация подключения может отличаться в зависимости от года выпуска и типа установленного блока управления (ЭБУ). Понимание этих нюансов позволит вам выбрать правильный инструмент и не потратить деньги на ненужные гаджеты.</p>
+
+<p>Выбор между профессиональным сканером и бюджетным адаптером зависит от ваших целей. Если вы планируете регулярно обслуживать автомобиль самостоятельно, глубокая диагностика станет незаменимым навыком. В этой статье мы разберем все доступные варианты оборудования и программного обеспечения, чтобы вы могли принять взвешенное решение.</p>
+
+<h2>Протоколы связи и разъемы подключения</Прежде чем покупать сканер, необходимо разобраться, какие именно протоколы поддерживает ваш экземпляр <em>Lacetti</em>. Большинство автомобилей, выпущенных после 2008 года, используют стандартный протокол CAN-bus для связи с блоком управления двигателем. Однако более ранние модели, особенно с двигателями 1.4 и 1.6, часто полагаются на старый добрый <strong>K-Line</strong> (ISO 9141-2).
+
+<p>Разъем диагностики обычно расположен под торпедой со стороны водителя, рядом с блоком предохранителей. Это стандартный 16-контактный разъем OBD-II. Важно знать, что на некоторых версиях pins для K-Line и CAN могут отличаться. Если вы попытаетесь подключиться через CAN-адаптер к машине, где ЭБУ общается только по K-Line, связи не будет.</p>
+
+<p>Для точного определения протокола можно воспользоваться мультиметром, замерив напряжение на контактах разъема, но проще попробовать подключить универсальный сканер. Современные адаптеры часто умеют автоматически определять протокол, но старые или дешевые китайские копии могут работать некорректно. Знание типа вашего ЭБУ (чаще всего это <em>Sirius D42</em> или <em>Delphi</em>) поможет сузить круг поиска подходящего софта.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При подключении любого диагностического оборудования убедитесь, что зажигание выключено. Включение прибора в горячий разъем может привести к скачку напряжения и повреждению контроллера ЭБУ.</p>
+</blockquote>
+
+<h2>Бюджетные адаптеры ELM327 для базовой проверки</Самым доступным способом, чем диагностировать Шевроле Лачетти, является использование адаптеров на базе чипа <strong>ELM327</strong>. Эти устройства стоят копейки и продаются в любом магазине электроники. Они подключаются через Bluetooth или Wi-Fi к смартфону и позволяют считывать основные ошибки двигателя.
+
+<p>Однако с Лачетти здесь есть нюанс. Дешевые версии чипов (часто маркируемые как v2.1) плохо работают с протоколом K-Line, который используется во многих Лачетти. Они могут не видеть автомобиль вообще или показывать ошибки обрыва связи. Для надежной работы с корейскими авто лучше искать адаптеры версии <strong>1.5</strong> на чипе PIC18F25K80.</p>
+
+<p>Для работы с такими адаптерами на Android отлично подходят приложения <em>OpenDiag</em>, <em>Car Scanner</em> или <em>Torque</em>. Они позволяют не только считать код ошибки (например, P0300 — пропуски зажигания), но и посмотреть параметры в реальном времени: положение дроссельной заслонки, напряжение лямбда-зонда, коррекции топлива. Этого достаточно для первичной оценки состояния мотора.</p>
+
+<div class="poll-widget" id="poll-64993a10"><div class="poll-widget-question">📊 Какой адаптер вы планируете использовать?</div><div class="poll-widget-option" data-poll="64993a10" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Оригинальный ELM327 v1.5</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Китайская копия за 300 руб</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный сканер Autel/Launch</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Ничего, только сервис</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Стоит отметить, что через ELM327 доступ к блокам ABS, Airbag или АКПП часто ограничен или невозможен, так как эти системы требуют специфических команд, которые бюджетные адаптеры не поддерживают. Тем не менее, для проверки двигателя перед покупкой машины или поиска причины троения этот вариант вполне приемлем.</p>
+
+<h2>Специализированный софт для глубокой диагностики</Если вы хотите получить доступ ко всем параметрам, доступным дилерскому сканеру, вам понадобится более серьезное программное обеспечение. Для Chevrolet Lacetti золотым стандартом в СНГ считается программа <strong>Scanmatik</strong> (SM2 или SM3) в паре с соответствующим адаптером. Она умеет работать как с K-Line, так и с CAN-протоколами.
+
+<p>Также популярна программа <em>OpenDiag</em> (версия Pro), которая заточена под автомобили постсоветского пространства, включая корейские марки. Она позволяет проводить адаптацию дроссельной заслонки, сбрасывать ошибки, смотреть графики сигналов и даже перепрошивать ЭБУ (хотя последнее требует осторожности). Еще один мощный инструмент — <strong>Chevrolet Explorer</strong>, который специализируется именно на марке Chevrolet.</p>
+
+<details class="faq-item"><summary>Можно ли перепрошить ЭБУ через ноутбук?</summary><div class="faq-answer"><p>Да, это возможно. Для перепрошивки (чип-тюнинга) обычно используют программы OpenBox или BitViewer в связке с адаптером K-Line или CAN-загрузчиком. Однако этот процесс рискован: при обрыве связи контроллер может превратиться в "кирпич", восстановление которого потребует программатора BDM.</p></div></details>
+
+<p>Использование ноутбука с установленным специализированным софтом дает максимальную детализацию. Вы можете увидеть не просто "ошибка датчика кислорода", а конкретные значения вольтажа, которые выдает датчик, и скорость реакции на изменение состава смеси. Это критически важно при поиске неисправностей, когда лампа Check Engine еще не горит, но машина едет плохо.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Не проводите запись данных (логирование) в движении, если ноутбук не закреплен надежно. Падающее устройство может повредить педали или заблокировать управление автомобилем.</p>
+</blockquote>
+
+<h2>Профессиональные мультимарочные сканеры</Для тех, кто занимается ремонтом автомобилей профессионально или владеет несколькими машинами разных марок, оптимальным выбором станут мультимарочные сканеры. Устройства брендов <em>Launch</em>, <em>Autel</em> или <strong>ThinkCar</strong> представляют собой планшет с установленной диагностической программой.
+
+<p>Такие гаджеты позволяют диагностировать не только двигатель, но и другие системы <em>Chevrolet Lacetti</em>:</p>
+<ul>
+<li>🔧 <strong>ABS и ESP:</strong> просмотр датчиков скорости колес, тест насоса, удаление воздуха из системы.</li>
+<li>🛡️ <strong>SRS (Airbag):</strong> проверка целостности подушек и шлейфов.</li>
+<li>⚙️ <strong>АКПП:</strong> проверка температуры масла, адаптация переключений, тест соленоидов.</li>
+<li>💡 <strong>Кузовная электрика:</strong> проверка концевиков, стеклоподъемников и центрального замка.</li>
+</ul>
+
+<p>Преимущество таких сканеров в удобстве интерфейса и отсутствии необходимости возиться с драйверами и настройкой портов COM. Вы просто подключаете кабель, выбираете модель Lacetti и год выпуска. Устройство само определит доступные блоки управления. Минусом является высокая стоимость лицензий, которые часто требуют ежегодного обновления для работы с новыми авто, хотя для Лачетти подойдут и старые версии ПО.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При покупке б/у профессионального сканера убедитесь, что карта памяти не переполнена логами предыдущего владельца, иначе устройство может работать медленно или зависать при загрузке меню.</p></div>
+
+<h2>Сравнительная таблица оборудования</Чтобы систематизировать информацию и окончательно определиться, чем лучше диагностировать ваш Шевроле Лачетти, приведем сравнительную таблицу популярных решений. Она поможет оценить соотношение цены и функциональности.
+
+<table>
+<thead>
+<tr>
+<th>Тип оборудования</th>
+<th>Примерная цена</th>
+<th>Доступные системы</th>
+<th>Сложность использования</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ELM327 (Bluetooth)</td>
+<td>$5 - $15</td>
+<td>Двигатель (частично)</td>
+<td>Низкая</td>
+</tr>
+<tr>
+<td>K-Line адаптер (VAG-COM)</td>
+<td>$20 - $40</td>
+<td>Двигатель, ABS, SRS</td>
+<td>Средняя</td>
+</tr>
+<tr>
+<td>Scanmatik 2 (SM2)</td>
+<td>$100 - $150</td>
+<td>Все системы (полный доступ)</td>
+<td>Высокая</td>
+</tr>
+<tr>
+<td>Launch X431 / Autel</td>
+<td>$300 - $800+</td>
+<td>Все системы + сервис</td>
+<td>Средняя</td>
+</tr>
+</tbody>
+</table>
+
+<p>Как видно из таблицы, для разовых проверок нет смысла покупать дорогое оборудование. Однако если вы планируете заниматься ремонтом, инвестиция в <strong>Scanmatik</strong> или аналог быстро окупится. </p>
+
+<h2>Типичные ошибки и их расшифровка</При диагностике <em>Chevrolet Lacetti</strong> вы с высокой вероятностью столкнетесь с набором типовых ошибок. Знание их значения поможет быстрее понять суть проблемы. Коды ошибок начинаются с буквы P (Powertrain) и четырех цифр.
+
+<p>Наиболее часто встречающиеся коды на Лачетти:</p>
+<ul>
+<li>🚗 <strong>P0300-P0304:</strong> Пропуски воспламенения. Часто виноваты свечи, катушки зажигания или форсунки.</li>
+<li>🌬️ <strong>P0171/P0172:</strong> Слишком бедная или богатая смесь. Проверьте подсос воздуха, давление в топливной рампе и ДМРВ.</li>
+<li>🦋 <strong>P2135:</strong> рассогласование сигналов датчиков положения дроссельной заслонки. Частая болезнь, требующая замены узла или чистки контактов.</li>
+<li>🔥 <strong>P0420:</strong> Низкая эффективность катализатора. Либо умер катализатор, либо "врёт" нижняя лямбда.</li>
+</ul>
+
+<div class="checklist-block"><h4>☑️ План действий при горении Check Engine</h4><label class="check-item"><input type="checkbox"><span>Считать код ошибки сканером</span></label><label class="check-item"><input type="checkbox"><span>Записать или сфотографировать код</span></label><label class="check-item"><input type="checkbox"><span>Проверить параметр в реальном времени</span></label><label class="check-item"><input type="checkbox"><span>Принять решение о ремонте</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Не стоит сразу паниковать и бежать в магазин за запчастями при загорании лампы. Сначала считайте ошибку. Иногда это может быть случайный сбой или некачественное топливо. Сбросьте ошибку и покатайтесь. Если она вернется — значит, проблема реальная и требует вмешательства.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</em> Сброс ошибки без устранения причины её появления — временное решение. Проблема никуда не денется, а в худшем случае может привести к выходу из строя дорогостоящих узлов, например, катализатора или поршневой группы.</p>
+</blockquote>
+
+<h2 id="частые-вопросы-faq">Частые вопросы (FAQ)</h2>
+<details>
+<summary>Можно ли диагностировать Лачетти без ноутбука, только телефоном?</summary>
+<p>Да, для базовой проверки двигателя и чтения ошибок достаточно смартфона с Bluetooth-адаптером ELM327 и приложениями вроде OpenDiag или Car Scanner. Однако для глубокой диагностики АКПП, ABS и проведения адаптаций телефонных возможностей может не хватить.</p>
+</details>
+
+<details>
+<summary>Какой адаптер лучше выбрать для двигателя 1.6?</summary>
+<p>Для двигателя 1.6, который чаще всего работает по протоколу K-Line, лучше всего подойдет качественный адаптер K-Line (VAG-COM 409.1) или универсальный Scanmatik. Дешевые ELM327 могут не соединиться с блоком управления.</p>
+</details>
+
+<details>
+<summary>Где находится диагностический разъем на Шевроле Лачетти?</summary>
+<p>Разъем OBD-II расположен в салоне, под панелью приборов с левой стороны (со стороны водителя), в районе блока предохранителей. Он может быть закрыт пластиковой заглушкой.</p>
+</details>
+
+<details>
+<summary>Почему сканер не видит автомобиль?</summary>
+<p>Основные причины: включено зажигание (на некоторых авто нужно включать двигатель), неисправен адаптер, не установлены драйверы, неверно выбран порт COM или протокол связи. Также возможно отсутствие питания на диагностическом разъеме (сгорел предохранитель).</p>
+</details>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Правильно подобранное диагностическое оборудование экономит время и деньги, позволяя точно определить неисправность без гадания на кофейной гуще.</p></div></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#частые-вопросы-faq">Частые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

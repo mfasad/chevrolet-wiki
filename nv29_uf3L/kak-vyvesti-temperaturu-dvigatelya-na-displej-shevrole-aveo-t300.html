@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Вывод температуры двигателя на дисплей Шевроле Авео Т300 — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция: как вывести температуру антифриза на экран Chevrolet Aveo T300. Скрытые меню, коды ошибок и настройка приборной панели.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv29_uf3L/kak-vyvesti-temperaturu-dvigatelya-na-displej-shevrole-aveo-t300.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Вывод температуры двигателя на дисплей Шевроле Авео Т300">
+    <meta property="og:description" content="Подробная инструкция: как вывести температуру антифриза на экран Chevrolet Aveo T300. Скрытые меню, коды ошибок и настройка приборной панели.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Вывод температуры двигателя на дисплей Шевроле Авео Т300</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как вывести температуру двигателя на дисплей Шевроле Авео Т300</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#зачем-необходим-цифровой-контроль-температуры">Зачем необходим цифровой контроль температуры</a></li><li><a href="#метод-активации-через-скрытое-сервисное-меню">Метод активации через скрытое сервисное меню</a></li><li><a href="#использование-диагностического-сканера-elm327">Использование диагностического сканера ELM327</a></li><li><a href="#установка-отдельного-цифрового-датчика">Установка отдельного цифрового датчика</a></li><li><a href="#расшифровка-кодов-и-значений-на-дисплее">Расшифровка кодов и значений на дисплее</a></li><li><a href="#частые-проблемы-и-их-решение">Частые проблемы и их решение</a></li><li><a href="#вопросы-и-ответы-faq">Вопросы и ответы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+<p>Владельцы популярного седана Chevrolet Aveo третьего поколения (индекс кузова T300) часто сталкиваются с ограниченной функциональностью штатного маршрутизатора. Несмотря на наличие информационного дисплея в центре приборной панели, заводская прошивка скрывает от пользователя один из важнейших параметров — текущую температуру охлаждающей жидкости. Это вызывает беспокойство, особенно в летнюю жару или при движении в плотном трафике, когда контроль за тепловым режимом мотора становится критически важным.</p>
+
+<p>Отсутствие цифрового значения градуса Цельсия на экране не означает, что датчик не работает. Электронный блок управления <strong>ECU</strong> постоянно считывает данные с термостата, но просто не транслирует их на дисплей в штатном режиме. Водитель может полагаться только на стрелочный указатель или загорание сигнальной лампы перегрева, что часто бывает слишком поздно для предотвращения серьезных поломок.</p>
+
+<p>К счастью, архитектура бортовой сети <em>Chevrolet</em> позволяет активировать скрытые функции через сервисное меню или диагностический разъем. В этой статье мы детально разберем проверенные методы отображения температуры антифриза, которые помогут вам мониторить состояние системы охлаждения без установки дорогостоящих сторонних гаджетов.</p>
+
+<h2 id="зачем-необходим-цифровой-контроль-температуры">Зачем необходим цифровой контроль температуры</h2>
+<p>Штатный стрелочный указатель на приборной панели <em>Aveo T300</em> имеет большую зону нечувствительности. Стрелка может уверенно держаться посередине шкалы при температуре от 85 до 105 градусов Цельсия, не давая водителю понять, что мотор начинает перегреваться. Цифровое значение позволяет заметить тенденцию к росту температуры задолго до того, как закипит <strong>антифриз</strong>.</p>
+
+<p>Контроль теплового режима особенно важен для двигателей объемом 1.6 литра, которые более чувствительны к состоянию системы охлаждения. Зная точную температуру, вы можете предотвратить:</p>
+<ul>
+<li>🔥 Закипание охлаждающей жидкости в пробках</li>
+<li>❄️ Непрогрев двигателя зимой, ведущий к повышенному износу</li>
+<li>⚙️ Выход из строя термостата или помпы</li>
+<li>💥 Деформацию головки блока цилиндров при критическом перегреве</li>
+</ul>
+
+<p>Кроме того, знание рабочей температуры помогает диагностировать неисправность термостата. Если мотор долго не выходит на режим или, наоборот, мгновенно нагревается, цифровые данные станут первым звоночком для визита в сервис. Это особенно актуально при эксплуатации автомобиля с <strong>ГБО</strong>, где температурный режим играет ключевую роль.</p>
+
+<blockquote>⚠️ Внимание: Эксплуатация двигателя при температуре выше 105 градусов Цельсия в течение длительного времени может привести к необратимым последствиям, включая прогар прокладки ГБЦ.</blockquote>
+
+<h2 id="метод-активации-через-скрытое-сервисное-меню">Метод активации через скрытое сервисное меню</h2>
+<p>Самый доступный способ, не требующий покупки дополнительного оборудования — это вход в инженерное меню приборной панели. Интерфейс дисплея <em>Chevrolet Aveo T300</em> построен таким образом, что позволяет переключаться между режимами отображения данных. Для входа вам потребуется выполнить определенную последовательность действий с кнопками на подрулевом переключателе.</p>
+
+<p>Процесс активации выглядит следующим образом:</p>
+<ol>
+<li>Выключите зажигание полностью.</li>
+<li>Зажмите кнопку <code>Menu</code> на рычаге управления дворниками.</li>
+<li>Не отпуская кнопку, включите зажигание (двигатель запускать не нужно).</li>
+<li>На дисплее появится надпись <code>Test</code> или меню диагностики.</li>
+</ol>
+
+<p>В открывшемся меню с помощью коротких нажатий на кнопку <code>Menu</code> необходимо листать параметры до тех пор, пока на экране не появится значение температуры. Обычно оно обозначается аббревиатурой <strong>COOL</strong> или <strong>TEMP</strong> и цифровым значением в градусах Цельсия. Если в вашем регионе используется Фаренгейт, значение будет значительно выше (например, 190-200 вместо 90).</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если меню не открывается с первого раза, попробуйте зажать кнопку чуть раньше включения зажигания или изменить ритм нажатий. Иногда требуется несколько попыток для синхронизации с модулем приборной панели.</p></div>
+
+<p>Стоит отметить, что в некоторых версиях прошивки этот метод может отображать только тестовые значения или не показывать температуру вовсе. В таком случае необходимо переходить к более глубокой диагностике через разъем OBD-II. Также важно не менять другие параметры в инженерном меню, если вы не уверены в их назначении, чтобы не сбить настройки бортового компьютера.</p>
+
+<h2 id="использование-диагностического-сканера-elm327">Использование диагностического сканера ELM327</h2>
+<p>Более универсальным и надежным способом является использование Bluetooth-адаптера <strong>ELM327</strong> в связке со смартфоном. Этот метод позволяет не просто вывести температуру на экран, но и отслеживать график ее изменения в реальном времени. Адаптер подключается в разъем OBD-II, который в <em>Aveo T300</code> расположен под торпедой слева от рулевой колонки.</p>
+
+<p>Для реализации этого метода вам понадобятся:</p>
+<ul>
+<li>📱 Смартфон на базе Android или iOS</li>
+<li>🔌 Адаптер ELM327 (версии 1.5 или 2.1)</li>
+<li>📲 Приложение для диагностики (например, Torque Pro, OpenDiag или Car Scanner)</li>
+<li>🔋 Заведенный двигатель автомобиля</li>
+</ul>
+
+<p>После подключения адаптера и сопряжения со смартфоном, в приложении необходимо добавить новый датчик или виджет. Выберите параметр <code>Engine Coolant Temperature</code> (Температура охлаждающей жидкости). Многие приложения позволяют вывести этот параметр на главный экран крупными цифрами, что фактически превращает телефон в дополнительный бортовой компьютер.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Нормальное значение</th>
+<th>Критическое значение</th>
+<th>Единица измерения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Холодный двигатель</td>
+<td>15 - 40</td>
+<td>-</td>
+<td>°C</td>
+</tr>
+<tr>
+<td>Рабочая температура</td>
+<td>85 - 95</td>
+<td>-</td>
+<td>°C</td>
+</tr>
+<tr>
+<td>Активация вентилятора</td>
+<td>96 - 99</td>
+<td>-</td>
+<td>°C</td>
+</tr>
+<tr>
+<td>Перегрев</td>
+<td>-</td>
+<td>> 105</td>
+<td>°C</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>⚠️ Внимание: Дешевые китайские клоны адаптеров ELM327 могут работать нестабильно или показывать некорректные данные. Для постоянной эксплуатации лучше приобрести сертифицированное устройство.</blockquote>
+
+<div class="poll-widget" id="poll-520ae8d3"><div class="poll-widget-question">📊 Какой метод вывода температуры вы считаете наиболее удобным?</div><div class="poll-widget-option" data-poll="520ae8d3" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Через скрытое меню кнопки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="520ae8d3" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Сканер ELM327 + Телефон</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="520ae8d3" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Отдельный цифровой датчик</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="520ae8d3" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Мне не важно, главное что едет</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="установка-отдельного-цифрового-датчика">Установка отдельного цифрового датчика</h2>
+<p>Если программные методы кажутся вам неудобными или занимают экран смартфона, можно рассмотреть вариант установки автономного цифрового термометра. Это устройство считывает данные напрямую с двигателя через свой собственный датчик, который врезается в систему охлаждения или устанавливается вместо штатного датчика температуры.</p>
+
+<p>Преимуществом такого подхода является независимость от электроники автомобиля и возможность вывода данных в любое удобное место на торпедо. Однако, этот метод требует вмешательства в конструкцию авто. Вам потребуется:</p>
+<ul>
+<li>🛠️ Набор инструментов для снятия пластиковых панелей</li>
+<li>🌡️ Цифровой датчик температуры с выносным дисплеем</li>
+<li>🔌 Провода для подключения питания (обычно от прикуривателя)</li>
+<li>🧪 Герметик для уплотнения места врезки датчика</li>
+</ul>
+
+<p>Процесс монтажа involves снятие декоративных накладок для прокладки провода к приборной панели. Датчик температуры чаще всего вкручивается в верхний патрубок радиатора или в место установки штатного датчика через тройник. Важно обеспечить герметичность соединения, чтобы избежать подтеков <strong>тосола</em>.</p>
+
+<details class="faq-item"><summary>Влияние установки датчика на гарантию</summary><div class="faq-answer"><p> Установка стороннего оборудования с вмешательством в штатную проводку или систему охлаждения может стать причиной отказа в гарантийном обслуживании у официального дилера. Все работы проводите на свой страх и риск.</p></div></details>
+
+<h2 id="расшифровка-кодов-и-значений-на-дисплее">Расшифровка кодов и значений на дисплее</h2>
+<p>При работе с диагностическим меню или сканером вы можете столкнуться с различными обозначениями и кодами. Понимание их значения поможет правильно интерпретировать состояние двигателя <em>Chevrolet Aveo</em>. Не все надписи на экране означают температуру, поэтому важно уметь их различать.</p>
+
+<p>Основные обозначения, которые вы можете встретить:</p>
+<ul>
+<li><strong>ECT</strong> (Engine Coolant Temperature) — температура охлаждающей жидкости, основной искомый параметр.</li>
+<li><strong>IAT</strong> (Intake Air Temperature) — температура всасываемого воздуха, важный параметр для смесеобразования, но не для контроля перегрева.</li>
+<li><strong>Oil Temp</strong> — температура масла в двигателе, которая растет медленнее температуры антифриза.</li>
+</ul>
+
+<p>Также стоит упомянуть о возможных ошибках. Если вместо цифр вы видите прочерки или значение <code>-40</code>, это может свидетельствовать об обрыве цепи датчика. Значение <code>140</code> и выше при холодном двигателе часто указывает на короткое замыкание в цепи датчика или неисправность самого термистора.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Нормальная рабочая температура двигателя Aveo T300 составляет 90±5 градусов Цельсия. Отклонения в большую сторону требуют проверки системы охлаждения.</p></div>
+
+<h2 id="частые-проблемы-и-их-решение">Частые проблемы и их решение</h2>
+<p>Даже после успешного вывода температуры на дисплей владельцы <em>Aveo T300</em> могут столкнуться с аномальным поведением системы. Например, температура может скакать, или вентилятор охлаждения может включаться слишком поздно. Чаще всего проблема кроется не в программном обеспечении, а в физическом состоянии узлов.</p>
+
+<p>Рассмотрим типичные сценарии:</p>
+<ol>
+<li><strong>Долгий прогрев.</strong> Если зимой температура не поднимается выше 70-75 градусов, скорее всего, заклинил термостат в открытом положении. Двигатель работает неэффективно, увеличивается расход топлива.</li>
+<li><strong>Резкие скачки.</strong> Если температура резко растет до 100 градусов и так же резко падает, это признак воздушной пробки в системе охлаждения или низкого уровня антифриза.</li>
+<li><strong>Постоянный перегрев.</strong> Если температура стабильно держится выше 100 градусов, проверьте чистоту радиатора, работу вентилятора и состояние помпы.</li>
+</ol>
+
+<p>Не игнорируйте показания цифрового термометра. В отличие от стрелки, цифры дают точное понимание процессов, происходящих в двигателе. Регулярный мониторинг поможет вам избежать дорогостоящего ремонта и продлить жизнь вашему автомобилю.</p>
+
+<blockquote>⚠️ Внимание: Никогда не открывайте крышку расширительного бачка на горячем двигателе! Давление в системе может достигать 1.5 атмосфер, что приведет к ожогам паром и кипятком.</blockquote>
+
+<div class="checklist-block"><h4>☑️ Проверка системы охлаждения</h4><label class="check-item"><input type="checkbox"><span>Проверить уровень антифриза</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть патрубки на трещины</span></label><label class="check-item"><input type="checkbox"><span>Проверить работу вентилятора</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в отсутствии воздушных пробок</span></label><label class="check-item"><input type="checkbox"><span>Проверить натяжение ремня привода помпы</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="вопросы-и-ответы-faq">Вопросы и ответы (FAQ)</h2>
+<details>
+<summary>Можно ли прошить приборную панель, чтобы температуралась постоянно?</summary>
+<p>Теоретически это возможно, но требует наличия программатора и дампа прошивки для конкретной модели приборной панели. В домашних условиях это сделать крайне сложно и рискованно, так как есть вероятность"окирпичить" панель. Проще использовать сканер ELM327.</p>
+</details>
+
+<details>
+<summary>Почему на дисплее показывает 115 градусов, а машина не кипит?</summary>
+<p>Возможно, в системе используется датчик, калиброванный под Фаренгейты, а программа показывает Цельсии (или наоборот). Также причиной может быть неисправность самого датчика температуры, который передает неверные данные в ЭБУ.</p>
+</details>
+
+<details>
+<summary>Влияет ли установка ГБО на показания температуры?</summary>
+<p>Само по себе ГБО не влияет на показания штатного датчика. Однако двигатели на газу часто работают при чуть более высоких температурах. Контроль температуры в этом случае становится еще более важным, чтобы избежать прогара клапанов.</p>
+</details>
+
+<details>
+<summary>Какой антифриз лучше использовать для Aveo T300?</summary>
+<p>Завод рекомендует использовать антифризы класса G12+ или G12++ (карбоновые). Важно не смешивать антифризы разных цветов и классов, чтобы избежать образования осадка, который может забить каналы радиатора и исказить показания температуры.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#зачем-необходим-цифровой-контроль-температуры">Зачем необходим цифровой контроль температуры</a></li><li><a href="#метод-активации-через-скрытое-сервисное-меню">Метод активации через скрытое сервисное меню</a></li><li><a href="#использование-диагностического-сканера-elm327">Использование диагностического сканера ELM327</a></li><li><a href="#установка-отдельного-цифрового-датчика">Установка отдельного цифрового датчика</a></li><li><a href="#расшифровка-кодов-и-значений-на-дисплее">Расшифровка кодов и значений на дисплее</a></li><li><a href="#частые-проблемы-и-их-решение">Частые проблемы и их решение</a></li><li><a href="#вопросы-и-ответы-faq">Вопросы и ответы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

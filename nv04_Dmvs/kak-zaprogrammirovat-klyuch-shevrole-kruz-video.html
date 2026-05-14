@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как запрограммировать ключ Шевроле Круз: полное руководство — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по программированию ключа Chevrolet Cruze своими руками. Разбор методов с дилерским сканером и без него, советы и FAQ.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv04_Dmvs/kak-zaprogrammirovat-klyuch-shevrole-kruz-video.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как запрограммировать ключ Шевроле Круз: полное руководство">
+    <meta property="og:description" content="Подробная инструкция по программированию ключа Chevrolet Cruze своими руками. Разбор методов с дилерским сканером и без него, советы и FAQ.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как запрограммировать ключ Шевроле Круз: полное руководство</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как запрограммировать ключ Шевроле Круз: видео-инструкция и методы</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#типы-ключей-и-система-безопасности-cruze">Типы ключей и система безопасности Cruze</a></li><li><a href="#необходимое-оборудование-для-программирования">Необходимое оборудование для программирования</a></li><li><a href="#подготовка-автомобиля-и-ключа-к-процедуре">Подготовка автомобиля и ключа к процедуре</a></li><li><a href="#процесс-программирования-через-диагностический-сканер">Процесс программирования через диагностический сканер</a></li><li><a href="#программирование-пульта-дистанционного-управления">Программирование пульта дистанционного управления</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Потеря или повреждение автомобильного ключа — это всегда стрессовая ситуация для владельца, особенно когда машина нужна срочно. Владельцы <em>Chevrolet Cruze</em> часто сталкиваются с вопросом, можно ли самостоятельно прописать новый чип-транспондер в памяти иммобилайзера, чтобы избежать дорогостоящего визита в официальный сервис. Современные системы безопасности General Motors требуют точного соблюдения протоколов синхронизации, и простая замена корпуса без программирования не позволит завести двигатель.</p>
+
+<p>В этой статье мы детально разберем процесс программирования ключей для <em>Шевроле Круз</em>, опираясь на технические мануалы и опыт профессиональных автомехаников. Вы узнаете о различиях между обычным ключом с дистанционным управлением и полноценным чип-ключом, а также о том, какое оборудование действительно необходимо для успешной активации. Хотя видеоматериалы часто показывают процесс упрощенно, теоретическая база поможет вам избежать фатальных ошибок.</p>
+
+<h2 id="типы-ключей-и-система-безопасности-cruze">Типы ключей и система безопасности Cruze</h2>
+
+<p>Перед началом любых манипуляций необходимо четко понимать, с каким именно устройством вы имеете дело. Автомобили <em>Chevrolet Cruze</em> первого и второго поколения могут комплектоваться разными типами ключей зажигания. Базовые версии часто оснащались обычными ключами без чипа, но большинство моделей, особенно с кондиционером и центральным замком, требуют наличия транспондера.</p>
+
+<p><strong>Иммобилайзер</strong> — это электронная система, которая блокирует запуск двигателя, если не считывает уникальный код с чипа внутри ключа. Без этого кода топливный насос и система зажигания останутся заблокированными, даже если механическая часть ключа идеально подходит к личинке замка. Именно поэтому программирование является критически важным этапом.</p>
+
+<ul>
+<li>🔑 <strong>Механический ключ</strong> — металлическая часть, которая физически поворачивает личинку замка.</li>
+<li>📡 <strong>Пульт ДУ</strong> — радиомодуль для открывания дверей и багажника на расстоянии.</li>
+<li>💾 <strong>Транспондер</strong> — микрочип, передающий код иммобилайзеру при повороте в замке.</li>
+</ul>
+
+<p>Важно отметить, что процедура программирования пульта дистанционного управления и прошивка чипа иммобилайзера — это два разных процесса. Часто их путают, пытаясь синхронизировать открытие дверей, когда проблема кроется в запрете запуска мотора. Для <em>Крузов</em> характерно использование чипов типа <strong>PK3+</strong> или более современных аналогов в зависимости от года выпуска.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Попытка вставить незарегистрированный ключ в замок зажигания более 10 раз подряд может привести к временной блокировке системы безопасности автомобиля на 10-30 минут.</p>
+</blockquote>
+
+<div class="poll-widget" id="poll-c732e375"><div class="poll-widget-question">📊 Какой у вас тип ключа Chevrolet Cruze?</div><div class="poll-widget-option" data-poll="c732e375" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Обычный без чипа</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c732e375" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Ключ-брелок с чипом</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c732e375" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Ключ-брелок без чипа</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c732e375" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Смарт-ключ (Keyless)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c732e375" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Не знаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="необходимое-оборудование-для-программирования">Необходимое оборудование для программирования</h2>
+
+<p>Процесс записи кодов в блок управления кузовом (BCM) требует специфического инструментария. В отличие от старых автомобилей, где можно было использовать последовательность нажатий педалей, современные <em>Chevrolet</em> требуют цифрового обмена данными. Основным инструментом является диагностический сканер, поддерживающий протоколы GM.</p>
+
+<p>Наиболее распространенным решением среди профессионалов является использование интерфейса <strong>MDI</strong> (Multi-Diagnostic Interface) в связке с программным обеспечением <em>GDS2</em> (Global Diagnostic System 2). Однако для гаражного использования часто применяются более доступные китайские аналоги сканеров, такие как <strong>Autel</strong>, <strong>Launch</strong> или специализированные программаторы типа <em>Xhorse</em> или <strong>VVDI</strong>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип оборудования</th>
+<th>Стоимость (примерная)</th>
+<th>Сложность использования</th>
+<th>Функционал</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Дилерский сканер MDI</td>
+<td>Высокая</td>
+<td>Профессиональный</td>
+<td>Полный доступ ко всем блокам</td>
+</tr>
+<tr>
+<td>Мультимарочный сканер (Autel/Launch)</td>
+<td>Средняя</td>
+<td>Средний</td>
+<td>Работа с иммобилайзером и BCM</td>
+</tr>
+<tr>
+<td>Специализированный программатор</td>
+<td>Низкая/Средняя</td>
+<td>Низкий</td>
+<td>Только ключи и чипы</td>
+</tr>
+<tr>
+<td>Универсальный OBDII адаптер</td>
+<td>Низкая</td>
+<td>Высокий</td>
+<td>Только чтение ошибок</td>
+</tr>
+</tbody>
+</table>
+
+<p>Также вам потребуется сам ключ-заготовка. Желательно приобретать оригинальные запчасти GM или сертифицированные аналоги с гарантией качества чипа. Дешевые копии с маркетплейсов могут содержать бракованные транспондеры, которые не запишутся с первого раза или будут работать нестабильно.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При покупке нового ключа убедитесь, что частота радиосигнала (обычно 315 МГц или 433 МГц) совпадает с частотой вашего штатного брелока, иначе центральный замок работать не будет.</p></div>
+
+<h2 id="подготовка-автомобиля-и-ключа-к-процедуре">Подготовка автомобиля и ключа к процедуре</h2>
+
+<p>Успех операции на 90% зависит от правильной подготовки. Первым делом необходимо обеспечить стабильное напряжение в бортовой сети. Процесс программирования через разъем <strong>OBD-II</strong> может занять от 5 до 20 минут, и скачок напряжения или разрядка аккумулятора в этот момент фатальны для электроники.</p>
+
+<p>Подключите внешний источник питания или зарядное устройство к клеммам аккумулятора. Напряжение должно быть не менее 12.5 Вольт. Все энергопотребители в салоне, такие как свет, магнитола и климат-контроль, должны быть выключены. Двери автомобиля в ходе процедуры лучше держать закрытыми, чтобы не срабатывали концевые выключатели.</p>
+
+<p>Заранее подготовьте все ключи, которые вы хотите, чтобы автомобиль "видел". При перепрограммировании иммобилайзера коды всех старых ключей, которые не будут присутствовать в момент записи, будут удалены из памяти. Если у вас есть второй ключ, обязательно возьмите его с собой.</p>
+
+<ul>
+<li>🔋 Проверьте заряд основного аккумулятора автомобиля.</li>
+<li>📶 Убедитесь, что в зоне проведения работ нет мощных источников радиопомех.</li>
+<li>🚗 Припаркуйте автомобиль на ровной поверхности и включите ручной тормоз.</li>
+</ul>
+
+<p>Вставьте новый ключ в замок зажигания, но пока не поворачивайте его. Убедитесь, что механическая часть ключа смазана графитовой смазкой для легкого хода, так как во время программирования вам придется несколько раз переключать положение замка.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Никогда не проводите процедуру программирования, если двигатель автомобиля прогрет до рабочей температуры — запустите процесс на холодном моторе во избежание перегрева электронных компонентов при долгом включенном зажигании.</p>
+</blockquote>
+
+<h2 id="процесс-программирования-через-диагностический-сканер">Процесс программирования через диагностический сканер</h2>
+
+<p>Это основной метод, который позволяет привязать чип транспондера к блоку управления. Подключите ваш диагностический прибор к разъему <strong>OBD-II</strong>, который в <em>Chevrolet Cruze</strong> обычно расположен под панелью приборов слева от рулевой колонки. Включите зажигание, но не запускайте двигатель.</p>
+
+<p>В меню сканера выберите пункт "Special Functions" (Специальные функции) или "Immobilizer" (Иммобилайзер). Найдите опцию "Add Key" (Добавить ключ) или "Program Key" (Программирование ключа). Система попросит подтвердить действие, предупреждая о том, что старые ключи могут быть удалены.</p>
+
+<pre><code>Последовательность действий в GDS2/Scan Tool:
+<p>1. Vehicle Configuration -> Immobilizer</p>
+<p>2. Select "Program New Key"</p>
+<p>3. Follow on-screen prompts</p>
+<p>4. Turn ignition OFF and ON as requested</code></pre></p>
+
+<p>Следуйте инструкциям на экране сканера. Обычно система попросит выключить зажигание и снова включить его в течение определенного времени (например, 5 секунд). В этот момент происходит обмен данными между чипом ключа и блоком <strong>BCM</em>. Индикатор на приборной панели может мигать, подтверждая процесс записи.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист программирования ключа</h4><label class="check-item"><input type="checkbox"><span>Подключить зарядное устройство</span></label><label class="check-item"><input type="checkbox"><span>Вставить ключ в замок</span></label><label class="check-item"><input type="checkbox"><span>Включить зажигание</span></label><label class="check-item"><input type="checkbox"><span>Запустить функцию "Add Key" в сканере</span></label><label class="check-item"><input type="checkbox"><span>Следовать инструкциям на экране</span></label><label class="check-item"><input type="checkbox"><span>Проверить запуск двигателя</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 6</div></div>
+
+<p>После успешного завершения процедуры сканер выдаст сообщение "Programming Successful" (Программирование успешно). Выключите зажигание, извлеките ключ и подождите около 10 секунд. Затем попробуйте запустить двигатель. Если мотор завелся и сразу после старта не заглох — чип активирован корректно.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Ключевым моментом является синхронизация времени: если между действиями на сканере и поворотом ключа пройдет слишком много времени, процедура прервется, и придется начинать заново.</p></div>
+
+<h2 id="программирование-пульта-дистанционного-управления">Программирование пульта дистанционного управления</h2>
+
+<p>Отдельно стоит рассмотреть настройку кнопок открытия дверей. На многих моделях <em>Cruze</em> эту процедуру можно выполнить без сканера, используя только ключ и двери. Однако этот метод работает не на всех годах выпуска и зависит от версии прошивки BCM.</p>
+
+<p>Сядьте в водительское кресло и закройте все двери. Вставьте ключ в замок зажигания и поверните его в положение <code>On</code> (приборная панель горит, двигатель не работает), затем верните в положение <code>Off</code>. Вытащите ключ. Повторите эту процедуру еще раз.</p>
+
+<p>На третьем цикле, после возврата в положение <code>Off</code> и извлечения ключа, вы должны услышать характерный щелчок замков дверей. Это сигнал о том, что автомобиль перешел в режим обучения пультов. Если щелчка нет, попробуйте повторить цикл быстрее или медленнее.</p>
+
+<ul>
+<li>🚪 Закройте все двери и опустите стекла (на случай блокировки).</li>
+<li>🔄 Выполните цикл ВКЛ-ВЫКЛ зажигания три раза.</li>
+<li>🔘 Сразу после щелчка нажмите и удерживайте кнопки открытия и закрытия на брелоке.</li>
+</ul>
+
+<p>Если щелчок раздался, быстро нажмите одновременно кнопки открытия и закрытия на пульте и удерживайте их несколько секунд. Вы должны услышать еще один подтверждающий сигнал замков. Повторите процедуру для второго пульта, если он есть. Выход из режима программирования осуществляется простым включением зажигания.</p>
+
+<blockquote>
+<p>⚠️ Внимание: У вас есть всего 30 секунд после перехода в режим обучения, чтобы нажать кнопки на пульте. Если вы не успеете, режим сбросится, и процедуру входа нужно будет повторять.</p>
+</blockquote>
+
+<details class="faq-item"><summary>Что делать, если метод с замком не работает?</summary><div class="faq-answer"><p>Если циклическое включение зажигания не вызывает щелчка замков, значит, в вашем автомобиле функция программирования без сканера заблокирована программно или неисправен модуль BCM. В этом случае поможет только диагностическое оборудование.</p></div></details>
+
+<h2 id="типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</h2>
+
+<p>Даже при соблюдении всех инструкций могут возникнуть сбои. Одна из самых частых проблем — сообщение "Key Not Programmed" (Ключ не запрограммирован) после якобы успешной процедуры. Это часто указывает на несовместимость чипа или плохой контакт в разъеме OBD-II во время сеанса связи.</p>
+
+<p>Иногда автомобиль "забывает" ключи после снятия клеммы аккумулятора, если была установлена нештатная сигнализация или допущена ошибка в проводке. В таких случаях требуется полная перепрошивка модуля <strong>BCM</strong>, что возможно только в специализированных сервисах с мощным оборудованием.</p>
+
+<p>Если новый ключ открывает двери, но не заводит машину, значит, вы запрограммировали только пульт ДУ, но не чип иммобилайзера. Это две независимые системы. Для запуска двигателя обязательна процедура через диагностический разъем, описанная выше.</p>
+
+<p>В редких случаях проблема может крыться в антенном кольце вокруг личинки замка. Если оно повреждено или имеет плохой контакт, сигнал от чипа не считывается, даже если ключ правильно прописан в памяти. Проверка целостности кольца — важный этап диагностики.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли запрограммировать ключ Шевроле Круз без специального оборудования?</summary>
+<p>Полноценное программирование чипа иммобилайзера без диагностического сканера (OBDII) на Chevrolet Cruze невозможно. Методы с поворотом ключа работают только для синхронизации кнопок центрального замка, но не для разрешения запуска двигателя.</p>
+</details>
+
+<details>
+<summary>Сколько ключей максимум можно прописать в память автомобиля?</summary>
+<p>Система безопасности GM позволяет хранить в памяти до 10 различных ключей. Однако для процедуры добавления новых ключей обязательно наличие хотя бы одного уже работающего мастер-ключа. Если потеряны все ключи, процедура усложняется и требует подтверждения права владения.</p>
+</details>
+
+<details>
+<summary>Почему после программирования ключа машина заводится и сразу глохнет?</summary>
+<p>Это классический симптом ошибки в работе иммобилайзера. Скорее всего, код чипа записался некорректно или был поврежден в процессе. Также проблема может быть в антенном кольце считывателя или в проводке между замком и блоком управления.</p>
+</details>
+
+<details>
+<summary>Подойдет ли ключ от Chevrolet Lacetti для Cruze?</summary>
+<p>Физически ключи могут быть похожи, но электронная начинка и частоты радиосигнала могут отличаться. Кроме того, даже если ключ подойдет по разъему, его все равно придется программировать под VIN-код конкретного автомобиля, так как чипы не универсальны.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#типы-ключей-и-система-безопасности-cruze">Типы ключей и система безопасности Cruze</a></li><li><a href="#необходимое-оборудование-для-программирования">Необходимое оборудование для программирования</a></li><li><a href="#подготовка-автомобиля-и-ключа-к-процедуре">Подготовка автомобиля и ключа к процедуре</a></li><li><a href="#процесс-программирования-через-диагностический-сканер">Процесс программирования через диагностический сканер</a></li><li><a href="#программирование-пульта-дистанционного-управления">Программирование пульта дистанционного управления</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

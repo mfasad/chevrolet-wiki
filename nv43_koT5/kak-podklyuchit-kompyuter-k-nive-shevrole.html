@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как подключить компьютер к Шевроле Нива: ELM327 и K-Line — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по подключению ноутбука к ЭБУ Шевроле Нива. Выбор адаптера, настройка ПО и диагностика K-Line. Разбор ошибок.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv43_koT5/kak-podklyuchit-kompyuter-k-nive-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как подключить компьютер к Шевроле Нива: ELM327 и K-Line">
+    <meta property="og:description" content="Полная инструкция по подключению ноутбука к ЭБУ Шевроле Нива. Выбор адаптера, настройка ПО и диагностика K-Line. Разбор ошибок.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как подключить компьютер к Шевроле Нива: ELM327 и K-Line</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как подключить компьютер к Шевроле Нива: профессиональная диагностика</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#выбор-интерфейсного-адаптера-для-диагностики">Выбор интерфейсного адаптера для диагностики</a></li><li><a href="#расположение-диагностического-разъема">Расположение диагностического разъема</a></li><li><a href="#подготовка-программного-обеспечения">Подготовка программного обеспечения</a></li><li><a href="#процесс-подключения-и-настройки-связи">Процесс подключения и настройки связи</a></li><li><a href="#диагностика-и-чтение-ошибок">Диагностика и чтение ошибок</a></li><li><a href="#настройка-и-калибровка-систем">Настройка и калибровка систем</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+<p>Современный <strong>автомобиль</strong> представляет собой сложный электронный комплекс, и <em>Шевроле Нива</em> не является исключением. Даже если машина выпущена несколько лет назад, наличие системы <strong>OBD-II</strong> позволяет владельцу получить доступ к глубоким слоям данных, скрытым от обычного взгляда. Подключение внешнего вычислительного устройства открывает возможности, недоступные через стандартную панель приборов.</p>
+<p>Процесс сопряжения требует понимания архитектуры сети и правильного выбора аппаратного интерфейса. <mark>9.7 требуется адаптер с поддержкой CAN-протокола, тогда как для старых блоков Siemens достаточно K-Line.</mark> Ошибка в выборе оборудования приведет лишь к отсутствию связи, но не повредит технику.</p>
+<p>В этой статье мы детально разберем физический и программный аспекты подключения. Вы узнаете, как превратить обычный ноутбук в мощный диагностический инструмент. Это позволит не только считать ошибки, но и настроить параметры работы двигателя.</p>
+
+<h2 id="выбор-интерфейсного-адаптера-для-диагностики">Выбор интерфейсного адаптера для диагностики</h2>
+<p>Первым шагом станет приобретение подходящего <strong>адаптера</strong>. Рынок предлагает множество вариантов, но для работы с <em>Chevrolet Niva</em> подходят не все. Дешевые китайские клоны часто не имеют защиты от скачков напряжения в бортовой сети, что критично для старых проводников.</p>
+<p>Наиболее универсальным решением считается устройство на базе чипа <strong>ELM327</strong>. Оно поддерживает большинство современных протоколов обмена данными. Однако, если ваша цель — глубокая перепрошивка или работа с иммобилайзером, потребуется более специализированный кабель <strong>K-Line</strong> (409.1 K-Line или VAG-COM).</p>
+<p>Обращайте внимание на качество сборки и наличие буферизации сигнала. Дешевые модели часто создают помехи, прерывая сеанс связи в самый неподходящий момент.</p>
+<ul>
+<li>🔌 <strong>ELM327 Bluetooth/Wi-Fi</strong> — отлично подходит для экспресс-диагностики и просмотра параметров в реальном времени через смартфон или ноутбук.</li>
+<li>💻 <strong>VAG-COM 409.1</strong> — классический кабель K-Line, необходимый для работы со старыми блоками управления и специфическими программами вроде <em>OpenDiag</em>.</li>
+<li>🚀 <strong>J2534 адаптеры</strong> — профессиональное решение для перепрошивки ЭБУ, требующее высокой скорости передачи данных.</li>
+</ul>
+<blockquote>⚠️ Внимание: Не подключайте адаптеры с напряжением питания 5 Вольт напрямую к аккумулятору автомобиля без стабилизатора. Скачки напряжения при запуске двигателя могут вывести порт ноутбука из строя.</blockquote>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При покупке ELM327 выбирайте версию 1.5 на чипе PIC18F25K80 — она наиболее стабильна для работы с отечественными автомобилями.</p></div>
+
+<h2 id="расположение-диагностического-разъема">Расположение диагностического разъема</h2>
+<p>Поиск точки подключения — задача тривиальная, но имеющая свои нюансы в зависимости от года выпуска. В ранних версиях <em>Шевроле Нива</em> разъем мог располагаться под бардачком или за приборной панелью. В более современных модификациях стандартом стало место под рулем.</p>
+<p>Найдите блок предохранителей слева от рулевой колонки. Диагностический порт <strong>OBD-II</strong> обычно находится чуть ниже или рядом с ним. Он представляет собой трапециевидный разъем с 16 контактами. Доступ к нему свободный, снимать пластиковые кожухи чаще всего не требуется.</p>
+<p>Если вы не видите разъем сразу, воспользуйтесь фонариком. Пыль и грязь в этой зоне накапливаются быстро, поэтому перед подключением лучше протереть контакты.</p>
+<div class="poll-widget" id="poll-cc72268c"><div class="poll-widget-question">📊 Какой адаптер вы используете для Нивы?</div><div class="poll-widget-option" data-poll="cc72268c" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Bluetooth ELM327</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="cc72268c" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Wi-Fi ELM327</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="cc72268c" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">VAG-COM 409.1</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="cc72268c" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный сканер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="подготовка-программного-обеспечения">Подготовка программного обеспечения</h2>
+<p>Железо бесполезно без правильного софта. Для операционной системы <strong>Windows</strong> существует несколько проверенных решений, которые зарекомендовали себя среди владельцев <em>Niva</em>. Установка драйверов — первый шаг, который часто игнорируют, что приводит к ошибкам соединения.</p>
+<p>Сначала установите драйверы для вашего адаптера. Для USB-кабелей K-Line это обычно драйверы FT232R или CH340. Проверьте в диспетчере устройств, какой <strong>COM-порт</strong> был назначен. Запомните этот номер, он понадобится для настройки программы.</p>
+<p>Выбор программы зависит от ваших целей. Для быстрой проверки кодов неисправностей подойдут универсальные сканеры. Для глубокой настройки двигателя и диагностики систем безопасности потребуются специализированные комплексы.</p>
+<ul>
+<li>🛠️ <strong>OpenDiag</strong> — мощнейший российский комплекс, заточенный под отечественные ЭБУ (Bosch, Январь). Поддерживает чтение всех параметров.</li>
+<li>📊 <strong>Scanmaster ELM</strong> — универсальная программа с удобным интерфейсом, идеальна для новичков и базовой диагностики.</li>
+<li>⚙️ <strong>Chevrolet Explorer</strong> — специализированный софт для автомобилей концерна GM, позволяет видеть специфические параметры кузова.</li>
+</ul>
+<blockquote>⚠️ Внимание: При установке драйверов убедитесь, что в системе не возникло конфликта портов. Два устройства не могут использовать один и тот же COM-порт одновременно.</blockquote>
+
+<h2 id="процесс-подключения-и-настройки-связи">Процесс подключения и настройки связи</h2>
+<p>Теперь переходим к самому важному этапу — установлению соединения. Последовательность действий здесь имеет значение, хотя современные системы и более forgiving к ошибкам пользователя. Главное — обеспечить стабильный контакт.</p>
+<p>Вставьте адаптер в диагностический разъем автомобиля. Если используется Bluetooth-модуль, дождитесь мигания индикатора. Включите зажигание, но не запускайте двигатель. Запуск мотора может создать помехи по питанию в момент первоначального рукопожатия устройств.</p>
+<p>Запустите выбранную программу на компьютере. В настройках соединения укажите тип подключения (USB или Bluetooth) и номер <strong>COM-порта</strong>, который вы выяснили ранее. Скорость порта обычно выбирается автоматически, но для старых кабелей K-Line можно выставить 9600 или 10400 бод.</p>
+<div class="checklist-block"><h4>☑️ Алгоритм подключения</h4><label class="check-item"><input type="checkbox"><span>Вставить адаптер в OBD разъем</span></label><label class="check-item"><input type="checkbox"><span>Включить зажигание (без запуска ДВС)</span></label><label class="check-item"><input type="checkbox"><span>Запустить ПО на ПК</span></label><label class="check-item"><input type="checkbox"><span>Выбрать порт и нажать "Соединиться"</span></label><label class="check-item"><input type="checkbox"><span>Проверить версию ЭБУ</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+<p>Нажмите кнопку "Подключиться" или "Connect". Если все сделано верно, программа считает <strong>VIN-код</strong> автомобиля и отобразит версию программного обеспечения контроллера. Появление этих данных означает, что физический уровень связи налажен.</p>
+<details class="faq-item"><summary>Что делать, если связи нет?</summary><div class="faq-answer"><p>Если программа пишет "Нет связи с ЭБУ", проверьте предохранитель F16 (обычно 15А), который отвечает за питание диагностического разъема. Также убедитесь, что адаптер полностью вставлен в гнездо — контакты должны щелкнуть. Иногда помогает перезагрузка программы или переподключение кабеля при выключенном зажигании.</p></div></details>
+
+<h2 id="диагностика-и-чтение-ошибок">Диагностика и чтение ошибок</h2>
+<p>После успешного соединения перед вами откроется полная картина состояния систем автомобиля. Основной инструмент — чтение кодов неисправностей. Они могут быть активными (текущими) или сохраненными в истории.</p>
+<p>Обратите внимание на параметры в реальном времени. Датчик положения дроссельной заслонки (<strong>TPS</strong>), массового расхода воздуха (<strong>MAF</strong>) и лямбда-зонд предоставляют invaluable информацию о работе двигателя. Резкие скачки показаний указывают на проблему.</p>
+<p>Не спешите сбрасывать ошибки сразу. Сначала зафиксируйте их, чтобы понять характер неисправности. Некоторые коды могут быть следствием плохого контакта, а другие — признаком серьезной поломки.</p>
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание</th>
+<th>Вероятная причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0300</td>
+<td>Многократные пропуски воспламенения</td>
+<td>Свечи, катушки, форсунки</td>
+</tr>
+<tr>
+<td>P0171</td>
+<td>Слишком бедная смесь</td>
+<td>Подсос воздуха, низкое давление топлива</td>
+</tr>
+<tr>
+<td>P0133</td>
+<td>Медленный отклик лямбда-зонда</td>
+<td>Неисправность датчика кислорода</td>
+</tr>
+<tr>
+<td>P0420</td>
+<td>Низкая эффективность катализатора</td>
+<td>Забит катализатор, неисправность датчиков</td>
+</tr>
+</tbody>
+</table>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Сброс ошибок без устранения физической причины их появления приведет к тому, что Check Engine загорится вновь через несколько циклов прогрева двигателя.</p></div>
+
+<h2 id="настройка-и-калибровка-систем">Настройка и калибровка систем</h2>
+<p>Подключение компьютера позволяет не только диагностировать, но и настраивать. В меню программ часто доступен раздел "Инжектор" или "Адаптация". Здесь можно провести обучение <strong>дроссельной заслонки</strong> или сбросить адаптации после замены компонентов.</p>
+<p>Для владельцев <em>Шевроле Нива</em> актуальна возможность отключения вторичного лямбда-зонда или корректировка угла опережения зажигания при переходе на газ. Однако такие манипуляции требуют высокой квалификации.</p>
+<p>Будьте осторожны с изменением калибровок. Неправильные значения могут привести к детонации, перегреву или повышенному расходу топлива. Всегда имейте возможность откатиться к заводским настройкам.</p>
+<ul>
+<li>🔄 <strong>Адаптация педали газа</strong> — необходима после замены электронного модуля педали или снятия клеммы аккумулятора на длительное время.</li>
+<li>🔥 <strong>Коррекция УОЗ</strong> — изменение таблиц зажигания, допустимо только при наличии знаний в моторостроении.</li>
+<li>🚫 <strong>Отключение экологии</strong> — программное удаление катализатора и ЕГР, требует обязательного физического вмешательства или эмуляторов.</li>
+</ul>
+<blockquote>⚠️ Внимание: Любое изменение программных калибровок (чип-тюнинг) вы лишаете автомобиль гарантии. Вносите изменения только если уверены в результате и последствиях.</blockquote>
+
+<details>
+<summary>Можно ли подключить ноутбук к Ниве через смартфон?</summary>
+<p>Да, это возможно, если использовать Bluetooth или Wi-Fi адаптер ELM327. Смартфон выступает в роли шлюза, но полноценную диагностику лучше проводить на ПК. Мобильные приложения часто имеют урезанный функционал и не позволяют проводить глубокие настройки ЭБУ.</p>
+</details>
+
+<details>
+<summary>Какая программа лучше для начинающего?</summary>
+<p>Для старта идеально подойдет <strong>Scanmaster ELM</strong> или мобильное приложение <em>Torque</em>. Они имеют понятный интерфейс, подсветку критических ошибок и не требуют глубоких знаний в устройстве инжекторных систем.</p>
+</details>
+
+<details>
+<summary>Опасно ли держать адаптер постоянно включенным?</summary>
+<p>Дешевые китайские адаптеры могут потреблять ток даже в спящем режиме, что приведет к разряду аккумулятора за 1-2 недели простоя. Профессиональные модели имеют защиту. Рекомендуется вынимать устройство после диагностики.</p>
+</details>
+
+<details>
+<summary>Почему компьютер не видит адаптер?</summary>
+<p>Чаще всего проблема кроется в драйверах или неверно выбранном COM-порте. Проверьте диспетчер устройств Windows. Также убедитесь, что адаптер поддерживает протоколы, используемые вашим автомобилем (например, CAN-протокол для новых Нив).</p>
+</details>
+
+<details>
+<summary>Нужно ли запускать двигатель для диагностики?</summary>
+<p>Для чтения статических ошибок достаточно включенного зажигания. Для проверки работы лямбда-зондов, коррекции топливной смеси и оценки пропусков зажигания необходим запущенный и прогретый двигатель.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#выбор-интерфейсного-адаптера-для-диагностики">Выбор интерфейсного адаптера для диагностики</a></li><li><a href="#расположение-диагностического-разъема">Расположение диагностического разъема</a></li><li><a href="#подготовка-программного-обеспечения">Подготовка программного обеспечения</a></li><li><a href="#процесс-подключения-и-настройки-связи">Процесс подключения и настройки связи</a></li><li><a href="#диагностика-и-чтение-ошибок">Диагностика и чтение ошибок</a></li><li><a href="#настройка-и-калибровка-систем">Настройка и калибровка систем</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как подмотать электронный спидометр на Шевроле Нива — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по подмотке пробега на Chevrolet Niva. Разбор методов через OBDII, CAN-фильтры и демонтаж приборной панели.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv17_flNv/kak-podmotat-elektronnyj-spidometr-na-nive-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как подмотать электронный спидометр на Шевроле Нива">
+    <meta property="og:description" content="Подробная инструкция по подмотке пробега на Chevrolet Niva. Разбор методов через OBDII, CAN-фильтры и демонтаж приборной панели.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как подмотать электронный спидометр на Шевроле Нива</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как подмотать электронный спидометр на Шевроле Нива</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-датчика-скорости-на-шевроле-нива">Принцип работы датчика скорости на Шевроле Нива</a></li><li><a href="#аппаратная-подмотка-через-разъем-датчика">Аппаратная подмотка через разъем датчика</a></li><li><a href="#коррекция-пробега-через-диагностический-разъем-obdii">Коррекция пробега через диагностический разъем OBDII</a></li><li><a href="#использование-can-фильтров-и-эмуляторов">Использование CAN-фильтров и эмуляторов</a></li><li><a href="#калибровка-спидометра-при-замене-колес">Калибровка спидометра при замене колес</a></li><li><a href="#юридические-аспекты-и-обнаружение-вмешательства">Юридические аспекты и обнаружение вмешательства</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы внедорожников <em>Chevrolet Niva</em> часто сталкиваются с необходимостью корректировки показаний одометра. Это может быть связано с установкой колес увеличенного диаметра, заменой редукторов мостов или просто желанием компенсировать погрешность штатного прибора. Электронная система управления двигателем (ЭСУД) в современных версиях «Шнивы» тесно интегрирована с приборной панелью, что делает процесс более сложным, чем на старых карбюраторных моделях.</p>
+
+<p>Существует несколько проверенных способов изменить показания пробега, каждый из которых имеет свои технические нюансы. Одни методы предполагают физическое вмешательство в проводку, другие требуют подключения специализированного оборудования к диагностическому разъему. Важно понимать, что любые манипуляции с данными о пробеге могут повлиять на гарантию и юридический статус автомобиля при продаже.</p>
+
+<p>В этой статье мы подробно разберем технические аспекты работы датчиков скорости на <em>Niva Travel</em> и классической <em>Chevrolet Niva</em>. Вы узнаете, как работает сигнал VSS, какие существуют аппаратные корректоры и можно ли изменить данные через программное обеспечение. Мы рассмотрим как легальные способы калибровки, так и методы эмуляции движения.</p>
+
+<h2 id="принцип-работы-датчика-скорости-на-шевроле-нива">Принцип работы датчика скорости на Шевроле Нива</h2>
+
+<p>Основой для расчета скорости и пробега в автомобиле <em>Chevrolet Niva</em> служит датчик скорости (ДС). На моделях, выпущенных после 2009 года и соответствующих экологическому стандарту Евро-3 и выше, устанавливаются индуктивные или магнитострикционные датчики. Они генерируют импульсный сигнал, частота которого прямо пропорциональна скорости вращения выходного вала раздаточной коробки.</p>
+
+<p>Сигнал от датчика поступает непосредственно в блок управления двигателем (ЭБУ), чаще всего это <em>Bosch ME17.9.7</em> или <em>Jan-7.2</em>. Именно ЭБУ обрабатывает поступающие импульсы и транслирует данные на панель приборов через CAN-шину или отдельную линию K-Line. Это означает, что простое механическое воздействие на трос (если он еще остался на старых версиях) или замена самого датчика не изменят логику расчета, заложенную в прошивке.</p>
+
+<p>Ключевым параметром здесь является количество импульсов на километр пути. Стандартное значение для стоковой «Шнивы» обычно составляет около 6000 импульсов на километр, но эта цифра может варьироваться в зависимости от передаточного числа главной пары и размера шин. Если вы установили колеса большего диаметра, реальная скорость автомобиля будет выше, чем показывает спидометр, а показания одометра будут занижены.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При работе с электрическими цепями датчика скорости обязательно отключайте минусовую клемму аккумулятора. Короткое замыкание в цепи 12 вольт может вывести из строя не только предохранитель, но и сам блок ЭБУ, ремонт которого обойдется значительно дороже коррекции пробега.</p>
+</blockquote>
+
+<p>Понимание архитектуры сигналов критически важно для выбора метода подмотки. Если сигнал идет напрямую от ДС к ЭБУ, то вмешиваться нужно либо в цепь до ЭБУ, либо корректировать данные уже внутри самого контроллера. Попытки воздействовать только на приборную панель без учета данных в ЭБУ приведут к рассинхронизации: на панели пробег изменится, а в диагностическом сканере и в памяти блока останется старое значение.</p>
+
+<h2 id="аппаратная-подмотка-через-разъем-датчика">Аппаратная подмотка через разъем датчика</h2>
+
+<p>Самый распространенный и доступный способ коррекции показаний — использование электронного генератора импульсов, часто называемого «крутилкой». Это устройство подключается в разрыв цепи между штатным датчиком скорости и входом в ЭБУ или приборную панель. Для <em>Chevrolet Niva</em> с электронным спидометром такие устройства генерируют пачки импульсов, имитирующие вращение колес.</p>
+
+<p>Процесс установки требует доступа к разъему датчика скорости, который расположен на раздаточной коробке. В зависимости от года выпуска автомобиля, разъем может быть штыревым или круглым. Вам потребуется изготовить или купить переходник, который позволит подключить генератор импульсов без нарушения штатной проводки. Это особенно важно для сохранения возможности возврата автомобиля в заводское состояние.</p>
+
+<div class="poll-widget" id="poll-73957f59"><div class="poll-widget-question">📊 Какой способ коррекции пробега вы рассматриваете?</div><div class="poll-widget-option" data-poll="73957f59" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Через OBDII программно</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="73957f59" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Установка электронного генератора (крутилки)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="73957f59" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Замена шестерен в КПП</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="73957f59" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Пока не решил</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Устройство запитывается от бортовой сети 12В и начинает генерировать сигнал сразу после включения зажигания. Скорость «намотки» регулируется потенциометром на корпусе прибора или переключением режимов. Высокая частота импульсов позволяет быстро накрутить необходимые километры. Однако, существуют нюансы совместимости с разными версиями ЭБУ.</p>
+
+<ul>
+    <li>🔌 <strong>Тип сигнала:</strong> Убедитесь, что генератор выдает сигнал нужной формы (синус или меандр), compatible с вашим блоком управления.</li>
+    <li>⚙️ <strong>Полярность:</strong> При подключении важно соблюдать полярность проводов, иначе устройство не заработает или сгорит предохранитель.</li>
+    <li>🚗 <strong>Совместимость:</strong> Для <em>Niva Travel</em> с новой панелью приборов могут потребоваться более современные модели генераторов, поддерживающие CAN-протокол.</li>
+</ul>
+
+<p>Эффективность метода зависит от скорости генерации импульсов. Дешевые модели могут работать нестабильно при низких напряжениях в бортовой сети, например, при работе двигателя на холостых оборотах. Профессиональные устройства имеют встроенный буфер и стабилизатор напряжения, что гарантирует равномерную намотку regardless от состояния аккумулятора.</p>
+
+<h2 id="коррекция-пробега-через-диагностический-разъем-obdii">Коррекция пробега через диагностический разъем OBDII</h2>
+
+<p>Более продвинутым, но и более сложным методом является программная коррекция данных через диагностический порт OBDII. Этот способ не требует разбора проводки или установки дополнительных генераторов. Для реализации вам понадобится специализированный адаптер (например, <em>OpenPort 2.0</em>, <em>Scanmatik</em> или <em>ELM327</em> с поддержкой специфических протоколов) и соответствующее программное обеспечение.</p>
+
+<p>Процесс заключается в подключении ноутбука или смартфона к разъему автомобиля, который на <em>Chevrolet Niva</em> расположен под торпедой, часто слева от рулевой колонки или в районе ног водителя. С помощью софта (например, <em>Combiloader</em>, <em>Chiploader</em> или специализированных калькуляторов пробега) производится чтение EEPROM-памяти приборной панели и, в некоторых случаях, самого ЭБУ.</p>
+
+<pre><code>Протокол: KWP2000 / CAN-BUS
+<p>Адрес ЭБУ: 0x24 (примерный, зависит от года)</p>
+<p>Режим доступа: 0x10 0x03</code></pre></p>
+
+<p>После чтения дампа памяти, в шестнадцатеричном коде находится ячейка, отвечающая за хранение текущего пробега. Значение изменяется на требуемое, контрольная сумма пересчитывается (если это не делает программа автоматически), и новый файл записывается обратно в устройство. Это позволяет установить любой желаемый пробег.</p>
+
+<details class="faq-item"><summary>Риски при чип-тюнинге</summary><div class="faq-answer"><p>При записи неверных данных или обрыве связи во время прошивки возможно «окирпучивание» приборной панели. Восстановление потребует выпаивания микросхемы памяти и программирования на программаторе вне автомобиля. Всегда делайте бэкап оригинального дампа перед внесением изменений!</p></div></details>
+
+<p>Важно отметить, что на современных автомобилях пробег может дублироваться в нескольких модулях: в самом ЭБУ, в панели приборов (ПП) и иногда в блоке ABS. Если изменить значение только в одном месте, через некоторое время система может синхронизировать данные по сети, вернув старое значение, или выдать ошибку несоответствия.</p>
+
+<h2 id="использование-can-фильтров-и-эмуляторов">Использование CAN-фильтров и эмуляторов</h2>
+
+<p>С развитием электроники в <em>Niva Travel</em> и рестайлинговых моделях «Шнивы» появилась сложная система диагностики и защиты данных. Простые генераторы импульсов могут блокироваться системой, которая анализирует реалистичность поступающих сигналов. В таких случаях на помощь приходят CAN-фильтры и сложные эмуляторы.</p>
+
+<p>Эти устройства встраиваются в разрыв CAN-шины и способны не только генерировать ложные сигналы о скорости, но и блокировать передачу реальных данных о пробеге в определенные моменты. Например, при работе навесного оборудования (лебедки, компрессоры) в неподвижном состоянии, фильтр может «замораживать» показания одометра, чтобы ресурс моточасов не расходовался впустую.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Тип устройства</th>
+            <th>Принцип действия</th>
+            <th>Сложность установки</th>
+            <th>Риск обнаружения</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Генератор импульсов</td>
+            <td>Подает ложные сигналы на вход ЭБУ</td>
+            <td>Низкая</td>
+            <td>Средний</td>
+        </tr>
+        <tr>
+            <td>CAN-фильтр</td>
+            <td>Блокирует или модифицирует пакеты данных</td>
+            <td>Средняя</td>
+            <td>Низкий</td>
+        </tr>
+        <tr>
+            <td>Программная правка</td>
+            <td>Изменение данных в памяти EEPROM</td>
+            <td>Высокая</td>
+            <td>Минимальный</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Установка CAN-фильтра требует тщательного изучения схемы электрооборудования конкретной модели. Необходимо правильно идентифицировать провода High и Low кан-шины. Ошибка в подключении может привести к нарушению работы всей цифровой сети автомобиля, включая отказ стеклоподъемников или центрального замка.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед покупкой CAN-фильтра уточните у продавца совместимость с вашей версией прошивки ЭБУ. Часто устройства, работающие на старых версиях Bosch ME17.9.7, некорректно функционируют с новыми блоками, где изменен алгоритм шифрования CAN-сообщений.</p></div>
+
+<h2 id="калибровка-спидометра-при-замене-колес">Калибровка спидометра при замене колес</h2>
+
+<p>Часто владельцы <em>Chevrolet Niva</em> хотят не столько «скрутить» пробег, сколько исправить показания спидометра после установки внедорожных шин. Заводская calibration рассчитана на штатный размер колес (обычно 205/75 R15 или 215/65 R16). Установка колес диаметром 29 или 31 дюйм существенно меняет длину окружности колеса.</p>
+
+<p>В результате спидометр начинает «врать», показывая скорость меньше реальной. Например, при показаниях 90 км/ч, реальная скорость может составлять 105 км/ч, что чревато штрафами. Кроме того, одометр не досчитывает километры, что искажает данные о расходе топлива и остаточном ресурсе узлов.</p>
+
+<p>Для корректной работы без вмешательства в электронику можно использовать таблицу поправочных коэффициентов. Однако, наиболее точным методом является перепрограммирование блока ЭБУ. В тюнинговых прошивках (например, от <em>StartVM</em> или <em>Паулюс</em>) часто есть опция выбора размера колес или ввода количества импульсов на километр.</p>
+
+<ul>
+    <li>📏 <strong>Замер:</strong> Реальный диаметр колеса измеряется от земли до верхней точки шины под нагрузкой.</li>
+    <li>🧮 <strong>Расчет:</strong> Новый коэффициент = (Старый пробег / Новый пробег) * Старое значение импульсов.</li>
+    <li>💻 <strong>Запись:</strong> Измененный параметр записывается в калибровочную таблицу прошивки.</li>
+</ul>
+
+<p>Если перепрошивка ЭБУ невозможна, некоторые владельцы прибегают к замене шестерни привода спидометра в раздаточной коробке, однако на электронных моделях это не даст эффекта, так как датчик стоит на выходе, а механическая связь с панелью отсутствует. Единственный вариант — корректировка сигнала на входе в ЭБУ с помощью делителя частоты.</p>
+
+<h2 id="юридические-аспекты-и-обнаружение-вмешательства">Юридические аспекты и обнаружение вмешательства</h2>
+
+<p>Следует помнить, что изменение показаний одометра с целью продажи автомобиля является незаконным и расценивается как обман потребителя. Современные методы диагностики позволяют легко выявить факт вмешательства. При проведении комплексной компьютерной диагностики специалисты сравнивают пробег, записанный в разных блоках управления.</p>
+
+<p>В <em>Chevrolet Niva</em> косвенным признаком большого реального пробега может служить состояние других систем. Например, ресурс катализатора, степень износа лямбда-зонда, данные о моточасах двигателя (параметр <code>Engine Hours</code>), которые часто не сбрасываются при простой правке пробега на панели.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если вы скручиваете пробег для личных целей (например, чтобы сбить путаницу после замены приборной панели), это одно. Но при продаже автомобиля скрученный пробег должен быть обязательно указан в договоре купли-продажи. Скрытие этой информации может привести к судебным искам и признанию сделки недействительной.</p>
+</blockquote>
+
+<p>Также существуют «журналы ошибок» и адаптации, где фиксируются события, происходившие на определенных километрах. Резкое исчезновение записей или нестыковка дат замены масла с текущим пробегом сразу вызовут вопросы у опытного покупателя или оценщика.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Полностью бесследно изменить пробег на современном автомобиле практически невозможно. Всегда остаются цифровые следы в смежных системах или косвенные признаки износа, не соответствующие заявленному пробегу.</p></div>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+
+<details>
+    <summary>Можно ли скрутить пробег на Ниве через кнопку на панели?</summary>
+    <p>Нет, штатными кнопками на приборной панели <em>Chevrolet Niva</em> изменить значение пробега невозможно. Эта функция не предусмотрена заводом-изготовителем. Требуются либо внешние устройства, либо подключение диагностического оборудования.</p>
+</details>
+
+<details>
+    <summary>Сбрасывается ли пробег при снятии клеммы аккумулятора?</summary>
+    <p>Нет, данные о пробеге хранятся в энергонезависимой памяти (EEPROM). Отключение питания не влияет на сохранность этих записей. Сброс возможен только при программной перезаписи или замене микросхемы памяти.</p>
+</details>
+
+<details>
+    <summary>Видно ли скрученный пробег на официальной диагностике?</summary>
+    <p>Да, если диагностика проводится глубоким сканером, который умеет читать данные не только из панели приборов, но и из ЭБУ двигателя, ABS и других блоков. Несоответствие значений в разных блоках сразу укажет на вмешательство.</p>
+</details>
+
+<details>
+    <summary>Какой самый безопасный способ калибровки после замены колес?</summary>
+    <p>Самый безопасный и правильный метод — внесение изменений в калибровочную таблицу прошивки ЭБУ (чип-тюнинг). Это позволяет спидометру и одометру работать корректно с новыми колесами без необходимости использования обманных устройств.</p>
+</details>
+
+<details>
+    <summary>Можно ли подмотать спидометр пока машина стоит на месте?</summary>
+    <p>Да, при использовании электронного генератора импульсов (крутилки) автомобиль может стоять на месте с включенным зажиганием. Сигнал подается напрямую в проводку, имитируя движение, и пробег накручивается в статичном положении.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-датчика-скорости-на-шевроле-нива">Принцип работы датчика скорости на Шевроле Нива</a></li><li><a href="#аппаратная-подмотка-через-разъем-датчика">Аппаратная подмотка через разъем датчика</a></li><li><a href="#коррекция-пробега-через-диагностический-разъем-obdii">Коррекция пробега через диагностический разъем OBDII</a></li><li><a href="#использование-can-фильтров-и-эмуляторов">Использование CAN-фильтров и эмуляторов</a></li><li><a href="#калибровка-спидометра-при-замене-колес">Калибровка спидометра при замене колес</a></li><li><a href="#юридические-аспекты-и-обнаружение-вмешательства">Юридические аспекты и обнаружение вмешательства</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

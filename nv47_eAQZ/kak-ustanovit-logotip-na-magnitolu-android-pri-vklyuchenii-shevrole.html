@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Логотип Chevrolet на Android-магнитолу: установка при старте — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция: как установить логотип Chevrolet на Android-автомагнитолу. Замена BootLogo, выбор файлов, сброс ошибок и настройка MCU.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv47_eAQZ/kak-ustanovit-logotip-na-magnitolu-android-pri-vklyuchenii-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Логотип Chevrolet на Android-магнитолу: установка при старте">
+    <meta property="og:description" content="Полная инструкция: как установить логотип Chevrolet на Android-автомагнитолу. Замена BootLogo, выбор файлов, сброс ошибок и настройка MCU.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Логотип Chevrolet на Android-магнитолу: установка при старте</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как установить логотип Chevrolet на Android-магнитолу при включении</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-файлов-и-анализ-совместимости">Подготовка файлов и анализ совместимости</a></li><li><a href="#поиск-скрытого-меню-и-инженерных-настроек">Поиск скрытого меню и инженерных настроек</a></li><li><a href="#метод-замены-через-файловый-менеджер">Метод замены через файловый менеджер</a></li><li><a href="#использование-сторонних-приложений-для-загрузки">Использование сторонних приложений для загрузки</a></li><li><a href="#настройка-mcu-и-обновление-прошивки">Настройка MCU и обновление прошивки</a></li><li><a href="#диагностика-и-устранение-типичных-ошибок">Диагностика и устранение типичных ошибок</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+<p>Владельцы автомобилей марки <em>Chevrolet</em>, решившие модернизировать штатное головное устройство, часто сталкиваются с необходимостью персонализации интерфейса новой системы. Стандартные китайские прошивки обычно предлагают набор логотипов, но логотип «бантик» или щит Chevrolet может отсутствовать или быть заменен на абстрактную графику. Установка правильного изображения при загрузке (<strong>BootLogo</strong>) создает ощущение заводской интеграции и повышает эстетическое восприятие салона.</p>
+
+<p>Процесс замены стартового изображения требует понимания файловой структуры системы Android и осторожности при работе с системными файлами. Ошибка в выборе разрешения или формата может привести к тому, что экран останется черным или изображение будет растянутым. В этой статье мы подробно разберем технические аспекты замены графического идентификатора бренда именно для платформ, используемых в автомобилях этой марки.</p>
+
+<p>Важно понимать, что процедура затрагивает раздел <code>Boot</code>, который считывается процессором в первые секунды после подачи питания. Для успешной реализации вам потребуется USB-накопитель, файловый менеджер и точное знание модели вашего головного устройства. Мы рассмотрим методы как через стандартное меню настроек, так и через скрытые инженерные режимы.</p>
+
+<h2 id="подготовка-файлов-и-анализ-совместимости">Подготовка файлов и анализ совместимости</h2>
+<p>Первым шагом является поиск исходного изображения логотипа <em>Chevrolet</em> высокого качества. Изображение должно быть в формате <strong>PNG</strong> с поддержкой прозрачного канала (альфа-канала), чтобы фон оставался черным, а не белым прямоугольником. Найти такие файлы можно на специализированных форумах или создать самостоятельно в графическом редакторе, соблюдая пропорции оригинальной эмблемы.</p>
+
+<p>Критически важным параметром является <strong>разрешение</strong> экрана вашей магнитолы. Универсального файла не существует: если экран имеет разрешение 1024x600, а вы загрузите картинку 1280x720, система может некорректно отобразить графику или вовсе отказаться загружать новый логотип. Узнать точное разрешение можно в меню <code>Настройки → О устройстве → Информация о дисплее</code>.</p>
+
+<p>Рекомендуется подготовить несколько вариантов изображения с разным размером файла. Некоторые процессоры (например, старые версии <em>Allwinner</em> или <em>Rockchip</em>) имеют ограничения на вес файла логотипа, обычно не более 500-800 Кб. Если файл будет слишком «тяжелым», алгоритм загрузки может проигнорировать его и оставить стандартную заставку.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте онлайн-компрессоры PNG с потерей качества (Lossy compression), чтобы уменьшить вес файла логотипа без видимой потери четкости на экране автомобиля.</p></div>
+
+<p>После подготовки файла переименуйте его согласно требованиям вашей системы. Чаще всего требуется имя <code>logo.png</code> или <code>bootup.png</code>, но в некоторых прошивках имя может быть строго зарезервировано. Скопируйте файл в корень USB-накопителя, отформатированного в файловую систему <strong>FAT32</strong>.</p>
+
+<h2 id="поиск-скрытого-меню-и-инженерных-настроек">Поиск скрытого меню и инженерных настроек</h2>
+<p>Большинство Android-магнитол, устанавливаемых в <em>Chevrolet</em>, имеют скрытое инженерное меню, доступное через ввод специального кода. Это меню позволяет изменять глубокие настройки системы, включая выбор логотипа производителя из встроенной базы или загрузку своего изображения. Для входа часто используются коды вроде <code>8888</code>, <code>1234</code>, <code>3368</code> или <code>5678</code>.</p>
+
+<p>Войдите в раздел <code>Factory Settings</code> или <code>Car Settings</code>. Здесь вам может потребоваться пароль. Популярные пароли для разных платформ: <code>126</code>, <code>3368</code>, <code>1617</code>, <code>0000</code>. Если стандартные комбинации не подходят, обратитесь к документации конкретной модели головного устройства, так как пароли часто зависят от версии MCU.</p>
+
+<details class="faq-item"><summary>Список частых паролей для входа в инженерное меню</summary><div class="faq-answer"><p>126 (для многих платформ T3/T5)|3368 (стандартный для многих китайских сборок)|1617 (часто встречается в прошивках с DSP)|8888 (универсальный пробный вариант)|5678 (альтернативный доступ)>
+
+<p>Внутри инженерного меню найдите вкладку, связанную с логотипом. Она может называться <code>Logo Setting</code>, <code>Boot Logo</code> или <code>Start Pic</code>. Здесь часто представлен список доступных брендов. Если <em>Chevrolet</em> есть в списке, просто выберите его и нажмите <code>OK</code> или <code>Apply</code>. Система перезагрузится с новым изображением.</p>
+
+<p>Если готового логотипа в списке нет, ищите опцию <strong>Custom Logo</strong> или <code>Upload Logo</code>. Это позволит загрузить подготовленный ранее файл с USB-накопителя. Убедитесь, что флешка вставлена в порт, помеченный как <code>USB</code> или <code>MirrorLink</code>, так как некоторые порты предназначены только для зарядки.</p>
+
+<h2 id="метод-замены-через-файловый-менеджер">Метод замены через файловый менеджер</h2>
+<p>Если через инженерное меню загрузка невозможна, можно попробовать метод прямой замены системного файла. Для этого потребуется файловый менеджер с правами доступа к системным разделам, например, <em>Root Explorer</em> или <em>ES Проводник</em> (с включенными root-правами). Этот метод более рискованный и требует точности.</p>
+
+<p>Найдите в корневой директории или по пути <code>/system/media/</code> или <code>/oem/logo/</code> существующий файл логотипа. Он может называться <code>logo.png</code>, <code>bootup.png</code> или иметь расширение <code>.bmp</code>. Сделайте резервную копию оригинального файла, переименовав его, например, в <code>logo_backup.png</code>.</p>
+
+<p>Скопируйте ваш подготовленный файл <code>logo.png</code> с USB-накопителя в ту же папку, где лежал оригинал. Убедитесь, что права доступа (permissions) у нового файла совпадают с правами оригинала (обычно <code>rw-r--r--</code> или <code>644</code>). Неправильные права могут блокировать чтение файла при старте системы.</p>
+
+
+
+<p>После замены файла выполните полную перезагрузку устройства. Не используйте режим сна, именно полное выключение и включение питания (<strong>Hard Reset</strong> по питанию) заставит систему считать новый графический файл. Если экран остался черным, возможно, файл поврежден или не подходит по размеру.</p>
+
+<h2 id="использование-сторонних-приложений-для-загрузки">Использование сторонних приложений для загрузки</h2>
+<p>Существуют специализированные приложения из магазина <em>Google Play</em> или сторонних APK-репозиториев, предназначенные для изменения BootLogo. Примером может служить приложение <strong>BootLogo Changer</strong> или аналоги, требующие Root-права. Они автоматизируют процесс замены файла в системном разделе.</p>
+
+<p>При использовании таких приложений внимательно следите за предупреждениями. Программа сама определит путь к текущему логотипу и предложит заменить его. Выберите ваше изображение <em>Chevrolet</em> из галереи. Приложение само обрежет или масштабирует картинку, но результат может быть неидеальным.</p>
+
+<p>Главный риск использования автоматических улит — возможная несовместимость с конкретной версией Android. На версиях Android 10 и выше доступ к системному разделу <code>/system</code> сильно ограничен даже с Root-правами из-за механизма <strong>System-as-Root</strong>. В таких случаях приложение может не сработать.</p>
+
+
+
+<p>Если приложение требует перезагрузки для применения изменений, согласитесь. В случае ошибки («bootloop» или черный экран), вам придется сбрасывать настройки до заводских или перепрошивать устройство заново, поэтому используйте этот метод только если уверены в стабильности ПО.</p>
+
+<h2 id="настройка-mcu-и-обновление-прошивки">Настройка MCU и обновление прошивки</h2>
+<p>Часто проблема отсутствия логотипа или его некорректного отображения кроется не в самом Android, а в микроконтроллере (<strong>MCU</strong>), который управляет кнопками, светом и стартовым экраном до загрузки ОС. Обновление MCU может добавить поддержку новых логотипов или исправить баги отображения.</p>
+
+<p>Для обновления скачайте файл прошивки MCU для вашей модели магнитолы (обычно файл с расширением <code>.bin</code> или <code>.img</code>). Поместите его в корень USB-флешки. В инженерном меню найдите раздел <code>MCU Update</code> и запустите процесс. Во время обновления <strong>не выключайте зажигание</strong>.</p>
+
+<p>После обновления MCU в меню выбора логотипа могут появиться новые опции, включая <em>Chevrolet</em>. Также обновленная прошивка MCU может корректнее обрабатывать разрешение экрана, устраняя искажения при выводе стартовой картинки.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+<th>Влияние на логотип</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Разрешение</strong></td>
+<td>Количество пикселей по горизонтали и вертикали</td>
+<td>Определяет четкость и пропорции изображения</td>
+</tr>
+<tr>
+<td><strong>Формат</strong></td>
+<td>Тип кодирования графики (PNG, BMP, JPG)</td>
+<td>Влияет на наличие прозрачности и вес файла</td>
+</tr>
+<tr>
+<td><strong>Версия MCU</strong></td>
+<td>Версия микрокода контроллера</td>
+<td>Определяет набор доступных встроенных логотипов</td>
+</tr>
+<tr>
+<td><strong>Root-права</strong></td>
+<td>Права суперпользователя</td>
+<td>Необходимы для ручной замены системных файлов</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="диагностика-и-устранение-типичных-ошибок">Диагностика и устранение типичных ошибок</h2>
+<p>Одной из частых проблем является появление логотипа с белым квадратным фоном вместо прозрачного. Это означает, что изображение сохранено в формате JPG или PNG без альфа-канала. Конвертируйте изображение заново, убедившись, что выбран режим <strong>32-bit PNG</strong> с прозрачностью.</p>
+
+<p>Если магнитола включается, но экран остается черным после установки логотипа, возможно, файл поврежден или имеет неподдерживаемый битрейт. Попробуйте уменьшить цветовую глубину или размер файла. Также проверьте, не заблокирован ли системный раздел от записи.</p>
+
+
+
+<p>В случае, если логотип отображается, но сильно искажен (растянут или сплюснут), вы неправильно определили физическое разрешение матрицы вашего экрана. Вернитесь к первому шагу и перепроверьте данные в разделе «О устройстве», затем пересоздайте изображение с точными размерами.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При работе с разделом Boot и системными файлами существует риск превратить магнитолу в «кирпич». Всегда имейте под рукой оригинальную прошивку для восстановления.</p>
+</blockquote>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+<details>
+<summary>Можно ли установить логотип Chevrolet без Root-прав?</summary>
+<p>Да, в большинстве случаев это возможно через инженерное меню (Factory Settings) или встроенные темы оформления, не требующие доступа к системным файлам.</p>
+</details>
+
+<details>
+<summary>Что делать, если логотип не меняется после перезагрузки?</summary>
+<p>Проверьте имя файла (часто требуется строго <code>logo.png</code>), формат FAT32 у флешки и попробуйте другой USB-порт. Также файл может быть слишком большого размера.</p>
+</details>
+
+<details>
+<summary>Безопасно ли менять BootLogo для гарантии?</summary>
+<p>Сама по себе замена картинки обычно не влияет на электронику, но если вы используете сторонние приложения для получения Root-прав, это может аннулировать гарантию продавца.</p>
+</details>
+
+<details>
+<summary>Где найти точное разрешение экрана моей магнитолы?</summary>
+<p>Перейдите в <code>Настройки → О устройстве → Статус</code> или используйте приложение <em>Device Info HW</em> из Google Play для получения точных данных о дисплее.</p>
+</details>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Не прерывайте процесс загрузки логотипа или обновления MCU выключением зажигания, это может привести к повреждению программного обеспечения головного устройства.</p>
+</blockquote></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-файлов-и-анализ-совместимости">Подготовка файлов и анализ совместимости</a></li><li><a href="#поиск-скрытого-меню-и-инженерных-настроек">Поиск скрытого меню и инженерных настроек</a></li><li><a href="#метод-замены-через-файловый-менеджер">Метод замены через файловый менеджер</a></li><li><a href="#использование-сторонних-приложений-для-загрузки">Использование сторонних приложений для загрузки</a></li><li><a href="#настройка-mcu-и-обновление-прошивки">Настройка MCU и обновление прошивки</a></li><li><a href="#диагностика-и-устранение-типичных-ошибок">Диагностика и устранение типичных ошибок</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

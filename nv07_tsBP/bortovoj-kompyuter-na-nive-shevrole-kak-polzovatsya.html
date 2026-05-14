@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Бортовой компьютер Нива Шевроле: как пользоваться и настроить — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по использованию штатного БК на Нива Шевроле. Как сбросить расход, настроить часы, прочитать ошибки и расшифровать коды неисправностей.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv07_tsBP/bortovoj-kompyuter-na-nive-shevrole-kak-polzovatsya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Бортовой компьютер Нива Шевроле: как пользоваться и настроить">
+    <meta property="og:description" content="Полная инструкция по использованию штатного БК на Нива Шевроле. Как сбросить расход, настроить часы, прочитать ошибки и расшифровать коды неисправностей.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Бортовой компьютер Нива Шевроле: как пользоваться и настроить</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Бортовой компьютер на Ниве Шевроле: руководство по эксплуатации</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#интерфейс-и-органы-управления">Интерфейс и органы управления</a></li><li><a href="#основные-функции-и-режимы-отображения">Основные функции и режимы отображения</a></li><li><a href="#настройка-параметров-системы">Настройка параметров системы</a></li><li><a href="#диагностика-и-коды-ошибок">Диагностика и коды ошибок</a></li><li><a href="#расширенные-возможности-и-мультимедиа">Расширенные возможности и мультимедиа</a></li><li><a href="#типичные-проблемы-и-их-решение">Типичные проблемы и их решение</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Современный автомобиль — это сложный электронный механизм, где <strong>бортовой компьютер</strong> (или маршрутный компьютер) выступает в роли связующего звена между водителем и системами машины. На <em>Нива Шевроле</em> (ВАЗ-2123) этот узел, часто называемый Штат (ШТАТ) или устанавливаемый в виде мультимедийных систем, выполняет множество функций, от простого отображения времени до диагностики двигателя. Понимание принципов работы этого устройства позволяет владельцу вовремя реагировать на изменения в поведении автомобиля и контролировать расход топлива.</p>
+
+<p>Основная задача системы заключается в сборе данных с датчиков и их преобразовании в понятную информацию. В зависимости от комплектации, на <em>Chevrole Niva</em> может стоять простой текстовый дисплей в панели приборов или полноценный <strong>мультимедийный комплекс</strong> с цветным экраном. В любом случае, базовый функционал остается схожим: мониторинг параметров двигателя, контроль пробега и навигация по меню настроек. Умение правильно считывать эти данные — ключевой навык для любого владельца внедорожника.</p>
+
+<p>Многие водители игнорируют возможности штатной электроники, полагаясь только на стрелочные приборы, что является ошибкой. Цифровые показания точнее и информативнее, особенно при диагностике <strong>неисправностей</strong>. Зная, как переключаться между режимами и интерпретировать сообщения об ошибках, вы сможете избежать дорогостоящего ремонта в сервисе. Далее мы подробно разберем интерфейс, настройки и скрытые функции системы.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Перед началом настройки параметров бортового компьютера убедитесь, что автомобиль находится на стоянке. Манипуляции с меню во время движения могут отвлечь вас от дороги и привести к аварийной ситуации.</p>
+</blockquote>
+
+<h2 id="интерфейс-и-органы-управления">Интерфейс и органы управления</h2>
+
+<p>Управление бортовым компьютером на <em>Нива Шевроле</em> реализовано через кнопочный интерфейс, расположенный непосредственно на приборной панели или на руле, в зависимости от года выпуска и комплектации. Основным элементом навигации является кнопка переключения режимов, часто обозначаемая как "Mode" или имеющая пиктограмму меню. Короткое нажатие позволяет переключаться между основными экранами: временем, пробегом, температурой и расходом топлива.</p>
+
+<p>Для входа в меню настроек обычно требуется длительное удержание кнопки (более 3 секунд) или использование комбинации клавиш. В более современных версиях с <strong>мультимедийной системой</strong> управление может осуществляться через сенсорный экран или джойстик. </p>
+
+<p>Дисплей устройства подсвечивается вместе с габаритными огнями, что обеспечивает хорошую читаемость в темное время суток. Яркость подсветки часто регулируется автоматически, но в некоторых моделях доступна ручная настройка через сервисное меню. <strong>Индикаторы</strong> на экране загораются при запуске двигателя для проверки работоспособности сегментов, после чего гаснут, если система не выявила критических ошибок.</p>
+
+<ul>
+<li>🔹 Кнопка "Menu/Mode" — основной навигатор по экранам и пунктам меню.</li>
+<li>🔹 Кнопка сброса (Reset) — используется для обнуления суточного пробега и среднего расхода.</li>
+<li>🔹 Сенсорный экран (в комплектациях Luxe/Glacier) — позволяет управлять настройками через графический интерфейс.</li>
+<li>🔹 Индикаторы состояния — мигающие символы, сигнализирующие о режимах работы или ошибках.</li>
+</ul>
+
+<p>Понимание расположения элементов управления значительно упрощает эксплуатацию. Например, зная, что для сброса тарировки нужно удерживать кнопку 5 секунд, вы не будете хаотично нажимать на клавиши. Система реагирует на четкие команды, и любое действие должно быть осознанным. Это особенно важно при движении по бездорожью, когда каждая секунда на счету.</p>
+
+<h2 id="основные-функции-и-режимы-отображения">Основные функции и режимы отображения</h2>
+
+<p>Штатный <strong>маршрутный компьютер</strong> на <em>Нива Шевроле</em> предлагает несколько режимов работы, каждый из которых несет полезную информацию. Переключение между ними происходит циклически или через меню. Первым и самым часто используемым режимом является отображение текущего времени и даты. Эти данные синхронизируются с внутренними часами автомобиля и могут корректироваться пользователем.</p>
+
+<p>Второй важный блок информации — это данные о пробеге. Система разделяет общий пробег автомобиля (ODO), который нельзя сбросить, и суточный пробег (TRIP), который можно обнулить в любой момент. Также доступен режим отображения времени, проведенного в пути. Эти данные полезны для ведения путевых листов или расчета эффективности поездки. Точность этих показателей напрямую зависит от исправности датчиков скорости.</p>
+
+<p>Особого внимания заслуживает режим мониторинга расхода топлива. Компьютер показывает мгновенный расход (литры в час при стоянке или литры на 100 км в движении) и средний расход за поездку. <strong>Калибровка</strong> этого параметра зависит от правильности ввода диаметра колес и типа двигателя в настройках. Если эти данные не соответствуют реальности, показания будут иметь большую погрешность.</p>
+
+<div class="poll-widget" id="poll-05ca4cf8"><div class="poll-widget-question">📊 Какой тип бортового компьютера установлен на вашей Ниве?</div><div class="poll-widget-option" data-poll="05ca4cf8" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Штатный текстовый дисплей</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="05ca4cf8" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Мультимедийная система (Android)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="05ca4cf8" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Сторонний БК (Multitronics и др.)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="05ca4cf8" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Нет бортового компьютера</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Температурный режим отображает температуру охлаждающей жидкости и, в некоторых версиях, температуру забортного воздуха. Контроль температуры двигателя критически важен для <em>Chevrole Niva</em>, особенно при эксплуатации в тяжелых условиях. Превышение нормальных значений может сигнализировать о неисправности системы охлаждения или термостата.</p>
+
+<table>
+<thead>
+<tr>
+<th>Режим отображения</th>
+<th>Описание функции</th>
+<th>Возможность сброса</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Время и дата</td>
+<td>Текущее время, календарь</td>
+<td>Ручная настройка</td>
+</tr>
+<tr>
+<td>Одометр (ODO)</td>
+<td>Общий пробег автомобиля</td>
+<td>Нет (только скрутка)</td>
+</tr>
+<tr>
+<td>Трип-метр (TRIP)</td>
+<td>Пробег с последнего сброса</td>
+<td>Да (длительное нажатие)</td>
+</tr>
+<tr>
+<td>Средний расход</td>
+<td>Среднее значение л/100км</td>
+<td>Автоматически при сбросе TRIP</td>
+</tr>
+<tr>
+<td>Время в пути</td>
+<td>Длительность поездки</td>
+<td>Да (при остановке двигателя)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="настройка-параметров-системы">Настройка параметров системы</h2>
+
+<p>Для корректной работы <strong>бортового компьютера</strong> необходимо правильно задать начальные параметры. Вход в меню настроек осуществляется через длительное нажатие управляющей кнопки. В открывшемся меню можно изменить формат времени (12/24 часа), яркость подсветки и единицы измерения температуры (Цельсий/Фаренгейт). Эти настройки сохраняются в памяти даже после отключения аккумулятора.</p>
+
+<p>Одной из важнейших функций является калибровка расхода топлива. Если вы сменили диаметр колес или тип двигателя (например, при чип-тюнинге), стандартные заводские настройки могут давать неверные данные. В меню калибровки можно ввести поправочный коэффициент или выбрать тип двигателя из списка. Это позволит системе пересчитывать объем впрыскиваемого топлива более точно.</p>
+
+<p>Также в настройках доступна функция активации или деактивации звуковых сигналов. Например, можно отключить напоминание о невыключенных габаритах или звуковой сигнал превышения скорости. Однако специалисты рекомендуют оставить активными сигналы о <strong>критических неисправностях</strong>, таких как падение уровня масла или перегрев двигателя, чтобы не пропустить серьезную поломку.</p>
+
+<div class="checklist-block"><h4>☑️ Настройка БК перед первой поездкой</h4><label class="check-item"><input type="checkbox"><span>Установить правильное время и дату</span></label><label class="check-item"><input type="checkbox"><span>Выбрать единицы измерения (км/ч, °C)</span></label><label class="check-item"><input type="checkbox"><span>Проверить калибровку диаметра колес</span></label><label class="check-item"><input type="checkbox"><span>Сбросить предыдущие данные о пробеге</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Не забывайте, что любые изменения в настройках вступают в силу немедленно. Если вы случайно изменили важный параметр, всегда можно выполнить полный сброс настроек до заводских значений (Factory Reset). Эта функция обычно находится в самом конце меню настроек и требует подтверждения действия во избежание случайного запуска.</p>
+
+<h2 id="диагностика-и-коды-ошибок">Диагностика и коды ошибок</h2>
+
+<p>Одной из главных функций бортового компьютера на <em>Нива Шевроле</em> является диагностика систем автомобиля. При обнаружении неисправности датчиком, на дисплее появляется соответствующий код ошибки или текстовое сообщение. Наиболее часто встречается ошибка, связанная с датчиком уровня топлива или датчиком скорости. Понимание кодов позволяет быстро определить узел, требующий внимания.</p>
+
+<p>Коды ошибок обычно представляют собой комбинацию букв и цифр (например, P0300, P0171). Первая буква указывает на тип системы (P — двигатель, B — кузов, C — шасси). Цифры уточняют конкретную проблему. Например, ошибки в диапазоне P03xx относятся к системе зажигания и пропускам воспламенения, что часто встречается при неисправности свечей или катушек.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Наличие кода ошибки не всегда означает необходимость немедленного ремонта. Некоторые ошибки могут быть вызваны временным скачком напряжения или использованием топлива низкого качества. Однако игнорировать повторяющиеся сигналы нельзя.</p>
+</blockquote>
+
+<p>Для более глубокой диагностики можно использовать режим отображения текущих параметров датчиков в реальном времени. В этом режиме можно увидеть напряжение в бортовой сети, положение дроссельной заслонки, угол опережения зажигания и температуру в разных точках двигателя. Эти данные полезны при поиске плавающих неисправностей, которые не фиксируются как постоянная ошибка.</p>
+
+<p>Сброс ошибок также производится через меню бортового компьютера. После устранения неисправности необходимо стереть код из памяти, чтобы система перестала сигнализировать о проблеме. Если ошибка появляется снова сразу после сброса, значит, неисправность носит аппаратный характер и требует вмешательства механика или электрика.</p>
+
+<h2 id="расширенные-возможности-и-мультимедиа">Расширенные возможности и мультимедиа</h2>
+
+<p>Владельцы <em>Chevrole Niva</em> более свежих годов выпуска часто сталкиваются с мультимедийными системами на базе Android, которые заменяют штатный магнитофон. Такие устройства обладают функционалом полноценного <strong>планшетного компьютера</strong>. Они не только управляют аудиосистемой, но и интегрируются с CAN-шиной автомобиля, выводя данные бортового компьютера на большой цветной экран.</p>
+
+<p>На таких экранах доступна навигация (GPS/ГЛОНАСС), подключение смартфона через Bluetooth, просмотр видео и использование приложений. Установка сторонних приложений позволяет расширить функционал: добавить телеграм-каналы для пробок, онлайн-радио или более продвинутые программы для диагностики через OBD2-адаптер. Это превращает автомобиль в современный цифровой гаджет.</p>
+
+<details class="faq-item"><summary>Секретные функции Android-головных единиц</summary><div class="faq-answer"><p>Многие владельцы не знают, что в инженерном меню Android-систем Нивы Шевроле скрыта возможность изменения заставки при загрузке, настройки эквалайзера для конкретных динамиков и даже калибровки чувствительности сенсорного экрана. Доступ к инженерному меню часто осуществляется через код в номеронабирателе или специальный APK-файл.>
+
+<p>Однако стоит помнить, что сложные мультимедийные системы потребляют больше энергии. При длительной стоянке с выключенным двигателем они могут быстрее разрядить <strong>аккумуляторную батарею</strong>. Поэтому рекомендуется следить за зарядом АКБ или устанавливать дополнительную защиту от глубокого разряда, если вы часто используете мультимедиа на стоянке.</p>
+
+<h2 id="типичные-проблемы-и-их-решение">Типичные проблемы и их решение</h2>
+
+<p>В процессе эксплуатации владельцы <em>Нива Шевроле</em> могут столкнуться с рядом типичных проблем в работе бортового компьютера. Самая распространенная из них — самопроизвольный сброс времени и настроек. Это чаще всего указывает на разряд встроенной батарейки памяти или проблемы с контактами в разъеме питания. Решение кроется в замене элемента питания или восстановлении контакта.</p>
+
+<p>Другая частая проблема — некорректное отображение остатка топлива. Стрелка может показывать полный бак, а через минуту — пустой. Это лечится процедурой калибровки бака, которая описана в инструкции к конкретной модели БК. Процесс заключается в полном опустошении бака и последующей заправке с фиксацией показаний в определенные моменты.</p>
+
+<p>Если дисплей гаснет или начинает "глючить" (появляются полосы, артефакты), это может быть связано с перегревом процессора или плохим контактом шлейфа. В зимнее время холодный экран может реагировать с задержкой. В таких случаях рекомендуется проверить качество соединения проводов и, при необходимости, утеплить нишу приборной панели.</p>
+
+<ul>
+<li>🔹 Проблема: Сброс времени после стоянки. Решение: Замена батарейки CR2032 в плате БК.</li>
+<li>🔹 Проблема: Неверный расход топлива. Решение: Калибровка по полному баку и сброс статистики.</li>
+<li>🔹 Проблема: Мигание индикатора Check Engine. Решение: Считывание кода ошибки и проверка свечей.</li>
+<li>🔹 Проблема: Тусклая подсветка. Решение: Проверка регулятора яркости и целостности лампы подсветки.</li>
+</ul>
+
+
+
+<details>
+<summary>Как сбросить средний расход топлива на Нива Шевроле?</summary>
+<p>Для сброса среднего расхода необходимо перейти в режим отображения расхода топлива. Затем нажмите и удерживайте кнопку сброса (обычно это правая кнопка на панели приборов) в течение 3-5 секунд. Показания должны обновиться и начать отсчет заново. На некоторых моделях требуется выключить зажигание, зажать кнопку и, удерживая её, включить зажигание.</p>
+</details>
+
+<details>
+<summary>Что делать, если бортовой компьютер показывает ошибку датчика?</summary>
+<p>Если на экране появился код ошибки, запишите его. Попробуйте сбросить ошибку через меню или снятием клеммы аккумулятора на 10 минут. Если ошибка появляется снова при работающем двигателе, необходимо проверить соответствующий датчик мультиметром на наличие обрыва цепи или короткого замыкания. Часто проблема кроется в окислившихся контактах разъема.</p>
+</details>
+
+<details>
+<summary>Можно ли установить более современный бортовой компьютер на старую Ниву?</summary>
+<p>Да, на автомобили ранних годов выпуска можно установить универсальные бортовые компьютеры (например, Multitronics, Prestige) или мультимедийные Android-системы. Для этого может потребоваться переходная рамка и адаптация проводки. Установка стороннего БК часто дает более точные данные и расширенный функционал по сравнению со штатным.</p>
+</details>
+
+<details>
+<summary>Почему бортовой компьютер не видит уровень топлива?</summary>
+<p>Чаще всего причина в неисправности датчика уровня топлива (ДУТ), расположенного в баке. Реже — в обрыве провода, идущего от бака к приборной панели. Также возможна потеря контакта в самой панели приборов. Для диагностики нужно "прозвонить" цепь от бака до разъема БК.</p>
+</details>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При замене аккумуляторной батареи на Ниве Шевроле, чтобы настройки бортового компьютера не сбились, можно использовать специальный адаптер-память, который подключается в прикуриватель, пока меняете АКБ. Если адаптера нет, старайтесь произвести замену максимально быстро.</p></div></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#интерфейс-и-органы-управления">Интерфейс и органы управления</a></li><li><a href="#основные-функции-и-режимы-отображения">Основные функции и режимы отображения</a></li><li><a href="#настройка-параметров-системы">Настройка параметров системы</a></li><li><a href="#диагностика-и-коды-ошибок">Диагностика и коды ошибок</a></li><li><a href="#расширенные-возможности-и-мультимедиа">Расширенные возможности и мультимедиа</a></li><li><a href="#типичные-проблемы-и-их-решение">Типичные проблемы и их решение</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

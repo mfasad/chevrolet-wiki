@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Проверка электронной педали газа Шевроле Круз: коды ошибок и диагностика — Chevrolet-Wiki</title>
+    <meta name="description" content="Как проверить электронную педаль газа на Chevrolet Cruze? Подробная инструкция по диагностике мультиметром, сканером ELM327 и устранению провалов тяги.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv18_gk4h/kak-proverit-pedal-gaza-elektronnuyu-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Проверка электронной педали газа Шевроле Круз: коды ошибок и диагностика">
+    <meta property="og:description" content="Как проверить электронную педаль газа на Chevrolet Cruze? Подробная инструкция по диагностике мультиметром, сканером ELM327 и устранению провалов тяги.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Проверка электронной педали газа Шевроле Круз: коды ошибок и диагностика</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Диагностика и проверка электронной педали газа Шевроле Круз</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#симптомы-неисправности-и-коды-ошибок-obd-ii">Симптомы неисправности и коды ошибок OBD-II</a></li><li><a href="#визуальный-осмотр-и-проверка-электрических-цепей">Визуальный осмотр и проверка электрических цепей</a></li><li><a href="#детальная-проверка-мультиметром-замеры-сопротивления-и-напряжения">Детальная проверка мультиметром: замеры сопротивления и напряжения</a></li><li><a href="#аппаратная-диагностика-через-разъем-obd-ii">Аппаратная диагностика через разъем OBD-II</a></li><li><a href="#адаптация-и-сброс-ошибок-после-замены">Адаптация и сброс ошибок после замены</a></li><li><a href="#частые-вопросы-и-ответы-faq">Частые вопросы и ответы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Электронная педаль акселератора в <em>Chevrolet Cruze</em> является одним из самых уязвимых элементов системы управления двигателем. В отличие от старых механических тросов, здесь сигнал передается электрически, что повышает точность, но добавляет риски программных сбоев и износа дорожек. Владельцы часто сталкиваются с плавающими оборотами, внезапным переходом двигателя в аварийный режим или полным отсутствием реакции на нажатие. <strong>Своевременная диагностика</strong> позволяет избежать дорогостоящего ремонта дроссельной заслонки или замены ЭБУ.</p>
+
+<p>Симптомы неисправности могут быть неочевидными: иногда это просто легкая задержка при старте, а в других случаях — полное ограничение мощности на трассе. Система E-Gas (Electronic Gas) постоянно мониторит сопротивление датчиков положения педали (ДПП). <mark>Критическим порогом считается рассинхронизация показаний двух внутренних датчиков более чем на 10%</mark>. Если вы заметили, что автомобиль дергается при плавном разгоне или загорелась лампа "Check Engine", игнорировать это нельзя.</p>
+
+<p>В этой статье мы подробно разберем методы проверки как программными средствами, так и с помощью мультиметра. Вы узнаете, как отличить износ самой педали от проблем с проводкой или дроссельным узлом. Правильный подход к диагностике сэкономит вам время и деньги, позволив точно определить виновника нестабильной работы двигателя.</p>
+
+<h2 id="симптомы-неисправности-и-коды-ошибок-obd-ii">Симптомы неисправности и коды ошибок OBD-II</h2>
+
+<p>Первым признаком проблем с <strong>электронной педалью</strong> является неадекватное поведение автомобиля. Двигатель может глохнуть при остановке, не набирать обороты выше 3000 в минуту или реагировать на педаль с запозданием. Часто загорается индикатор "Reduced Engine Power". Компьютерная диагностика в этом случае выдает конкретные коды неисправностей, которые указывают на характер проблемы.</p>
+
+<p>Наиболее распространенные ошибки, связанные с педалью акселератора на <em>Cruze</em>, относятся к серии P21xx. Они свидетельствуют о проблемах с цепями управления дроссельной заслонкой, которые напрямую зависят от сигнала педали. Важно правильно интерпретировать эти коды, так как они могут указывать как на обрыв, так и на короткое замыкание.</p>
+
+<ul>
+<li>🚗 <strong>P2122 / P2123</strong> — Низкий или высокий уровень сигнала цепи датчика положения педали "A".</li>
+<li>⚡ <strong>P2127 / P2128</strong> — Аналогичные ошибки для датчика положения педали "B" (второго канала).</li>
+<li>🔌 <strong>P2135</strong> — Несоответствие показаний датчиков положения дроссельной заслонки/педали акселератора.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Если горит ошибка P2135, это часто указывает не на саму педаль, а на рассинхронизацию между педалью и дроссельной заслонкой. Не спешите менять педаль, пока не проверите состояние самой заслонки и ее адаптацию.</p>
+</blockquote>
+
+<p>Для точного считывания кодов лучше использовать специализированный сканер, например, <em>GM MDI</em> или качественный адаптер <code>ELM327</code> с приложением <code>Torque</code> или <code>OpenDiag</code>. Простые считыватели могут показать только наличие ошибки, но не дадут доступа к текущим параметрам в реальном времени, что критически важно для дальнейшей проверки.</p>
+
+<div class="poll-widget" id="poll-f239211f"><div class="poll-widget-question">📊 Сталкивались ли вы с провалами тяги на Chevrolet Cruze?</div><div class="poll-widget-option" data-poll="f239211f" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, постоянно дергается при разгоне:Была единичная ошибка и пропала:Горит "Check Engine", но едет нормально:Нет, машина исправна</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="визуальный-осмотр-и-проверка-электрических-цепей">Визуальный осмотр и проверка электрических цепей</h2>
+
+<p>Прежде чем приступать к сложным измерениям, необходимо исключить банальные механические повреждения. Разъем педали акселератора расположен в зоне ног водителя, куда часто попадает влага, грязь и реагенты с обуви. <strong>Окисление контактов</strong> — частая причина нестабильного сигнала. Снимите декоративную накладку и осмотрите фишку на предмет зеленого налета или оплавления.</p>
+
+<p>Также следует проверить целостность жгута проводов, идущего от педали к ЭБУ. На <em>Chevrolet Cruze</em> проводка в этом месте подвержена трению о металлический каркас кузова. Если изоляция нарушена, возможно замыкание на массу. Особое внимание уделите участкам возле изгибов и мест крепления жгута.</p>
+
+<div class="checklist-block"><h4>☑️ Первичный осмотр проводки</h4><label class="check-item"><input type="checkbox"><span>Снять минусовую клемму АКБ:Демонтировать пластиковую накладку у педали:Осмотреть разъем на окислы:Проверить жгут на перетертости:Проверить надежность массы двигателя</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 1</div></div>
+
+<p>Если визуально дефектов не найдено, переходим к "прозвонке" мультиметром. Нам нужно убедиться, что питание приходит на разъем, а сигнальный провод не оборван. Для этого потребуется схема распиновки разъема педали, которая стандартна для большинства автомобилей <em>General Motors</em>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Пин (Контакт)</th>
+<th>Назначение</th>
+<th>Нормальное значение</th>
+<th>Цвет провода (тип.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Сигнал датчика 1 (низкий)</td>
+<td>0.7 - 4.5 В (плавающее)</td>
+<td>Серый</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Сигнал датчика 2 (низкий)</td>
+<td>0.35 - 2.2 В (плавающее)</td>
+<td>Бело-черный</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Питание (+5В)</td>
+<td>4.8 - 5.2 В</td>
+<td>Красный</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Сигнал датчика 2 (высокий)</td>
+<td>0.35 - 2.2 В</td>
+<td>Зеленый</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Сигнал датчика 1 (высокий)</td>
+<td>0.7 - 4.5 В</td>
+<td>Синий</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Масса (GND)</td>
+<td>0 В</td>
+<td>Черный</td>
+</tr>
+</tbody>
+</table>
+
+<p>Проверка выполняется при включенном зажигании, но без запуска двигателя. Аккуратно проткните изоляцию провода или используйте тонкие щупы, чтобы не повредить контакты разъема. Если напряжение на пине питания отличается от 5 вольт, проблема может быть в проводке или самом ЭБУ, а не в педали.</p>
+
+<h2 id="детальная-проверка-мультиметром-замеры-сопротивления-и-напряжения">Детальная проверка мультиметром: замеры сопротивления и напряжения</h2>
+
+<p>Наиболее точный метод проверки — измерение выходного напряжения в динамике. Электронная педаль <em>Cruze</em> содержит два независимых потенциометра (датчика). Они работают в противофазе или с разным коэффициентом усиления для обеспечения безопасности. При нажатии на педаль напряжение на обоих датчиках должно расти плавно, без скачков и провалов.</p>
+
+<p>Подключите мультиметр в режиме вольтметра к сигнальным проводам. Попросите помощника плавно нажимать на педаль от минимума до максимума. Показания должны изменяться линейно. Если в какой-то точке напряжение резко падает до нуля или скачет — это признак <strong>износа графитового слоя</strong> дорожки. Именно в этом месте чаще всего возникает "мертвая зона".</p>
+
+<details class="faq-item"><summary>Почему два датчика?</summary><div class="faq-answer"><p>В системе E-Gas используется принцип дублирования. ЭБУ сравнивает показания двух датчиков. Если датчик 1 показывает 2.0В, а датчик 2 — 1.0В (условно), система работает. Если соотношения нарушаются, ЭБУ считает это опасной ситуацией и сбрасывает газ.</p></div></details>
+
+<p>Также можно проверить сопротивление, но для этого педаль нужно снять и отключить от автомобиля. Переключите мультиметр в режим измерения сопротивления (Ом). Замерьте сопротивление между контактами сигнальных выходов и контактом массы. При плавном перемещении рычага педали сопротивление должно меняться так же плавно. <strong>Треск стрелки</strong> или хаотичные изменения цифр на дисплее говорят о физическом износе дорожек.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При проверке сопротивления не прилагайте чрезмерных усилий к рычагу педали. Механизм пластиковый и при резком рывке в крайнее положение можно сломать ограничитель или саму ось потенциометра.</p>
+</blockquote>
+
+<p>Если замеры показали, что напряжение есть, оно растет, но машина все равно работает некорректно, возможно, проблема кроется в "земле". Плохой контакт массы двигателя или кузова приводит к тому, что ЭБУ получает искаженные данные с датчиков, даже если сама педаль исправна. Проверьте основные минусовые клеммы.</p>
+
+<h2 id="аппаратная-диагностика-через-разъем-obd-ii">Аппаратная диагностика через разъем OBD-II</h2>
+
+<p>Современные методы позволяют провести глубокую диагностику без снятия педали. Используя ноутбук с программой <em>GM MDI</em> или <em>Scanmatic</em>, можно наблюдать за параметрами в реальном времени. Это самый надежный способ понять, как ЭБУ "видит" ваши действия с педалью газа.</p>
+
+<p>Вам необходимо найти в списке параметров пункты "Accelerator Pedal Position 1" и "Accelerator Pedal Position 2". В идеале при отпущенной педали значения должны быть около 12-15% и 6-8% соответственно (цифры могут варьироваться в зависимости от калибровки). При полном нажатии они должны достигать 85-90%.</p>
+
+<ul>
+<li>📈 <strong>Линейность:</strong> График изменения процентов должен быть ровным. Любые "ступеньки" указывают на износ.</li>
+<li>🔄 <strong>Синхронизация:</strong> Показания двух датчиков должны меняться одновременно. Задержка одного из них вызовет ошибку P2135.</li>
+<li>🛑 <strong>Режим отсечки:</strong> Если при нажатии педали показания замирают на одном значении, ЭБУ может блокировать подачу топлива.</li>
+</ul>
+
+<p>Особый интерес представляет параметр "Desired Throttle Position" (Желаемое положение дросселя). Он рассчитывается ЭБУ на основе сигнала педали. Если вы нажимаете газ, а этот параметр не растет или растет рывками, значит, сигнал с педали не корректен. Это позволяет окончательно подтвердить неисправность узла.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При диагностике через OBD-II включите запись логов (логгирование). Прокатитесь на машине в момент появления проблемы, а затем внимательно изучите график. Статичная проверка на месте может не выявить дефект, проявляющийся только под нагрузкой или вибрацией.</p></div>
+
+<h2 id="адаптация-и-сброс-ошибок-после-замены">Адаптация и сброс ошибок после замены</h2>
+
+<p>После установки новой или восстановленной педали акселератора на <em>Chevrolet Cruze</em> часто требуется процедура адаптации. Хотя во многих случаях ЭБУ обучается самостоятельно после нескольких циклов включения зажигания, для гарантированного результата лучше выполнить сброс адаптаций принудительно.</p>
+
+<p>Процедура адаптации через сканер занимает пару минут. В меню диагностической программы выберите "Special Functions" (Специальные функции) -> "Throttle Learn" или "Accelerator Pedal Position Reset". Следуйте инструкциям на экране: обычно требуется включить зажигание, подождать несколько секунд, затем запустить двигатель и дать ему поработать на холостых.</p>
+
+<pre><code>Процедура ручного сброса (если нет сканера):
+<p>1. Включите зажигание (двигатель не запускать).</p>
+<p>2. Нажмите педаль газа до упора и держите 5 секунд.</p>
+<p>3. Отпустите педаль, выключите зажигание.</p>
+<p>4. Повторите процедуру 3 раза.</p>
+<p>5. Запустите двигатель и дайте прогреться.</code></pre></p>
+
+<p>Если адаптация не проходит, система выдаст ошибку. Это может означать, что новая педаль неисправна, либо есть проблемы с дроссельной заслонкой, которая не принимает новые значения. В редких случаях требуется обновление программного обеспечения самого ЭБУ (перепрошивка), если заводская версия имела баги с обработкой сигнала педали.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Не пытайтесь "лечить" изношенную педаль смазкой контактов WD-40 или спиртом. Это даст временный эффект на пару дней, после чего графитовый слой окончательно разрушится, и проблема вернется с удвоенной силой.</p>
+</blockquote>
+
+<h2 id="частые-вопросы-и-ответы-faq">Частые вопросы и ответы (FAQ)</h2>
+
+<details>
+<summary>Можно ли ездить, если горит ошибка педали газа?</summary>
+<p>Ехать можно, но осторожно. Автомобиль перейдет в аварийный режим, обороты будут ограничены (обычно до 2000 об/мин), а динамика разгона будет очень слабой. Длительная езда в таком режиме может привести к перегреву катализатора из-за неправильной смеси.</p>
+</details>
+
+<details>
+<summary>Какая педаль лучше: оригинал GM или аналог (Halla, Delphi)?</summary>
+<p>Оригинал <em>General Motors</em> (часто производства <em>Halla</em> или <em>Delphi</em>) ходит дольше. Дешевые китайские аналоги могут иметь люфт рычага или быстро стирать дорожки. Лучше брать проверенные бренды-поставщики на конвейер.</p>
+</details>
+
+<details>
+<summary>Почему после мойки двигателя загорелась ошибка педали?</summary>
+<p>Вода могла попасть в разъем педали или ЭБУ. Необходимо тщательно просушить все контакты сжатым воздухом и дать машине постоять в теплом гараже сутки. Часто ошибка уходит сама после высыхания.</p>
+</details>
+
+<details>
+<summary>Влияет ли состояние аккумулятора на работу электронной педали?</summary>
+<p>Да, влияет. При низком напряжении бортовой сети (менее 11.5 В) ЭБУ может некорректно считывать аналоговые сигналы с датчиков, что приводит к ложным ошибкам и рывкам при разгоне.</p>
+</details>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Главный вывод: В 80% случаев проблема решается заменой самой педали, но перед покупкой обязательно проверьте целостность проводки и разъемов, чтобы не выбросить деньги на ветер.</p></div></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#симптомы-неисправности-и-коды-ошибок-obd-ii">Симптомы неисправности и коды ошибок OBD-II</a></li><li><a href="#визуальный-осмотр-и-проверка-электрических-цепей">Визуальный осмотр и проверка электрических цепей</a></li><li><a href="#детальная-проверка-мультиметром-замеры-сопротивления-и-напряжения">Детальная проверка мультиметром: замеры сопротивления и напряжения</a></li><li><a href="#аппаратная-диагностика-через-разъем-obd-ii">Аппаратная диагностика через разъем OBD-II</a></li><li><a href="#адаптация-и-сброс-ошибок-после-замены">Адаптация и сброс ошибок после замены</a></li><li><a href="#частые-вопросы-и-ответы-faq">Частые вопросы и ответы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

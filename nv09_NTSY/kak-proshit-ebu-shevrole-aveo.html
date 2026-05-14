@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как прошить ЭБУ Шевроле Авео: инструкция и софт — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по прошивке ЭБУ Chevrolet Aveo. Выбор адаптеров, софта, пошаговая процедура чип-тюнинга и отключение EGR своими руками.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv09_NTSY/kak-proshit-ebu-shevrole-aveo.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как прошить ЭБУ Шевроле Авео: инструкция и софт">
+    <meta property="og:description" content="Полная инструкция по прошивке ЭБУ Chevrolet Aveo. Выбор адаптеров, софта, пошаговая процедура чип-тюнинга и отключение EGR своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как прошить ЭБУ Шевроле Авео: инструкция и софт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка ЭБУ Шевроле Авео: полное руководство по чип-тюнингу</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#идентификация-типа-эбу-и-выбор-оборудования">Идентификация типа ЭБУ и выбор оборудования</a></li><li><a href="#необходимый-софт-и-драйверы">Необходимый софт и драйверы</a></li><li><a href="#подготовка-автомобиля-к-процедуре">Подготовка автомобиля к процедуре</a></li><li><a href="#процесс-чтения-и-записи-прошивки">Процесс чтения и записи прошивки</a></li><li><a href="#адаптация-и-проверка-результатов">Адаптация и проверка результатов</a></li><li><a href="#сравнение-методов-obd-против-bdm">Сравнение методов: OBD против BDM</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана Chevrolet Aveo часто сталкиваются с желанием улучшить динамические характеристики своего автомобиля или устранить программные ошибки, которые не решаются стандартной диагностикой. <strong>Чип-тюнинг</strong> позволяет изменить заводские настройки электронного блока управления, что может привести к снижению расхода топлива и более отзывчивой работе педали газа. Однако процесс перепрограммирования микроконтроллера требует тщательной подготовки, специализированного оборудования и понимания рисков, связанных с вмешательством в работу электроники.</p>
+
+<p>Перед началом любых манипуляций необходимо четко осознавать, что вы делаете. Неправильно подобранная <em>калибровка</em> или прерывание процесса записи данных может превратить дорогостоящий блок в «кирпич», восстановление которого потребует вмешательства инженеров на специальном стенде. В этой статье мы подробно разберем этапы подготовки, выбор интерфейсного оборудования и саму процедуру записи новой программы в память контроллера.</p>
+
+<h2 id="идентификация-типа-эбу-и-выбор-оборудования">Идентификация типа ЭБУ и выбор оборудования</h2>
+
+<p>Первым и самым важным шагом является определение типа установленного на вашем автомобиле блока управления. На <em>Chevrolet Aveo</em> T250 и T300 чаще всего встречались контроллеры производства <strong>Delphi</strong> (серии MT80, MT35, MT60) или <strong>SIMTEC</strong> (серия 71). От точности идентификации зависит выбор интерфейсного кабеля и программного обеспечения. Неправильный выбор оборудования приведет к тому, что компьютер просто не увидит блок или, что хуже, попытается записать данные в неверные ячейки памяти.</p>
+
+<p>Для работы с большинством блоков Delphi и Simtec, устанавливаемых на Авео, оптимальным решением является использование адаптеров на базе чипов <strong>J2534</strong>. Это стандарт, поддерживаемый большинством профессиональных программ-загрузчиков. Рынок предлагает множество клонов оригинальных устройств, таких как OpenBox или Tactrix, которые успешно справляются с задачей при условии качественного исполнения.</p>
+
+<p>Также важно проверить состояние аккумулятора и бортовой сети. В процессе перепрошивки напряжение не должно падать ниже критического уровня, иначе произойдет сбой записи. <mark>Критическим порогом напряжения для безопасной прошивки является 12.2 Вольта</mark>, ниже которого запускать процесс категорически нельзя.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Не полагайтесь только на заряд автомобильного аккумулятора. Обязательно подключите внешний стабилизированный источник питания или зарядное устройство в режиме «Пуск/Boost» на время всей процедуры.</p>
+</blockquote>
+
+<div class="poll-widget" id="poll-37df2d2b"><div class="poll-widget-question">📊 Какой тип ЭБУ установлен на вашем Chevrolet Aveo?</div><div class="poll-widget-option" data-poll="37df2d2b" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Delphi MT80</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="37df2d2b" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Delphi MT35</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="37df2d2b" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Simtec 71.4</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="37df2d2b" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Я не знаю, нужно узнавать</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="необходимый-софт-и-драйверы">Необходимый софт и драйверы</h2>
+
+<p>После приобретения или подготовки подходящего интерфейса необходимо установить программное обеспечение. Для блоков <em>Delphi</em> стандартом де-факто стала программа <strong>OpenBox</strong> или ее аналоги, а также специализированные загрузчики вроде <em>ChipTuning Pro</em>. Для <strong>Simtec</strong> часто используется софт <strong>GPT</strong> или <em>Comboloader</em>. Выбор конкретного софта зависит от версии протокола, который поддерживает ваш блок.</p>
+
+<p>Драйверы для адаптера должны быть установлены до подключения самого устройства к разъему OBD-II. В диспетчере устройств Windows адаптер должен определиться корректно, без восклицательных знаков. Часто для китайских клонов J2534 требуется ручная установка драйверов через меню «Обновить драйвер» с указанием пути к папке.</p>
+
+<p>Не забудьте подготовить саму прошивку. Файлы калибровок обычно имеют расширение <code>.bin</code> или <code>.frf</code>. Важно убедиться, что версия прошивки соответствует идентификатору вашего блока (ID), который можно считать диагностическим сканером перед началом работ. Запись неподходящего файла приведет к неработоспособности двигателя.</p>
+
+<details class="faq-item"><summary>Где брать безопасные прошивки?</summary><div class="faq-answer"><p>Источники прошивок делятся на официальные дилерские (обновления) и тюнинговые (от ателье вроде Паулюса, Адакита, Ледокола). Для повседневной езды лучше искать стоковые обновленные версии или мягкие тюнинг-версии, не требующие перехода на АИ-92, если вы не уверены в качестве топлива.</p></div></details>
+
+<h2 id="подготовка-автомобиля-к-процедуре">Подготовка автомобиля к процедуре</h2>
+
+<p>Автомобиль должен находиться в помещении с устойчивым сигналом, если используется онлайн-активация, хотя для Авео чаще применяется офлайн-метод. Заглушите двигатель, выключите все потребители энергии: фары, музыку, климат-контроль, подогревы. Это необходимо для минимизации помех в бортовой сети.</p>
+
+<p>Найдите диагностический разъем <strong>OBD-II</strong>. В Chevrolet Aveo он обычно расположен под торпедой со стороны водителя, чуть ниже рулевой колонки, или скрыт за декоративной накладкой. Подключите адаптер плотно, до упора, чтобы исключить потерю контакта в процессе вибрации или случайного движения.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист подготовки к прошивке</h4><label class="check-item"><input type="checkbox"><span>Проверить напряжение АКБ (мин. 12.5В)</span></label><label class="check-item"><input type="checkbox"><span>Установить драйверы адаптера на ноутбук</span></label><label class="check-item"><input type="checkbox"><span>Подключить внешний источник питания</span></label><label class="check-item"><input type="checkbox"><span>Закрыть все программы на ПК</span></label><label class="check-item"><input type="checkbox"><span>Считать и сохранить оригинальную прошивку (Backup)</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Запустите ноутбук от сети, отключив спящий режим и энергосбережение USB-портов в настройках электропитания Windows. Это предотвратит отключение адаптера в критический момент. Убедитесь, что антивирус и брандмауэр не блокируют работу программы-загрузчика.</p>
+
+<h2 id="процесс-чтения-и-записи-прошивки">Процесс чтения и записи прошивки</h2>
+
+<p>Запустите программу-загрузчик и выберите тип подключения <code>J2534</code>. В настройках интерфейса укажите ваше устройство. Нажмите кнопку «Connect» или «Подключиться». Если связь установлена, программа считает идентификационные данные блока: VIN-код, номер калибровки, контрольные суммы.</p>
+
+<p>Первым действием всегда должно быть <strong>чтение оригинальной прошивки</strong>. Сохраните этот файл в нескольких местах (на жестком диске, в облаке, на флешке). Это ваша «страховка» на случай, если новая программа окажется нерабочей или возникнут ошибки в работе двигателя.</p>
+
+<pre><code>Algorithm: Read Full Flash
+<p>Protocol: GMLAN / KWP2000</p>
+<p>Status: Connected</p>
+<p>Action: Save as Aveo_Original_Backup.bin</code></pre></p>
+
+<p>После успешного сохранения бэкапа можно переходить к записи. Откройте подготовленный файл новой прошивки в программе. Нажмите кнопку «Write» или «Записать». Процесс займет от 5 до 15 минут. В это время на экране будет отображаться прогресс-бар. <em>Никакие кнопки нажимать не нужно</em>, процесс полностью автоматизирован.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если прогресс-бар замер на месте более чем на 2 минуты, не спешите прерывать процесс. В некоторых режимах (особенно при записи bootloader) индикатор может не обновляться, но запись идти. Прерывание гарантированно выведет ЭБУ из строя.</p>
+</blockquote>
+
+<h2 id="адаптация-и-проверка-результатов">Адаптация и проверка результатов</h2>
+
+<p>После завершения записи программа сообщит об успехе. Выключите зажигание, отсоедините адаптер и подождите около 10-15 секунд. Затем включите зажигание, но не запускайте двигатель сразу. Дайте блоку управления провести самодиагностику. Индикатор <strong>Check Engine</strong> должен загореться и погаснуть через несколько секунд.</p>
+
+<p>Запустите двигатель. Он может работать нестабильно первые минуты, пока идет процесс адаптации топливных коррекций и положения дроссельной заслонки. Дайте мотору прогреться до рабочей температуры на холостых оборотах. В это время можно подключиться диагностическим сканером и сбросить ошибки, если они появились в процессе перепрошивки.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>После прошивки обязательно выполните процедуру обучения дроссельной заслонки. На Aveo это часто делается через диагностический софт (команда «Reset ETC Learn») или педалью газа: 3 раза нажать до упора за 5 секунд при включенном зажигании.</p></div>
+
+<p>Прокатитесь на автомобиле в различных режимах: спокойное движение, разгон, работа на холостом ходу. Обратите внимание на отсутствие рывков, провалов и стабильность оборотов. Если все параметры в норме, процедуру можно считать завершенной.</p>
+
+<h2 id="сравнение-методов-obd-против-bdm">Сравнение методов: OBD против BDM</h2>
+
+<p>Существует два основных способа перепрограммирования: через диагностический разъем (<strong>OBD</strong>) и напрямую через плату блока (<strong>BDM</strong>). Для Chevrolet Aveo в 95% случаев достаточно OBD-метода. Он проще, безопаснее и не требует вскрытия корпуса ЭБУ.</p>
+
+<p>Метод BDM применяется только в экстренных случаях, когда блок «окирпичен» и не выходит на связь через OBD, или если требуется изменить защищенные области памяти, недоступные через диагностический порт. Для этого требуется выпаивать процессор или подключаться к специальным контактам на плате, что требует высокой квалификации.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Метод OBD-II</th>
+<th>Метод BDM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Необходимость вскрытия ЭБУ</td>
+<td>Нет</td>
+<td>Да (в большинстве случаев)</td>
+</tr>
+<tr>
+<td>Риск повреждения</td>
+<td>Низкий</td>
+<td>Высокий (требует пайки)</td>
+</tr>
+<tr>
+<td>Время процедуры</td>
+<td>15-30 минут</td>
+<td>1-2 часа</td>
+</tr>
+<tr>
+<td>Оборудование</td>
+<td>J2534 адаптер</td>
+<td>BDM рамка, паяльник</td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для стандартного чип-тюнинга Chevrolet Aveo всегда выбирайте метод OBD-II. Вскрытие блока (BDM) оправдано только при восстановлении после неудачной прошивки.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Сбросится ли пробег на приборной панели после прошивки?</summary>
+<p>Нет, пробег на приборной панели и в блоке управления хранится в энергонезависимой памяти EEPROM, которая стандартными средствами чип-тюнинга не затрагивается. Коррекция пробега — это отдельная, часто незаконная процедура.</p>
+</details>
+
+<details>
+<summary>Можно ли вернуться на заводскую прошивку?</summary>
+<p>Да, если вы сохранили файл оригинальной прошивки (бэкап) перед началом работ. Вы просто загружаете этот файл обратно в ЭБУ через ту же программу. Без бэкапа возврат к заводским настройкам возможен только поиском стоковой прошивки в интернете, что не всегда гарантирует точное совпадение конфигурации.</p>
+</details>
+
+<details>
+<summary>Влияет ли прошивка на гарантию автомобиля?</summary>
+<p>Формально — да, любое вмешательство в ПО снимает гарантию на двигатель и систему управления. Однако дилеры могут не заметить изменения, если не проводить глубокую диагностику. Для полной скрытности перед визитом к дилеру можно залить оригинальный бэкап.</p>
+</details>
+
+<details>
+<summary>Почему после прошивки загорелся Check Engine?</summary>
+<p>Причин может быть несколько: ошибка в файле прошивки, некорректная адаптация дросселя, наличие реальных неисправностей в двигателе, которые проявились после сброса адаптаций. Необходимо считать код ошибки диагностическим сканером для точной диагностики.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#идентификация-типа-эбу-и-выбор-оборудования">Идентификация типа ЭБУ и выбор оборудования</a></li><li><a href="#необходимый-софт-и-драйверы">Необходимый софт и драйверы</a></li><li><a href="#подготовка-автомобиля-к-процедуре">Подготовка автомобиля к процедуре</a></li><li><a href="#процесс-чтения-и-записи-прошивки">Процесс чтения и записи прошивки</a></li><li><a href="#адаптация-и-проверка-результатов">Адаптация и проверка результатов</a></li><li><a href="#сравнение-методов-obd-против-bdm">Сравнение методов: OBD против BDM</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Какой протокол у Шевроле Круз: диагностика OBD2 и GMLAN — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробный разбор протоколов диагностики Chevrolet Cruze. Как выбрать адаптер ELM327, кабель K-Line или CAN-шинный сканер для GMLAN.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv04_Dmvs/kakoj-protokol-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Какой протокол у Шевроле Круз: диагностика OBD2 и GMLAN">
+    <meta property="og:description" content="Подробный разбор протоколов диагностики Chevrolet Cruze. Как выбрать адаптер ELM327, кабель K-Line или CAN-шинный сканер для GMLAN.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Какой протокол у Шевроле Круз: диагностика OBD2 и GMLAN</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Диагностические протоколы Chevrolet Cruze: полный разбор</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#эволюция-стандартов-связи-в-chevrolet-cruze">Эволюция стандартов связи в Chevrolet Cruze</a></li><li><a href="#протокол-k-line-характеристики-и-применение">Протокол K-Line: характеристики и применение</a></li><li><a href="#переход-на-gmlan-и-can-bus-в-рестайлинговых-моделях">Переход на GMLAN и CAN-bus в рестайлинговых моделях</a></li><li><a href="#сравнительная-таблица-протоколов-диагностики">Сравнительная таблица протоколов диагностики</a></li><li><a href="#выбор-оборудования-elm327-k-line-адаптеры-и-профессиональные-сканеры">Выбор оборудования: ELM327, K-Line адаптеры и профессиональные сканеры</a></li><li><a href="#программное-обеспечение-для-диагностики-chevrolet-cruze">Программное обеспечение для диагностики Chevrolet Cruze</a></li><li><a href="#частые-проблемы-при-подключении-и-их-решение">Частые проблемы при подключении и их решение</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Вопрос о том, какой протокол используется в Шевроле Круз, является одним из самых частых при подборе диагностического оборудования. Владелец автомобиля сталкивается с необходимостью самостоятельного сканирования ошибок или проведения адаптации узлов, но не знает, какой именно интерфейс связи поддерживает его конкретная модель. Путаница возникает из-за того, что производство этой модели охватывает длительный период, в течение которого стандарты связи в автомобильной электронике менялись кардинально.</p>
+
+<p>Понимание различий между <strong>K-Line</strong> и <strong>CAN-bus</strong> критически важно для успешного подключения сканера. Если вы выберете неподходящий адаптер, связь с блоком управления двигателем или ABS просто не установится. В этой статье мы детально разберем эволюцию протоколов в зависимости от года выпуска и комплектации, чтобы вы могли выбрать правильное оборудование для диагностики.</p>
+
+<p>Современная диагностика требует не просто наличия компьютера, но и знания логики обмена данными. <em>Chevrolet Cruze</em> в этом плане не является исключением и проходит через все этапы развития автомобильной электроники. Мы рассмотрим технические нюансы, которые помогут избежать покупки бесполезного гаджета.</p>
+
+<h2 id="эволюция-стандартов-связи-в-chevrolet-cruze">Эволюция стандартов связи в Chevrolet Cruze</h2>
+
+<p>История модели делится на два основных этапа, определяющих тип протокола. Первые поколения, выпущенные примерно до 2012-2013 годов, базировались на архитектуре GM Global A, где основным каналом связи для диагностических процедур выступал последовательный интерфейс <strong>K-Line</strong>. Это более медленный, но надежный протокол, использовавшийся десятилетиями.</p>
+
+<p>Более новые модификации, особенно после рестайлинга, перешли на платформу GM Global B, где доминирующим стал высокоскоростной протокол <strong>GMLAN</strong> (General Motors Local Area Network), базирующийся на технологии CAN-bus. Переход на этот стандарт позволил увеличить скорость передачи данных и подключить больше электронных систем к единой сети.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Попытка подключить CAN-сканер к автомобилю с протоколом K-Line без поддержки переключения режимов может привести к отсутствию связи, но не повредит электронику при условии исправности адаптера.</p>
+</blockquote>
+
+<p>Важно понимать, что наличие разъема OBD2 стандарта ISO не гарантирует поддержку конкретного протокола. Физический разъем един, но "язык", на котором говорят блоки, различается. Именно поэтому для старых Крузов часто требуются специфические кабели или адаптеры с поддержкой K-Line, а новые работают через стандартные CAN-интерфейсы.</p>
+
+<div class="poll-widget" id="poll-16fe0943"><div class="poll-widget-question">📊 Какой год выпуска вашего Chevrolet Cruze?</div><div class="poll-widget-option" data-poll="16fe0943" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">2009-2011 (Рестайлинг 1)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="16fe0943" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">2012-2014 (Переходный период)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="16fe0943" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">2015-2019 (Рестайлинг 2 / J300)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="16fe0943" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Другое / Не знаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="протокол-k-line-характеристики-и-применение">Протокол K-Line: характеристики и применение</h2>
+
+<p>Протокол <strong>K-Line</strong> (ISO 9141-2 / KWP2000) был основным для ранних версий Cruze с двигателями объемом 1.6 и 1.8 литра. Он использует одну или две линии для передачи данных и требует инициализации перед началом обмена информацией. Скорость передачи данных здесь относительно низкая, что заметно при чтении большого количества параметров в реальном времени.</p>
+
+<p>Для работы с этим протоколом необходимы адаптеры, имеющие аппаратную поддержку K-Line. Многие дешевые китайские клоны ELM327 версии 2.1 часто лишены полноценной поддержки этого стандарта, работая только с CAN-шиной. Поэтому для старых автомобилей критически важно искать устройства с маркировкой v1.5 или специализированные интерфейсы типа <em>OpenPort</em> или <em>Scanmatik</em>.</p>
+
+<p>Ключевыми особенностями K-Line в контексте Шевроле Круз являются:</p>
+<ul>
+<li>🚗 Монопольный доступ к шине: пока один сканер работает, другие подключиться не могут.</li>
+<li>🚗 Низкая скорость обновления данных: около 5-10 параметров в секунду.</li>
+<li>🚗 Необходимость точной инициализации baud rate (скорости).</li>
+<li>🚗 Высокая совместимость со старыми сканерами типа Delphi DS150E.</li>
+</ul>
+
+<p>Если ваш автомобиль выпущен до 2012 года, с вероятностью 90% основной диагностический порт работает именно через K-Line. Однако это не исключает наличия CAN-шины в других системах, например, в панели приборов или ABS, но для доступа к <strong>ECU</strong> (блоку управления двигателем) потребуется старый добрый KWP2000.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При покупке адаптера ELM327 для старого Круза обязательно уточняйте у продавца наличие чипа PIC18F25K80, так как он лучше всего эмулирует работу с K-Line.</p></div>
+
+<h2 id="переход-на-gmlan-и-can-bus-в-рестайлинговых-моделях">Переход на GMLAN и CAN-bus в рестайлинговых моделях</h2>
+
+<p>С выходом обновленных версий Chevrolet Cruze, концерн GM начал массово внедрять протокол <strong>GMLAN</strong>. Это проприетарная реализация CAN-протокола, разработанная специально для нужд General Motors. Она обеспечивает высокую скорость обмена данными и позволяет одновременно опрашивать множество датчиков без задержек.</p>
+
+<p>В отличие от K-Line, протокол <strong>CAN-bus</strong> не требует инициализации в классическом понимании. Устройства могут начинать передачу данных сразу после подключения, если они настроены на правильную скорость (обычно 500 кбит/с для высокоскоростной шины). Это делает диагностику более быстрой и удобной для пользователя.</p>
+
+<p>Преимущества перехода на GMLAN/CAN для владельцев Cruze очевидны:</p>
+<ul>
+<li>⚡ Мгновенный отклик при чтении ошибок.</li>
+<li>⚡ Возможность кодирования и программирования блоков.</li>
+<li>⚡ Поддержка сложных функций, таких как адаптация дроссельной заслонки через простые приложения.</li>
+<li>⚡ Меньшая чувствительность к качеству кабеля связи.</li>
+</ul>
+
+<p>Для работы с GMLAN подходят практически все современные мультимарочные сканеры. Однако стоит помнить, что для глубокой диагностики (прошивка, конфигурирование) простых "свистков" может быть недостаточно, и потребуются более серьезные инструменты вроде <em>GM MDI</em> или <em>OpenPort 2.0</em>.</p>
+
+<details class="faq-item"><summary>В чем разница между High Speed CAN и Low Speed CAN?</summary><div class="faq-answer"><p>Высокоскоростная шина (500 кбит/с) используется для критически важных систем: двигатель, трансмиссия, ABS. Низкоскоростная (125 кбит/с) обслуживает комфорт: стеклоподъемники, климат-контроль, центральный замок. В Cruze диагностика обычно идет по High Speed.</p></div></details>
+
+<h2 id="сравнительная-таблица-протоколов-диагностики">Сравнительная таблица протоколов диагностики</h2>
+
+<p>Чтобы систематизировать информацию и помочь вам быстрее определиться с выбором оборудования, мы подготовили сводную таблицу. Она отражает основные различия между двумя основными типами связи, встречающимися в Chevrolet Cruze.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>K-Line (KWP2000)</th>
+<th>GMLAN (CAN-bus)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Годы выпуска Cruze</td>
+<td>2009 – 2012 (преимущественно)</td>
+<td>2013 – 2019 (рестайлинг)</td>
+</tr>
+<tr>
+<td>Скорость передачи</td>
+<td>Низкая (до 10.4 кбит/с)</td>
+<td>Высокая (500 кбит/с)</td>
+</tr>
+<tr>
+<td>Тип подключения</td>
+<td>Последовательное (один за другим)</td>
+<td>Параллельное (сеть)</td>
+</tr>
+<tr>
+<td>Необходимость инициализации</td>
+<td>Обязательна</td>
+<td>Не требуется (автоматически)</td>
+</tr>
+<tr>
+<td>Совместимость с ELM327</td>
+<td>Только версии 1.5 (чип PIC)</td>
+<td>Все версии (включая 2.1)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Из таблицы видно, что различия носят фундаментальный характер. Если вы планируете заниматься диагностикой профессионально или часто, лучше иметь универсальный интерфейс, поддерживающий оба стандарта. Для разовых проверок уровня масла или чтения ошибок двигателя часто достаточно и простого CAN-адаптера, если автомобиль не слишком старый.</p>
+
+<h2 id="выбор-оборудования-elm327-k-line-адаптеры-и-профессиональные-сканеры">Выбор оборудования: ELM327, K-Line адаптеры и профессиональные сканеры</h2>
+
+<p>Рынок диагностического оборудования переполнен предложениями, но для Chevrolet Cruze важно выбрать устройство с правильной "начинкой". Самый популярный вариант — адаптер <strong>ELM327</strong>. Как мы уже выяснили, для старых Крузов нужна версия 1.5, а для новых подойдет и 2.1. Однако существуют и более специализированные решения.</p>
+
+<p>Для владельцев автомобилей с протоколом K-Line отличным выбором станут адаптеры на базе чипов <em>FTDI</em> или специализированные кабели VAG-COM (которые часто поддерживают и K-Line GM). Они обеспечивают стабильный сигнал и меньше подвержены помехам, что критично при работе с медленным протоколом.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Дешевые адаптеры ELM327 версии 2.1 на чипе CH340 часто не умеют переключаться в режим K-Line, что делает их бесполезными для Cruze до 2012 года выпуска.</p>
+</blockquote>
+
+<p>Если же вам требуется полноценное программирование блоков, настройка скрытых функций или работа с иммобилайзером, стоит обратить внимание на профессиональные комплексы. <mark>Для глубокой работы с архитектурой GMLAN наиболее эффективным решением является интерфейс MDI (Multiple Diagnostic Interface) от GM</mark>. Он обеспечивает полную совместимость со всеми протоколами концерна.</p>
+
+<div class="checklist-block"><h4>☑️ Критерии выбора адаптера для Cruze</h4><label class="check-item"><input type="checkbox"><span>Поддержка протокола K-Line (для старых авто)</span></label><label class="check-item"><input type="checkbox"><span>Наличие чипа PIC18F25K80 (для ELM327)</span></label><label class="check-item"><input type="checkbox"><span>Совместимость с ПО (Torque, Scanmaster)</span></label><label class="check-item"><input type="checkbox"><span>Качество сборки и пайки</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="программное-обеспечение-для-диагностики-chevrolet-cruze">Программное обеспечение для диагностики Chevrolet Cruze</h2>
+
+<p>Железо — это только половина дела. Для взаимодействия с протоколами Круза необходим правильный софт. Для Android-смартфонов лидером остается приложение <strong>OpenDiag</strong> или <strong>CarScanner</strong>, которые отлично умеют определять тип протокола автоматически. Они позволяют не только читать ошибки, но и смотреть параметры в реальном времени.</p>
+
+<p>Для владельцев ноутбуков с ОС Windows классикой является программа <em>Scanmaster-ELM</em>. Она поддерживает оба типа протоколов и имеет встроенные профили для Chevrolet. Более продвинутые пользователи часто используют <em>GM DIC</em> или специализированные версии <em>Tech2Win</em>, эмулирующие дилерский сканер.</p>
+
+<p>При выборе софта учитывайте следующие моменты:</p>
+<ul>
+<li>📱 Поддержка конкретного протокола (KWP2000 или GMLAN).</li>
+<li>📱 Возможность ведения логов и записи параметров.</li>
+<li>📱 Наличие функций сброса сервисных интервалов.</li>
+<li>📱 Удобство интерфейса для чтения кодов неисправностей.</li>
+</ul>
+
+<p>Некоторые программы требуют платной активации для полного функционала, но базовые функции чтения и сброса ошибок обычно доступны бесплатно. Главное — убедиться, что приложение корректно интерпретирует коды ошибок именно для двигателей Ecotec, устанавливаемых на Cruze.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Автоматическое определение протокола в приложении — удобная функция, но на старых автомобилях с K-Line лучше вручную выставить тип соединения для стабильной работы.</p></div>
+
+<h2 id="частые-проблемы-при-подключении-и-их-решение">Частые проблемы при подключении и их решение</h2>
+
+<p>Даже при наличии правильного оборудования пользователи часто сталкиваются с проблемами подключения. Одна из самых распространенных — отсутствие связи с блоком управления. В 80% случаев это связано с неправильным выбором протокола в настройках приложения или использованием несовместимого адаптера.</p>
+
+<p>Еще одна проблема — обрыв связи во время диагностики. Это может быть вызвано плохим контактом в разъеме OBD2, окислением контактов или низким напряжением в бортовой сети. Перед началом глубокой диагностики всегда проверяйте заряд аккумулятора, так как протокол K-Line особенно чувствителен к скачкам напряжения.</p>
+
+<p>Также стоит упомянуть проблему "глюков" CAN-шины. Если в системе есть короткое замыкание или неисправный блок, он может "забивать" шину сообщениями, из-за чего сканер не сможет подключиться ни к одному узлу. В таких случаях требуется поочередное отключение блоков для поиска неисправности.</p>
+
+<details>
+<summary>Почему сканер видит машину, но не читает ошибки?</summary>
+<p>Скорее всего, выбран неправильный протокол соединения. Попробуйте переключить настройку с "Auto" на "KWP2000" (для старых авто) или "CAN" (для новых). Также проверьте, не заблокирован ли доступ к диагностике из-за включенного зажигания без запуска двигателя (на некоторых версиях нужно запускать мотор).</p>
+</details>
+
+<details>
+<summary>Можно ли прошить ЭБУ через дешевый ELM327?</summary>
+<p>Категорически не рекомендуется. Протоколы перепрошивки требуют стабильного соединения без разрывов. Дешевые адаптеры не обеспечивают необходимой скорости и буферизации данных, что может привести к "кирпичеванию" блока управления.</p>
+</details>
+
+<details>
+<summary>Какой протокол используется для диагностики АКПП на Cruze?</summary>
+<p>На автомобилях с K-Line диагностика АКПП также идет через K-Line. На машинах с GMLAN коробка передач общается по CAN-шине. В обоих случаях современные мультимарочные сканеры должны определять тип связи автоматически.</p>
+</details>
+
+<details>
+<summary>Нужен ли специальный драйвер для K-Line на Windows 10?</summary>
+<p>Для большинства современных адаптеров с чипом FTDI драйверы устанавливаются автоматически через Центр обновлений Windows. Для старых кабелей на базе CH340 может потребоваться ручная установка драйверов с сайта производителя.</p>
+</details>
+
+<details>
+<summary>Влияет ли длина кабеля на качество связи?</summary>
+<p>Для K-Line длина кабеля критична. Слишком длинный провод (более 2-3 метров) может привести к затуханию сигнала и потере связи. Для CAN-bus требования менее строгие, но также рекомендуется использовать кабели длиной до 2 метров для стабильной работы.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#эволюция-стандартов-связи-в-chevrolet-cruze">Эволюция стандартов связи в Chevrolet Cruze</a></li><li><a href="#протокол-k-line-характеристики-и-применение">Протокол K-Line: характеристики и применение</a></li><li><a href="#переход-на-gmlan-и-can-bus-в-рестайлинговых-моделях">Переход на GMLAN и CAN-bus в рестайлинговых моделях</a></li><li><a href="#сравнительная-таблица-протоколов-диагностики">Сравнительная таблица протоколов диагностики</a></li><li><a href="#выбор-оборудования-elm327-k-line-адаптеры-и-профессиональные-сканеры">Выбор оборудования: ELM327, K-Line адаптеры и профессиональные сканеры</a></li><li><a href="#программное-обеспечение-для-диагностики-chevrolet-cruze">Программное обеспечение для диагностики Chevrolet Cruze</a></li><li><a href="#частые-проблемы-при-подключении-и-их-решение">Частые проблемы при подключении и их решение</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

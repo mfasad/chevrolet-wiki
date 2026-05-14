@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Подключение камеры заднего вида к Android-магнитоле Chevrolet Cruze — Chevrolet-Wiki</title>
+    <meta name="description" content="Пошаговая инструкция по установке камеры заднего вида на Шевроле Круз с Android-ГУ. Схемы распиновки, настройка парктроников и решение проблем.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv54_Gfio/kak-podklyuchit-kameru-zadnego-vida-k-magnitole-na-androide-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Подключение камеры заднего вида к Android-магнитоле Chevrolet Cruze">
+    <meta property="og:description" content="Пошаговая инструкция по установке камеры заднего вида на Шевроле Круз с Android-ГУ. Схемы распиновки, настройка парктроников и решение проблем.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Подключение камеры заднего вида к Android-магнитоле Chevrolet Cruze</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Установка камеры заднего вида на Android-магнитоле Chevrolet Cruze</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#выбор-совместимого-оборудования-и-подготовка">Выбор совместимого оборудования и подготовка</a></li><li><a href="#схема-подключения-и-распиновка-разъемов">Схема подключения и распиновка разъемов</a></li><li><a href="#демонтаж-штатной-магнитолы-и-прокладка-кабелей">Демонтаж штатной магнитолы и прокладка кабелей</a></li><li><a href="#настройка-видеовхода-в-системе-android">Настройка видеовхода в системе Android</a></li><li><a href="#калибровка-парковочных-линий-и-изображения">Калибровка парковочных линий и изображения</a></li><li><a href="#решение-проблем-и-неисправностей">Решение проблем и неисправностей</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Модернизация штатной мультимедийной системы <em>Chevrolet Cruze</em> — это не просто замена устаревшего головного устройства, но и возможность значительно повысить уровень безопасности при парковке. Владельцы этой популярной модели часто сталкиваются с тем, что штатная акустика или базовые версии магнитол не имеют полноценного видеовыхода или входа для парковочной камеры. Однако, установив современное головное устройство на базе <strong>Android</strong>, вы получаете мультимедийный центр, который легко интегрируется с внешними видеоустройствами.</p>
+
+<p>Процесс подключения камеры заднего вида к магнитоле на Андроиде в <em>Шевроле Круз</em> требует внимательности к деталям электрической схемы и правильной настройки программного обеспечения. Ошибки на этапе монтажа проводки могут привести к некорректной работе парктроников или даже к перегрузке бортовой сети. В этой статье мы детально разберем все этапы: от выбора совместимого оборудования до финальной калибровки изображения в настройках системы.</p>
+
+<p>Важно понимать, что <strong>интерфейс</strong> подключения может отличаться в зависимости от модели вашей Android-магнитолы и года выпуска автомобиля. Некоторые версии требуют использования специального переходного кабеля, в то время как другие поддерживают прямое подключение через стандартный разъем ISO. Мы рассмотрим универсальные методы, которые подойдут для большинства конфигураций, встречающихся на рынке автозвука.</p>
+
+<h2 id="выбор-совместимого-оборудования-и-подготовка">Выбор совместимого оборудования и подготовка</h2>
+
+<p>Первым шагом является подбор правильной камеры, которая будет корректно работать с вашим головным устройством. Для <em>Chevrolet Cruze</em> наиболее популярны камеры, интегрируемые в плафон подсветки номерного знака или в ручку багажника, что сохраняет заводской внешний вид автомобиля. Ключевым параметром здесь является стандарт видеосигнала: большинство Android-магнитол работают с сигналом <strong>NTSC</strong>, хотя некоторые современные модели поддерживают и <em>PAL</em>.</p>
+
+<p>Необходимо убедиться, что выбранная камера имеет разрешение, соответствующее экрану вашей магнитолы, обычно это <code>720p</code> или <code>1080p</code>. Использование камер низкого разрешения на больших экранах приведет к появлению"зернистости" и затруднит оценку расстояния до препятствий. Также стоит обратить внимание на угол обзора: оптимальным считается диапазон от 120 до 170 градусов, что позволяет охватить всю зону behind бампера.</p>
+
+<p>Для подключения вам потребуется набор инструментов, который должен включать в себя мультиметр, набор отверток, изоленту высокого качества и, возможно, паяльник. <mark>Критически важно использовать провода сечением не менее 0.5 мм² для питания камеры, чтобы избежать падения напряжения на длинной дистанции от багажника до передней панели.</mark> Не забывайте про термоусадку для защиты соединений от влаги.</p>
+
+<ul>
+<li>📹 Камера заднего вида с матрицей CMOS или CCD и углом обзора от 140 градусов.</li>
+<li>🔌 Кабель RCA ("тюльпан") длиной не менее 5 метров, желательно с экранированием.</li>
+<li>⚡ Провод для подачи питания 12В (сигнал заднего хода).</li>
+<li>🛠️ Инструменты для демонтажа обшивки салона Chevrolet Cruze.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ Внимание: Перед началом любых работ с электропроводкой обязательно снимите минусовую клемму с аккумулятора автомобиля. Короткое замыкание в цепи питания магнитолы может вывести из строя предохранители или повредить электронные блоки управления <em>Cruze</em>.</p>
+</blockquote>
+
+<div class="poll-widget" id="poll-43366fb8"><div class="poll-widget-question">📊 Какой тип камеры вы планируете установить?</div><div class="poll-widget-option" data-poll="43366fb8" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Врезная в плафон</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="43366fb8" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Накладная на номер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="43366fb8" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Универсальная рамка</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="43366fb8" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Штатная ручка открытия</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="схема-подключения-и-распиновка-разъемов">Схема подключения и распиновка разъемов</h2>
+
+<p>Основная сложность при установке на <em>Шевроле Круз</em> заключается в правильной коммутации проводов питания и видеосигнала. Стандартная схема подключения камеры к Android-магнитоле включает в себя три основных компонента: видеовход, постоянный плюс для питания камеры и управляющий провод (триггер), который сообщает магнитоле о включении задней передачи.</p>
+
+<p>В большинстве головных устройств на Android за подключение камеры отвечает разъем с маркировкой <code>CAM IN</code> или <code>REVERSE</code>. Видеосигнал подается через желтый разъем RCA, а управление осуществляется через провод, который нужно соединить с проводом заднего хода автомобиля. На <em>Chevrolet Cruze</em> этот провод часто имеет зеленый или белый цвет с зеленой полосой, но полагаться на цвет без проверки мультиметром нельзя.</p>
+
+<p>Особое внимание следует уделить заземлению. Камера и магнитола должны иметь общую"массу", чтобы избежать появления помех на изображении в виде ряби или горизонтальных полос. Если после подключения вы наблюдаете такие артефакты, проверьте качество контакта минусового провода с кузовом автомобиля.</p>
+
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Цвет провода (Камера)</th>
+<th>Подключение к магнитоле</th>
+<th>Подключение в авто</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Видеосигнал</td>
+<td>Желтый (RCA)</td>
+<td>Разъем CAM IN / Video In</td>
+<td>Не требуется</td>
+</tr>
+<tr>
+<td>Питание (+)</td>
+<td>Красный</td>
+<td>Не требуется (питание от авто)</td>
+<td>Плюс фонаря заднего хода</td>
+</tr>
+<tr>
+<td>Земля (-)</td>
+<td>Черный</td>
+<td>Общий минус системы</td>
+<td>Кузов автомобиля</td>
+</tr>
+<tr>
+<td>Триггер (Reverse)</td>
+<td>Синий/Белый</td>
+<td>Разъем REVERSE / BACK</td>
+<td>Плюс фонаря заднего хода</td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте мультиметр в режиме прозвонки, чтобы найти провод заднего хода на разъеме фонаря. При включении передачи мультиметр должен показать наличие 12 Вольт относительно кузова.</p></div>
+
+<h2 id="демонтаж-штатной-магнитолы-и-прокладка-кабелей">Демонтаж штатной магнитолы и прокладка кабелей</h2>
+
+<p>Для доступа к разъемам головного устройства в <em>Chevrolet Cruze</em> необходимо аккуратно демонтировать центральную консоль. Процесс начинается со снятия декоративной рамки вокруг магнитолы и блока климат-контроля. Будьте осторожны с пластиковыми защелками, они могут быть хрупкими, особенно на автомобилях с большим пробегом.</p>
+
+<p>Прокладка видеокабеля от багажника к передней панели — самый трудоемкий этап. Кабель следует вести вдоль штатных жгутов проводки, фиксируя его пластиковыми стяжками через каждые 30-40 сантиметров. Это предотвратит дребезжание проводов на ходу и защитит их от перетирания о металлические кромки кузова.</p>
+
+<p>При прохождении кабеля через дверь багажника используйте резиновую гофру. Проталкивать провод напрямую через резиновый уплотнитель нельзя — это повредит изоляцию и приведет к короткому замыканию. В некоторых случаях приходится временно снимать обшивку двери для более безопасного доступа.</p>
+
+<ol>
+<li>Снимите декоративную накладку торпеды, поддев её пластиковой лопаткой.</li>
+<li>Выкрутите крепежные винты магнитолы и извлеките головное устройство.</li>
+<li>Подключите разъемы согласно схеме, убедившись в плотности контакта.</li>
+<li>Зафиксируйте жгуты проводов стяжками, чтобы они не мешали установке магнитолы обратно.</li>
+</ol>
+
+<details class="faq-item"><summary>Как протянуть кабель через гофру багажника?</summary><div class="faq-answer"><p>Для протяжки кабеля через резиновую гофру багажника часто требуется извлечь сам жгут проводов из кузова. Отсоедините разъемы, аккуратно вытяните жгут, проденьте кабель через внутренность гофры с помощью проволоки-кондуктора, затем верните жгут на место. Это дольше, но гарантирует сохранность изоляции.</p></div></details>
+
+<h2 id="настройка-видеовхода-в-системе-android">Настройка видеовхода в системе Android</h2>
+
+<p>После физического подключения и сборки салона необходимо перейти к программной части. В отличие от простых магнитол, системы на <strong>Android</strong> требуют ручной активации входа камеры в настройках. Зайдите в меню <code>Настройки</code> (Settings) и найдите раздел, отвечающий за заводские настройки или настройки автомобиля.</p>
+
+<p>Часто для доступа к расширенным настройкам требуется ввести пароль. Для большинства китайских Android-магнитол, устанавливаемых в <em>Cruze</em>, стандартными паролями являются <code>8888</code>, <code>1234</code>, <code>0000</code> или <code>1617</code>. Если ни один из них не подходит, обратитесь к документации вашего конкретного головного устройства.</p>
+
+<p>В разделе настроек найдите пункт <code>Factory Settings</code> или <code>Car Settings</code>. Там должна быть опция, отвечающая за тип парковочной камеры. Вам нужно выбрать <strong>CVBS</strong> (для аналоговых камер) или <strong>AHD</strong> (если у вас цифровая камера высокого разрешения). Неправильный выбор стандарта приведет к черно-белому изображению или его полному отсутствию.</p>
+
+<ul>
+<li>🖥️ Выберите правильный видеовход (обычно CVBS или AHD 720p/1080p).</li>
+<li>🔄 Установите режим зеркалирования (Mirror), если изображение перевернуто.</li>
+<li>🅿️ Активируйте парковочные линии, если они встроены в камеру.</li>
+<li>⏱️ Настройте время задержки переключения режима.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ Внимание: Если изображение появляется, но оно черно-белое или дергается, скорее всего, выбран неверный телевизионный стандарт (NTSC вместо PAL или наоборот). Попробуйте переключить параметр в настройках видео.</p>
+</blockquote>
+
+<h2 id="калибровка-парковочных-линий-и-изображения">Калибровка парковочных линий и изображения</h2>
+
+<p>Для комфортной парковки на <em>Шевроле Круз</em> важно правильно настроить парковочные линии. В Android-магнитолах есть два типа линий: статические (нарисованные самой камерой) и динамические (генерируемые системой). Динамические линии поворачиваются вместе с колесами, но требуют подключения провода датчика поворота руля, что сложно реализовать без CAN-шины.</p>
+
+<p>Мы рекомендуем использовать статические линии с возможностью калибровки. В меню настроек камеры выберите тип разметки и отрегулируйте положение горизонтальных и вертикальных линий так, чтобы они соответствовали габаритам вашего автомобиля. Верхняя линия должна совпадать с уровнем земли на расстоянии примерно 2-3 метров от бампера.</p>
+
+<p>Также стоит обратить внимание на яркость и контрастность изображения. Днем картинка может быть нормальной, но ночью камера может"слепнуть" от света фар автомобилей сзади. Поэкспериментируйте с настройками экспозиции, если ваша модель магнитолы позволяет это делать.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка качества изображения</h4><label class="check-item"><input type="checkbox"><span>Линии не перекрывают номерной знак</span></label><label class="check-item"><input type="checkbox"><span>Видны углы бампера</span></label><label class="check-item"><input type="checkbox"><span>Нет ряби при работающем двигателе</span></label><label class="check-item"><input type="checkbox"><span>Изображение появляется мгновенно</span></label><label class="check-item"><input type="checkbox"><span>Ночью нет засветки</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="решение-проблем-и-неисправностей">Решение проблем и неисправностей</h2>
+
+<p>Даже при правильном подключении могут возникнуть проблемы. Одна из частых жалоб владельцев <em>Chevrolet Cruze</em> — появление помех на изображении при работающем двигателе. Это связано с наводками от генератора или системы зажигания. Решением является установка фильтра-стабилизатора питания для камеры или дополнительного заземления.</p>
+
+<p>Если камера не включается автоматически при включении задней передачи, проверьте наличие напряжения на управляющем проводе магнитолы. Используйте мультиметр: при включении передачи на проводе <code>REVERSE</code> должно появляться 12 Вольт. Если напряжения нет, проблема в проводке автомобиля или в предохранителе фонарей заднего хода.</p>
+
+<p>Иногда пользователи сталкиваются с ситуацией, когда изображение есть, но оно перевернуто вверх ногами. Это решается программно в настройках камеры (параметр <code>Flip</code> или <code>Mirror</code>). Если такой опции нет, возможно, сама камера поддерживает переворот изображения путем перерезания специального петлевого провода на шлейфе.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Стабильность работы камеры на 90% зависит от качества соединения проводов и наличия хорошего заземления, а не от стоимости самого устройства.</p></div>
+
+<details>
+<summary>Почему камера включается только после запуска двигателя?</summary>
+<p>Это может быть связано с падением напряжения в бортовой сети при старте двигателя. Если камера запитана от слаботочного источника, ей может не хватать питания в момент работы стартера. Рекомендуется запитывать камеру напрямую от аккумулятора через предохранитель или проверить состояние клемм АКБ.</p>
+</details>
+
+<details>
+<summary>Можно ли подключить две камеры (переднюю и заднюю) к одной магнитоле?</summary>
+<p>Да, большинство Android-магнитол имеют вход для передней камеры (CAM Front) и задней (CAM Back). Однако одновременное отображение невозможно: система будет приоритетно показывать заднюю камеру при включении передачи, а переднюю можно активировать кнопкой на экране или автоматически при определенных условиях.</p>
+</details>
+
+<details>
+<summary>Что делать, если пропал звук при парковке?</summary>
+<p>Камеры заднего вида обычно передают только видео. Звук парктроников (если они есть) должен идти через отдельный динамик-пищалку, входящий в комплект парктроников, или через отдельный выход магнитолы, если она поддерживает интеграцию звуковых парктроников. Проверьте настройки звука в разделе"Park Assist".</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#выбор-совместимого-оборудования-и-подготовка">Выбор совместимого оборудования и подготовка</a></li><li><a href="#схема-подключения-и-распиновка-разъемов">Схема подключения и распиновка разъемов</a></li><li><a href="#демонтаж-штатной-магнитолы-и-прокладка-кабелей">Демонтаж штатной магнитолы и прокладка кабелей</a></li><li><a href="#настройка-видеовхода-в-системе-android">Настройка видеовхода в системе Android</a></li><li><a href="#калибровка-парковочных-линий-и-изображения">Калибровка парковочных линий и изображения</a></li><li><a href="#решение-проблем-и-неисправностей">Решение проблем и неисправностей</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

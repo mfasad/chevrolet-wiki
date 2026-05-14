@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как перепрошить ЭБУ Шевроле Лачетти: инструкция — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по прошивке ЭБУ Chevrolet Lacetti. Разбор блоков E54 и Simos. Выбор оборудования, софта и калибровок для чип-тюнинга.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv32_PDuJ/kak-pereproshit-shevrole-lachetti.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как перепрошить ЭБУ Шевроле Лачетти: инструкция">
+    <meta property="og:description" content="Подробная инструкция по прошивке ЭБУ Chevrolet Lacetti. Разбор блоков E54 и Simos. Выбор оборудования, софта и калибровок для чип-тюнинга.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как перепрошить ЭБУ Шевроле Лачетти: инструкция</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка ЭБУ Chevrolet Lacetti: полное руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#идентификация-типа-эбу-и-выбор-оборудования">Идентификация типа ЭБУ и выбор оборудования</a></li><li><a href="#программное-обеспечение-для-работы-с-e54">Программное обеспечение для работы с E54</a></li><li><a href="#особенности-прошивки-simos-2-двигатель-18">Особенности прошивки Simos 2 (Двигатель 1.8)</a></li><li><a href="#пошаговая-инструкция-подключения-и-записи">Пошаговая инструкция подключения и записи</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#выбор-калибровок-и-настройка-после-прошивки">Выбор калибровок и настройка после прошивки</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+<p>Многие владельцы Chevrolet Lacetti сталкиваются с необходимостью вмешательства в программное обеспечение электронного блока управления двигателем. Это может быть вызвано желанием улучшить динамические характеристики автомобиля, устранить ошибки заводской калибровки или восстановить работу ЭБУ после неудачных экспериментов. <strong>Перепрошивка</strong> — процесс, требующий точности, понимания архитектуры системы управления двигателем и наличия специализированного оборудования.</p>
+<p>В зависимости от года выпуска и объема двигателя, на Лачетти устанавливались различные типы контроллеров, что кардинально меняет подход к процедуре. Наиболее распространены блоки управления <em>Daewoo E54</em> (для двигателей 1.4 и 1.6) и <em>Simos 2</em> (для 1.8 литра). Каждый из них имеет свои протоколы записи и уникальные особенности разъемов.</p>
+<p>В этой статье мы разберем технические нюансы процесса, необходимое оборудование и программное обеспечение. <mark>Критически важно понимать, что прерывание процесса записи данных может полностью вывести блок управления из строя, превратив его в «кирпич».</mark> Поэтому подготовка должна быть тщательной.</p>
+<h2 id="идентификация-типа-эбу-и-выбор-оборудования">Идентификация типа ЭБУ и выбор оборудования</h2>
+<p>Первым шагом перед началом любых работ является точное определение типа установленного контроллера. Для двигателей объемом 1.4 и 1.6 литра, как правило, используется блок <em>E54</em>, который конструктивно напоминает контроллеры от Daewoo Matiz. Для более мощного 1.8-литрового мотора применяется система <em>Simos 2</em>, разработанная при участии Siemens/VDO.</p>
+<p>Для работы с <em>E54</em> вам потребуется специализированный кабель-адаптер K-Line или GMLAN, а также программатор, способный работать в режиме BDM или через диагностический разъем OBD-II, если bootloader позволяет. В случае с <em>Simos 2</em> часто требуется вскрытие самого блока и подключение напрямую к плате через разъем BDM, так как штатный разъем OBD может не поддерживать прямой доступ к памяти.</p>
+<ul>
+<li>🛠️ <strong>Адаптер K-Line</strong> или качественный <em>Cheapass</em> для работы с E54 через диагностический разъем.</li>
+<li>💻 <strong>BDM-программатор</strong> (например, T56 или аналоги) для прямого подключения к плате Simos 2.</li>
+<li>🔌 <strong>Стабилизированный источник питания</strong>, способный выдавать ток до 2-3 Ампер при напряжении 12-13.5 Вольт.</li>
+<li>📡 <strong>Ноутбук</strong> с установленным необходимым софтом и драйверами FTDI.</li>
+</ul>
+<p>Выбор оборудования напрямую зависит от того, планируете ли вы делать чип-тюнинг «на столе» (со снятием ЭБУ и вскрытием) или через разъем OBD. Для <strong>E54</strong> часто достаточно подключения через OBD, но для <strong>Simos</strong> в 90% случаев требуется BDM-подключение.</p>
+
+<h2 id="программное-обеспечение-для-работы-с-e54">Программное обеспечение для работы с E54</h2>
+<p>Работа с блоком управления <em>E54</em> является наиболее распространенной задачей среди владельцев Лачетти. Этот контроллер базируется на процессоре Motorola, что делает его достаточно надежным, но требовательным к качеству связи. Основным инструментом для работы с памятью и калибровками является программа <em>ChipLoader</em> или специализированные утилиты от <em>OpenPort</em>.</p>
+<p>Процесс подключения требует внимательности к распиновке. В отличие от более современных систем, здесь важен порядок включения питания и подачи сигнала K-Line. Ошибка в последовательности может привести к тому, что блок не войдет в режим бутлоадера и не отзовется на запросы программатора.</p>
+
+<p>Для чтения и записи прошивки часто используется протокол KWP2000. Важно убедиться, что в системе установлены корректные драйверы для вашего адаптера, особенно если используется китайский клон <em>Cheapass</em>. Нестабильная связь часто приводит к ошибкам контрольных сумм при записи.</p>
+<h2 id="особенности-прошивки-simos-2-двигатель-18">Особенности прошивки Simos 2 (Двигатель 1.8)</h2>
+<p>Блок управления <em>Simos 2</em>, устанавливаемый на 1.8-литровые версии, представляет собой более сложную систему. В отличие от E54, здесь часто требуется физический доступ к контактным площадкам на плате ЭБУ. Стандартный диагностический разъем OBD-II на этих моделях часто закрыт или не поддерживает необходимые команды записи без специального доступа.</p>
+<p>Для подключения вам придется снять блок, аккуратно вскрыть металлический корпус и найти контактную группу BDM. Подключение осуществляется через пин-адаптер или аккуратно припаянные провода к соответствующим пинам процессора. Это требует навыков работы с паяльником и микросхемами.</p>
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При вскрытии корпуса Simos 2 будьте предельно осторожны с герметиком. Повреждение уплотнителя может привести к попаданию влаги внутрь блока в будущем, что вызовет коррозию контактов и отказ электроники.</p>
+</blockquote>
+<p>Программная часть для Simos 2 часто требует использования специализированных загрузчиков, таких как <em>BDM Commander</em> или модулей в <em>WinOBD</em>. Процесс записи занимает больше времени из-за большего объема калибровочных данных и особенностей архитектуры памяти Motorola HC12.</p>
+
+<h2 id="пошаговая-инструкция-подключения-и-записи">Пошаговая инструкция подключения и записи</h2>
+<p>Процесс перепрошивки можно разделить на несколько критически важных этапов. Нарушение последовательности действий на любом из них может привести к неудаче. Ниже приведен алгоритм для типичного случая работы с блоком <em>E54</em> через разъем OBD, который является наиболее частым сценарием для двигателей 1.4 и 1.6.</p>
+
+<p>Сначала необходимо обеспечить стабильное питание. Подключите внешний блок питания к клеммам аккумулятора или непосредственно к контактам питания на разъеме ЭБУ. Напряжение должно быть стабильным в диапазоне 12.5–13.5 Вольт. Затем подключите адаптер к диагностическому разъему автомобиля и USB-порту компьютера.</p>
+<p>Запустите программное обеспечение и выберите тип подключения. Для E54 это обычно <code>K-Line</code> или <code>GMLAN</code>. Нажмите кнопку «Связь» или «Connect». Если связь установлена, программа считает идентификационные данные (ID) блока. Только после успешного чтения ID можно переходить к чтению полной карты памяти (Full Read).</p>
+<pre><code>Процесс записи:
+<p>1. File -> Write -> Full Chip</p>
+<p>2. Подтвердить действие</p>
+<p>3. Ожидать завершения (около 3-5 минут)</p>
+<p>4. Проверить контрольную сумму (Checksum)</code></pre></p>
+<p>После записи обязательно выполните проверку контрольной суммы. Если суммы не совпадают, двигатель не запустится или будет работать в аварийном режиме. Успешная запись подтверждается сообщением «Write OK» и зеленой индикацией в интерфейсе программы.</p>
+
+<h2 id="типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</h2>
+<p>В процессе чип-тюнинга пользователи часто сталкиваются с программными и аппаратными ошибками. Самая распространенная из них — «No Response from ECU» (Нет ответа от ЭБУ). Это может указывать на неправильную распиновку, отсутствие питания на нужном пине или неверно выбранный тип подключения в программе.</p>
+<p>Другая частая проблема — ошибка контрольной суммы после записи. Это часто случается при использовании некачественных кабелей или при работе от нестабильного источника питания. В некоторых случаях помогает повторная запись, но лучше заменить оборудование на более надежное.</p>
+<table>
+<thead>
+<tr>
+<th>Ошибка</th>
+<th>Вероятная причина</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No Response</td>
+<td>Нет питания на пине K-Line</td>
+<td>Проверить предохранитель и схему</td>
+</tr>
+<tr>
+<td>Checksum Error</td>
+<td>Прерывание записи</td>
+<td>Перепрошить с стабильным питанием</td>
+</tr>
+<tr>
+<td>Security Access Denied</td>
+<td>Блок защищен</td>
+<td>Использовать метод BDM или сброс</td>
+</tr>
+<tr>
+<td>Driver Not Found</td>
+<td>Нет драйверов FTDI</td>
+<td>Установить драйверы вручную</td>
+</tr>
+</tbody>
+</table>
+<p>Если блок управления «заблокировался» после неудачной попытки, может потребоваться процедура восстановления через BDM, даже для блоков E54. Это подразумевает снятие крышки и подключение к тестовым точкам на плате, что является крайней мерой.</p>
+<h2 id="выбор-калибровок-и-настройка-после-прошивки">Выбор калибровок и настройка после прошивки</h2>
+<p>После успешной записи новой прошивки (Stage 1, Stage 2 или эко-версии) необходимо выполнить адаптацию. Двигатель должен отработать на холостом ходу несколько минут, пока ЭБУ обучается новым параметрам топливоподачи и зажигания. В это время не рекомендуется нажимать на педаль газа.</p>
+<p>Для двигателей 1.4 и 1.6 популярны прошивки, убирающие клапан EGR и переводящие второй лямбда-зонд в режим эмулятора. Это позволяет использовать катализаторы-пламегасители и улучшает отзывчивость педали газа. Однако, следует помнить, что изменение экологических параметров может быть незаконным в вашей юрисдикции.</p>
+<ul>
+<li>🚗 <strong>Адаптация дроссельной заслонки</strong>: выполняется через диагностический сканер или путем включения зажигания на 10 секунд без запуска двигателя.</li>
+<li>🌡️ <strong>Коррекция температуры</strong>: некоторые прошивки корректируют работу вентилятора охлаждения, что полезно в жарком климате.</li>
+<li>⛽ <strong>Топливные коррекции</strong>: следите за долгосрочными коррекциями (LTFT) после прошивки, они должны быть близки к 0%.</li>
+</ul>
+<p>Качественная прошивка не должна вызывать «Check Engine» в штатных режимах движения. Если ошибка появляется, необходимо провести диагностику и проанализировать параметры работы двигателя в реальном времени.</p>
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+<details>
+<summary>Можно ли прошить Лачетти без снятия блока управления?</summary>
+<p>Для двигателей 1.4 и 1.6 с блоком E54 — да, чаще всего это возможно через разъем OBD-II. Для двигателя 1.8 с блоком Simos 2 в большинстве случаев требуется снятие блока, вскрытие корпуса и BDM-подключение к плате.</p>
+</details>
+<details>
+<summary>Сбрасывается ли адаптация ЭБУ после перепрошивки?</summary>
+<p>Да, при полной перепрошивке (Full Write) память адаптаций очищается. Вам потребуется выполнить процедуру обучения дроссельной заслонки и дать двигателю поработать на холостом ходу для коррекции топливоподачи.</p>
+</details>
+<details>
+<summary>Какой риск «окирпичивания» блока при прошивке через OBD?</summary>
+<p>Риск существует всегда, но он минимален при использовании качественного оборудования и стабилизированного источника питания. Основная причина failures — скачки напряжения или обрыв связи в критический момент записи.</p>
+</details>
+<details>
+<summary>Нужно ли менять свечи или фильтр после чип-тюнинга?</summary>
+<p>Менять свечи и фильтры перед прошивкой крайне желательно, чтобы двигатель работал на исправных компонентах. После прошивки ресурс свечей может немного сократиться из-за более агрессивных углов опережения зажигания.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#идентификация-типа-эбу-и-выбор-оборудования">Идентификация типа ЭБУ и выбор оборудования</a></li><li><a href="#программное-обеспечение-для-работы-с-e54">Программное обеспечение для работы с E54</a></li><li><a href="#особенности-прошивки-simos-2-двигатель-18">Особенности прошивки Simos 2 (Двигатель 1.8)</a></li><li><a href="#пошаговая-инструкция-подключения-и-записи">Пошаговая инструкция подключения и записи</a></li><li><a href="#типичные-ошибки-и-способы-их-устранения">Типичные ошибки и способы их устранения</a></li><li><a href="#выбор-калибровок-и-настройка-после-прошивки">Выбор калибровок и настройка после прошивки</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

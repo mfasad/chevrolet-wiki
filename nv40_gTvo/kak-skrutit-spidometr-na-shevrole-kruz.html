@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как скрутить спидометр на Шевроле Круз: методы и риски — Chevrolet-Wiki</title>
+    <meta name="description" content="Узнайте, как скрутить пробег на Chevrolet Cruze. Разбор методов через OBDII, BCM и приборную панель. Реальные риски и последствия для электроники.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv40_gTvo/kak-skrutit-spidometr-na-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как скрутить спидометр на Шевроле Круз: методы и риски">
+    <meta property="og:description" content="Узнайте, как скрутить пробег на Chevrolet Cruze. Разбор методов через OBDII, BCM и приборную панель. Реальные риски и последствия для электроники.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как скрутить спидометр на Шевроле Круз: методы и риски</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как скрутить спидометр на Шевроле Круз: технические нюансы</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#архитектура-хранения-данных-о-пробеге-в-chevrolet-cruze">Архитектура хранения данных о пробеге в Chevrolet Cruze</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#методика-корректировки-через-диагностический-разъем">Методика корректировки через диагностический разъем</a></li><li><a href="#прямая-работа-с-микросхемой-памяти-приборной-панели">Прямая работа с микросхемой памяти приборной панели</a></li><li><a href="#контрольные-суммы-и-алгоритмы-защиты-gm">Контрольные суммы и алгоритмы защиты GM</a></li><li><a href="#последствия-и-юридические-аспекты-вмешательства">Последствия и юридические аспекты вмешательства</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владение подержанным автомобилем всегда сопряжено с необходимостью контроля его технического состояния и истории эксплуатации. Одним из самых спорных моментов в жизни владельца <em>Chevrolet Cruze</em> является корректировка показаний одометра. Часто водители сталкиваются с ситуацией, когда после замены приборной панели или ремонта электронных блоков реальный пробег перестает совпадать с цифрами на экране. В этом случае возникает техническая необходимость синхронизировать данные.</p>
+
+<p>Однако стоит понимать, что <strong>электронная система автомобиля</strong> устроена сложнее, чем кажется на первый взгляд. В современных моделях Шевроле информация о пройденном расстоянии дублируется в нескольких независимых модулях. Попытка изменить эти данные требует глубокого понимания архитектуры бортовой сети и использования специализированного программного обеспечения. Любое некорректное вмешательство может привести к сбоям в работе <em>ECU</em> или полному отказу приборной панели.</p>
+
+<p>Данная статья носит исключительно информационный характер и описывает технические аспекты работы с диагностическими протоколами. Мы рассмотрим, где именно хранятся данные, какие инструменты используются профессионалами и какие риски существуют при самостоятельной корректировке. Важно осознавать, что изменение показаний одометра с целью скрыть реальный износ узлов при продаже транспортного средства является незаконным действием во многих юрисдикциях.</p>
+
+<h2 id="архитектура-хранения-данных-о-пробеге-в-chevrolet-cruze">Архитектура хранения данных о пробеге в Chevrolet Cruze</h2>
+<p>Для того чтобы качественно выполнить процедуру корректировки, необходимо четко представлять, куда именно записывается информация о километраже. В отличие от старых механических счетчиков, в <em>Chevrolet Cruze</em> используется распределенная система хранения. Основным накопителем данных является микросхема EEPROM, расположенная непосредственно в корпусе приборной панели. Именно эти цифры мы видим на дисплее.</p>
+
+<p>Однако, существует так называемый <strong>скрытый пробег</strong>, который дублируется в блоке управления кузовом (BCM) и, в некоторых модификациях, в блоке управления двигателем (ECU). Это сделано производителем специально для защиты от мошенничества. При подключении профессионального диагностического сканера technician может увидеть расхождения между показаниями панели и данными в BCM. Если разница значительна, система может расценить это как ошибку или попытку вмешательства.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При некорректной записи данных в один из модулей может возникнуть конфликт в CAN-шине, что приведет к появлению ошибок "Check Engine" или блокировке запуска двигателя системой иммобилайзера.</p>
+</blockquote>
+
+<p>Кроме того, в автомобилях с автоматической коробкой передач данные о наработке могут сохраняться и в блоке управления трансмиссией. Поэтому комплексная работа требует считывания информации со всех доступных узлов. Использование дешевых китайских адаптеров часто не позволяет получить доступ к защищенным областям памяти BCM, что оставляет "хвосты" в системе.</p>
+
+<details class="faq-item"><summary>Технические детали протоколов</summary><div class="faq-answer"><p> В Chevrolet Cruze используется протокол GMLAN (General Motors Local Area Network) для обмена данными между модулями. Скорость передачи данных составляет 500 кбит/с для высокоскоростной шины и 125 кбит/с для низкоскоростной.</p></div></details>
+
+<h2 id="необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</h2>
+<p>Для проведения работ с одометром обычного мультиметра будет недостаточно. Вам потребуется специализированный программатор, способный работать с микросхемами памяти через диагностический разъем OBDII или напрямую. Наиболее распространенным инструментом среди специалистов является оборудование марки <em>VVDI Prog</em>, <em>Abrites</em> или специализированные калькуляторы для GM. </p>
+
+<p>Программное обеспечение должно поддерживать функцию чтения и записи EEPROM/Flash памяти. Важно, чтобы софт имел актуальные базы данных для конкретной модели и года выпуска <em>Cruze</em>. Старые версии программ могут некорректно рассчитывать контрольные суммы (checksum), что приведет к неработоспособности приборной панели после записи.</p>
+
+<ul>
+<li>🔌 <strong>Адаптер OBDII</strong> с поддержкой протоколов GM (например, J2534 совместимые устройства).</li>
+<li>💻 <strong>Ноутбук</strong> с установленным специализированным софтом и стабильным источником питания.</li>
+<li>🔋 <strong>Зарядное устройство</strong> или стабилизатор напряжения для поддержания 12.5-13.5 Вольт в бортовой сети во время процедуры.</li>
+<li>📟 <strong>Программатор</strong> для работы с микросхемами (если требуется выпаивание или подключение через BDM).</li>
+</ul>
+
+<p>Особое внимание следует уделить стабильности напряжения. Скачки напряжения в процессе записи данных в микросхему могут привести к ее необратимому повреждению ("кирпичеванию"). Поэтому использование качественного <strong>источника питания</strong> является обязательным условием, а не рекомендацией.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте только лицензионные или проверенные версии программного обеспечения. "Крякнутые" версии калькуляторов пробега часто содержат ошибки в алгоритмах расчета контрольных сумм, что губительно для электроники GM.</p></div>
+
+<h2 id="методика-корректировки-через-диагностический-разъем">Методика корректировки через диагностический разъем</h2>
+<p>Наиболее распространенным и менее инвазивным способом является работа через разъем OBDII, расположенный под торпедой. Этот метод не требует разбора приборной панели, если архитектура безопасности автомобиля позволяет запись данных "на весу". Для <em>Chevrolet Cruze</em> этот метод работает не всегда, так как зависит от версии прошивки BCM.</p>
+
+<p>Процесс начинается с подключения адаптера и установления связи с автомобилем. После идентификации VIN-кода и типа блоков, программа предлагает считать текущий пробег. Оператор вводит желаемое значение, после чего калькулятор пересчитывает шестнадцатеричный код (HEX) и контрольные суммы. Затем происходит процесс записи новых данных в память.</p>
+
+<pre><code>Пример последовательности действий (условный):
+<p>1. Connect to BCM (Body Control Module)</p>
+<p>2. Read EEPROM Data</p>
+<p>3. Locate Mileage Offset (e.g., 0x0004F2A0)</p>
+<p>4. Calculate Checksum</p>
+<p>5. Write New Data</p>
+<p>6. Verify Data Integrity</code></pre></p>
+
+<p>Если запись прошла успешно, необходимо выключить зажигание, отсоединить адаптер и снова включить питание. На панели приборов должны отобразиться новые цифры. Однако, если в системе остался "защитный флаг" о вмешательстве, пробег может вернуться к исходному значению через несколько циклов включения зажигания.</p>
+
+<div class="poll-widget" id="poll-591b89ff"><div class="poll-widget-question">📊 Сталкивались ли вы с несоответствием пробега на панели и в сервисной книжке?</div><div class="poll-widget-option" data-poll="591b89ff" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, пробег на панели меньше</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="591b89ff" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, пробег на панели больше</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="591b89ff" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Нет, все совпадает</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="591b89ff" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Не знаю, где смотреть реальный пробег</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="прямая-работа-с-микросхемой-памяти-приборной-панели">Прямая работа с микросхемой памяти приборной панели</h2>
+<p>В случаях, когда запись через OBDII невозможна из-за блокировок, приходится прибегать к демонтажу приборной панели. Это более трудоемкий процесс, требующий аккуратности. Панель приборов <em>Chevrolet Cruze</em> крепится на винтах и пластиковых защелках, которые легко повредить при неосторожном обращении.</p>
+
+<p>После извлечения платы необходимо найти микросхему EEPROM (часто это модели серии 93Cxx или 24Cxx). Для работы с ней программатор подключается напрямую к контактам микросхемы через пинцет-адаптер (клипсу) или, в сложных случаях, микросхема выпаивается. Прямое подключение минимизирует риск повреждения дорожек платы, но требует твердой руки.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип микросхемы</th>
+<th>Объем памяти</th>
+<th>Метод подключения</th>
+<th>Риск повреждения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>93C66 / 93C76</td>
+<td>4 Kbit</td>
+<td>Через адаптер (SOIC8)</td>
+<td>Низкий</td>
+</tr>
+<tr>
+<td>24C04 / 24C08</td>
+<td>4-8 Kbit</td>
+<td>Прямой контакт / Пайка</td>
+<td>Средний</td>
+</tr>
+<tr>
+<td>M95040</td>
+<td>4 Kbit</td>
+<td>Пайка (SPI)</td>
+<td>Высокий</td>
+</tr>
+<tr>
+<td>NEC D70F3xxx</td>
+<td>Flash</td>
+<td>BDM / JTAG</td>
+<td>Критический</td>
+</tr>
+</tbody>
+</table>
+
+<p>После считывания дампа (копии памяти) файл сохраняется на компьютере. Это критически важный шаг — <strong>резервная копия</strong> позволяет восстановить работоспособность панели в случае ошибки. Затем в редакторе HEX-кодов или специализированном калькуляторе вносятся изменения и пересчитываются контрольные суммы.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист перед пайкой</h4><label class="check-item"><input type="checkbox"><span>Проверить напряжение паяльника</span></label><label class="check-item"><input type="checkbox"><span>Подготовить флюс и припой</span></label><label class="check-item"><input type="checkbox"><span>Обеспечить заземление</span></label><label class="check-item"><input type="checkbox"><span>Сделать фото расположения элементов</span></label><label class="check-item"><input type="checkbox"><span>Проверить целостность дорожек</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="контрольные-суммы-и-алгоритмы-защиты-gm">Контрольные суммы и алгоритмы защиты GM</h2>
+<p>Самой сложной частью процесса является работа с контрольными суммами (Checksum). Это специальные коды, которые вычисляются на основе всех данных в памяти. Если вы изменили значение пробега, но не обновили контрольную сумму, блок управления поймет, что данные повреждены или изменены.</p>
+
+<p>В автомобилях <em>General Motors</em> алгоритмы расчета могут быть довольно сложными. Простое изменение байтов пробега без коррекции CRC (Cyclic Redundancy Check) приведет к тому, что панель приборов либо не включится, либо будет показывать нули, либо выдавать ошибку. Профессиональные программы делают это автоматически, но при ручной правке HEX-кода знание алгоритма необходимо.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если после прошивки панель показывает "ERR" или гаснет, скорее всего, нарушена контрольная сумма. Необходимо восстановить исходный дамп из резервной копии.</p>
+</blockquote>
+
+<p>Иногда система защиты реагирует на частую смену пробега. Если блок фиксирует резкое уменьшение километража, он может заблокировать возможность дальнейшей записи или начать мигать индикаторами. В таких случаях требуется сброс адаптационных значений или перепрошивка всего блока с чистого дампа.</p>
+
+<h2 id="последствия-и-юридические-аспекты-вмешательства">Последствия и юридические аспекты вмешательства</h2>
+<p>Вмешательство в работу одометра имеет не только технические, но и юридические последствия. Во многих странах скупка авто с "крученым" пробегом и его последующая продажа без предупреждения покупателя расценивается как мошенничество. Покупатель может потребовать возврата денег и компенсации убытков через суд, ссылаясь на несоответствие реального состояния узлов заявленному пробегу.</p>
+
+<p>С технической точки зрения, скрученный пробег дезориентирует владельца и будущих покупателей regarding ресурса двигателя, коробки передач и ремней ГРМ. Например, ремень <strong>ГРМ</strong> на <em>Chevrolet Cruze</em> рекомендуется менять каждые 60-90 тысяч километров. Если пробег скручен, владелец может пропустить регламентную замену, что приведет к обрыву ремня и капитальному ремонту двигателя.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Скручивание пробега не омолаживает автомобиль физически. Ресурс трущихся деталей, резиновых уплотнителей и масла в агрегатах зависит от реального времени эксплуатации и нагрузки, а не от цифр на экране.</p></div>
+
+<p>Кроме того, дилерские центры могут отказать в гарантийном обслуживании, если обнаружат признаки вмешательства в электронную систему автомобиля. Современные диагностические комплексы видят историю изменений в логах событий, даже если текущие цифры выглядят правдоподобно.</p>
+
+<details>
+<summary>Можно ли скрутить пробег полностью безвозвратно?</summary>
+<p>Теоретически да, если переписать все связанные блоки (Панель, BCM, ECU, АКПП). Однако на практике это крайне сложно и дорого. Чаще всего в глубине системы остаются логи, которые считываются дилерским сканером уровня GDS2.</p>
+</details>
+
+<details>
+<summary>Сбрасывается ли пробег при отключении аккумулятора?</summary>
+<p>Нет, данные о пробеге хранятся в энергонезависимой памяти (EEPROM). Отключение питания не влияет на сохранность этих данных. Для изменения требуется активная запись программатора.</p>
+</details>
+
+<details>
+<summary>Почему после замены панели пробег не отображается?</summary>
+<p>Новая панель может быть "пустой" или иметь несовместимую прошивку. Требуется привязка к автомобилю (VIN-кодирование) и прописывание корректного пробега через диагностический интерфейс.</p>
+</details>
+
+<details>
+<summary>Влияет ли скрутка на работу иммобилайзера?</summary>
+<p>При правильной процедуре — нет. Но если в процессе записи были повреждены секции памяти, отвечающие за связь с ключами, автомобиль перестанет заводиться. Иммобилайзер и пробег часто находятся в одной микросхеме.</p>
+</details>
+
+<details>
+<summary>Какой пробег считается максимальным для электроники Cruze?</summary>
+<p>Электронный одометр обычно имеет предел в 999,999 км. После достижения этого значения счетчик может обнулиться или остановиться. Встретить автомобиль с таким пробегом в живом состоянии практически невозможно.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#архитектура-хранения-данных-о-пробеге-в-chevrolet-cruze">Архитектура хранения данных о пробеге в Chevrolet Cruze</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#методика-корректировки-через-диагностический-разъем">Методика корректировки через диагностический разъем</a></li><li><a href="#прямая-работа-с-микросхемой-памяти-приборной-панели">Прямая работа с микросхемой памяти приборной панели</a></li><li><a href="#контрольные-суммы-и-алгоритмы-защиты-gm">Контрольные суммы и алгоритмы защиты GM</a></li><li><a href="#последствия-и-юридические-аспекты-вмешательства">Последствия и юридические аспекты вмешательства</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Диагностика Chevrolet Lacetti: коды ошибок, сканер, датчики — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по диагностике Шевроле Лачетти. Разбор кодов ошибок двигателя, проверка датчиков, работа с ELM327 и устранение неисправностей своими руками.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv46_mD86/kak-diagnostirovat-shevrole-lachetti.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Диагностика Chevrolet Lacetti: коды ошибок, сканер, датчики">
+    <meta property="og:description" content="Полная инструкция по диагностике Шевроле Лачетти. Разбор кодов ошибок двигателя, проверка датчиков, работа с ELM327 и устранение неисправностей своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Диагностика Chevrolet Lacetti: коды ошибок, сканер, датчики</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Комплексная диагностика Chevrolet Lacetti: от кодов ошибок до проверки датчиков</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подключение-диагностического-оборудования-и-выбор-адаптера">Подключение диагностического оборудования и выбор адаптера</a></li><li><a href="#расшифровка-основных-кодов-неисправностей-двигателя">Расшифровка основных кодов неисправностей двигателя</a></li><li><a href="#диагностика-системы-зажигания-и-свечей">Диагностика системы зажигания и свечей</a></li><li><a href="#проверка-датчиков-и-исполнительных-механизмов">Проверка датчиков и исполнительных механизмов</a></li><li><a href="#анализ-работы-топливной-системы-и-форсунок">Анализ работы топливной системы и форсунок</a></li><li><a href="#диагностика-автоматической-коробки-передач">Диагностика автоматической коробки передач</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана <em>Chevrolet Lacetti</em> часто сталкиваются с необходимостью глубокого анализа состояния электронных систем автомобиля. Современный двигатель <strong>ECU</strong> (Electronic Control Unit) непрерывно считывает показания со множества сенсоров, и малейшее отклонение от нормы фиксируется в памяти. Игнорирование горящего индикатора <code>Check Engine</code> может привести к серьезным финансовым потерям, так как современные моторы чувствительны к качеству смеси и состоянию ignition system.</p>
+
+<p>Процесс выявления неисправностей на Лачетти требует системного подхода, так как электроника корейской разработки имеет свои особенности. Часто водители пытаются сбросить ошибку просто снятием клеммы, что является ошибкой. <strong>Диагностический сканер</strong> позволяет не только считать код, но и увидеть реальное состояние параметров в режиме реального времени. Без этого слепая замена деталей превращается в лотерею.</p>
+
+<p>В этой статье мы разберем, как правильно интерпретировать данные, какие <strong>OBD-II</strong> адаптеры подходят для GM-группы и на какие узлы обращать внимание в первую очередь. Понимание логики работы бортового компьютера поможет вам сэкономить время и деньги в сервисе. Давайте рассмотрим основные этапы проверки вашего автомобиля.</p>
+
+<h2 id="подключение-диагностического-оборудования-и-выбор-адаптера">Подключение диагностического оборудования и выбор адаптера</h2>
+
+<p>Для начала работы вам потребуется физический доступ к диагностическому разъему. На <em>Chevrolet Lacetti</em> он расположен под торпедой со стороны водителя, часто скрыт декоративной заглушкой или находится в нижней части панели. Стандартный 16-пиновый разъем <strong>OBD-II</strong> обеспечивает связь с блоком управления двигателем и другими модулями. Важно использовать качественный адаптер, так как дешевые китайские клоны могут некорректно работать с протоколами GM.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При подключении сканера зажигание должно быть выключено, чтобы избежать скачка напряжения, который теоретически может повредить цепь питания адаптера, хотя современные устройства имеют защиту.</p>
+</blockquote>
+
+<p>Наиболее универсальным решением для самостоятельной диагностики считается адаптер <code>ELM327</code> версии 1.5. Именно эта версия чипа стабильно работает с программным обеспечением для <em>General Motors</strong>. Более новые версии 2.1 часто имеют урезанный функционал и могут не поддерживать специфические команды для чтения ошибок ABS или SRS на Лачетти. Подключение происходит через Bluetooth или Wi-Fi к смартфону или ноутбуку.</p>
+
+<p>После физического соединения необходимо выбрать подходящее программное обеспечение. Для Android отлично зарекомендовала себя программа <code>OpenDiag</code> или <code>HobDrive</code>, а для iOS — <code>Car Scanner</code>. Эти приложения умеют не только считывать коды, но и строить графики работы <strong>лямбда-зонда</strong> и дроссельной заслонки. Правильный софт превращает телефон в полноценный диагностический прибор.</p>
+
+<div class="poll-widget" id="poll-bde23d55"><div class="poll-widget-question">📊 Какой адаптер вы используете для диагностики?</div><div class="poll-widget-option" data-poll="bde23d55" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Оригинальный GM MDI</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bde23d55" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Китайский ELM327 v1.5</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bde23d55" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный сканер Launch/Autel</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bde23d55" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Только снятие клеммы АКБ</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bde23d55" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Вообще не диагностирую</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="расшифровка-основных-кодов-неисправностей-двигателя">Расшифровка основных кодов неисправностей двигателя</h2>
+
+<p>Когда на приборной панели загорается «Check Engine», в памяти блока управления сохраняется код ошибки, начинающийся с буквы P (Powertrain). Самая распространенная проблема на Лачетти с моторами 1.4 и 1.6 — это ошибки по системе зажигания. Код <code>P0300</code> указывает на пропуски воспламенения в нескольких цилиндрах, что часто вызвано пробоем <strong>высоковольтных проводов</strong> или катушки.</p>
+
+<p>Ошибки по датчику кислорода, такие как <code>P0130</code> или <code>P0140</code>, свидетельствуют о неисправности цепи нагревателя или самом сигнале с <strong>лямбda-зонда</em>. На автомобилях с большим пробегом чувствительный элемент деградирует и перестает корректно оценивать состав смеси. Это приводит к повышенному расходу топлива и нестабильной работе на холостых оборотах.</p>
+
+<p>Отдельного внимания заслуживает ошибка <code>P0171</code> (слишком бедная смесь). Владельцы Лачетти часто сталкиваются с ней из-за подсоса неучтенного воздуха. Трещины во впускном коллекторе или уплотнительных кольцах форсунок нарушают баланс воздушно-топливной смеси. Компьютер пытается компенсировать нехватку топлива, увеличивая время открытия форсунок, но предел коррекции быстро достигается.</p>
+
+<details class="faq-item"><summary>Скрытые коды ошибок</summary><div class="faq-answer"><p>Некоторые ошибки, например, связанные с иммобилайзером или BCM, могут не отображаться в стандартном режиме OBDII и требуют доступа к специфическим блокам через расширенные протоколы GM.</p></div></details>
+
+<p>Ниже приведена таблица с наиболее частыми кодами, встречающимися на <em>Chevrolet Lacetti</em>, и их кратким описание:</p>
+
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание неисправности</th>
+<th>Вероятная причина</th>
+<th>Приоритет ремонта</th>
+</tr>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0300-P0304</td>
+<td>Пропуски воспламенения</td>
+<td>Свечи, катушка, форсунка</td>
+<td>Высокий</td>
+</tr>
+<tr>
+<td>P0133</td>
+<td>Медленный отклик лямбда-зонда</td>
+<td>Старый датчик O2</td>
+<td>Средний</td>
+</tr>
+<tr>
+<td>P0420</td>
+<td>Низкая эффективность катализатора</td>
+<td>Разрушение катализатора</td>
+<td>Низкий (экология)</td>
+</tr>
+<tr>
+<td>P0500</td>
+<td>Неверный сигнал датчика скорости</td>
+<td>Датчик скорости КПП</td>
+<td>Средний</td>
+</tr>
+<tr>
+<td>P1130</td>
+<td>Ошибка по датчику кислорода (банк 1)</td>
+<td>Обрыв цепи или датчик</td>
+<td>Высокий</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="диагностика-системы-зажигания-и-свечей">Диагностика системы зажигания и свечей</h2>
+
+<p>Система зажигания <em>Lacetti</em> построена на индивидуальных катушках, которые надеваются прямо на свечи. Это исключает проблемы с высоковольтными проводами, но создает риски перегрева самих катушек. При диагностике пропусков зажигания (коды P03xx) первым делом нужно визуально осмотреть наконечники катушек на предмет трещин и пробоев. Часто можно увидеть характерные белые дороки пробоя на корпусе.</p>
+
+<p>Состояние <strong>свечей зажигания</strong> многое расскажет о здоровье двигателя. Нормальный цвет электрода — светло-коричневый. Черный налет указывает на богатую смесь или масложор, белый — на перегрев или бедную смесь. Зазор между электродами на Лачетти должен составлять <code>1.0-1.1 мм</code>. Использование свечей с неподходящим калильным числом может привести к детонации.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка системы зажигания</h4><label class="check-item"><input type="checkbox"><span>Визуальный осмотр катушек на пробой</span></label><label class="check-item"><input type="checkbox"><span>Замер сопротивления катушки мультиметром</span></label><label class="check-item"><input type="checkbox"><span>Оценка цвета нагара на свечах</span></label><label class="check-item"><input type="checkbox"><span>Проверка зазора свечи щупом</span></label><label class="check-item"><input type="checkbox"><span>Тест искры на массу (кратковременно)</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Для точной проверки катушек можно использовать мультиметр в режиме измерения сопротивления. Сопротивление первичной обмотки обычно составляет около <code>0.5-0.7 Ом</code>, а вторичной — в диапазоне <code>10-15 кОм</code>. Если значения сильно отличаются от нормы или показывают обрыв (бесконечность), деталь требует замены. Также стоит проверить разъемы на катушках: окисление контактов там встречается часто.</p>
+
+<h2 id="проверка-датчиков-и-исполнительных-механизмов">Проверка датчиков и исполнительных механизмов</h2>
+
+<p>Электронный блок управления полагается на данные от различных сенсоров. Критически важным является <strong>датчик положения дроссельной заслонки (ДПДЗ)</strong>. На Лачетти он часто выходит из строя, вызывая рывки при разгоне. Проверка осуществляется мультиметром: при плавном нажатии на педаль напряжение должно плавно расти от <code>0.5 В</code> до <code>4.5 В</code> без провалов.</p>
+
+<p>Датчик абсолютного давления (<strong>MAP-сенсор</strong>) также играет ключевую роль в расчете нагрузки на двигатель. При включенном зажигании (двигатель не запущен) он должен показывать атмосферное давление (около <code>98-100 кПа</code> или <code>1.0 В</code>). При запуске двигателя показания должны упасть до значений вакуума (<code>30-40 кПа</code> на холостых). Если датчик «врет», смесь будет готовиться неправильно.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При замене датчиков положения дроссельной заслонки на некоторых версиях ПО может потребоваться процедура адаптации («обучения») педали газа, иначе обороты холостого хода будут плавать.</p>
+</blockquote>
+
+<p>Регулятор холостого хода (<strong>РХХ</strong>) на Лачетти — это шаговый двигатель, который управляет байпасным каналом воздуха. Если он загрязнен маслом из системы вентиляции картера, шток может заклинить. Чистка спиртом или специальным очистителем карбюратора часто возвращает ему подвижность. Проверить работу можно, подав на контакты напряжение и наблюдая за выдвижением штока.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед заменой MAP-сенсора обязательно проверьте целостность вакуумной трубки, идущей к нему. Трещина в трубке даст те же симптомы, что и неисправность самого датчика.</p></div>
+
+<h2 id="анализ-работы-топливной-системы-и-форсунок">Анализ работы топливной системы и форсунок</h2>
+
+<p>Топливная система <em>Chevrolet Lacetti</em> чувствительна к качеству бензина. Забитые <strong>топливные форсунки</strong> нарушают факел распыла, что ведет к неполному сгоранию. Диагностика производится через сканер: необходимо смотреть параметр «Коррекция топливоподачи» (Fuel Trim). Если долгосрочная коррекция (Long Term) уходит в плюс более чем на <code>+10%</code>, это признак нехватки топлива (забитые форсунки или слабый насос).</p>
+
+<p>Проверка производительности топливного насоса выполняется путем замера давления в рампе. Нормальное давление должно быть около <code>3.2-3.5 бар</code> на работающем двигателе. После выключения зажигания давление должно держаться длительное время. Быстрый сброс давления указывает на неисправность обратного клапана в модуле бензонасоса или на негерметичность форсунок.</p>
+
+<p>Слышимый гул из бака может свидетельствовать о скорой кончине бензонасоса. Однако тихая работа еще не гарантирует исправность. Важно также проверять <strong>топливный фильтр</strong>, который на Лачетти часто меняется вместе с модулем насоса или является отдельным элементом под днищем (в зависимости от года выпуска). Грязный фильтр создает сопротивление, которое насос не может преодолеть под нагрузкой.</p>
+
+<h2 id="диагностика-автоматической-коробки-передач">Диагностика автоматической коробки передач</h2>
+
+<p>Автоматическая трансмиссия на Лачетти (4-ступенчатая) также имеет систему самодиагностики. Ошибки АКПП часто проявляются не только на приборной панели, но и характерным поведением машины. Режим <strong>Limp Home</strong> (аварийный режим) фиксирует коробку на третьей передаче, не давая переключаться. Это защитная реакция на критическую ошибку.</p>
+
+<p>Для чтения ошибок АКПП обычного OBD-II сканера может быть недостаточно, нужны программы с поддержкой протокола <em>J1850 VPW</em> или специализированные сканеры типа <code>GMLAN</code>. Частые проблемы связаны с датчиком скорости вращения выходного вала или соленоидами гидроблока. Масло в коробке также влияет на работу: его уровень и состояние нужно проверять регулярно.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Аварийный режим АКПП часто вызван не механической поломкой, а электрической неисправностью датчиков или проводки, что делает компьютерную диагностику незаменимой.</p></div>
+
+<p>Если коробка пинается при переключении, стоит проверить адаптации. Сброс адаптаций через сканер может помочь, если износ фрикционов еще не критичен. Также обратите внимание на состояние масла: черный цвет и запах гари говорят о необходимости замены и, возможно, ремонта гидротрансформатора.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Где точно находится диагностический разъем на Шевроле Лачетти?</summary>
+<p>Разъем расположен под панелью приборов слева от рулевой колонки. Иногда он закрыт пластиковой крышкой, которую нужно аккуратно поддеть. В некоторых комплектациях разъем может быть немного смещен вглубь торпеды, и до него нужно тянуться рукой.</p>
+</details>
+
+<details>
+<summary>Можно ли ездить, если горит Check Engine?</summary>
+<p>Если индикатор горит ровным светом и поведение машины не изменилось, доехать до сервиса можно. Если же лампа мигает или появились вибрации и потеря мощности — эксплуатацию лучше прекратить, так как есть риск повредить катализатор или двигатель.</p>
+</details>
+
+<details>
+<summary>Почему сканер не видит машину?</summary>
+<p>Проверьте питание в разъеме OBD (контакты 16 и 4/5). Часто перегорает предохранитель, отвечающий за диагностическую цепь. Также убедитесь, что выбран правильный тип подключения (Bluetooth/Wi-Fi) и версия протокола в приложении.</p>
+</details>
+
+<details>
+<summary>Как сбросить ошибки без сканера?</summary>
+<p>Можно снять минусовую клемму аккумулятора на 10-15 минут. Однако это сбросит также настройки часов и радио, а некоторые адаптации двигателя могут сбиться, что приведет к нестабильной работе до момента повторного обучения.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подключение-диагностического-оборудования-и-выбор-адаптера">Подключение диагностического оборудования и выбор адаптера</a></li><li><a href="#расшифровка-основных-кодов-неисправностей-двигателя">Расшифровка основных кодов неисправностей двигателя</a></li><li><a href="#диагностика-системы-зажигания-и-свечей">Диагностика системы зажигания и свечей</a></li><li><a href="#проверка-датчиков-и-исполнительных-механизмов">Проверка датчиков и исполнительных механизмов</a></li><li><a href="#анализ-работы-топливной-системы-и-форсунок">Анализ работы топливной системы и форсунок</a></li><li><a href="#диагностика-автоматической-коробки-передач">Диагностика автоматической коробки передач</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

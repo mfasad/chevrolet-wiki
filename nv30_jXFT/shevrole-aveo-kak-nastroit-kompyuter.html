@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Chevrolet Aveo: как настроить бортовой компьютер и устранить ошибки — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по настройке ЭБУ и бортового компьютера Шевроле Авео. Сброс ошибок, адаптация дросселя и калибровка педали газа своими руками.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv30_jXFT/shevrole-aveo-kak-nastroit-kompyuter.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Chevrolet Aveo: как настроить бортовой компьютер и устранить ошибки">
+    <meta property="og:description" content="Подробная инструкция по настройке ЭБУ и бортового компьютера Шевроле Авео. Сброс ошибок, адаптация дросселя и калибровка педали газа своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Chevrolet Aveo: как настроить бортовой компьютер и устранить ошибки</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Настройка бортового компьютера и ЭБУ Chevrolet Aveo</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#диагностика-и-подготовка-оборудования">Диагностика и подготовка оборудования</a></li><li><a href="#сброс-адаптаций-и-калибровка-дроссельной-заслонки">Сброс адаптаций и калибровка дроссельной заслонки</a></li><li><a href="#настройка-педали-акселератора-и-устранение-провалов">Настройка педали акселератора и устранение провалов</a></li><li><a href="#работа-с-топливными-картами-и-коррекция-смеси">Работа с топливными картами и коррекция смеси</a></li><li><a href="#устранение-типичных-ошибок-через-программатор">Устранение типичных ошибок через программатор</a></li><li><a href="#обновление-программного-обеспечения-эбу">Обновление программного обеспечения ЭБУ</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярных седанов и хетчбэков Chevrolet Aveo часто сталкиваются с необходимостью вмешательства в работу электронной системы управления двигателем. Современные автомобили насыщены сложной электроникой, и даже незначительный сбой в программном обеспечении может привести к нестабильной работе мотора или плавающим оборотам холостого хода. Понимание принципов настройки <strong>бортового компьютера</strong> (БК) и электронного блока управления (ЭБУ) позволяет автовладельцу сэкономить значительные средства на посещении сервисных центров.</p>
+
+<p>Процесс настройки может варьироваться от простого сброса адаптаций после замены аккумулятора до сложной перепрошивки контроллера. Важно различать эти понятия, так как неумелое обращение с программным обеспечением автомобиля может привести к непредсказуемым последствиям. В данной статье мы подробно разберем алгоритмы действий для различных модификаций двигателя <em>Chevrolet Aveo</em>, включая популярные 1.2 и 1.4 литра.</p>
+
+<p>Прежде чем приступать к любым манипуляциям, необходимо убедиться в исправности аппаратной части автомобиля. Программная настройка не поможет, если в проводке есть обрывы или датчики вышли из строя. <mark>Критически важно проверить напряжение бортовой сети, которое должно составлять не менее 12.5 Вольт перед началом любых работ с ЭБУ.</mark> Только при соблюдении этих условий можно гарантировать корректную запись данных в память контроллера.</p>
+
+<h2 id="диагностика-и-подготовка-оборудования">Диагностика и подготовка оборудования</h2>
+
+<p>Первым шагом в процессе настройки является качественная диагностика. Без точных данных о текущем состоянии системы любые действия будут носить хаотичный характер. Для автомобилей <em>Chevrolet Aveo</em> наиболее распространенными протоколами связи являются OBD-II и специфические расширения GM. Вам потребуется надежный адаптер, поддерживающий эти стандарты, и ноутбук с установленным специализированным софтом.</p>
+
+<p>Современные мультимарочные сканеры позволяют не только считывать коды ошибок, но и проводить активную диагностику исполнительных механизмов. Это означает, что вы можете программно включить бензонасос или форсунку, чтобы проверить их работоспособность без запуска двигателя. Такой подход значительно упрощает поиск неисправностей в электрических цепях.</p>
+
+<ul>
+<li>🔌 Адаптер ELM327 или профессиональный сканер GM MDI для глубокой диагностики.</li>
+<li>💻 Ноутбук с операционной системой Windows и установленными драйверами для адаптера.</li>
+<li>🔋 Стабилизатор напряжения или заряженный аккумулятор для предотвращения скачков в сети.</li>
+<li>📱 Смартфон с приложениями для быстрого мониторинга параметров в реальном времени.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При подключении диагностического оборудования убедитесь, что зажигание выключено. Подключение адаптера "на горячую" может привести к короткому замыканию в цепи диагностики и выходу из строя CAN-шины автомобиля.</p>
+</blockquote>
+
+<p>После подключения оборудования необходимо запустить программное обеспечение и установить связь с автомобилем. Успешное соединение подтверждается чтением VIN-кода и идентификационных данных блока управления. Если связь не устанавливается, следует проверить предохранители, отвечающие за диагностический разъем, и целостность проводов.</p>
+
+<h2 id="сброс-адаптаций-и-калибровка-дроссельной-заслонки">Сброс адаптаций и калибровка дроссельной заслонки</h2>
+
+<p>Одной из самых частых процедур, требуемых для <em>Chevrolet Aveo</em>, является сброс адаптаций дроссельной заслонки. Это необходимо делать после чистки узла, замены дросселя или аккумулятора. ЭБУ запоминает положение заслонки для компенсации износа, и при вмешательстве в механику эти данные становятся некорректными, что вызывает плавание оборотов.</p>
+
+<p>Процедура сброса может выполняться как через диагностический сканер, так и вручную, путем определенной последовательности действий с пеалью газа и ключом зажигания. Автоматизированный метод через компьютер предпочтительнее, так как он гарантирует полный сброс всех таблиц адаптации в памяти контроллера.</p>
+
+<div class="checklist-block"><h4>☑️ Алгоритм сброса адаптаций</h4><label class="check-item"><input type="checkbox"><span>Подключить диагностический сканер:Выбрать меню "Специальные функции":Нажать "Сброс адаптаций дросселя":Дождаться завершения процедуры и выключить зажигание на 30 секунд</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 1</div></div>
+
+<p>При ручном методе важно соблюдать временные интерты. Обычно требуется включить зажигание, подождать несколько секунд, полностью нажать и отпустить педаль акселератора, а затем запустить двигатель. Однако для разных годов выпуска <em>Aveo</em> алгоритмы могут отличаться, поэтому использование компьютера дает более предсказуемый результат.</p>
+
+<details class="faq-item"><summary>Что происходит при сбое калибровки?</summary><div class="faq-answer"><p>Если калибровка дроссельной заслонки выполнена неверно или прервана, двигатель может работать на повышенных оборотах холостого хода (1500-2000 об/мин). В некоторых случаях ЭБУ переходит в аварийный режим, ограничивая мощность двигателя и игнорируя нажатия на педаль газа до повторной успешной процедуры обучения.>
+
+<p>После выполнения сброса необходимо дать двигателю поработать на холостом ходу несколько минут. В это время не следует включать кондиционер, фары или другие потребители энергии. ЭБУ заново запишет базовые параметры положения заслонки в энергонезависимую память.</p>
+
+<h2 id="настройка-педали-акселератора-и-устранение-провалов">Настройка педали акселератора и устранение провалов</h2>
+
+<p>Электронная педаль газа в <em>Chevrolet Aveo</em> передает сигнал о положении не механически, а посредством потенциометров. Со временем или после замены педали может потребоваться процедура обучения (адаптации) нуля и полного хода. Неправильная настройка приводит к тому, что автомобиль дергается при старте или не реагирует на плавное нажатие.</p>
+
+<p>Для настройки используется диагностическое ПО, которое позволяет в режиме реального времени видеть напряжение сигнальных проводов. Нормой считается плавное изменение напряжения от 0.5-0.7 Вольт в состоянии покоя до 4.5-4.8 Вольт при полностью выжатой педали. Любые скачки или "мертвые зоны" указывают на неисправность самой педали.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Нормальное значение</th>
+<th>Допустимое отклонение</th>
+<th>Действие при отклонении</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Напряжение покоя</td>
+<td>0.6 - 0.8 В</td>
+<td>± 0.1 В</td>
+<td>Замена педали или регулировка</td>
+</tr>
+<tr>
+<td>Напряжение полного хода</td>
+<td>4.5 - 4.8 В</td>
+<td>± 0.2 В</td>
+<td>Проверка питания ЭБУ</td>
+</tr>
+<tr>
+<td>Время отклика</td>
+<td>< 50 мс</td>
+<td>до 100 мс</td>
+<td>Диагностика проводки</td>
+</tr>
+<tr>
+<td>Согласованность каналов</td>
+<td>1:2 (осн/доп)</td>
+<td>Строго</td>
+<td>Замена узла педали</td>
+</tr>
+</tbody>
+</table>
+
+<p>В процессе настройки через компьютер часто требуется выполнить цикл "нажал-отпустил" несколько раз с фиксированной паузой. Это позволяет ЭБУ записать крайние точки и построить линейную характеристику отклика. После процедуры автомобиль может вести себя иначе, так как реактивность педали изменится.</p>
+
+
+
+<h2 id="работа-с-топливными-картами-и-коррекция-смеси">Работа с топливными картами и коррекция смеси</h2>
+
+<p>Для владельцев, стремящихся оптимизировать расход топлива или улучшить динамику, актуальна тема работы с топливными картами. ЭБУ <em>Chevrolet Aveo</em> хранит в памяти трехмерные таблицы, определяющие количество впрыскиваемого топлива в зависимости от оборотов двигателя и нагрузки. Изменение этих данных называется чип-тюнингом.</p>
+
+<p>Стандартная настройка часто бывает консервативной, чтобы соответствовать экологическим нормам разных стран. Корректируя карты, можно сделать смесь богаче для мощности или беднее для экономии, однако это требует глубоких знаний и оборудования для замера выхлопных газов. Без широкополосного лямбда-зонда лезть в топливные карты опасно.</p>
+
+<ul>
+<li>⛽ Коррекция времени впрыска влияет на мощность и температуру в цилиндре.</li>
+<li>🌬️ Изменение угла опережения зажигания (УОЗ) меняет динамику разгона и склонность к детонации.</li>
+<li>🌡️ Настройка работы вентилятора охлаждения позволяет снизить температуру срабатывания для защиты мотора.</li>
+<li>🚫 Отключение систем EGR и катализатора требует программной эмуляции их работы во избежание ошибок.</li>
+</ul>
+
+<p>Важно понимать, что любое изменение прошивки снимает автомобиль с гарантии и несет риски. Неправильно рассчитанная смесь может привести к перегреву выпускных клапанов или разрушению поршневой группы. <strong>Топливная коррекция</strong> должна проводиться только опытными тюнерами с возможностью отката к заводской версии.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Перед внесением изменений в прошивку обязательно сделайте полную резервную копию (дампа) оригинального файла. Восстановить работу автомобиля без оригинального файла в случае сбоя будет крайне сложно и дорого.</p>
+</blockquote>
+
+<h2 id="устранение-типичных-ошибок-через-программатор">Устранение типичных ошибок через программатор</h2>
+
+<p>Бортовой компьютер <em>Chevrolet Aveo</em> склонен накапливать ложные ошибки, особенно в системе зажигания и датчиках положения. Часто горит лампа <em>Check Engine</em> из-за кратковременного скачка напряжения или плохого контакта, хотя физически узел исправен. В таких случаях механическая замена деталей не требуется, достаточно программного сброса.</p>
+
+<p>Однако, если после сброса ошибка возвращается немедленно или через короткий промежуток времени, это указывает на реальную неисправность. Компьютерная диагностика помогает отследить историю возникновения ошибки: была ли она статической (постоянной) или спорадической (случайной). Это ключевой момент для принятия решения о ремонте.</p>
+
+
+
+<p>Распространенной проблемой является ошибка датчика кислорода. Перед его заменой попробуйте просто сбросить адаптации топливоподачи. Иногда ЭБУ "забывает" правильные коррекции, и простая перезагрузка параметров возвращает нормальную работу системы. Также стоит проверить целостность проводки до разъема датчика.</p>
+
+<p>Для сброса ошибок используйте функцию <code>Clear DTC</code> в диагностическом меню. После этого запустите двигатель и дайте ему поработать на холостом ходу. Если лампа погасла и не загорается при прогазовке, процедуру можно считать успешной. В противном случае необходимо искать физическую причину неисправности.</p>
+
+<h2 id="обновление-программного-обеспечения-эбу">Обновление программного обеспечения ЭБУ</h2>
+
+<p>Завод-изготовитель периодически выпускает обновления прошивок для блоков управления двигателем <em>Chevrolet Aveo</em>. Эти обновления могут исправлять ошибки в алгоритмах работы, улучшать холодный пуск или оптимизировать работу коробки передач (если речь идет об АКПП). Обновление ПО — это замена внутренней программы контроллера на более новую версию.</p>
+
+<p>Процесс обновления (перепрошивки) является рискованным. В отличие от простого сброса настроек, здесь идет запись нового кода в микросхему памяти. Прерывание процесса, например, из-за разряда аккумулятора или отключения ноутбука, может "окирпичить" блок управления, сделав автомобиль неспособным к движению.</p>
+
+<pre><code>Процедура обновления требует:
+<p>1. Подключения стабилизатора напряжения (13.5-14.0В).</p>
+<p>2. Надежного соединения ноутбука и адаптера.</p>
+<p>3. Закрытия всех посторонних программ на ПК.</p>
+<p>4. Точного подбора версии прошивки по VIN-коду.</code></pre></p>
+
+
+
+<p>Найти актуальные версии прошивок можно на специализированных форумах или у официальных дилеров. При самостоятельной перепрошивке используйте только проверенные программы-загрузчики, такие как K-Line или CAN-программаторы, поддерживающие протоколы GM. После обновления часто требуется повторная процедура обучения дросселя и иммобилайзера.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли настроить компьютер Aveo без ноутбука?</summary>
+<p>Полноценная настройка, такая как перепрошивка или глубокая адаптация, невозможна без специализированного оборудования. Однако сброс ошибок и базовое обучение дросселя иногда можно выполнить манипуляциями с педалями и ключом зажигания, если эта функция предусмотрена конкретной версией ЭБУ вашего года выпуска.</p>
+</details>
+
+<details>
+<summary>Сколько времени занимает адаптация дроссельной заслонки?</summary>
+<p>Сам процесс записи через компьютер занимает от 1 до 5 минут. Однако после этого требуется время на работу двигателя на холостом ходу (около 10-15 минут) для стабилизации оборотов и прогрева, во время которого ЭБУ дообучается в реальном времени.</p>
+</details>
+
+<details>
+<summary>Сбрасывается ли настройка при снятии клеммы аккумулятора?</summary>
+<p>При снятии клеммы сбрасываются адаптации (память обучения), но сама прошивка и VIN-код остаются на месте. После подключения аккумулятора автомобилю потребуется некоторое время (пробег 10-50 км), чтобы заново адаптироваться под стиль вождения и текущее состояние двигателя.</p>
+</details>
+
+<details>
+<summary>Опасно ли делать чип-тюнинг на старом Chevrolet Aveo?</summary>
+<p>Для старого автомобиля с изношенным двигателем агрессивный чип-тюнинг может быть опасен, так как резервы прочности узлов уже исчерпаны. В таких случаях рекомендуются только "экологические" прошивки, убирающие ошибки EGR, но не повышающие мощность сверх заводских значений.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#диагностика-и-подготовка-оборудования">Диагностика и подготовка оборудования</a></li><li><a href="#сброс-адаптаций-и-калибровка-дроссельной-заслонки">Сброс адаптаций и калибровка дроссельной заслонки</a></li><li><a href="#настройка-педали-акселератора-и-устранение-провалов">Настройка педали акселератора и устранение провалов</a></li><li><a href="#работа-с-топливными-картами-и-коррекция-смеси">Работа с топливными картами и коррекция смеси</a></li><li><a href="#устранение-типичных-ошибок-через-программатор">Устранение типичных ошибок через программатор</a></li><li><a href="#обновление-программного-обеспечения-эбу">Обновление программного обеспечения ЭБУ</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Самодиагностика Chevrolet Cruze: коды ошибок и сброс — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по запуску самодиагностики на Шевроле Круз. Как считать ошибки через приборную панель и OBD2, расшифровка кодов и советы.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv31_zTAJ/shevrole-kruz-kak-sdelat-samodiagnostiku.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Самодиагностика Chevrolet Cruze: коды ошибок и сброс">
+    <meta property="og:description" content="Подробная инструкция по запуску самодиагностики на Шевроле Круз. Как считать ошибки через приборную панель и OBD2, расшифровка кодов и советы.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Самодиагностика Chevrolet Cruze: коды ошибок и сброс</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Самодиагностика Шевроле Круз: полный гид по кодам ошибок</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-автомобиля-к-тестированию-систем">Подготовка автомобиля к тестированию систем</a></li><li><a href="#диагностика-через-меню-приборной-панели-без-сканера">Диагностика через меню приборной панели без сканера</a></li><li><a href="#использование-obd2-сканера-и-адаптеров-elm327">Использование OBD2 сканера и адаптеров ELM327</a></li><li><a href="#расшифровка-кодов-ошибок-и-таблица-значений">Расшифровка кодов ошибок и таблица значений</a></li><li><a href="#процедура-сброса-ошибок-и-адаптация-систем">Процедура сброса ошибок и адаптация систем</a></li><li><a href="#частые-проблемы-электроники-cruze-и-их-решение">Частые проблемы электроники Cruze и их решение</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы автомобилей <em>Chevrolet Cruze</em> часто сталкиваются с необходимостью быстро оценить техническое состояние своего транспортного средства без посещения сервисного центра. Современная электроника позволяет провести глубокую проверку систем двигателя, трансмиссии и кузова прямо из салона. Самостоятельная <strong>диагностика</strong> помогает выявить скрытые неисправности на ранних стадиях, что экономит значительные средства на дорогостоящем ремонте в будущем.</p>
+
+<p>Процесс считывания данных с бортового компьютера может осуществляться двумя основными способами: через встроенное меню приборной панели или с использованием внешнего OBD2-сканера. <strong>Контроллер</strong> управления двигателем хранит историю всех сбоев, даже если лампа <code>CHECK ENGINE</code> на данный момент не горит. Понимание принципов работы этих систем дает водителю преимущество в ситуациях, когда автомобиль ведет себя некорректно.</p>
+
+<p>В данной статье мы подробно разберем алгоритмы действий для разных поколений модели, включая рестайлинговые версии. Вы узнаете, как интерпретировать мигающие индикаторы и числовые коды, выводимые на дисплей. Грамотное использование инструментов диагностики превращает сложную электронику в понятный источник информации о здоровье вашего <em>Cruze</em>.</p>
+
+<h2 id="подготовка-автомобиля-к-тестированию-систем">Подготовка автомобиля к тестированию систем</h2>
+
+<p>Перед началом любых манипуляций с электроникой необходимо обеспечить стабильное напряжение в бортовой сети. <strong>Аккумуляторная батарея</strong> должна быть полностью заряжена, так как падение напряжения во время сканирования может привести к некорректному считыванию данных или даже сбою в работе ЭБУ. Рекомендуется заранее отключить мощные потребители энергии, такие как фары, кондиционер и аудиосистема.</p>
+
+<p>Автомобиль следует установить на ровную горизонтальную площадку и зафиксировать стояночным тормозом. Рычаг <strong>коробки передач</strong> переводится в нейтральное положение для механики или в режим <code>P</code> для автомата. Двигатель должен быть заглушен, а ключ зажигания извлечен из замка или находиться вне зоны считывания бесконтактной системы, если речь идет о более новых модификациях.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Никогда не пытайтесь проводить диагностику на ходу или с запущенным двигателем, если инструкция прямо не требует работы мотора на холостых оборотах. Это может привести к ложным показаниям датчиков и неправильной интерпретации данных.</p>
+</blockquote>
+
+<p>Особое внимание уделите состоянию контактной группы замка зажигания. На моделях <em>Cruze</em> первых лет выпуска часто встречается износ контактов, что вызывает хаотичные скачки напряжения. Перед подключением диагностического оборудования убедитесь, что поворот ключа в положение <code>ON</code> происходит четко и без заеданий.</p>
+
+<div class="poll-widget" id="poll-251c1070"><div class="poll-widget-question">📊 Как вы обычно проверяете ошибки на Cruze?</div><div class="poll-widget-option" data-poll="251c1070" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Через меню приборки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="251c1070" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">OBD2 сканером</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="251c1070" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">На СТО у дилера</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="251c1070" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Игнорирую до поломки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="диагностика-через-меню-приборной-панели-без-сканера">Диагностика через меню приборной панели без сканера</h2>
+
+<p>Многие водители не знают, что в <strong>бортовом компьютере</strong> Шевроле Круз заложена функция вывода кодов неисправностей непосредственно на экран между спидометром и тахометром. Этот метод не требует покупки дополнительного оборудования и доступен каждому владельцу. Для активации режима инженерного меню необходимо выполнить последовательность действий с кнопками на руле или самом приборе.</p>
+
+<p>На автомобилях с дорестайлинговой панелью нужно выключить зажигание, затем зажать кнопку сброса суточного пробега. Не отпуская кнопку, поверните ключ в положение включения зажигания (двигатель не запускать). На дисплее начнут меняться сегменты, после чего появится код версии прошивки, а затем и коды ошибок в формате <code>Pxxxx</code>. Если ошибок нет, система может вывести сообщение <code>NONE</code> или просто вернется к показаниям пробега.</p>
+
+<p>В рестайлинговых версиях с более продвинутым <strong>дисплеем</strong> алгоритм может отличаться. Часто требуется кратковременное нажатие кнопки меню, переход в раздел настроеок и одновременное зажатие комбинации клавиш. Точная последовательность зависит от года выпуска и типа установленной магнитолы, так как некоторые системы завязаны на головное устройство.</p>
+
+<details class="faq-item"><summary>Секретный код для расширенного меню</summary><div class="faq-answer"><p>На некоторых версиях ПО помогает вход в меню установок времени и быстрое нажатие кнопки OK 5 раз подряд. Это открывает доступ к скрытым параметрам датчиков.</p></div></details>
+
+<p>Полученные коды необходимо записать и сверить с таблицей расшифровки. Важно понимать, что приборная панель показывает только те ошибки, которые критичны для работы двигателя или систем безопасности. Мелкие сбои, такие как неравномерная работа форсунок на холодную, могут не отображаться в этом режиме, но сохраняться в памяти <strong>ECM</strong>.</p>
+
+<h2 id="использование-obd2-сканера-и-адаптеров-elm327">Использование OBD2 сканера и адаптеров ELM327</h2>
+
+<p>Наиболее информативным способом проверки является подключение внешнего диагностического адаптера к разъему <strong>OBD2</strong>. В Chevrolet Cruze этот разъем обычно расположен под панелью приборов со стороны водителя, рядом с блоком предохранителей, или под декоративной крышкой в нижней части торпедо. Стандартный 16-контактный разъем обеспечивает доступ ко всем электронным блокам автомобиля.</p>
+
+<p>Для подключения можно использовать бюджетные адаптеры на базе чипа <em>ELM327</em> (версии 1.5 предпочтительнее для старых авто) или профессиональные мультимарочные сканеры. После физического подключения устройства и поворота ключа в положение <code>ON</code>, необходимо установить соединение со смартфоном или ноутбуком через Bluetooth или Wi-Fi. Популярное приложение <code>OpenDiag</code> или <em>Torque Pro</em> отлично справляется с чтением потоковых данных.</p>
+
+<ul>
+    <li>🔌 Подключите адаптер в разъем OBD2 до включения зажигания, чтобы избежать скачка напряжения.</li>
+    <li>📱 Запустите приложение на смартфоне и выберите тип соединения (Bluetooth/USB).</li>
+    <li>🚗 Включите зажигание и дождитесь установления связи с блоком управления двигателем.</li>
+    <li>📡 Считайте сохраненные коды ошибок и текущие параметры работы датчиков в реальном времени.</li>
+</ul>
+
+<p>Преимущество использования сканера заключается в возможности просмотра <strong>параметров в реальном времени</strong>. Вы можете видеть угол опережения зажигания, положение дроссельной заслонки, напряжение лямбда-зондов и коррекции топлива. Это позволяет диагностировать плавающие неисправности, которые не фиксируются как постоянные ошибки, но влияют на динамику и расход топлива.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка через OBD2</h4><label class="check-item"><input type="checkbox"><span>Найти разъем OBD2</span></label><label class="check-item"><input type="checkbox"><span>Подключить сканер</span></label><label class="check-item"><input type="checkbox"><span>Включить зажигание</span></label><label class="check-item"><input type="checkbox"><span>Считать коды ошибок</span></label><label class="check-item"><input type="checkbox"><span>Сравнить с таблицей</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="расшифровка-кодов-ошибок-и-таблица-значений">Расшифровка кодов ошибок и таблица значений</h2>
+
+<p>Полученные в ходе диагностики коды имеют стандартизированную структуру. Первая буква указывает на систему: <strong>P</strong> — двигатель и трансмиссия, <strong>B</strong> — кузов, <strong>C</strong> — шасси, <strong>U</strong> — сеть. Цифры following за буквой конкретизируют узел и тип неисправности. Понимание этой логики помогает быстрее определить направление поиска проблемы.</p>
+
+<p>Ниже приведена таблица наиболее часто встречающихся ошибок на Chevrolet Cruze, с которыми сталкиваются владельцы:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Код ошибки</th>
+            <th>Описание неисправности</th>
+            <th>Вероятная причина</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>P0300</code></td>
+            <td>Случайные пропуски воспламенения</td>
+            <td>Свечи, катушки, низкое давление топлива</td>
+        </tr>
+        <tr>
+            <td><code>P0171</code></td>
+            <td>Слишком бедная смесь (банк 1)</td>
+            <td>Подсос воздуха, неисправность ДМРВ</td>
+        </tr>
+        <tr>
+            <td><code>P0420</code></td>
+            <td>Низкая эффективность катализатора</td>
+            <td>Износ катализатора, неисправность лямбды</td>
+        </tr>
+        <tr>
+            <td><code>P0117</code></td>
+            <td>Низкий уровень сигнала ДТОЖ</td>
+            <td>Обрыв цепи, неисправность датчика</td>
+        </tr>
+        <tr>
+            <td><code>P2135</code></td>
+            <td>Несогласованность сигналов ДПДЗ</td>
+            <td>Неисправность электронной дроссельной заслонки</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Ошибка <code>P0300</code> является одной из самых распространенных и часто указывает на проблемы с системой зажигания. Владельцам <em>Cruze</em> с двигателями 1.6 и 1.8 стоит регулярно проверять состояние свечей и катушек, так как они чувствительны к качеству топлива. Игнорирование пропусков зажигания может быстро привести к разрушению каталитического нейтрализатора.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Код ошибки — это лишь указание на зону поиска, а не точный диагноз. Замена детали по коду без проверки электрических цепей и механической части часто не устраняет проблему.</p>
+</blockquote>
+
+<h2 id="процедура-сброса-ошибок-и-адаптация-систем">Процедура сброса ошибок и адаптация систем</h2>
+
+<p>После устранения неисправности необходимо выполнить процедуру сброса ошибок из памяти <strong>ECM</strong>. Просто снять клемму аккумулятора на современных автомобилях часто недостаточно, так как это может привести к сбросу других настроек, таких как адаптация дроссельной заслонки или радиокод. Сброс лучше производить через диагностический сканер или меню приборной панели.</p>
+
+<p>Для сброса через меню на некоторых версиях Cruze требуется зажать кнопку сброса пробега на 5-10 секунд после появления кода ошибки на экране. Если используется OBD2 сканер, в меню приложения выбирается опция <code>Clear Codes</code> или <code>Стереть ошибки</code>. После этого лампа <code>CHECK ENGINE</code> должна погаснуть.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>После сброса ошибок и снятия клеммы аккумулятора обязательно выполните процедуру адаптации дроссельной заслонки: включите зажигание на 30 секунд, затем запустите двигатель и дайте поработать 5-10 минут без нагрузки.</p></div>
+
+<p>Важно отметить, что некоторые ошибки, связанные с экологией, не стираются мгновенно. <strong>Мониторы готовности</strong> должны пройти полный цикл проверки. Для этого требуется проехать на автомобиле определенный дистанцию в разных режимах (город, трасса, холостой ход). Until циклы не будут завершены, лампа может гореть или ошибка вернется.</p>
+
+<p>Если после сброса ошибка появляется снова сразу или через короткое время, это свидетельствует о том, что неисправность носит активный характер. В таком случае требуется глубокая диагностика с прозвонкой проводов и проверкой исполнительных механизмов. <mark>Повторяющееся появление кода P0420 после замены лямбда-зонда часто указывает на механическое разрушение керамической крошки катализатора.</mark></p>
+
+<h2 id="частые-проблемы-электроники-cruze-и-их-решение">Частые проблемы электроники Cruze и их решение</h2>
+
+<p>Электроника Chevrolet Cruze, несмотря на общую надежность, имеет ряд характерных «болезней». Одной из них является выход из строя датчика положения коленвала, что приводит к невозможности запуска двигателя. Часто проблема кроется не в самом датчике, а в обрыве проводов в гофре или окислении контактов разъема.</p>
+
+<p>Еще одна распространенная проблема — плавающие обороты холостого хода. Это может быть вызвано загрязнением <strong>дроссельного узла</strong> или клапана вентиляции картерных газов. В таких случаях диагностика показывает ошибки по смеси или положению заслонки. Регулярная чистка этих узлов помогает избежать дорогостоящего ремонта.</p>
+
+<ul>
+    <li>🔋 Частые разряды аккумулятора могут быть вызваны утечкой тока через модуль комфорта.</li>
+    <li>💡 Мигание фар или проблемы со светом часто связаны с плохим контактом массы кузова.</li>
+    <li>⚙️ Ошибки трансмиссии на автомате могут быть следствием низкого уровня масла или загрязнения гидроблока.</li>
+</ul>
+
+<p>При поиске неисправностей всегда начинайте с проверки целостности проводки и качества контактов. Вибрации и перепады температур негативно влияют на изоляцию проводов в подкапотном пространстве <em>Cruze</em>. Визуальный осмотр жгутов проводов часто позволяет найти перетертости или окисления, которые становятся причиной появления «фантомных» ошибок.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>90% проблем с электроникой Cruze решаются восстановлением целостности проводки и чисткой контактов, а не заменой дорогих блоков управления.</p></div>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+
+<details>
+    <summary>Можно ли ездить, если горит лампа Check Engine?</summary>
+    <p>Если лампа горит ровным светом и поведение автомобиля не изменилось, движение возможно до сервиса. Если лампа мигает или наблюдаются провалы мощности, движение следует прекратить во избежание повреждения катализатора.</p>
+</details>
+
+<details>
+    <summary>Почему после сброса ошибок лампа загорается снова?</summary>
+    <p>Это означает, что причина неисправности не устранена. ЭБУ продолжает фиксировать отклонения параметров работы двигателя от нормы и повторно заносит код в память.</p>
+</details>
+
+<details>
+    <summary>Нужен ли специальный сканер для Chevrolet Cruze?</summary>
+    <p>Для базовой диагностики достаточно универсального ELM327. Однако для программирования блоков или глубокой диагностики ABS и Airbag могут потребоваться специализированные дилерские сканеры типа GMDiagnostic.</p>
+</details>
+
+<details>
+    <summary>Как часто нужно проводить самодиагностику?</summary>
+    <p>Рекомендуется проводить профилактическую проверку раз в полгода или перед дальними поездками. Также диагностика обязательна при появлении любых изменений в работе двигателя.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-автомобиля-к-тестированию-систем">Подготовка автомобиля к тестированию систем</a></li><li><a href="#диагностика-через-меню-приборной-панели-без-сканера">Диагностика через меню приборной панели без сканера</a></li><li><a href="#использование-obd2-сканера-и-адаптеров-elm327">Использование OBD2 сканера и адаптеров ELM327</a></li><li><a href="#расшифровка-кодов-ошибок-и-таблица-значений">Расшифровка кодов ошибок и таблица значений</a></li><li><a href="#процедура-сброса-ошибок-и-адаптация-систем">Процедура сброса ошибок и адаптация систем</a></li><li><a href="#частые-проблемы-электроники-cruze-и-их-решение">Частые проблемы электроники Cruze и их решение</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

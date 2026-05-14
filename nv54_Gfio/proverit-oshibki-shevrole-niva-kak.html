@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как проверить ошибки Шевроле Нива: диагностика своими руками — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробное руководство по выявлению и расшифровке кодов неисправностей Chevrolet Niva. Методы без сканера, работа с ELM327 и таблица основных ошибок.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv54_Gfio/proverit-oshibki-shevrole-niva-kak.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как проверить ошибки Шевроле Нива: диагностика своими руками">
+    <meta property="og:description" content="Подробное руководство по выявлению и расшифровке кодов неисправностей Chevrolet Niva. Методы без сканера, работа с ELM327 и таблица основных ошибок.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как проверить ошибки Шевроле Нива: диагностика своими руками</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Проверка ошибок Шевроле Нива: полная инструкция по диагностике</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#симптомы-неисправностей-системы-управления-двигателем">Симптомы неисправностей системы управления двигателем</a></li><li><a href="#диагностика-без-сканера-метод-перемычки">Диагностика без сканера: метод перемычки</a></li><li><a href="#использование-сканера-elm327-и-смартфона">Использование сканера ELM327 и смартфона</a></li><li><a href="#расшифровка-основных-кодов-ошибок">Расшифровка основных кодов ошибок</a></li><li><a href="#типичные-проблемы-шевроле-нива-и-их-коды">Типичные проблемы Шевроле Нива и их коды</a></li><li><a href="#сброс-ошибок-и-проверка-результата">Сброс ошибок и проверка результата</a></li><li><a href="#когда-необходима-профессиональная-диагностика">Когда необходима профессиональная диагностика</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Современный автомобиль, даже такой проверенный временем, как <em>Chevrolet Niva</em>, представляет собой сложный комплекс электронных систем, требующий периодического контроля. Владельцы часто сталкиваются с ситуацией, когда загорается индикатор Check Engine, а двигатель начинает работать нестабильно или терять мощность. В этот момент возникает острая необходимость быстро понять, что именно произошло с машиной, не обращаясь сразу в дорогостоящий сервис.</p>
+
+<p>Диагностика позволяет считать сохраненные в памяти контроллера коды неисправностей, которые указывают на конкретный узел или датчик. Правильная интерпретация этих данных помогает сэкономить значительные средства на ремонте, позволяя заменить только вышедшую из строя деталь, а не менять полмашины наугад. В этой статье мы разберем, как провести <strong>проверку ошибок</strong> самостоятельно, используя как подручные средства, так и специализированные сканеры.</p>
+
+<h2 id="симптомы-неисправностей-системы-управления-двигателем">Симптомы неисправностей системы управления двигателем</h2>
+
+<p>Прежде чем приступать к техническим манипуляциям, необходимо четко понимать, какие признаки указывают на необходимость проведения диагностики. Электронный блок управления (ЭБУ) фиксирует отклонения в работе систем только тогда, когда они выходят за пределы допустимых параметров, но водитель может заметить проблемы гораздо раньше появления кодов в памяти.</p>
+
+<p>Первым и самым очевидным сигналом является загорание контрольной лампы неисправности на приборной панели. Однако не стоит игнорировать и косвенные признаки, такие как повышенный расход топлива, плавающие обороты холостого хода, провалы при разгоне или затрудненный запуск двигателя в холодное время года. Все эти симптомы свидетельствуют о том, что <strong>система управления</strong> работает в аварийном режиме или с коррекциями.</p>
+
+<ul>
+<li>🔥 Резкое увеличение расхода топлива без изменения стиля вождения.</li>
+<li>📉 Нестабильная работа двигателя на холостом ходу, дерганье при движении.</li>
+<li>🌫️ Появление черного дыма из выхлопной трубы или запах несгоревшего бензина.</li>
+<li>⚡ Снижение тяги двигателя и вялая реакция на педаль акселератора.</li>
+</ul>
+
+<p>Игнорирование этих симптомов может привести к более серьезным поломкам, например, к выходу из строя каталитического нейтрализатора или повреждению клапанов. Своевременная <em>диагностика</em> помогает выявить проблему на ранней стадии, когда ремонт еще не требует капитальных вложений.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если лампа Check Engine мигает, это означает критическую неисправность, чаще всего связанную с пропусками зажигания. Эксплуатация автомобиля в таком режиме категорически запрещена, так как это может привести к разрушению катализатора и пожароопасной ситуации.</p>
+</blockquote>
+
+<h2 id="диагностика-без-сканера-метод-перемычки">Диагностика без сканера: метод перемычки</h2>
+
+<p>Для владельцев <em>Chevrolet Niva</em> с контроллерами Bosch ME17.9.7 или более ранними версиями Январь 7.2 существует проверенный способ первичной диагностики без использования дорогостоящего оборудования. Этот метод основан на замыкании контактов диагностического разъема, что переводит ЭБУ в режим отображения кодов ошибок через мигание контрольной лампы.</p>
+
+<p>Для реализации этого способа вам понадобится обычный отрезок провода или канцелярская скрепка. Сначала необходимо найти диагностический разъем OBD-II, который в Шевроле Нива обычно расположен под торпедой слева от рулевой колонки или под бардачком, в зависимости от года выпуска. Вам нужно замкнуть контакты 10 и 12 (или 9 и 12, в зависимости от распиновки конкретной модификации, чаще всего это контакты A и B на колодке).</p>
+
+<p>После замыкания контактов и включения зажигания (без запуска двигателя) лампа Check Engine начнет мигать определенным образом. Сначала следует один длинный сигнал, за которым следуют короткие вспышки. Количество коротких вспышек и есть код ошибки. Например, один длинный и два коротких сигнала означают код 12, что часто указывает на ошибку в цепи индикатора, а не на реальную поломку.</p>
+
+<div class="checklist-block"><h4>☑️ Алгоритм диагностики перемычкой</h4><label class="check-item"><input type="checkbox"><span>Найти разъем OBD-II</span></label><label class="check-item"><input type="checkbox"><span>Замкнуть нужные контакты проводом</span></label><label class="check-item"><input type="checkbox"><span>Включить зажигание</span></label><label class="check-item"><input type="checkbox"><span>Считать количество вспышек</span></label><label class="check-item"><input type="checkbox"><span>Сравнить с таблицей кодов</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Важно понимать, что данный метод дает лишь базовую информацию и не позволяет увидеть параметры работы датчиков в реальном времени. Это <strong>грубая диагностика</strong>, которая помогает понять, есть ли вообще сохраненные в памяти ошибки, требующие внимания.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При использовании метода перемычки будьте осторожны, чтобы не замкнуть контакты питания (12В) на сигнальные линии, так как это может привести к сгоранию ЭБУ. Убедитесь в правильности распиновки для вашей конкретной модели контроллера.</p>
+</blockquote>
+
+<h2 id="использование-сканера-elm327-и-смартфона">Использование сканера ELM327 и смартфона</h2>
+
+<p>Наиболее эффективным и современным способом, позволяющим детально <strong>проверить ошибки</strong>, является использование адаптера ELM327 в связке со смартфоном. Этот компактный гаджет стоит недорого и позволяет превратить ваш телефон в полноценный диагностический инструмент с графиками и расшифровкой.</p>
+
+<p>Для начала работы необходимо вставить адаптер в разъем OBD-II автомобиля и включить зажигание. На смартфоне следует включить Bluetooth (или Wi-Fi, в зависимости от версии адаптера) и найти устройство, обычно называемое OBDII или. Стандартный PIN-код для подключения чаще всего 1234 или 0000.</p>
+
+<p>После успешного сопряжения необходимо запустить приложение. Для Android отлично подходят программы Torque Pro или OpenDiag, а для iOS — Car Scanner или OBD Fusion. В меню приложения нужно выбрать подключение по Bluetooth и дождаться соединения с ЭБУ автомобиля.</p>
+
+<ul>
+<li>📲 Запустите приложение на смартфоне и выберите тип подключения.</li>
+<li>🔌 Дождитесь индикации соединения с блоком управления двигателем.</li>
+<li>📂 Перейдите в раздел"Ошибка" или"DTC" для чтения кодов.</li>
+<li>❌ Используйте функцию"Стереть коды" после устранения неисправности.</li>
+</ul>
+
+<p>Преимущество использования <em>программного обеспечения</em> заключается в возможности не только считать статические коды, но и наблюдать за параметрами в реальном времени. Вы можете видеть напряжение на датчике кислорода, положение дроссельной заслонки и угол опережения зажигания, что значительно упрощает поиск причины неисправности.</p>
+
+<details class="faq-item"><summary>Какие приложения лучше всего подходят для Нивы?</summary><div class="faq-answer"><p>Для автомобилей ВАЗ и Chevrolet Niva с контроллерами Bosch и Январь лучше всего подходят приложения OpenDiag Mobile (Android) и Car Scanner ELM OBD2 (Android/iOS). Они имеют встроенные профили для российских ЭБУ и наиболее точную расшифровку специфических ошибок.</p></div></details>
+
+<h2 id="расшифровка-основных-кодов-ошибок">Расшифровка основных кодов ошибок</h2>
+
+<p>Получив код ошибки, многие водители теряются в догадках, так как стандартные таблицы OBD-II не всегда точно описывают специфику работы двигателя <em>Chevrolet Niva</strong>. Ниже приведена таблица наиболее часто встречающихся ошибок, с которыми сталкиваются владельцы этих внедорожников.</p>
+
+<p>| Код ошибки | Описание неисправности | Возможная причина |</p>
+<p>|:--- |:--- |:--- |</p>
+<p>| P0300 | Множественные пропуски зажигания | Свечи, катушки, низкое давление топлива |</p>
+<p>| P0130 | Неисправность цепи датчика кислорода (до катализатора) | Обрыв проводки, неисправность датчика |</p>
+<p>| P0171 | Слишком бедная смесь | Подсос воздуха, низкое давление в рампе |</p>
+<p>| P0420 | Эффективность катализатора ниже порога | Износ катализатора, неисправность второго ДК |</p>
+<p>| P2187 | Бедная смесь на холостом ходу | Подсос воздуха во впускном коллекторе |</p>
+
+<p>Стоит отметить, что код P0171 и P2187 часто идут в паре и указывают на <strong>подсос неучтенного воздуха</em>. В случае с Нивой это часто бывает треснувший патрубок адсорбера или неплотное прилегание ресивера.</p>
+
+<p>Ошибка P0420 может появляться не только из-за умирающего катализатора, но и при неисправности второго лямбда-зонда или при использовании некачественного топлива. Перед заменой дорогостоящего нейтрализатора стоит попробовать сменить АЗС и добавить в бак качественную присадку для очистки.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При поиске подсоса воздуха используйте очиститель карбюратора. Побрызгайте им на стыки впускного коллектора при работающем двигателе. Если обороты изменятся, значит, в этом месте идет подсос.</p></div>
+
+<h2 id="типичные-проблемы-шевроле-нива-и-их-коды">Типичные проблемы Шевроле Нива и их коды</h2>
+
+<p>Автомобиль <em>Chevrolet Niva</em> имеет ряд конструктивных особенностей, которые приводят к повторяющимся неисправностям. Знание этих"болезней" помогает быстрее сориентироваться при чтении кодов ошибок и не идти на поводу у недобросовестных сервисменов.</p>
+
+<p>Одной из самых частых проблем является выход из строя модуля зажигания или свечей, что вызывает ошибку P0300. На Нивах с двигателем 1.7 ресурс свечей часто не превышает 15-20 тысяч километров из-за особенностей системы зажигания и качества топлива. Также часто страдает датчик положения дроссельной заслонки (ДПДЗ), особенно если это старый потенциометрический тип.</p>
+
+<div class="poll-widget" id="poll-9546e7ab"><div class="poll-widget-question">📊 Сталкивались ли вы с плавающими оборотами на Ниве?</div><div class="poll-widget-option" data-poll="9546e7ab" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, постоянно</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9546e7ab" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Было пару раз</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9546e7ab" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не было</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9546e7ab" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Не знаю, что это</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Еще одна распространенная беда — датчик скорости. При его отказе может не работать спидометр, а ЭБУ будет переходить в аварийный режим, так как не видит сигнал о движении автомобиля. Это часто сопровождается ошибками в цепи управления форсунками или зажиганием.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Частое появление ошибок по датчикам на Ниве часто связано не с их поломкой, а с плохим качеством проводки и окислением контактов в разъемах из-за вибраций и влаги.</p></div>
+
+<h2 id="сброс-ошибок-и-проверка-результата">Сброс ошибок и проверка результата</h2>
+
+<p>После того как неисправность найдена и устранена, необходимо произвести сброс ошибок из памяти контроллера. Просто снять клемму аккумулятора в современных автомобилях часто бывает недостаточно, так как адаптивные параметры могут сохраняться дольше.</p>
+
+<p>Для качественного сброса лучше всего использовать тот же сканер ELM327. В меню программы выбирается функция"Стереть коды" или"Clear DTC". После этого лампа Check Engine должна погаснуть. Если ошибка появилась снова сразу же или через короткий промежуток времени, значит, проблема не устранена.</p>
+
+<p>В некоторых случаях, например, при замене датчика кислорода или массового расхода воздуха, требуется процедура адаптации. Она заключается в прогреве двигателя до рабочей температуры и кратковременной езде в разных режимах (холостой ход, разгон, торможение двигат), чтобы ЭБУ собрал новую статистику работы <strong>системы управления</strong>.</p>
+
+<div class="checklist-block"><h4>☑️ Порядок действий после ремонта</h4><label class="check-item"><input type="checkbox"><span>Устранить неисправность</span></label><label class="check-item"><input type="checkbox"><span>Считать и записать коды</span></label><label class="check-item"><input type="checkbox"><span>Стереть коды ошибок</span></label><label class="check-item"><input type="checkbox"><span>Прогреть двигатель</span></label><label class="check-item"><input type="checkbox"><span>Проехать тестовый круг</span></label><label class="check-item"><input type="checkbox"><span>Убедиться, что ошибка не возвращается</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 6</div></div>
+
+<h2 id="когда-необходима-профессиональная-диагностика">Когда необходима профессиональная диагностика</h2>
+
+<p>Несмотря на доступность методов самодиагностики, существуют ситуации, когда без вмешательства профессионалов не обойтись. Если сканер показывает ошибку, связанную с механической частью двигателя (например, низкая компрессия, проблемы с фазовращателем) или требует сложной мотортестерной диагностики, лучше обратиться в специализированный сервис.</p>
+
+<p>Также помощь специалистов нужна, если ЭБУ не выходит на связь ни с одним сканером. Это может указывать на проблемы с самим блоком управления, его питанием или CAN-шиной. Самостоятельные попытки"прошить" или восстановить ЭБУ без опыта могут привести к окончательному выводу электроники из строя.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Не пытайтесь перепрошивать ЭБУ, если у вас нет стабильного источника питания с напряжением не менее 12.5В и опыта работы с программаторами. Прерывание процесса прошивки превратит блок в"кирпич", восстановление которого возможно только в лабораторных условиях.</p>
+</blockquote>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли ездить с горящей лампой Check Engine?</summary>
+<p>Кратковременная езда возможна, если двигатель работает ровно и нет посторонних звуков. Однако длительная эксплуатация с горящей лампой может привести к повышенному расходу топлива и повреждению катализатора. Если лампа мигает — ехать нельзя.</p>
+</details>
+
+<details>
+<summary>Почему сканер не видит автомобиль?</summary>
+<p>Причин может быть несколько: выключено зажигание, плохой контакт в разъеме OBD-II, несовместимость протокола связи в приложении или перегоревший предохранитель цепи диагностики. Проверьте предохранители и попробуйте другое приложение.</p>
+</details>
+
+<details>
+<summary>Как часто нужно делать диагностику на Ниве?</summary>
+<p>Профилактическую диагностику рекомендуется проводить при каждом плановом техническом обслуживании (каждые 10-15 тысяч км) или при появлении любых признаков нестабильной работы двигателя.</p>
+</details>
+
+<details>
+<summary>Сбрасывает ли ошибки снятие клеммы аккумулятора?</summary>
+<p>На старых контроллерах (Январь 5.1) снятие клеммы на 10-15 минут часто сбрасывает ошибки. На современных ЭБУ (Bosch ME17.9.7) ошибки могут сохраняться в энергонезависимой памяти даже после отключения питания, поэтому нужен сканер.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#симптомы-неисправностей-системы-управления-двигателем">Симптомы неисправностей системы управления двигателем</a></li><li><a href="#диагностика-без-сканера-метод-перемычки">Диагностика без сканера: метод перемычки</a></li><li><a href="#использование-сканера-elm327-и-смартфона">Использование сканера ELM327 и смартфона</a></li><li><a href="#расшифровка-основных-кодов-ошибок">Расшифровка основных кодов ошибок</a></li><li><a href="#типичные-проблемы-шевроле-нива-и-их-коды">Типичные проблемы Шевроле Нива и их коды</a></li><li><a href="#сброс-ошибок-и-проверка-результата">Сброс ошибок и проверка результата</a></li><li><a href="#когда-необходима-профессиональная-диагностика">Когда необходима профессиональная диагностика</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

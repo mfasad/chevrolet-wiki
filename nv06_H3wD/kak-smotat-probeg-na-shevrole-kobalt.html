@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как смотать пробег на Шевроле Кобальт: методы и риски — Chevrolet-Wiki</title>
+    <meta name="description" content="Узнайте, как смотать пробег на Chevrolet Cobalt. Разбор методов через OBD2, EEPROM и приборную панель. Реальные риски и последствия для ЭБУ.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv06_H3wD/kak-smotat-probeg-na-shevrole-kobalt.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как смотать пробег на Шевроле Кобальт: методы и риски">
+    <meta property="og:description" content="Узнайте, как смотать пробег на Chevrolet Cobalt. Разбор методов через OBD2, EEPROM и приборную панель. Реальные риски и последствия для ЭБУ.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как смотать пробег на Шевроле Кобальт: методы и риски</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как смотать пробег на Шевроле Кобальт: технический разбор</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#где-хранится-пробег-в-chevrolet-cobalt">Где хранится пробег в Chevrolet Cobalt</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#методы-коррекции-obd2-против-пайки">Методы коррекции: OBD2 против пайки</a></li><li><a href="#пошаговая-инструкция-по-работе-с-приборной-панелью">Пошаговая инструкция по работе с приборной панелью</a></li><li><a href="#синхронизация-данных-в-эбу-двигателя">Синхронизация данных в ЭБУ двигателя</a></li><li><a href="#риски-и-возможные-последствия-процедуры">Риски и возможные последствия процедуры</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Вопрос коррекции показаний одометра в <em>Chevrolet Cobalt</em> часто возникает у владельцев, столкнувшихся с заменой приборной панели или электронных блоков после серьезных неисправностей. Механические спидометры ушли в прошлое, уступив место сложным цифровым системам, где данные дублируются в нескольких местах бортовой сети. Понимание архитектуры хранения данных необходимо для тех, кто занимается профессиональным ремонтом или восстановлением истории автомобиля.</p>
+<p>Стоит сразу отметить, что простая манипуляция с кнопками на панели приборов, которая работала на старых моделях <em>ВАЗ</em> или ранних иномарках, здесь не пройдет. <strong>Электронный блок управления</strong> надежно хранит информацию о километраже, и доступ к ней требует специализированного оборудования. В этой статье мы детально разберем, где именно хранится пробег, какие инструменты используются для его изменения и с какими техническими сложностями можно столкнуться в процессе.</p>
+<p>Необходимо понимать разницу между легальной заменой неисправных узлов и нелегальным скручиванием пробега с целью коммерческой выгоды. Технически процесс выглядит одинаково, но юридические последствия могут быть диаметрально противоположными. Мы сосредоточимся исключительно на технической стороне вопроса, рассматривая алгоритмы работы памяти микросхем и протоколы обмена данными в системе <em>Chevrolet Cobalt</em>.</p>
+
+<h2 id="где-хранится-пробег-в-chevrolet-cobalt">Где хранится пробег в Chevrolet Cobalt</h2>
+<p>В автомобиле <em>Chevrolet Cobalt</em> информация о пройденном расстоянии не хранится в одном единственном месте. Архитектура бортовой сети GM предусматривает резервирование данных для предотвращения потери информации при сбоях. Основным хранителем является сама <strong>комбинация приборов</strong>, где данные записываются в энергонезависимую память. Однако это не единственное место, где фиксируется километраж.</p>
+<p>Вторым критически важным узлом является <strong>электронный блок управления двигателем</strong> (ECU). В некоторых комплектациях данные также могут дублироваться в модуле ABS или блоке управления кузовом, хотя в Кобальте основная связка — это"приборка" и"мозги" двигателя. При попытке изменить показания только на панели приборов, при следующем подключении диагностического сканера или перезапуске системы, ЭБУ может инициировать процедуру восстановления корректных данных, вернув старый пробег.</p>
+<blockquote>
+<p>⚠️ Внимание: Попытка записи несоответствующих данных в ЭБУ без синхронизации с панелью приборов может привести к появлению ошибок в системе самодиагностики и загоранию лампы Check Engine.</p>
+</blockquote>
+<p>Тип памяти, используемой в этих узлах, чаще всего представляет собой EEPROM (Electrically Erasable Programmable Read-Only Memory). Это позволяет сохранять информацию даже после полного отключения аккумулятора. Для работы с такой памятью требуются специальные программаторы, способные отправать команды чтения и записи на низком уровне. Простое подключение через диагностический разъем OBD2 часто не дает полных прав на запись в эти ячейки без использования заводских учетных записей дилера.</p>
+
+<h2 id="необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</h2>
+<p>Для проведения работ по коррекции пробега на <em>Chevrolet Cobalt</em> обычного мультиметра или простого ELM327 адаптера будет недостаточно. Вам потребуется профессиональное оборудование, способное работать с протоколами GM и конкретными микросхемами памяти. Рынок предлагает несколько решений, различающихся по цене и функционалу.</p>
+<p>Наиболее распространенным инструментом являются универсальные программаторы одометров, такие как <em>Xprog</em>, <em>Orange</em> или специализированные калькуляторы для GM. Эти устройства подключаются непосредственно к контактам микросхемы или к диагностическому разъему через интерфейс J2534. Важно, чтобы программное обеспечение поддерживало конкретную версию приборной панели вашего автомобиля, так как в разные годы выпуска устанавливались разные модификации.</p>
+<ul>
+<li>🔌 Адаптер J2534 (PassThru) — необходим для связи с ЭБУ через стандартный разъем OBD2.</li>
+<li>💻 Ноутбук с установленным специализированным софтом (например, Digiprog, TachoUniversal).</li>
+<li>🔋 Стабилизированный источник питания — для поддержания напряжения в бортсети во время процедуры.</li>
+<li>🔍 Паяльное оборудование — если требуется выпаивание микросхемы для прямого чтения.</li>
+</ul>
+<p>Отдельного внимания заслуживает вопрос питания. При записи данных в EEPROM напряжение в сети должно быть стабильным. Любые скачки могут привести к повреждению микросхемы или записи некорректных данных ("битых" байтов), что выведет приборную панель из строя. Поэтому использование качественного бустера или зарядного устройства в режиме"Supply" является обязательным условием.</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте только стабилизированные источники питания с защитой от короткого замыкания. Скачки напряжения при записи в EEPROM могут необратимо повредить приборную панель.</p></div>
+
+<h2 id="методы-коррекции-obd2-против-пайки">Методы коррекции: OBD2 против пайки</h2>
+<p>Существует два основных подхода к изменению показаний одометра на <em>Chevrolet Cobalt</em>: через диагностический разъем (OBD2) и прямой доступ к памяти (пайка). Первый метод считается менее инвазивным, так как не требует разбора приборной панели и пайки контактов. Однако он работает не на всех версиях прошивок и требует дорогостоящего лицензионного софта.</p>
+<p>Метод пайки предполагает демонтаж комбинации приборов, ее разборку и физический доступ к микросхеме памяти. Чаще всего в Кобальтах используются микросхемы серии <em>93Cxx</em> или <em>24Cxx</em>. Программатор подключается напрямую к ножкам микросхемы через клипсу или припой. Этот метод дает 100% гарантию доступа к данным, но требует высокой квалификации исполнителя.</p>
+<div class="poll-widget" id="poll-05578c23"><div class="poll-widget-question">📊 Какой метод коррекции пробега вы считаете более надежным?</div><div class="poll-widget-option" data-poll="05578c23" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Через OBD2 разъем:Прямая пайка микросхемы:Использование дилерского сканера:Не имеет значения</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+<p>При выборе метода через OBD2 важно учитывать версию программного обеспечения автомобиля. Если блок управления был обновлен на заводе или у официального дилера, старые дыры в безопасности могут быть закрыты. В таком случае программатор просто не сможет записать новые значения, выдав ошибку доступа. Пайка в этом случае остается единственным рабочим вариантом, так как она игнорирует программные защиты и работает напрямую с"железом".</p>
+
+<h2 id="пошаговая-инструкция-по-работе-с-приборной-панелью">Пошаговая инструкция по работе с приборной панелью</h2>
+<p>Если вы выбрали метод с демонтажем и пайкой, процесс начинается с аккуратного снятия комбинации приборов. В <em>Chevrolet Cobalt</em> для этого необходимо демонтировать декоративную накладку торпедо и выкрутить крепежные винты. Действовать следует осторожно, чтобы не повредить пластиковые защелки и шлейфы.</p>
+<p>После извлечения платы необходимо идентифицировать микросхему памяти. Визуально осмотрите маркировку на чипе. Если это <em>93C66</em> или аналог, вам понадобится программатор, поддерживающий этот тип, и схема распиновки. Перед началом записи обязательно сделайте резервную копию (дамп) исходных данных. Это позволит вернуть все как было в случае ошибки.</p>
+<div class="checklist-block"><h4>☑️ Подготовка к пайке</h4><label class="check-item"><input type="checkbox"><span>Снять клемму с аккумулятора:Демонтировать приборную панель:Идентифицировать микросхему памяти:Сделать бэкап дампа</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 1</div></div>
+<p>Процесс записи новых данных выглядит следующим образом: вы вычисляете необходимое шестнадцатеричное значение для желаемого пробега, вносите его в редактор дампа и записываете в чип. После этого панель собирается и устанавливается на место. При включении зажигания одометр должен показать новое значение. Если горят ошибки или пробег сбросился — значит, ЭБУ двигателя не синхронизирован.</p>
+
+<h2 id="синхронизация-данных-в-эбу-двигателя">Синхронизация данных в ЭБУ двигателя</h2>
+<p>Самая сложная часть процесса в <em>Chevrolet Cobalt</em> — это согласование пробега между приборной панелью и блоком управления двигателем (ECU). Если значения расходятся, на панели могут появляться артефакты, а при подключении дилерского сканера <em>GM MDI</em> или <em>Tech2</em> будет видна реальная картина. Некоторые блоки ЭБУ (например, <em>Delphi</em> или <em>Simtec</em>) имеют защиту от записи, которую сложно обойти без заводских доступов.</p>
+<p>Для коррекции данных в ЭБУ часто требуется вскрытие самого блока управления. Внутри находится своя микросхема EEPROM или Flash-память, где также хранится счетчик моточасов и общий пробег. Изменение этих данных требует перепайки чипа или использования BDM/JTAG интерфейсов для прямого доступа к процессору. Это задача для продвинутых специалистов по чип-тюнингу.</p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Приборная панель</th>
+<th>ЭБУ двигателя</th>
+<th>Блок ABS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Хранение данных</td>
+<td>EEPROM 93Cxx</td>
+<td>Flash/EEPROM</td>
+<td>EEPROM</td>
+</tr>
+<tr>
+<td>Доступ через OBD</td>
+<td>Частично (зависит от версии)</td>
+<td>Защищено</td>
+<td>Только чтение</td>
+</tr>
+<tr>
+<td>Риск повреждения</td>
+<td>Средний</td>
+<td>Высокий</td>
+<td>Высокий</td>
+</tr>
+<tr>
+<td>Необходимость синхронизации</td>
+<td>Да</td>
+<td>Да</td>
+<td>Желательно</td>
+</tr>
+</tbody>
+</table>
+<p>Если не провести синхронизацию, автомобиль может вести себя некорректно. Например, интервалы сервисного обслуживания могут рассчитываться неверно, или система диагностики будет фиксировать несоответствие данных. В редких случаях это может влиять на работу алгоритмов переключения передач в автоматической коробке, если она завязана на пробеге.</p>
+
+<h2 id="риски-и-возможные-последствия-процедуры">Риски и возможные последствия процедуры</h2>
+<p>Вмешательство в работу бортовой электроники <em>Chevrolet Cobalt</em> всегда несет риски. Самый очевидный — выход из строя приборной панели. Если в процессе записи питания не хватало или произошел сбой, микросхема может"заблокироваться" или сгореть. Восстановление такой панели часто стоит дороже, чем ее покупка на разборке.</p>
+<p>Другой риск — появление"фантомных" пробегов. В системе может остаться старое значение в одном из скрытых модулей, и при плановом ТО дилер, подключив сканер, увидит историю изменений. Современные дилерские сканеры умеют показывать лог-файлы, где видно, что пробег был изменен, и даже когда это произошло. Это сразу переводит автомобиль в разряд"юридически проблемных".</p>
+<blockquote>
+<p>⚠️ Внимание: Изменение показаний одометра с целью продажи автомобиля является мошенничеством. Данная информация предоставлена исключительно для образовательных целей и восстановления исправных узлов.</p>
+</blockquote>
+<p>Также стоит учитывать человеческий фактор. Некачественная пайка может привести к отслоению контактов микросхемы от вибрации. В условиях российской зимы и плохих дорог приборная панель <em>Cobalt</em> и так подвержена тряске, а дополнительное вмешательство только повышает вероятность отказа электроники на ходу.</p>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+<details>
+<summary>Можно ли смотать пробег на Кобальте кнопками на панели?</summary>
+<p>Нет, в Chevrolet Cobalt нет сервисной комбинации кнопок для сброса или изменения пробега. Все манипуляции требуют подключения внешнего оборудования.</p>
+</details>
+<details>
+<summary>Сбросится ли пробег если снять аккумулятор?</summary>
+<p>Нет, данные хранятся в энергонезависимой памяти EEPROM. Отключение питания не влияет на показания одометра.</p>
+</details>
+<details>
+<summary>Видно ли скручивание пробега на дилерской диагностике?</summary>
+<p>В большинстве случаев — да. В логах ЭБУ и других блоков остаются временные метки и записи о реальном пробеге, которые не стираются при простой коррекции одометра.</p>
+</details>
+<details>
+<summary>Сколько стоит профессиональная коррекция пробега?</summary>
+<p>Цена варьируется от 3000 до 10000 рублей и зависит от метода (OBD или пайка), региона и аппетитов исполнителя.</p>
+</details>
+
+<p>Завершая обзор, стоит подчеркнуть, что технически задача решается, но требует глубоких знаний в электронике. <mark>Критически важным этапом является создание полной резервной копии всех блоков перед любыми изменениями.</mark> Без бэкапа вы рискуете получить неработающий автомобиль вместо желаемых цифр на экране. Всегда взвешивайте необходимость таких действий и помните о юридической ответственности.</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Коррекция пробега на Chevrolet Cobalt возможна, но требует синхронизации минимум двух блоков (панель и ЭБУ) и несет высокие риски повреждения электроники.</p></div></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#где-хранится-пробег-в-chevrolet-cobalt">Где хранится пробег в Chevrolet Cobalt</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#методы-коррекции-obd2-против-пайки">Методы коррекции: OBD2 против пайки</a></li><li><a href="#пошаговая-инструкция-по-работе-с-приборной-панелью">Пошаговая инструкция по работе с приборной панелью</a></li><li><a href="#синхронизация-данных-в-эбу-двигателя">Синхронизация данных в ЭБУ двигателя</a></li><li><a href="#риски-и-возможные-последствия-процедуры">Риски и возможные последствия процедуры</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

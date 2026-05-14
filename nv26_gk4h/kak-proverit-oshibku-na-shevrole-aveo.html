@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как проверить ошибки на Шевроле Авео: диагностика кодов — Chevrolet-Wiki</title>
+    <meta name="description" content="Полная инструкция по диагностике ошибок двигателя Шевроле Авео. Как считать коды через OBD2, расшифровать Check Engine и устранить неисправности.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv26_gk4h/kak-proverit-oshibku-na-shevrole-aveo.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как проверить ошибки на Шевроле Авео: диагностика кодов">
+    <meta property="og:description" content="Полная инструкция по диагностике ошибок двигателя Шевроле Авео. Как считать коды через OBD2, расшифровать Check Engine и устранить неисправности.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как проверить ошибки на Шевроле Авео: диагностика кодов</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Диагностика и проверка ошибок Шевроле Авео: полный гид</h1>
+                    
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Современный автомобиль, включая популярную модель <em>Chevrolet Aveo</em>, представляет собой сложный электронный механизм, где за работу всех систем отвечают десятки датчиков и исполнительных устройств. Владельцы часто сталкиваются с ситуацией, когда на приборной панели внезапно загорается индикатор <strong>Check Engine</strong>, что может вызвать панику у неопытного водителя. Однако этот сигнал не всегда означает катастрофическую поломку, часто это лишь предупреждение о необходимости провести диагностику и проверить коды ошибок, хранящиеся в памяти ЭБУ.</p>
+
+<p>Правильная интерпретация сигналов бортовой системы позволяет сэкономить значительные средства на ремонте и избежать ненужных поездок в сервисный центр. Зная, как проверить ошибки на <strong>Шевроле Авео</strong>, вы сможете самостоятельно определить критичность проблемы: от неплотно закрытого бензобака до серьезных сбоев в системе зажигания. В этой статье мы подробно разберем методы диагностики, используемые для моделей T250 и T300, и поможем вам понять язык, на котором ваш автомобиль «сообщает» о проблемах.</p>
+
+<h2>Основные причины появления индикатора неисправности</
+
+<p>Появление желтого значка двигателя на панели приборов <em>Chevrolet Aveo</em> фиксируется блоком управления, когда один из датчиков выходит за пределы допустимого диапазона значений. Чаще всего проблемы кроются в системе топливоподачи или зажигания, где износ свечей или загрязнение форсунок приводят к некорректному смесеобразованию. Электроника мгновенно реагирует на такие отклонения, сохраняя соответствующий код ошибки для дальнейшего анализа.</p>
+
+<p>Иногда причиной может стать банальное повреждение проводки или окисление контактов, особенно в условиях эксплуатации в зимний период с использованием реагентов. <strong>Датчик кислорода</strong>, расположенный в выпускном коллекторе, также часто становится виновником загорания лампы, так как он чувствителен к качеству топлива и состоянию катализатора.</p>
+
+<div class="poll-widget" id="poll-619c8efd"><div class="poll-widget-question">📊 Какая проблема у вашего Шевроле Авео чаще всего вызывает Check Engine?</div><div class="poll-widget-option" data-poll="619c8efd" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Горит постоянно, но машина едет нормально</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="619c8efd" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Машина троит и дергается</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="619c8efd" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Проблем с двигателем нет, лампа горит после заправки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="619c8efd" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Лампа мигает при разгоне</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Не стоит игнорировать мигающий индикатор, так как это прямой сигнал о пропусках зажигания, которые могут быстро вывести из строя каталитический нейтрализатор. В таких случаях необходимо немедленно снизить нагрузку на двигатель и провести глубокую проверку системы <strong>впрыска</strong> и <strong>зажигания</strong>.</p>
+
+<h2>Методы диагностики без использования сканера</
+
+<p>Владельцы <em>Шевроле Авео</em> первого поколения (T250) могут воспользоваться встроенной функцией самодиагностики, не требующей покупки дорогостоящего оборудования. Для активации этого режима необходимо замкнуть определенные контакты в диагностическом разъеме, после чего индикатор «Check Engine» начнет транслировать коды ошибок в виде вспышек. Этот метод позволяет быстро получить первичную информацию о состоянии систем автомобиля.</p>
+
+<p>Процесс считывания выглядит следующим образом:</p>
+<ul>
+<li>🔧 Находим диагностический разъем под торпедой, обычно он расположен слева от рулевой колонки или возле педального узла.</li>
+<li>🔌 Замыкаем контакты «A» (заземление) и «B» (сигнал диагностики) с помощью перемычки или скрепки при выключенном зажигании.</li>
+<li>💡 Включаем зажигание, не запуская двигатель, и наблюдаем за ритмичными вспышками индикатора на панели приборов.</li>
+</ul>
+
+<details class="faq-item"><summary>Как расшифровать вспышки индикатора?</summary><div class="faq-answer"><p>Первая серия вспышек обозначает первую цифру кода, пауза, затем вторая серия — вторую цифру. Например, два коротких мигания, пауза, пять миганий означают код 25.</p></div></details>
+
+<p>Для моделей второго поколения (T300) такой метод уже не актуален, так как архитектура бортовой сети изменилась и требует использования цифровых интерфейсов. Здесь без подключения диагностического адаптера <strong>OBD-II</strong> получить точную информацию практически невозможно. </p>
+
+<h2>Использование OBD2 сканера и адаптеров</
+
+<p>Наиболее точным и информативным способом проверки ошибок на <em>Chevrolet Aveo</em> является использование специализированного сканера или простого адаптера ELM327. Эти устройства подключаются к штатному разъему и передают данные на смартфон или ноутбук, где специальное программное обеспечение декодирует их в понятный для человека вид. Рынок предлагает множество вариантов от профессиональных мультимарочников до бюджетных Bluetooth-адаптеров.</p>
+
+<p>Для подключения необходимо выполнить следующие действия:</p>
+<ol>
+<li>Вставьте адаптер в диагностический разъем автомобиля (расположен под панелью приборов со стороны водителя).</li>
+<li>Включите зажигание, чтобы подать питание на электронный блок управления.</li>
+<li>Запустите приложение диагностики (например, Torque, OpenDiag или Scanmaster) на смартфоне.</li>
+<li>Выполните сопряжение устройств и запустите процедуру сканирования системы.</li>
+</ol>
+
+<div class="checklist-block"><h4>☑️ Проверка готовности к диагностике</h4><label class="check-item"><input type="checkbox"><span>Адаптер вставлен в разъем до щелчка</span></label><label class="check-item"><input type="checkbox"><span>Зажигание включено, двигатель заглушен</span></label><label class="check-item"><input type="checkbox"><span>Bluetooth на телефоне активирован</span></label><label class="check-item"><input type="checkbox"><span>Приложение запущено и видит устройство</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>После сканирования на экране отобразится список накопленных и текущих ошибок, которые можно расшифровать с помощью встроенной базы данных приложения. Современные программы позволяют не только считывать коды, но и просматривать <strong>параметры в реальном времени</strong>, такие как положение дроссельной заслонки, угол опережения зажигания и напряжение бортовой сети. Это дает возможность увидеть проблему в динамике, что особенно важно при плавающих неисправностях.</p>
+
+<h2>Расшифровка популярных кодов ошибок</
+
+<p>Получив код ошибки, например, P0300 или P0171, важно правильно понять, на какую именно систему указывает ЭБУ. Коды стандартизированы, но их значение может варьироваться в зависимости от объема двигателя и года выпуска <em>Chevrolet Aveo</strong>. Ниже приведена таблица наиболее часто встречающихся неисправностей и их вероятных причин.</p>
+
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание</th>
+<th>Вероятная причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0300</td>
+<td>Случайные пропуски зажигания</td>
+<td>Свечи, катушки, низкое давление топлива</td>
+</tr>
+<tr>
+<td>P0171</td>
+<td>Слишком бедная смесь (Банк 1)</td>
+<td>Подсос воздуха, неисправность ДМРВ</td>
+</tr>
+<tr>
+<td>P0420</td>
+<td>Низкая эффективность катализатора</td>
+<td>Износ катализатора, неисправность лямбды</td>
+</tr>
+<tr>
+<td>P0133</td>
+<td>Медленный отклик датчика кислорода</td>
+<td>Старение датчика, загрязнение</td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При множественных ошибках сначала устраняйте ту, которая появилась первой в списке, так как остальные могут быть ее следствием.</p></div>
+
+<p>Ошибки, начинающиеся на <strong>P03xx</strong>, обычно указывают на проблемы с воспламенением смеси, что требует проверки свечей и высоковольтных проводов. Коды серии <strong>P01xx</em> чаще связаны с системой управления двигателем и топливоподачей, где критически важна герметичность впускного тракта. Не стоит слепо менять детали по коду, сначала нужно исключить механические повреждения и обрывы цепей.</p>
+
+<h2>Типичные неисправности двигателя 1.2 и 1.4</
+
+<p>Двигатели объемом 1.2 и 1.4 литра, устанавливаемые на <em>Шевроле Авео</em>, имеют свои характерные «болезни», которые часто провоцируют появление ошибок. Одной из распространенных проблем является выход из строя катушки зажигания, особенно на двигателях B12D1, что приводит к троению мотора и загоранию <strong>Check Engine</strong>. Владелец может заметить потерю мощности и вибрацию на холостом ходу.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Частая причина ошибок на Авео 1.2/1.4 — пробой катушки зажигания или неисправность регулятора холостого хода.</p></div>
+
+<p>Также стоит обратить внимание на регулятор холостого хода (РХХ), который склонен к загрязнению и заклиниванию.</p>
+<ul>
+<li>🛠️ При неисправном РХХ обороты двигателя могут плавать или глохнуть при сбросе газа.</li>
+<li>⚙️ Засорение клапана вентиляции картерных газов (КВКГ) приводит к повышению давления в двигателе и подсосу масла.</li>
+<li>🔋 Нестабильное напряжение в бортовой сети часто вызывает хаотичные ошибки по различным датчикам.</li>
+</ul>
+
+<p>Своевременная замена свечей и использование качественного топлива значительно снижают риск возникновения критических ошибок в системе зажигания. Регулярная чистка дроссельной заслонки также помогает поддерживать стабильную работу двигателя на низких оборотах.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если после замены свечей или катушки ошибка не исчезает, проверьте целостность проводки до ЭБУ, так как обрыв цепи часто дает тот же код, что и неисправность самого элемента.</p>
+</blockquote>
+
+<h2>Процедура сброса ошибок и адаптация</
+
+<p>После устранения неисправности код ошибки остается в памяти ЭБУ до тех пор, пока не будет выполнен принудительный сброс или автомобиль не пройдет несколько циклов работы без сбоев. Для быстрого удаления информации можно использовать функцию «Erase Codes» в диагностическом приложении или сканере. Однако просто стереть ошибку недостаточно, если причина ее появления не устранена физически.</p>
+
+<p>Для моделей с электронным дросселем после сброса ошибок или отключения аккумулятора может потребоваться процедура адаптации. Она заключается в определенной последовательности действий с ключом зажигания и педалями, которая описана в сервисной документации. Без этой процедуры двигатель может работать нестабильно, а обороты холостого хода будут «плавать».</p>
+
+<details class="faq-item"><summary>Нужно ли сбрасывать ошибки сразу?</summary><div class="faq-answer"><p>Не всегда. Если вы только проводите диагностику, лучше сначала записать коды, чтобы не потерять историю неисправностей. Сбрасывайте только после ремонта.</p></div></details>
+
+<p>В некоторых случаях, особенно при замене <strong>датчика положения дроссельной заслонки</strong>, адаптация проходит автоматически после нескольких десятков километров пробега в разных режимах. Если же проблема возвращается сразу после сброса, значит, неисправность носит постоянный характер и требует повторной диагностики.</p>
+
+<h2>Частые вопросы и ответы (FAQ)</
+
+<details>
+<summary>Может ли ошибка исчезнуть сама без моего вмешательства?</summary>
+<p>Да, если неисправность была временной (например, плохое качество топлива или разовый сбой датчика), ЭБУ может погасить лампу после нескольких успешных циклов запуска и прогрева двигателя. Однако код ошибки останется в памяти как «исторический» до момента сброса.</p>
+</details>
+
+<details>
+<summary>Влияет ли снятие клеммы аккумулятора на сброс ошибок?</summary>
+<p>Снятие минусовой клеммы на 10-15 минут может сбросить кратковременные ошибки и адаптированные значения, но серьезные неисправности, такие как P0420 или P0300, обычно сохраняются в энергонезависимой памяти и требуют сканера для удаления.</p>
+</details>
+
+<details>
+<summary>Почему горит Check Engine, если машина едет нормально?</summary>
+<p>Это может указывать на незначительное отклонение в работе системы экологии (например, эффективность катализатора) или на неисправность датчика, который еще не влияет критически на работу двигателя, но уже вышел за пределы допуска.</p>
+</details>
+
+<details>
+<summary>Как часто нужно проводить диагностику Шевроле Авео?</summary>
+<p>Профилактическую проверку кодов ошибок рекомендуется проводить при каждом плановом техническом обслуживании или при появлении любых признаков нестабильной работы двигателя, даже если лампа Check Engine не горит.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

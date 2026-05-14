@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как добавить пробег на Нива Шевроле: настройка одометра — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция: как добавить пробег на Ниве Шевроле через EEPROM и программатор. Коррекция показаний одометра, риски и особенности.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv42_kbip/kak-dobavit-probeg-na-nive-shevrole.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как добавить пробег на Нива Шевроле: настройка одометра">
+    <meta property="og:description" content="Подробная инструкция: как добавить пробег на Ниве Шевроле через EEPROM и программатор. Коррекция показаний одометра, риски и особенности.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как добавить пробег на Нива Шевроле: настройка одометра</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Коррекция и добавление пробега на Нива Шевроле</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#устройство-системы-учета-пробега-на-chevrolet-niva">Устройство системы учета пробега на Chevrolet Niva</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#технология-переноса-данных-в-новую-панель-приборов">Технология переноса данных в новую панель приборов</a></li><li><a href="#таблица-совместимости-микросхем-и-панелей">Таблица совместимости микросхем и панелей</a></li><li><a href="#возможные-ошибки-и-способы-их-устранения">Возможные ошибки и способы их устранения</a></li><li><a href="#юридические-и-технические-риски-процедуры">Юридические и технические риски процедуры</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Вопрос о том, как добавить пробег на Ниве Шевроле, часто возникает у владельцев после замены приборной панели или электронного блока управления. В отличие от механических спидометров прошлого, где цифры просто крутились от тросика, современная техника <em>Vaz-2123</em> хранит данные о километраже в энергонезависимой памяти. Это создает определенные сложности при установке нового щитка приборов, так как он будет показывать нулевые значения, что не соответствует реальности и может вызвать вопросы при продаже автомобиля.</p>
+
+<p>Процедура изменения показаний одометра требует не только специального оборудования, но и глубокого понимания архитектуры бортовой электроники. <strong>Электронный блок управления</strong> и приборная панель часто связаны сложным протоколом обмена данными. Простое переключение проводов здесь не поможет, необходимо вмешательство в программный код микросхемы памяти. Владелец должен осознавать, что любые манипуляции с показаниями приборов носят технический характер и должны производиться исключительно для восстановления корректных данных после ремонта.</p>
+
+<p>Стоит сразу отметить, что стандартными средствами через меню бортового компьютера увеличить или уменьшить цифровое значение невозможно. Завод-изготовитель не предусматривает такой функции для конечного пользователя, чтобы исключить мошеннические действия. Поэтому единственно верным путем остается использование <strong>программаторов</strong> и специализированного софта для работы с <em>EEPROM</em>. Далее мы подробно разберем техническую сторону процесса и необходимые инструменты.</p>
+
+<blockquote>⚠️ Внимание: Вмешательство в работу электронных блоков с целью искажения реального пробега автомобиля в коммерческих целях (например, скрутка перед продажей) является незаконным и может повлечь гражданскую ответственность. Данная статья носит исключительно информационный характер для восстановления работоспособности приборов после замены.</blockquote>
+
+<h2 id="устройство-системы-учета-пробега-на-chevrolet-niva">Устройство системы учета пробега на Chevrolet Niva</h2>
+
+<p>Чтобы понять, как добавить пробег, необходимо разобраться, где именно он хранится. На автомобилях <em>Chevrolet Niva</em>, особенно выпуска после 2009 года, используется комбинация приборов с контроллером <em>VS8</em> или более новыми версиями. Данные о километраже записываются в микросхему памяти, которая сохраняет информацию даже после полного отключения аккумуляторной батареи. Чаще всего в этих блоках используются чипы серии <strong>93C86</strong>, <strong>24C02</strong> или их аналоги от различных производителей.</p>
+
+<p>Интересно, что пробег может дублироваться в нескольких местах. Основное хранилище находится непосредственно в приборной панели. Однако на некоторых модификациях с <strong>ABS</strong> или сложными системами мониторинга, данные могут синхронизироваться с другими модулями. При замене щитка приборов на новый, вы получаете устройство с заводским нулем. Если просто поставить его на машину, общий пробег автомобиля на одометре сбросится, что будет бросаться в глаза и создаст путаницу в истории обслуживания.</p>
+
+<div class="poll-widget" id="poll-bc4f01a3"><div class="poll-widget-question">📊 Сталкивались ли вы с заменой приборной панели?</div><div class="poll-widget-option" data-poll="bc4f01a3" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, панель сгорела</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bc4f01a3" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Менял из-за поломки стрелок</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bc4f01a3" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Устанавливал кастомный щиток</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="bc4f01a3" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Нет, стоит заводская</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Для корректной работы необходимо считать данные со старой, неисправной панели (если она хоть как-то реагирует) или взять актуальные показания с кузова автомобиля, зафиксированные в сервисной книжке. Затем эти данные переносятся в память новой панели. Процесс считывания и записи происходит через специальные контакты на плате или непосредственно через разъем диагностики, в зависимости от года выпуска и типа <em>ECU</em>.</p>
+
+<h2 id="необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</h2>
+
+<p>Для выполнения процедуры "добавления" или коррекции пробега вам потребуется специализированный инструментарий. Использование подручных средств или универсальных сканеров <em>OBDII</em> здесь неэффективно, так как они работают с диагностическими кодами ошибок, а не с ячейками памяти <strong>EEPROM</strong>. Основным инструментом станет программатор, способный взаимодействовать с микросхемами памяти по протоколам <em>I2C</em> или <em>MICROWIRE</em>.</p>
+
+<p>Наиболее популярными и доступными решениями среди специалистов по чип-тюнингу являются адаптеры <em>PonyProg</em>, <em>CH341A</em> (с переходниками) или специализированные комплексы вроде <em>Combiloader</em> с соответствующими модулями. Для работы с панелью приборов <em>Niva</em> часто требуется выпаивать микросхему или использовать специальные щупы для подключения без демонтажа, что требует высокой квалификации.</p>
+
+<ul>
+<li>🔌 Программатор EEPROM (например, TL866 или аналог) для прямой записи данных.</li>
+<li>💻 Ноутбук с установленным специализированным софтом для редактирования HEX-кодов.</li>
+<li>🔧 Паяльное оборудование и тонкие щупы для подключения к контактам платы.</li>
+<li>📟 Адаптер для подключения к диагностическому разъему (если запись идет через OBD).</li>
+</ul>
+
+<p>Программное обеспечение должно поддерживать файловые форматы дампов памяти конкретных моделей панелей. Часто используются программы-калькуляторы пробега, которые автоматически пересчитывают HEX-код в километры и обратно. Ошибка в одном бите данных может привести к тому, что одометр перестанет отображать цифры или покажет некорректное значение, например, 999999 км.</p>
+
+<blockquote>⚠️ Внимание: При работе с программатором критически важно соблюдать полярность подключения. Перепутав плюсовой и минусовой контакты при подаче питания на микросхему, вы гарантированно выведете из строя чип памяти, и восстановить данные будет невозможно.</blockquote>
+
+<h2 id="технология-переноса-данных-в-новую-панель-приборов">Технология переноса данных в новую панель приборов</h2>
+
+<p>Сам процесс добавления пробега в новую панель приборов представляет собой операцию по клонированию данных или ручной правке дампа. Если у вас есть старая панель, с которой нужно считать пробег, алгоритм действий начинается с ее вскрытия. Аккуратно разобрав корпус, необходимо найти на плате микросхему памяти. На платах <em>Vaz-2123</em> она обычно имеет 8 контактов и маркировку, начинающуюся на <strong>93</strong> или <strong>24</strong>.</p>
+
+<p>Существует два основных метода работы: со снятием микросхемы и без снятия. Первый метод надежнее, так как гарантирует стабильный контакт, но требует навыков пайки. Второй метод быстрее, но высок риск соскальзывания щупов и короткого замыкания. После подключения программатора производится чтение содержимого (<strong>Read</strong>). Полученный файл сохраняется как резервная копия — это критически важный этап.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка к перепрошивке панели</h4><label class="check-item"><input type="checkbox"><span>Разобрать корпус приборной панели</span></label><label class="check-item"><input type="checkbox"><span>Идентифицировать микросхему памяти</span></label><label class="check-item"><input type="checkbox"><span>Подготовить программатор и ПК</span></label><label class="check-item"><input type="checkbox"><span>Сделать резервную копию дампа</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Далее полученный файл открывается в HEX-редакторе. Вам нужно найти строки, отвечающие за пробег. Обычно они повторяются несколько раз для надежности. Значение пробега кодируется в шестнадцатеричной системе. Существует формула пересчета, зависящая от конкретной версии прошивки панели. Например, значение может быть инвертировано или умножено на коэффициент. Внеся изменения, файл записывается (<strong>Write</strong>) обратно в микросхему или в новую панель.</p>
+
+<h2 id="таблица-совместимости-микросхем-и-панелей">Таблица совместимости микросхем и панелей</h2>
+
+<p>Не все приборные панели одинаковы. В зависимости от года выпуска <em>Niva</em>, менялись поставщики компонентов и типы используемой памяти. Ниже приведена таблица, помогающая идентифицировать тип микросхемы для распространенных модификаций щитков приборов.</p>
+
+<table>
+<thead>
+<tr>
+<th>Модель панели приборов</th>
+<th>Годы выпуска</th>
+<th>Тип микросхемы</th>
+<th>Протокол связи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ВАЗ-2123 (Старая)</td>
+<td>2002–2008</td>
+<td>EEPROM 24C02</td>
+<td>I2C</td>
+</tr>
+<tr>
+<td>ВАЗ-2123 (VS8)</td>
+<td>2009–2015</td>
+<td>EEPROM 93C86</td>
+<td>MICROWIRE</td>
+</tr>
+<tr>
+<td>VDO (Siemens)</td>
+<td>2016–2020</td>
+<td>Flash 25xx</td>
+<td>SPI</td>
+</tr>
+<tr>
+<td>Автоприбор (Новая)</td>
+<td>2021–н.в.</td>
+<td>EEPROM 95xxx</td>
+<td>SPI</td>
+</tr>
+</tbody>
+</table>
+
+<p>Как видно из таблицы, с годами технологии менялись. Если на старых моделях можно было обойтись простым программатором, то новые версии требуют более сложных устройств с поддержкой напряжения <strong>3.3В</strong> или <strong>5В</strong>. Также важно учитывать, что на некоторых современных панелях данные могут быть защищены контрольной сумой (<strong>CRC</strong>). Если вы измените пробег, но не пересчитаете контрольную сумму, панель уйдет в ошибку и может заблокироваться.</p>
+
+<details class="faq-item"><summary>Что такое контрольная сумма (CRC)?</summary><div class="faq-answer"><p>Контрольная сумма — это специальное числовое значение, вычисляемое по алгоритму из всех данных в памяти. Если вы изменили пробег, но не обновили CRC, блок управления поймет, что данные повреждены или изменены, и может игнорировать их или отображать ошибку.</p></div></details>
+
+<h2 id="возможные-ошибки-и-способы-их-устранения">Возможные ошибки и способы их устранения</h2>
+
+<p>В процессе работы с <strong>электроникой</strong> автомобиля редко все проходит идеально с первого раза. Часто встречаются ситуации, когда после записи панель приборов включается, но сегменты дисплея не показывают цифры, или одометр мигает. Это может свидетельствовать о повреждении дампа или ошибке при записи. В некоторых случаях панель может "лечь", то есть перестать реагировать на команды.</p>
+
+<p>Одной из распространенных проблем является рассинхронизация пробега между одометром и бортовым компьютером, если он выведен на дисплей. Также могут сброситься настройки часов или одометра суточного пробега (Trip). Чтобы избежать этого, перед началом работ необходимо зафиксировать все текущие показания и настройки. Иногда требуется процедура адаптации панели через диагностический сканер после замены микросхемы.</p>
+
+<ul>
+<li>🚫 Панель не включается — проверьте целостность дорожек на плате и качество пайки контактов микросхемы.</li>
+<li>🔢 Одометр показывает нули — данные не записались или записаны по неверному адресу памяти.</li>
+<li>⚠️ Горит индикатор Check Engine — возможно, при пайке был задет шлейф или возникло короткое замыкание в цепи.</li>
+</ul>
+
+<p>Если вы столкнулись с тем, что пробег "убежал" и показывает абсурдные значения (например, 16 млн км), это значит, что байты были записаны не в том порядке (Little Endian вместо Big Endian или наоборот). В этом случае необходимо снова считать дамп, проанализировать структуру файла и перевернуть порядок байтов в HEX-редакторе перед повторной записью.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте увеличительную лупу или микроскоп при работе с платой. Дорожки на современных панелях очень тонкие, и одно неверное движение паяльником может разорвать контакт, восстановление которого займет часы.</p></div>
+
+<h2 id="юридические-и-технические-риски-процедуры">Юридические и технические риски процедуры</h2>
+
+<p>Хотя технически добавить пробег на Нива Шевроле возможно, важно понимать последствия. С точки зрения закона, изменение показаний одометра с целью увеличения стоимости автомобиля при продаже расценивается как мошенничество. Покупатель вправе потребовать возврата денег или снижения цены, если докажет факт вмешательства. Доказательством может служить несоответствие пробега состоянию салона, двигателя и записям в сервисной книжке.</p>
+
+<p>С технической стороны, неквалифицированное вмешательство может привести к выходу из строя всей приборной панели. Стоимость новой оригинальной панели <em>Vaz</em> или <em>AutoPribor</em> достаточно высока, и риск испортить ее при пайке велик. Кроме того, современные автомобили оставляют цифровые следы в других блоках (например, в блоке управления двигателем могут храниться моточасы), что делает полную "очистку" истории практически невозможной.</p>
+
+<p>Однако, если речь идет о честной замене сгоревшей панели на б/у или новую с целью отображения реального пробега автомобиля, то такая процедура является необходимым техническим обслуживанием. Главное — сохранить документальное подтверждение замены (акт, чеки), чтобы при продаже предъявить их новому владельцу как обоснование расхождения в показаниях.</p>
+
+<blockquote>⚠️ Внимание: После замены микросхемы памяти обязательно проверьте работу всех индикаторов (повороты, дальний свет, давление масла). Часто при сборке забывают подключить шлейфы правильно, что может привести к перегоранию светодиодов или ламп.</blockquote>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли изменить пробег на Ниве Шевроле без пайки, через разъем OBD?</summary>
+<p>В большинстве случаев для моделей <em>Niva</em> с панелями старого и среднего поколения (до 2016-2018 гг.) изменение пробега через OBD невозможно. Требуется прямой доступ к микросхеме памяти. Новые модели с цифровой панелью могут иметь такую возможность, но для них требуются дорогие дилерские сканеры и доступ к заводским серверам, что недоступно обычному пользоват</p>
+</details>
+
+<details>
+<summary>Сбросится ли пробег, если снять аккумулятор на длительное время?</summary>
+<p>Нет, пробег хранится в энергонезависимой памяти <strong>EEPROM</strong>. Она не требует питания для сохранения данных. Снятие аккумулятора влияет только на сброс времени и настроек бортового компьютера, но километраж останется неизменным.</p>
+</details>
+
+<details>
+<summary>Что делать, если после замены панели пробег показывает 0?</summary>
+<p>Это нормальное поведение для новой или другой б/у панели. Чтобы отображался реальный пробег вашего автомобиля, необходимо переписать значения из старой панели в новую, используя программатор, как описано в статье. Самостоятельно "накрутить" пробег кнопками нельзя.</p>
+</details>
+
+<details>
+<summary>Влияет ли замена пробега на работу двигателя?</summary>
+<p>Нет, пробег — это только отображаемая информация. На работу <strong>ECU</strong> (блока управления двигателем), систему зажигания или подачи топлива данные одометра не влияют. Двигатель будет работать так же, как и до вмешательства.</p>
+</details>
+
+<details>
+<summary>Где найти мастера для коррекции пробега?</summary>
+<p>Этим занимаются специализированные сервисы по чип-тюнингу и ремонту автомобильной электроники. Обычные СТО по ремонту ходовой части, как правило, не имеют необходимого оборудования (программаторов) и навыков работы с HEX-кодами.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#устройство-системы-учета-пробега-на-chevrolet-niva">Устройство системы учета пробега на Chevrolet Niva</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#технология-переноса-данных-в-новую-панель-приборов">Технология переноса данных в новую панель приборов</a></li><li><a href="#таблица-совместимости-микросхем-и-панелей">Таблица совместимости микросхем и панелей</a></li><li><a href="#возможные-ошибки-и-способы-их-устранения">Возможные ошибки и способы их устранения</a></li><li><a href="#юридические-и-технические-риски-процедуры">Юридические и технические риски процедуры</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

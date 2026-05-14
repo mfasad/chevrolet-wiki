@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Прошивка блока комфорта Chevrolet Cruze: инструкция и софт — Chevrolet-Wiki</title>
+    <meta name="description" content="Полное руководство по прошивке BCM Шевроле Круз. Как прошить блок комфорта, устранить ошибки и настроить свет через ELM327 и GMLAN.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv06_H3wD/kak-proshit-blok-komforta-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Прошивка блока комфорта Chevrolet Cruze: инструкция и софт">
+    <meta property="og:description" content="Полное руководство по прошивке BCM Шевроле Круз. Как прошить блок комфорта, устранить ошибки и настроить свет через ELM327 и GMLAN.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Прошивка блока комфорта Chevrolet Cruze: инструкция и софт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка блока комфорта Chevrolet Cruze своими руками</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#зачем-нужна-перепрошивка-bcm-на-шевроле-круз">Зачем нужна перепрошивка BCM на Шевроле Круз</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#подготовка-автомобиля-и-диагностика-перед-прошивкой">Подготовка автомобиля и диагностика перед прошивкой</a></li><li><a href="#пошаговая-инструкция-прошивки-блока-комфорта">Пошаговая инструкция прошивки блока комфорта</a></li><li><a href="#настройка-конфигурации-и-активация-функций">Настройка конфигурации и активация функций</a></li><li><a href="#возможные-ошибки-и-способы-их-устранения">Возможные ошибки и способы их устранения</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана <em>Chevrolet Cruze</em> J300 часто сталкиваются с необходимостью вмешательства в программное обеспечение штатной электроники. Наиболее востребованной процедурой является прошивка блока комфорта, или BCM, для активации скрытых функций или восстановления работоспособности системы после замены. <strong>Блок управления кузовной электроникой</strong> отвечает за освещение, стеклоподъемники, центральный замок и работу поворотников, поэтому его стабильная работа критически важна.</p>
+
+<p>Самостоятельное обновление или изменение конфигурации ПО требует специализированного оборудования и глубокого понимания протокола <strong>GMLAN</strong>, используемого в автомобилях GM. Ошибки в процессе могут привести к полной неработоспособности электрики, поэтому к процедуре нужно подходить с максимальной осторожностью. В этой статье мы разберем технические нюансы, необходимый софт и пошаговый алгоритм действий.</p>
+
+<p>Прежде чем приступать, необходимо убедиться, что ваш аккумулятор полностью заряжен. <mark>Напряжение в бортовой сети не должно падать ниже 12.5 Вольт во время записи данных во flash-память контроллера.</mark> Скачки напряжения могут прервать цикл записи, что превратит блок в "кирпич", требующий дорогостоящего восстановления на программаторе.</p>
+
+<h2 id="зачем-нужна-перепрошивка-bcm-на-шевроле-круз">Зачем нужна перепрошивка BCM на Шевроле Круз</h2>
+
+<p>Основная причина, по которой автовладельцы решаются на прошивку — это замена неисправного модуля на новый или б/у. Новый <strong>блок комфорта</strong> поставляется с "чистым" ПО или конфигурацией для другого рынка, поэтому без привязки (VIN-кодирования) и прошивки под конкретную комплектацию автомобиль не заведется или не будет корректно работать свет.</p>
+
+<p>Второй распространенный сценарий — устранение программных глюков. Бывают случаи, когда штатная прошивка содержит ошибки, вызывающие самопроизвольное включение фар, отказ стеклоподъемников или неправильную работу указателей поворота. <em>Обновление микрокода</em> позволяет исправить баги, которые невозможно устранить механическим путем.</p>
+
+<p>Третий вариант — активация дополнительных опций, которые были отключены производителем для конкретной страны или комплектации. Это может быть функция <strong>Comfort Blink</strong> (пять морганий вместо трех) или изменение логики работы дневных ходовых огней. Однако стоит помнить, что глубокая модификация ПО может привести к потере гарантии.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Изменение конфигурационных файлов (DBC) без понимания их назначения может заблокировать работу CAN-шины. Всегда делайте резервную копию оригинального дампа перед внесением любых изменений.</p>
+</blockquote>
+
+<p>Процедура перепрошивки также необходима при переходе на светодиодную оптику, если штатный BCM некорректно регистрирует сопротивление ламп и выдает ошибку "Check Bulb". Программное изменение параметров нагрузки позволяет избежать установки дополнительных резисторов-обманок.</p>
+
+<h2 id="необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</h2>
+
+<p>Для работы с электроникой <em>Chevrolet Cruze</em> вам понадобится специализированный интерфейс связи. Стандартный ELM327 китайского производства часто не справляется с протоколом GMLAN из-за низкой скорости и нестабильности, хотя некоторые продвинутые версии на чипе PIC18F25K80 могут работать.</p>
+
+<p>Оптимальным выбором считается адаптер <strong>OP-COM</strong> (для старых версий ПО) или профессиональный сканер <em>MDI</em> с софтом GDS2/SPS. Для энтузиастов, использующих ноутбук, идеально подходят интерфейсы на базе чипов FT232R с поддержкой CAN-шины, работающие в паре с программой <strong>GM Tool</strong> или <em>OpenPort 2.0</em>.</p>
+
+<ul>
+<li>🔌 Адаптер OBDII с поддержкой протокола GMLAN (скорость 500 kbps).</li>
+<li>💻 Ноутбук с операционной системой Windows (желательно 7 или 10) и установленными драйверами адаптера.</li>
+<li>🔋 Стабилизатор напряжения или заряженное пусковое устройство для поддержания 13-14 Вольт.</li>
+<li>💿 Файлы прошивок (bin/hex) и конфигураций (dbc) для вашей версии BCM.</li>
+</ul>
+
+<p>Программный комплекс для прошивки обычно представляет собой связку загрузчика и редактора конфигурации. Популярным решением является связка <code>GM DLC Scanner</code> для диагностики и <strong>Calibration Tool</strong> для записи. Важно, чтобы версии ПО соответствовали году выпуска автомобиля, так как архитектура блоков на Крузах разных лет может отличаться.</p>
+
+<div class="poll-widget" id="poll-b72ec8c9"><div class="poll-widget-question">📊 Какой адаптер вы планируете использовать для прошивки?</div><div class="poll-widget-option" data-poll="b72ec8c9" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">OP-COM (китайский клон)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b72ec8c9" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Интерфейс OpenPort 2.0</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b72ec8c9" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Профессиональный MDI</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b72ec8c9" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">ELM327 (высокого качества)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b72ec8c9" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="подготовка-автомобиля-и-диагностика-перед-прошивкой">Подготовка автомобиля и диагностика перед прошивкой</h2>
+
+<p>Перед началом любых манипуляций с программным обеспечением необходимо провести полную диагностику текущего состояния систем. Подключите сканер к разъему OBDII, который на <em>Chevrolet Cruze</em> расположен под рулевой колонкой, и считайте все ошибки.</p>
+
+<p>Запишите коды неисправностей и текущую версию ПО блока комфорта. Эта информация содержится в разделе <code>Body Control Module</code> -> <strong>Module Information</strong>. Вам понадобятся номера калибровок (Calibration ID) и программных идентификаторов, чтобы найти совместимую прошивку в базах данных.</p>
+
+<p>Обязательно проверьте целостность проводки. Если в цепи питания BCM есть "плавающий" контакт, процесс прошивки прервется. Осмотрите предохранители, отвечающие за кузовную электронику, и убедитесь, что клеммы аккумулятора надежно затянуты.</p>
+
+
+
+<p>Если вы планируете менять конфигурацию, например, включать или отключать определенные функции, заранее подготовьте отредактированный файл конфигурации. Вносить изменения в hex-редакторе без опыта не рекомендуется, лучше использовать специализированные калькуляторы VIN-кодирования.</p>
+
+<h2 id="пошаговая-инструкция-прошивки-блока-комфорта">Пошаговая инструкция прошивки блока комфорта</h2>
+
+<p>Процесс записи новой программы в память <strong>BCM</strong> занимает от 15 до 40 минут в зависимости от размера файла и скорости интерфейса. Не прерывайте процесс и не трогайте провода. Сначала подключите адаптер к диагностическому разъему и запустите программное обеспечение на компьютере.</p>
+
+<p>В меню программы выберите тип подключения <code>GMLAN</code> и дождитесь успешной связи с блоком. Затем перейдите в раздел программирования (Programming/Flash). Выберите файл прошивки, соответствующий вашей комплектации. Программа автоматически проверит совместимость VIN-кода.</p>
+
+<pre><code>Process:
+<p>1. Connect Interface</p>
+<p>2. Read VIN: 1G1JC5SB...</p>
+<p>3. Load File: BCM_Cruze_2012_v2.4.bin</p>
+<p>4. Verify Checksum: OK</p>
+<p>5. Start Programming...</code></pre></p>
+
+<p>После запуска процесса начнется стирание старой памяти и запись новой. В этот момент индикаторы на адаптере будут активно мигать. <em>Внимание:</em> в этот момент нельзя открывать двери, включать зажигание или создавать любую нагрузку на генератор.</p>
+
+<details class="faq-item"><summary>Что делать, если прогресс застрял на 50%?</summary><div class="faq-answer"><p>Если процесс записи завис, не отключайте питание сразу. Попробуйте нажать кнопку "Retry" в программе. Если через 5 минут реакции нет, только тогда можно попробовать переподключить питание, но есть высокий риск повреждения блока. Часто помогает перезапуск программы без отключения адаптера.>
+
+<p>По завершении записи программа выдаст сообщение об успешном обновлении. После этого необходимо выполнить процедуру адаптации, которая часто называется "Learn Procedure". Без этого шага блок может некорректно работать с иммобилайзером.</p>
+
+
+
+<h2 id="настройка-конфигурации-и-активация-функций">Настройка конфигурации и активация функций</h2>
+
+<p>После успешной прошивки часто требуется ручная настройка параметров через меню конфигурирования. В отличие от простой замены файла, здесь вы выбираете опции из списка. Для <em>Chevrolet Cruze</em> доступны настройки чувствительности датчиков и логики работы световых приборов.</p>
+
+<p>В таблице ниже приведены основные параметры, которые чаще всего требуют изменения при настройке блока комфорта:</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+<th>Типичные значения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Auto Light Sensitivity</code></td>
+<td>Чувствительность датчика света</td>
+<td>High, Medium, Low</td>
+</tr>
+<tr>
+<td><code>Turn Signal Count</code></td>
+<td>Количество морганий при касании</td>
+<td>3, 5, 7</td>
+</tr>
+<tr>
+<td><code>DRL Mode</code></td>
+<td>Режим дневных ходовых огней</td>
+<td>US, Euro, Off</td>
+</tr>
+<tr>
+<td><code>Remote Start</code></td>
+<td>Поддержка автозапуска</td>
+<td>Enabled, Disabled</td>
+</tr>
+</tbody>
+</table>
+
+<p>Изменение этих параметров происходит через интерфейс программы-конфигуратора. После выбора нужных опций нажмите кнопку <strong>Write Configuration</strong>. Блок перезапишет EEPROM и применит новые настройки. Автомобиль может несколько раз моргнуть "аварийкой" в знак подтверждения.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При активации функций, не предусмотренных hardware (например, включение круиз-контроля на машине без кнопок на руле), система может выдавать ошибки или игнорировать команды.</p>
+</blockquote>
+
+<p>Некоторые функции, такие как управление климатом, могут требовать дополнительной калибровки заслонок. Это делается через диагностическое меню в разделе <code>HVAC Controls</code> -> <strong>Special Functions</strong>.</p>
+
+<h2 id="возможные-ошибки-и-способы-их-устранения">Возможные ошибки и способы их устранения</h2>
+
+<p>В процессе прошивки могут возникать различные ошибки. Самая частая из них — <code>Error 42: Connection Lost</code>. Она означает, что связь с блоком была прервана. Проверьте контакт в разъеме OBD и напряжение в бортовой сети. Часто проблема решается заменой USB-кабеля или порта.</p>
+
+<p>Ошибка <strong>Checksum Error</strong> указывает на повреждение файла прошивки или несовместимость версии. Убедитесь, что вы скачали файл именно для вашей модели BCM (часто они отличаются маркировкой на корпусе). Не пытайтесь шить блок от хэтчбека на седан без проверки распиновки.</p>
+
+<p>Если после прошивки автомобиль не заводится и горит ошибка иммобилайзера, необходимо провести процедуру <em>Security Access</em>. Это требует ввода кода доступа, который можно получить через дилерский сервер или специальные калькуляторы, зная VIN-код.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Большинство ошибок при прошивке связано не с программным обеспечением, а с нестабильным напряжением питания или плохим контактом в диагностическом разъеме.</p></div>
+
+<p>В редких случаях блок может уйти в режим защиты (Bootloader Mode). Вывести его оттуда можно, подав питание на определенный пин разъема или многократно включая и выключая зажигание в определенной последовательности, описанной в сервисном мануале.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли прошить блок комфорта через телефон на Android?</summary>
+<p>Теоретически это возможно с использованием адаптеров ELM327 и приложений вроде <code>CarScanner</code> или <em>Torque</em>, но функционал будет ограничен только чтением ошибок. Для полноценной записи прошивки (Flash) мощности телефона и стабильности Bluetooth-соединения недостаточно. Требуется ПК.</p>
+</details>
+
+<details>
+<summary>Сбросится ли пробег на одометре после прошивки BCM?</summary>
+<p>Нет, пробег хранится в отдельной памяти приборной панели (IPC) и в блоке управления двигателем (ECM). Блок комфорта не влияет на показания одометра, если только вы специально не меняли приборную панель.</p>
+</details>
+
+<details>
+<summary>Что делать, если после прошивки перестал работать центральный замок?</summary>
+<p>Скорее всего, была выбрана неверная конфигурация кузова (седан/хэтчбек) или региональные настройки. Необходимо вернуться в меню конфигурирования и проверить параметр <code>Body Style</code>. Также проверьте предохранители, так как скачок напряжения мог вывести их из строя.</p>
+</details>
+
+<details>
+<summary>Нужно ли регистрировать новый блок комфорта у дилера?</summary>
+<p>Официально — да, для обновления базы данных. Однако для работы автомобиля достаточно провести процедуру VIN-кодирования с помощью диагностического сканера, что можно сделать самостоятельно или в специализированном сервисе.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#зачем-нужна-перепрошивка-bcm-на-шевроле-круз">Зачем нужна перепрошивка BCM на Шевроле Круз</a></li><li><a href="#необходимое-оборудование-и-программное-обеспечение">Необходимое оборудование и программное обеспечение</a></li><li><a href="#подготовка-автомобиля-и-диагностика-перед-прошивкой">Подготовка автомобиля и диагностика перед прошивкой</a></li><li><a href="#пошаговая-инструкция-прошивки-блока-комфорта">Пошаговая инструкция прошивки блока комфорта</a></li><li><a href="#настройка-конфигурации-и-активация-функций">Настройка конфигурации и активация функций</a></li><li><a href="#возможные-ошибки-и-способы-их-устранения">Возможные ошибки и способы их устранения</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

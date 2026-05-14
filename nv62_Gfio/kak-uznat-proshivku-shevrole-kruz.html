@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как узнать прошивку Шевроле Круз: все способы определения — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция, как узнать версию прошивки ЭБУ Chevrolet Cruze. Методы через OBDII, приборную панель и ELM327. Таблица идентификации блоков.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv62_Gfio/kak-uznat-proshivku-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как узнать прошивку Шевроле Круз: все способы определения">
+    <meta property="og:description" content="Подробная инструкция, как узнать версию прошивки ЭБУ Chevrolet Cruze. Методы через OBDII, приборную панель и ELM327. Таблица идентификации блоков.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как узнать прошивку Шевроле Круз: все способы определения</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как узнать прошивку Шевроле Круз: полная инструкция</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#визуальная-идентификация-блока-управления-двигателем">Визуальная идентификация блока управления двигателем</a></li><li><a href="#диагностика-через-разъем-obdii-и-ноутбук">Диагностика через разъем OBDII и ноутбук</a></li><li><a href="#использование-мобильного-приложения-и-адаптера">Использование мобильного приложения и адаптера</a></li><li><a href="#метод-педаль-газа-на-приборной-панели">Метод "педаль газа" на приборной панели</a></li><li><a href="#расшифровка-кодов-и-версий-прошивок">Расшифровка кодов и версий прошивок</a></li><li><a href="#часто-встречающиеся-проблемы-и-их-решение">Часто встречающиеся проблемы и их решение</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы популярного седана или хетчбэка часто сталкиваются с необходимостью диагностики двигателя или тюнинга системы управления. <strong>Прошивка ЭБУ</strong> — это программное обеспечение, управляющее работой мотора, и знание её версии критически важно при подборе запчастей или калибровке. Без точных данных о версии ПО невозможно корректно провести чип-тюнинг или устранить ошибки, связанные с несовместимостью программного кода.</p>
+
+<p>Существует несколько проверенных способов получить эту информацию, начиная от простого визуального осмотра и заканчивая подключением специализированного сканера. <em>Chevrolet Cruze</em> оснащается разными типами блоков управления в зависимости от года выпуска и объема двигателя, что требует индивидуального подхода. В этой статье мы разберем все доступные методы, которые помогут вам точно идентифицировать текущую версию программного обеспечения вашего автомобиля.</p>
+
+<p>Зачастую информация требуется при покупке адаптеров или перед посещением сервисного центра. Неверная идентификация может привести к установке неподходящего софта, что вызовет нестабильную работу силового агрегата. Поэтому важно использовать только достоверные источники данных и проверенные инструменты для считывания информации из памяти контроллера.</p>
+
+<h2 id="визуальная-идентификация-блока-управления-двигателем">Визуальная идентификация блока управления двигателем</h2>
+
+<p>Самый надежный, хотя и трудоемкий способ — это физический доступ к самому блоку управления двигателем (ЭБУ). На <em>Шевроле Круз</em> с двигателями 1.6 и 1.8 литра он обычно расположен в подкапотном пространстве, ближе к лобовому стеклу со стороны пассажира, под пластиковой крышкой. На корпусе блока всегда имеется заводская наклейка с штрих-кодом и буквенно-цифровым обозначением.</p>
+
+<p>Вам необходимо найти код, который часто начинается с префиксов <code>55567236</code>, <code>55572023</code> или <code>24229791</code>. Именно по этим номерам можно определить <strong>аппаратную версию</strong> блока, что косвенно указывает на тип используемой прошивки. Однако этот метод не покажет текущую версию программного кода, если блок ранее перепрошивали.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Перед снятием пластиковой крышки над ЭБУ обязательно отключите минусовую клемму аккумулятора. Кратковременное замыкание контактов при неосторожном обращении с инструментом может вывести дорогостоящий блок управления из строя.</p>
+</blockquote>
+
+<p>Часто на наклейке можно встретить маркировку <code>Simtec</code> или <code>Delphi</code>, что указывает на производителя электроники. Это важная деталь, так как прошивки для блоков Симтек и Делфи не совместимы между собой, даже если автомобили выглядят одинаково. Всегда перепроверяйте данные на наклейке с информацией в сервисной книжке.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Сфотографируйте наклейку на ЭБУ на телефон при хорошем освещении, чтобы позже можно было увеличить изображение и рассмотреть мелкие символы, которые легко пропустить при беглом осмотре.</p></div>
+
+<h2 id="диагностика-через-разъем-obdii-и-ноутбук">Диагностика через разъем OBDII и ноутбук</h2>
+
+<p>Более современным и безопасным методом является использование диагностического разъема <code>OBDII</code>, который в <em>Chevrolet Cruze</code> находится под торпедой, слева от рулевой колонки. Для подключения вам понадобится адаптер <strong>ELM327</em> (желательно версии 1.5 на чипе PIC18F25K80) или профессиональный сканер. Связка ноутбука и адаптера позволяет считать полные данные о системе.</p>
+
+<p>Использование специализированного софта, такого как <code>OpenPort 2.0</code> с программой <em>PCMflash</em> или бесплатной <em>Scanmaster</em>, дает доступ к идентификационным данным. После подключения необходимо выбрать правильный тип протокола связи, обычно это <code>GM LAN</code> или <code>K-Line</code> в зависимости от года выпуска авто. Процесс считывания занимает от 30 секунд до 2 минут.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка к диагностике через ноутбук</h4><label class="check-item"><input type="checkbox"><span>Проверить заряд аккумулятора</span></label><label class="check-item"><input type="checkbox"><span>Установить драйверы адаптера</span></label><label class="check-item"><input type="checkbox"><span>Запустить диагностическую программу</span></label><label class="check-item"><input type="checkbox"><span>Подключиться к ЭБУ</span></label><label class="check-item"><input type="checkbox"><span>Считать VIN и версию ПО</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>В окне программы вы увидите поля <strong>Calibration ID</strong> и <strong>Software Part Number</strong>. Именно эти данные являются актуальной версией прошивки, установленной в данный момент. Если автомобиль подвергался чип-тюнингу, эти данные могут отличаться от заводских значений, что является нормой для модифицированных авто.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+<th>Где смотреть</th>
+</tr>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VIN-код</td>
+<td>Идентификационный номер кузова</td>
+<td>Главный экран сканера</td>
+</tr>
+<tr>
+<td>Calibration ID</td>
+<td>Код калибровки прошивки</td>
+<td>Блок "Двигатель" -> "Идентификация"</td>
+</tr>
+<tr>
+<td>ECU Part Number</td>
+<td>Артикул блока управления</td>
+<td>Блок "Двигатель" -> "Идентификация"</td>
+</tr>
+<tr>
+<td>Software Version</td>
+<td>Версия программного обеспечения</td>
+<td>Дополнительные данные ЭБУ</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="использование-мобильного-приложения-и-адаптера">Использование мобильного приложения и адаптера</h2>
+
+<p>Для владельцев смартфонов существует удобный способ проверки через приложение <em>OpenDiag Mobile</em> или <em>Torque Pro</em>. Этот метод менее информативен для глубокого анализа, но позволяет быстро узнать базовую версию прошивки. Вам понадобится Bluetooth или Wi-Fi адаптер, совместимый с протоколами <strong>GM</strong>.</p>
+
+<p>После сопряжения телефона с адаптером и подключения к автомобилю, запустите сканирование. В меню диагностики выберите пункт "Информация об автомобиле" или "Данные ЭБУ". Приложение запросит разрешение на чтение данных, после чего на экране отобразится строка с версией ПО. Это удобно делать прямо в гараже без необходимости нести ноутбук.</p>
+
+<details class="faq-item"><summary>Почему приложение может не видеть ЭБУ?</summary><div class="faq-answer"><p>Некоторые китайские копии адаптеров ELM327 некорректно работают с протоколом GM LAN, используемым в Cruze. Если приложение не подключается, попробуйте сменить адаптер или использовать режим K-Line, если он поддерживается вашей версией авто.</p></div></details>
+
+<p>Важно отметить, что бесплатные версии приложений часто имеют ограниченный функционал и могут не показывать полный <strong>Calibration ID</strong>. Для получения полных данных может потребоваться покупка PRO-версии программы. Также убедитесь, что ваш телефон имеет права суперпользователя (Root), если используется сложный диагностический софт.</p>
+
+<h2 id="метод-педаль-газа-на-приборной-панели">Метод "педаль газа" на приборной панели</h2>
+
+<p>Существует скрытый инженерный режим на приборной панели <em>Шевроле Круз</code>, который позволяет вывести часть технической информации без подключения сканера. Этот метод работает не на всех версиях приборных панелей, но стоит попытки, так как он не требует дополнительного оборудования. Вам нужно заглушить двигатель и вынуть ключ из замка зажигания.</p>
+
+<p>Зажмите одновременно кнопки сброса суточного пробежа (на рычажке дворников или на самой панели, в зависимости от комплектации) и включите зажигание. На дисплее могут появиться коды ошибок или версия прошивки приборного щитка. Хотя это не прошивка двигателя, знание версии ПО <strong>панели приборов</em> важно при замене узлов.</p>
+
+<p>Иногда в этом режиме отображается VIN-код и общий пробег, записанный в разных блоках. Это помогает выявить скрученный пробег, если данные в ЭБУ и на панели не совпадают. Однако для получения именно версии софта двигателя этот метод подходит слабо и служит скорее вспомогательным инструментом.</p>
+
+<div class="poll-widget" id="poll-ced40b28"><div class="poll-widget-question">📊 Каким способом вы предпочитаете диагностировать авто?</div><div class="poll-widget-option" data-poll="ced40b28" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Через ноутбук и кабель</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="ced40b28" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Мобильное приложение и Bluetooth</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="ced40b28" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">В автосервисе на профессиональном сканере</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="ced40b28" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Визуально по наклейке на ЭБУ</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="расшифровка-кодов-и-версий-прошивок">Расшифровка кодов и версий прошивок</h2>
+
+<p>Получив набор символов, многие владельцы теряются в догадках, что они означают. Версии прошивок для <em>Cruze</em> обычно имеют формат из 8 или 12 символов, например, <code>110714T4</code> или <code>5WKD...</code>. Первые цифры часто указывают на дату или ревизию, а буквы — на регион или тип трансмиссии.</p>
+
+<p>Для двигателей <code>1.6 (A16XER)</code> и <code>1.8 (Z18XER)</code> наиболее распространены прошивки от производителя <strong>Simtec</strong>. Знание точной версии необходимо при поиске готовых решений для чип-тюнинга. Если версия слишком новая, стандартные "готовые" прошивки могут не подойти, и потребуется индивидуальная настройка на стенде.</p>
+
+<p>Также версия прошивки влияет на работу системы <strong>EGR</strong> и лямбда-коррекции. В более новых версиях ПО алгоритмы работы экологии жестче, что приводит к быстрому загрязнению впускного коллектора. Понимание этого помогает принять решение о программном или физическом отключении системы рециркуляции газов.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Не пытайтесь перепрошивать блок управления, если не уверены в стабильности напряжения в бортовой сети. Скачок напряжения во время записи данных в память ЭБУ приведет к "окирпичиванию" блока, восстановление которого возможно только в специализированной мастерской.</p>
+</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Точная версия прошивки — это ключ к совместимости. Перед покупкой любых электронных компонентов или софта для тюнинга всегда сверяйте Calibration ID с базами данных.</p></div>
+
+<h2 id="часто-встречающиеся-проблемы-и-их-решение">Часто встречающиеся проблемы и их решение</h2>
+
+<p>При попытке узнать прошивку пользователи часто сталкиваются с ошибкой связи. Это может быть вызвано низким зарядом аккумулятора, плохим контактом в разъеме <code>OBDII</code> или несовместимостью адаптера. В первую очередь проверьте предохранители, отвечающие за диагностическую цепь, они находятся в блоке под капотом.</p>
+
+<p>Еще одна проблема — расхождение данных. Сканер может показывать одну версию, а на наклейке — другую. Это нормально, если блок меняли или перепрошивали. В таких случаях доверять следует данным, которые считываются электронным путем, так как наклейка могла остаться от старого блока.</p>
+
+<p>Если ни один из методов не дал результата, возможно, в автомобиле установлен нештатный блок управления или защита от считывания. В таком случае без вмешательства профессионального диагноста не обойтись. Ошибки в определении типа ЭБУ могут привести к покупке неправильного оборудования.</p>
+
+<details>
+<summary>Можно ли обновить прошивку самостоятельно через USB?</summary>
+<p>Официально — нет. Chevrolet не предоставляет пользователям возможности обновлять ПО двигателя через USB-порт или мультимедиа. Обновление возможно только через диагностический разъем с использованием лицензионного дилерского софта GM MDI или аналогов.</p>
+</details>
+
+<details>
+<summary>Влияет ли версия прошивки на расход топлива?</summary>
+<p>Да, разные версии калибровок имеют разные топливные карты. Более новые прошивки часто оптимизированы под экологические нормы, что может незначительно увеличивать расход или снижать динамические характеристики мотора.</p>
+</details>
+
+<details>
+<summary>Где найти расшифровку Calibration ID?</summary>
+<p>Полной открытой базы всех Calibration ID не существует. Информацию можно найти на специализированных форумах чип-тюнинга, в базах данных программ-редакторов (например, BinEditor) или запросить у дилера по VIN-коду.</p>
+</details>
+
+<details>
+<summary>Сбросится ли прошивка при снятии аккумулятора?</summary>
+<p>Нет, программное обеспечение записано в энергонезависимой памяти (Flash или EEPROM). Снятие аккумулятора сбрасывает только адаптационные значения и кратковременные ошибки, но не саму версию прошивки.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#визуальная-идентификация-блока-управления-двигателем">Визуальная идентификация блока управления двигателем</a></li><li><a href="#диагностика-через-разъем-obdii-и-ноутбук">Диагностика через разъем OBDII и ноутбук</a></li><li><a href="#использование-мобильного-приложения-и-адаптера">Использование мобильного приложения и адаптера</a></li><li><a href="#метод-педаль-газа-на-приборной-панели">Метод "педаль газа" на приборной панели</a></li><li><a href="#расшифровка-кодов-и-версий-прошивок">Расшифровка кодов и версий прошивок</a></li><li><a href="#часто-встречающиеся-проблемы-и-их-решение">Часто встречающиеся проблемы и их решение</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Бортовой компьютер Шевроле Лачетти: полное руководство — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по настройке и использованию бортового компьютера в Chevrolet Lacetti. Сброс ошибок, настройка языка, диагностика и расшифровка кодов.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv28_tAyD/kak-polzovatsya-bortovym-kompyuterom-v-shevrole-lachetti.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Бортовой компьютер Шевроле Лачетти: полное руководство">
+    <meta property="og:description" content="Подробная инструкция по настройке и использованию бортового компьютера в Chevrolet Lacetti. Сброс ошибок, настройка языка, диагностика и расшифровка кодов.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Бортовой компьютер Шевроле Лачетти: полное руководство</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Полное руководство по бортовому компьютеру Chevrolet Lacetti</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#активация-скрытого-меню-и-навигация-по-разделам">Активация скрытого меню и навигация по разделам</a></li><li><a href="#настройка-языка-времени-и-формата-отображения">Настройка языка, времени и формата отображения</a></li><li><a href="#мониторинг-расхода-топлива-и-запаса-хода">Мониторинг расхода топлива и запаса хода</a></li><li><a href="#диагностика-напряжения-и-состояния-аккумулятора">Диагностика напряжения и состояния аккумулятора</a></li><li><a href="#расшифровка-кодов-ошибок-и-индикаторов">Расшифровка кодов ошибок и индикаторов</a></li><li><a href="#сброс-ошибок-и-возврат-к-заводским-настройкам">Сброс ошибок и возврат к заводским настройкам</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы <em>Chevrolet Lacetti</em> часто недооценивают возможности штатной системы диагностики, сосредотачиваясь исключительно на спидометре и тахометре. Однако скрытый функционал этого автомобиля позволяет водителю получать детализированную информацию о техническом состоянии узлов в режиме реального времени. Доступ к этим данным осуществляется через комбинации кнопок на приборной панели, что делает процесс диагностики доступным без подключения дорогостоящего сканера.</p>
+
+<p>Правильное использование встроенного <strong>бортового компьютера</strong> помогает вовремя заметить критическое снижение уровня топлива, перегрев двигателя или неисправность в электрической цепи. Многие водители годами ездят, не зная, как активировать режим отображения мгновенного расхода топлива или изменить язык интерфейса. В этой статье мы разберем все нюансы взаимодействия с электроникой вашего автомобиля, чтобы вы могли полностью контролировать его состояние.</p>
+
+<p>Стоит отметить, что в зависимости от комплектации и года выпуска, алгоритмы работы могут незначительно отличаться. Базовые принципы навигации по меню остаются едиными для большинства моделей <em>Daewoo/Chevrolet</em> того периода. Понимание логики работы системы позволит вам быстро ориентироваться в показаниях приборов даже в экстренной ситуации на дороге.</p>
+
+<h2 id="активация-скрытого-меню-и-навигация-по-разделам">Активация скрытого меню и навигация по разделам</h2>
+
+<p>Для входа в режим диагностики и настройки не требуется никакого дополнительного оборудования. Все управление сосредоточено на двух кнопках, расположенных на лицевой панели приборного щитка. Обычно это кнопки с маркировкой <code>INFO</code> (или <code>CLOCK</code>) и <code>RESET</code> (или <code>ADJ</code>). Нажатие на них в определенной последовательности переводит дисплей в режим сервисного меню.</p>
+
+<p>Чтобы активировать скрытые функции, необходимо одновременно зажать обе кнопки на 2-3 секунды. На экране должны появиться символы, свидетельствующие о переходе в режим настройки. Если с первого раза не вышло, попробуйте изменить длительность удержания или последовательность нажатий, так как чувствительность контактов со временем может меняться.</p>
+
+<p>Навигация по пунктам меню осуществляется короткими нажатиями на кнопку сброса или регулировки. Переключение между основными группами параметров часто требует использования второй кнопки. </p>
+
+<ul>
+<li>🔹 Одновременное зажатие кнопок <code>INFO</code> и <code>RESET</code> активирует сервисный режим.</li>
+<li>🔹 Короткое нажатие <code>RESET</code> переключает параметры внутри группы.</li>
+<li>🔹 Кнопка <code>INFO</code> часто служит для перехода между основными разделами меню.</li>
+<li>🔹 Удержание кнопок более 5 секунд может привести к сбросу настроек.</li>
+</ul>
+
+<p>В некоторых модификациях для подтверждения выбора или перехода на уровень глубже требуется выполнить двойное короткое нажатие. Экспериментируйте осторожно, фиксируя изменения, чтобы в случае необходимости вернуть все к заводским значениям. Это особенно актуально для владельцев автомобилей с правым рулем, которым может потребоваться смена языка интерфейса.</p>
+
+<div class="poll-widget" id="poll-14a02f28"><div class="poll-widget-question">📊 Какой у вас Chevrolet Lacetti?</div><div class="poll-widget-option" data-poll="14a02f28" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Седан</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="14a02f28" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Хэтчбек</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="14a02f28" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Универсал</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="14a02f28" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Другой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="настройка-языка-времени-и-формата-отображения">Настройка языка, времени и формата отображения</h2>
+
+<p>Одной из первых задач, с которой сталкиваются владельцы импортных авто, является смена языка на дисплее. Штатное меню позволяет выбрать английский, корейский, русский или испанский язык в зависимости от региона поставки. Для этого в меню настроек необходимо найти пункт, обозначенный символом языка или флагом, и циклически переключать варианты до появления нужного.</p>
+
+<p>Настройка времени и даты также производится в этом разделе. Точное время важно не только для комфорта водителя, но и для корректной работы журнала ошибок, если таковой ведется системой. <mark>Для корректного отображения времени в зимний период рекомендуется вручную перевести часы, так как автоматического перехода на зимнее время в старых прошивках может не быть.</mark></p>
+
+<p>Формат отображения температуры (Цельсий или Фаренгейт) и расстояния (километры или мили) настраивается в соседнем подразделе. Ошибка в выборе единиц измерения может привести к недопониманию реального запаса хода или температуры двигателя. Убедитесь, что выбрана метрическая система, привычная для наших широт.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При смене языка или формата единиц измерения не выключайте зажигание в момент переключения. Это может привести к зависанию дисплея и необходимости сброса питания клеммой аккумулятора.</p>
+</blockquote>
+
+<p>Процесс настройки интуитивно понятен, но требует внимательности. Не спешите переключать пункты, давайте системе время отреагировать на команду. В старых моделях отклик может быть слегка замедленным из-за особенностей работы процессора приборной панели.</p>
+
+<h2 id="мониторинг-расхода-топлива-и-запаса-хода">Мониторинг расхода топлива и запаса хода</h2>
+
+<p>Бортовой компьютер <em>Lacetti</em> предоставляет несколько режимов отображения топливной статистики. Вы можете видеть мгновенный расход, средний расход за поездку или общий средний расход. Мгновенный расход полезен для выработки экономичного стиля вождения, позволяя видеть реакцию двигателя на положение педали газа в реальном времени.</p>
+
+<p>Расчет запаса хода базируется на текущем уровне топлива в баке и усредненном расходе за последние километры пути. Если вы резко изменили стиль вождения с агрессивного на спокойный, показания запаса хода обновятся не сразу. Системе требуется проехать определенное расстояние для корректной калибровки алгоритмов.</p>
+
+<p>Для сброса счетчиков пробега и среднего расхода используется длительное удержание кнопки сброса. Это удобно делать после каждой заправки или перед началом дальнего путешествия, чтобы получить чистые данные для анализа. Точность показаний датчика уровня топлива зависит от качества самого датчика в баке, который со временем может изнашиваться.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка топливной системы</h4><label class="check-item"><input type="checkbox"><span>Сбросить средний расход</span></label><label class="check-item"><input type="checkbox"><span>Заправить полный бак</span></label><label class="check-item"><input type="checkbox"><span>Проехать 100 км</span></label><label class="check-item"><input type="checkbox"><span>Сверить показания с расчетом</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<ul>
+<li>⛽ Мгновенный расход помогает контролировать экономичность в текущий момент.</li>
+<li>⛽ Средний расход сбрасывается кнопкой <code>RESET</code> при удержании.</li>
+<li>⛽ Запас хода пересчитывается динамически в зависимости от стиля езды.</li>
+<li>⛽ Погрешность датчика уровня топлива может достигать 5-10 литров.</li>
+</ul>
+
+<p>Стоит учитывать, что при стоянке с включенным двигателем мгновенный расход будет показывать значение в литрах в час, а не на 100 км пути. Это нормальное поведение системы. Для получения объективной картины расхода топлива на трассе лучше всего сбрасывать статистику непосредственно перед выездом на скоростной участок.</p>
+
+<h2 id="диагностика-напряжения-и-состояния-аккумулятора">Диагностика напряжения и состояния аккумулятора</h2>
+
+<p>Встроенный вольтметр позволяет контролировать напряжение в бортовой сети без использования мультиметра. Нормальным значением при работающем двигателе считается диапазон от 13.5 до 14.5 Вольт. Если вы видите значения ниже 13 Вольт при работающем моторе, это может указывать на неисправность генератора или проскальзывание ремня.</p>
+
+<p>При выключенном двигателе напряжение на полностью заряженном аккумуляторе должно составлять около 12.6-12.8 Вольт. Падение ниже 12.0 Вольт свидетельствует о глубоком разряде или сульфатации пластин. Регулярный мониторинг этого параметра помогает предотвратить ситуацию, когда автомобиль невозможно завести утром.</p>
+
+<p>Скачки напряжения могут повредить чувствительную электронику, поэтому резкие изменения показаний вольтметра должны настораживать. Часто проблемы с напряжением связаны с плохим контактом клемм или окислением проводов массы. Проверка этих соединений часто решает проблему нестабильных показаний.</p>
+
+<table>
+<thead>
+<tr>
+<th>Состояние</th>
+<th>Напряжение (В)</th>
+<th>Действия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Двигатель заглушен</td>
+<td>12.6 - 12.8</td>
+<td>Норма, заряд полный</td>
+</tr>
+<tr>
+<td>Работающий двигатель</td>
+<td>13.5 - 14.5</td>
+<td>Генератор исправен</td>
+</tr>
+<tr>
+<td>Под нагрузкой</td>
+<td>&lt; 13.0</td>
+<td>Проверить ремень и щетки</td>
+</tr>
+<tr>
+<td>Критический разряд</td>
+<td>&lt; 11.5</td>
+<td>Зарядить или заменить АКБ</td>
+</tr>
+</tbody>
+</table>
+
+<details class="faq-item"><summary>Почему скачет напряжение?</summary><div class="faq-answer"><p>Скачки напряжения часто вызваны неисправностью регулятора напряжения, встроенного в генератор, или плохим контактом в цепи зарядки. Также причиной могут быть импульсные помехи от мощных потребителей.</p></div></details>
+
+<h2 id="расшифровка-кодов-ошибок-и-индикаторов">Расшифровка кодов ошибок и индикаторов</h2>
+
+<p>Система самодиагностики <em>Chevrolet Lacetti</em> способна выявлять неисправности и выводить их в виде кодов или текстовых сообщений. Наиболее распространенные ошибки связаны с системой управления двигателем, датчиками кислорода или проблемами в цепи зажигания. Появление индикатора <code>Check Engine</code> требует немедленного обращения к расшифровке кода.</p>
+
+<p>Коды ошибок обычно имеют формат буквы и четырех цифр (например, P0300). Первая буква указывает на систему: P — двигатель и трансмиссия, B — кузов, C — шасси. Цифры конкретизируют узел и тип неисправности. Знание базовых кодов позволяет понять, можно ли продолжать движение или требуется эвакуатор.</p>
+
+<p>Некоторые ошибки могут быть ложными, вызванными кратковременным скачком напряжения или некачественным топливом. В таких случаях помогает сброс ошибки через меню бортового компьютера или снятие клеммы аккумулятора. Однако, если ошибка возвращается сразу после сброса, проблема носит физический характер.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Игнорирование горящего индикатора <code>Check Engine</code> может привести к выходу из строя катализатора или прогоранию клапанов. Не откладывайте диагностику при стабильном горении лампы.</p>
+</blockquote>
+
+<p>Для глубокой диагностики все же рекомендуется использовать специализированный сканер, подключенный к разъему OBD-II. Бортовой компьютер отображает только базовый набор ошибок, в то время как внешние устройства могут считать историю freeze frame данных и параметры работы датчиков в реальном времени.</p>
+
+<h2 id="сброс-ошибок-и-возврат-к-заводским-настройкам">Сброс ошибок и возврат к заводским настройкам</h2>
+
+<p>Процедура сброса накопленных ошибок и возврата всех настроек к заводским значениям выполняется через скрытое меню. Обычно для этого требуется выбрать пункт <code>Reset</code> или <code>Clear</code> и подтвердить действие удержанием кнопки. После сброса все индивидуальные настройки, такие как язык и время, также вернуться к исходным значениям.</p>
+
+<p>Важно понимать разницу между сбросом сервисных интервалов и сбросом ошибок двигателя. Первые просто обнуляют счетчик пробега до следующего ТО, вторые пытаются устранить запись о неисправности в памяти контроллера. Если неисправность физически присутствует, ошибка вернется после нескольких циклов работы двигателя.</p>
+
+<p>Альтернативный способ полного сброса — отключение питания автомобиля. Для этого необходимо снять минусовую клемму с аккумулятора на 10-15 минут. Этот метод помогает "перезагрузить" мозги автомобиля, но также сбросит настройки магнитолы и часов.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед полным сбросом питания сфотографируйте текущие настройки радио и бортового компьютера, чтобы быстро восстановить их после процедуры.</p></div>
+
+<ul>
+<li>🔧 Сброс через меню сохраняет целостность данных в ЭБУ лучше, чем снятие клеммы.</li>
+<li>🔧 После сброса необходимо дать автомобилю поработать на холостых 5-10 минут.</li>
+<li>🔧 Не производите сброс во время движения или работы стартера.</li>
+<li>🔧 Для некоторых систем может потребоваться процедура адаптации дроссельной заслонки.</li>
+</ul>
+
+<p>Восстановление заводских настроек часто помогает устранить глюки интерфейса, когда дисплей перестает реагировать на нажатия или показывает некорректные символы. Это программный аналог перезагрузки компьютера, который решает большинство временных программных сбоев.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Сброс ошибок не устраняет физическую поломку, а лишь убирает ее запись из памяти. Если причина неисправности не найдена, ошибка появится снова.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Как сбросить ошибку Check Engine без сканера?</summary>
+<p>Попробуйте войти в сервисное меню бортового компьютера, найти раздел диагностики и выбрать пункт сброса ошибок. Если это не помогает, можно снять минусовую клемму аккумулятора на 15 минут, но это сбросит и другие настройки.</p>
+</details>
+
+<details>
+<summary>Почему бортовой компьютер показывает неверный расход топлива?</summary>
+<p>Погрешность может быть вызвана некалиброванным датчиком уровня топлива, изменением диаметра колес или агрессивным стилем вождения. Попробуйте сбросить статистику среднего расхода и проехать 200-300 км в обычном режиме для калибровки.</p>
+</details>
+
+<details>
+<summary>Можно ли изменить яркость подсветки дисплея через меню?</summary>
+<p>В большинстве моделей <em>Lacetti</em> яркость подсветки приборной панели регулируется отдельным колесиком на торпеде слева от руля или зависит от включения габаритных огней. Через меню бортового компьютера эта настройка обычно недоступна.</p>
+</details>
+
+<details>
+<summary>Что означает мигающий индикатор температуры?</summary>
+<p>Мигающий индикатор температуры свидетельствует о критическом перегреве двигателя или неисправности датчика температуры. Необходимо немедленно остановиться, заглушить двигатель и проверить уровень охлаждающей жидкости.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#активация-скрытого-меню-и-навигация-по-разделам">Активация скрытого меню и навигация по разделам</a></li><li><a href="#настройка-языка-времени-и-формата-отображения">Настройка языка, времени и формата отображения</a></li><li><a href="#мониторинг-расхода-топлива-и-запаса-хода">Мониторинг расхода топлива и запаса хода</a></li><li><a href="#диагностика-напряжения-и-состояния-аккумулятора">Диагностика напряжения и состояния аккумулятора</a></li><li><a href="#расшифровка-кодов-ошибок-и-индикаторов">Расшифровка кодов ошибок и индикаторов</a></li><li><a href="#сброс-ошибок-и-возврат-к-заводским-настройкам">Сброс ошибок и возврат к заводским настройкам</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как прошить магнитолу на Андроиде для Chevrolet Cruze: инструкция — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по прошивке Android-магнитолы на Chevrolet Cruze. Разбор моделей T3, T5, установка ПО, решение проблем с CAN-bus и настройка звука.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv33_Q55q/kak-pravilno-proshit-magnitolu-na-androide-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как прошить магнитолу на Андроиде для Chevrolet Cruze: инструкция">
+    <meta property="og:description" content="Подробная инструкция по прошивке Android-магнитолы на Chevrolet Cruze. Разбор моделей T3, T5, установка ПО, решение проблем с CAN-bus и настройка звука.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как прошить магнитолу на Андроиде для Chevrolet Cruze: инструкция</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка Android-магнитолы на Chevrolet Cruze: полное руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#идентификация-аппаратной-платформы-и-версии-по">Идентификация аппаратной платформы и версии ПО</a></li><li><a href="#поиск-и-подготовка-файлов-прошивки">Поиск и подготовка файлов прошивки</a></li><li><a href="#технология-обновления-ota-и-ручная-установка">Технология обновления: OTA и ручная установка</a></li><li><a href="#процесс-прошивки-mcu-и-системы-android">Процесс прошивки MCU и системы Android</a></li><li><a href="#настройка-can-bus-и-параметров-автомобиля">Настройка CAN-bus и параметров автомобиля</a></li><li><a href="#калибровка-экрана-и-устранение">Калибровка экрана и устранение</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Модернизация мультимедийной системы — один из самых популярных способов улучшить комфортабельность <em>Chevrolet Cruze</em>. Стандартные головные устройства часто не поддерживают современные навигационные карты, не имеют доступа к интернету или просто работают медленно. Установка головного устройства на базе операционной системы Android открывает перед владельцем широчайшие возможности: от установки приложений до настройки звука профессионального уровня.</p>
+
+<p>Однако, чтобы система работала стабильно и корректно отображала данные с автомобиля, необходимо правильно подобрать и установить программное обеспечение. Процесс обновления прошивки может кардинально изменить функционал устройства, добавить поддержку <strong>CAN-bus</strong> протоколов или улучшить работу сенсорного экрана. В этом материале мы подробно разберем этапы подготовки, поиска файлов и непосредственной установки новой версии ПО.</p>
+
+<p>Важно понимать, что каждая модель магнитолы имеет уникальную аппаратную платформу. Попытка установить программный код, предназначенный для другого процессора или разрешения экрана, может привести к неработоспособности системы. Поэтому перед началом любых действий критически важно точно идентифицировать ваше устройство и убедиться в совместимости версий.</p>
+
+<h2 id="идентификация-аппаратной-платформы-и-версии-по">Идентификация аппаратной платформы и версии ПО</h2>
+
+<p>Первым и самым важным шагом является точное определение модели вашего головного устройства. Рынок автоэлектроники насыщен устройствами от различных китайских OEM-производителей, таких как <em>Zestech</em>, <em>Ownice</em>, <em>Joying</em> или <em>Topre</em>. Внешне они могут выглядеть идентично, но внутри иметь совершенно разное «железо».</p>
+
+<p>Для получения информации о текущей версии прошивки и модели платы необходимо перейти в меню настроек. Обычно путь выглядит так: <code>Настройки → Об устройстве → Информация о версии</code>. В этом разделе вас интересуют параметры <strong>MCU Version</strong> (версия микроконтроллера) и <strong>System Version</strong> (версия системы). Именно эти данные станут ключом к поиску правильного файла обновления.</p>
+
+<p>Часто производители используют кодовые обозначения для платформ, например, <em>MTCD</em>, <em>MTCE</em>, <em>K821</em> или <em>XY</em>. Запишите эти значения. Также обратите внимание на разрешение экрана, которое может составлять <code>1024x600</code> или <code>1280x720</code>. Несоответствие разрешения в прошивке приведет к искажению изображения или отсутствию реакции на касания.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед началом процедуры сфотографируйте экран с текущими версиями ПО на телефон. Это поможет быстро найти аналогичную версию в интернете или восстановить настройки в случае сбоя.</p></div>
+
+<blockquote>⚠️ Внимание: Никогда не пытайтесь угадать модель прошивки. Установка ПО от другой платформы гарантированно превратит вашу магнитолу в «кирпич», восстановление которого потребует сложной пайки и программатора.</blockquote>
+
+<h2 id="поиск-и-подготовка-файлов-прошивки">Поиск и подготовка файлов прошивки</h2>
+
+<p>После того как вы узнали точную модель устройства, начинается поиск актуального программного обеспечения. Источником номер один всегда должен быть официальный сайт производителя или проверенные форумы, специализирующиеся на <em>Chevrolet Cruze</em> и китайской автоэлектронике. Избегайте сомнительных ресурсов, где файлы могут быть модифицированы или содержать вредоносный код.</p>
+
+<p>Файл прошивки обычно представляет собой архив формата <code>.zip</code> или <code>.rar</code>. Внутри может находиться один файл с расширением <code>.img</code>, <code>.bin</code> или папка с множеством файлов. Важно проверить целостность скачанного архива. Если файл поврежден при загрузке, процесс обновления прервется, что может быть фатальным для системы.</p>
+
+<p>Для переноса данных вам потребуется USB-накопитель. Используйте флешку объемом не более 32 Гб, отформатированную в файловой системе <strong>FAT32</strong>. Современные магнитолы на Android могут некорректно работать с файловой системой NTFS или exFAT при обновлении через bootloader. Файл прошивки (или папку с файлами) необходимо поместить в корень флешки, не вкладывая их в дополнительные директории, если инструкция не требует иного.</p>
+
+<ul>
+<li>🔍 Убедитесь, что версия прошивки новее вашей текущей или содержит исправления критических ошибок.</li>
+<li>💾 Форматируйте USB-накопитель в FAT32 с размером кластера по умолчанию перед записью.</li>
+<li>📂 Распакуйте архив перед записью на флешку, если в инструкции не указано иное.</li>
+<li>🔋 Подключите флешку непосредственно к порту USB в магнитоле, избегая использования удлинителей.</li>
+</ul>
+
+<div class="poll-widget" id="poll-8afdf96d"><div class="poll-widget-question">📊 Какая у вас сейчас стоит магнитола на Cruze?</div><div class="poll-widget-option" data-poll="8afdf96d" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Оригинал от Chevrolet</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8afdf96d" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Китайский Android (брендовый)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8afdf96d" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Китайский Android (no-name)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8afdf96d" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Другая мультимедиа</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="технология-обновления-ota-и-ручная-установка">Технология обновления: OTA и ручная установка</h2>
+
+<p>Существует два основных способа обновления программного обеспечения: автоматический через сеть (OTA) и ручной через USB-накопитель. Метод <strong>OTA</strong> (Over-The-Air) является наиболее удобным, если он поддерживается производителем вашего устройства. В этом случае магнитола сама находит сервер обновлений, скачивает файл и предлагает установить его.</p>
+
+<p>Для запуска OTA-обновления перейдите в меню <code>Настройки → Обновление системы</code>. Если сервер доступен, вы увидите сообщение о новой версии. Однако, для устройств, ввезенных параллельным импортом или перепрошитых ранее, этот метод может не работать из-за блокировки серверов или несовпадения региональных настроек.</p>
+
+<p>Ручная установка через USB является универсальным методом. После того как вы подготовили флешку с файлами, вставьте её в порт USB. Система должна автоматически обнаружить файл обновления и предложить запустить процесс. Если автоматического запуска не произошло, используйте встроенный файловый менеджер или специальное приложение для обновления (например, <em>MCU Update</em> или <em>Factory Settings</em>).</p>
+
+<details class="faq-item"><summary>Что делать, если магнитола не видит флешку?</summary><div class="faq-answer"><p>Попробуйте использовать флешку меньшего объема (до 8 Гб). Убедитесь, что файловая система FAT32. Проверьте, не скрыт ли файл прошивки атрибутами системы. Иногда помогает переименование файла обновления в соответствии с требованиями инструкции (например, update.zip).</p></div></details>
+
+<blockquote>⚠️ Внимание: Во время процесса обновления категорически запрещено глушить двигатель или выключать зажигание. Скачок напряжения или прерывание записи данных в память приведет к необратимому повреждению загрузчика.</blockquote>
+
+<h2 id="процесс-прошивки-mcu-и-системы-android">Процесс прошивки MCU и системы Android</h2>
+
+<p>Сам процесс прошивки состоит из двух этапов: обновление микроконтроллера (MCU) и обновление основной операционной системы (Android). MCU отвечает за связь с автомобилем: управление громкостью, климатом, парктрониками и кнопками на руле. Android отвечает за интерфейс, навигацию и приложения.</p>
+
+<p>Сначала обычно обновляется MCU. После выбора файла система предупредит о начале процесса. Экран может погаснуть, могут появиться индикаторы прогресса в виде процентов. Длится этот этап от 2 до 10 минут. После завершения MCU магнитола может автоматически перезагрузиться.</p>
+
+<p>Затем следует этап обновления основной системы. Если вы используете комплексный файл обновления, этот процесс пойдет следом. На экране появится логотип Android и шкала загрузки. <strong>Важно:</strong> в этот момент устройство может несколько раз перезагрузиться. Не вмешивайтесь в процесс, пока не появится рабочий стол.</p>
+
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Что обновляется</th>
+<th>Время выполнения</th>
+<th>Риски прерывания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>MCU (Микроконтроллер)</td>
+<td>2-5 минут</td>
+<td>Высокий (потеря управления авто)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>System (Ядро Android)</td>
+<td>5-15 минут</td>
+<td>Критический (кирпич)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Apps (Приложения)</td>
+<td>1-3 минуты</td>
+<td>Низкий (сбой ПО)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Radio (Радиомодуль)</td>
+<td>1-2 минуты</td>
+<td>Средний (нет радио)</td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Последовательность обновления MCU и Android критична. Сначала всегда обновляется MCU, затем система. Нарушение порядка может привести к конфликту протоколов связи.</p></div>
+
+<h2 id="настройка-can-bus-и-параметров-автомобиля">Настройка CAN-bus и параметров автомобиля</h2>
+
+<p>После успешной установки новой прошивки необходимо заново настроить связь с автомобилем. Для <em>Chevrolet Cruze</em> это особенно важно, так как через цифровой канал передаются данные о климат-контроле, открытых дверях и уровне топлива. Для доступа к этим настройкам требуется вход в инженерное меню.</p>
+
+<p>Путь к инженерному меню может отличаться в зависимости от версии прошивки. Часто требуется нажать <code>Настройки → Заводские настройки</code> и ввести пароль. Стандартные пароли для китайских магнитол: <code>8888</code>, <code>1234</code>, <code>0000</code> или <code>1617</code>. В открывшемся меню найдите раздел <strong>Car Config</strong> или <strong>Protocol</strong>.</p>
+
+<p>В списке автомобилей выберите марку <em>Chevrolet</em> и модель <em>Cruze</em>. Важно выбрать правильный год выпуска, так как в разные годы использовались разные протоколы обмена данными. После выбора нажмите <code>OK</code> или <code>Apply</code>. Магнитола перезагрузится, и должны заработать кнопки на руле и отображение климата.</p>
+
+<ul>
+<li>🚗 Выберите точную модель и год выпуска Cruze из списка протоколов.</li>
+<li>⚙️ Проверьте работу кнопок рулевого управления после сброса настроек.</li>
+<li>🌡️ Убедитесь, что температура двигателя и салона отображаются корректно.</li>
+<li>🔊 Настройте задержку выключения магнитолы после выключения зажигания.</li>
+</ul>
+
+<div class="checklist-block"><h4>☑️ Проверка настройки CAN-bus</h4><label class="check-item"><input type="checkbox"><span>Работают кнопки громкости на руле</span></label><label class="check-item"><input type="checkbox"><span>Отображается температура двигателя</span></label><label class="check-item"><input type="checkbox"><span>Корректноится заряд батареи</span></label><label class="check-item"><input type="checkbox"><span>Работает парктроник (если есть)</span></label><label class="check-item"><input type="checkbox"><span>Сохраняется время при выключенном авто</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="калибровка-экрана-и-устранение">Калибровка экрана и устранение</h2>
+
+<p>После прошивки может потребоваться калибровка сенсорного экрана, особенно если точки нажатия не совпадают с курсором. Для этого в инженерном меню найдите пункт <code>Touch Calibration</code> или <code>TP Setting</code>. Следуйте инструкциям на экране, нажимая на появляющиеся крестики.</p>
+
+<p>Частой проблемой после обновления является отсутствие звука или некорректная работа Bluetooth. В таком случае поможет полный сброс настроек (<code>Factory Reset</code>) через меню Android. Это удалит все пользовательские данные, но вернет систему к стабильному состоянию. Также стоит проверить настройки аудио-выхода: иногда после прошивки сбрасывается выбор типа усилителя (встроенный или внешний).</p>
+
+<p>Если магнитола «виснет» на логотипе после прошивки, попробуйте выполнить «жесткий сброс» (Hard Reset). Для этого найдите маленькое отверстие <code>RST</code> на корпусе (часто нужно нажать скрепкой) или используйте комбинацию кнопок, указанную в мануале вашей конкретной модели. В некоторых случаях помогает повторная прошивка тем же или более старым стабильным файлом.</p>
+
+<blockquote>⚠️ Внимание: Если после прошивки пропал звук, проверьте настройки эквалайзера и баланс. Иногда активация «усиления басов» или неправильная настройка кроссовера в новой прошивке может полностью заглушить аудиовыход.</blockquote>
+
+<details class="faq-item"><summary>Как войти в скрытое меню разработчика?</summary><div class="faq-answer"><p>В некоторых версиях ПО нужно 7 раз быстро нажать на «Номер сборки» в разделе «Об устройстве». Это откроет дополнительные настройки для отладки и продвинутых пользователей.</p></div></details>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли прошить магнитолу, если она перестала включаться?</summary>
+<p>Если устройство не подает признаков жизни (черный экран, нет реакции на кнопки), обычная прошивка через USB может не помочь. Потребуется режим восстановления (Recovery Mode), который часто вызывается зажатием комбинации кнопок (например, Reset + Power) при подаче питания. В худшем случае потребуется разборка и прошивка через UART-консоль.</p>
+</details>
+
+<details>
+<summary>Сбросится ли навигация и музыка после прошивки?</summary>
+<p>При обновлении системы все пользовательские данные, включая установленные приложения, музыку и настройки навигации, будут удалены. Перед началом процедуры обязательно сделайте резервную копию важных файлов на облачный диск или компьютер.</p>
+</details>
+
+<details>
+<summary>Почему после прошивки перестали работать кнопки на руле?</summary>
+<p>Скорее всего, в настройках CAN-bus был выбран неверный протокол или модель автомобиля. Зайдите в заводские настройки, заново выберите Chevrolet Cruze и ваш год выпуска. Если это не помогло, возможно, новая прошивка не содержит драйверов для вашего типа рулевого управления.</p>
+</details>
+
+<details>
+<summary>Где взять пароль для инженерного меню?</summary>
+<p>Пароли зависят от производителя «железа». Попробуйте стандартные комбинации: 8888, 1234, 0000, 1617, 3368. Если они не подходят, поищите пароль в интернете по модели вашей магнитолы (указана в разделе «Об устройстве») или обратитесь к продавцу.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#идентификация-аппаратной-платформы-и-версии-по">Идентификация аппаратной платформы и версии ПО</a></li><li><a href="#поиск-и-подготовка-файлов-прошивки">Поиск и подготовка файлов прошивки</a></li><li><a href="#технология-обновления-ota-и-ручная-установка">Технология обновления: OTA и ручная установка</a></li><li><a href="#процесс-прошивки-mcu-и-системы-android">Процесс прошивки MCU и системы Android</a></li><li><a href="#настройка-can-bus-и-параметров-автомобиля">Настройка CAN-bus и параметров автомобиля</a></li><li><a href="#калибровка-экрана-и-устранение">Калибровка экрана и устранение</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

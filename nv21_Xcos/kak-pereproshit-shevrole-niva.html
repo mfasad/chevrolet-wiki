@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Как перепрошить Шевроле Нива: полная инструкция по обновлению ЭБУ — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробный гайд, как перепрошить Шевроле Нива через OBD2. Снятие блоков, выбор софта и прошивка ЭБУ своими руками без ошибок.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv21_Xcos/kak-pereproshit-shevrole-niva.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как перепрошить Шевроле Нива: полная инструкция по обновлению ЭБУ">
+    <meta property="og:description" content="Подробный гайд, как перепрошить Шевроле Нива через OBD2. Снятие блоков, выбор софта и прошивка ЭБУ своими руками без ошибок.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как перепрошить Шевроле Нива: полная инструкция по обновлению ЭБУ</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка ЭБУ Шевроле Нива: пошаговая инструкция</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#необходимое-оборудование-и-подготовка-по">Необходимое оборудование и подготовка ПО</a></li><li><a href="#идентификация-типа-эбу-на-шевроле-нива">Идентификация типа ЭБУ на Шевроле Нива</a></li><li><a href="#подключение-и-подготовка-автомобиля">Подключение и подготовка автомобиля</a></li><li><a href="#процесс-прошивки-через-obd2">Процесс прошивки через OBD2</a></li><li><a href="#сброс-адаптаций-и-проверка-результата">Сброс адаптаций и проверка результата</a></li><li><a href="#возможные-проблемы-и-их-решение">Возможные проблемы и их решение</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владельцы внедорожников часто сталкиваются с необходимостью улучшить динамические характеристики автомобиля или устранить программные ошибки штатного ПО. Вопрос о том, как перепрошить Шевроле Нива, становится особенно актуальным для машин с двигателями <em>Euro-3</em> и <em>Euro-4</em>, где заводские настройки могут быть излишне «экологичными» в ущерб тяге. Самостоятельное обновление программного обеспечения контроллера позволяет адаптировать работу двигателя под конкретные условия эксплуатации и установленное оборудование.</p>
+
+<p>Процесс замены программного обеспечения в блоке управления двигателем (ЭБУ) требует внимательности и наличия специализированного оборудования. <strong>Прошивка ЭБУ</strong> — это не просто развлечение для энтузиастов, а иногда единственная возможность реанимировать «заглючивший» контроллер или внедрить поддержку нового <strong>дроссельного узла</strong>. Современные методы позволяют выполнить эту процедуру даже без выпаивания микросхем, используя диагностический разъем.</p>
+
+<p>Однако стоит понимать риски, связанные с вмешательством в электронную систему автомобиля. Неправильно подобранная калибровка или прерывание процесса записи могут превратить автомобиль в недвижимое имущество. Поэтому перед началом работ необходимо тщательно изучить теоретическую часть и подготовить надежный источник питания. <mark>Самая частая причина выхода из строя ЭБУ при прошивке — скачок напряжения или плохой контакт в цепи питания во время записи.</mark></p>
+
+<h2 id="необходимое-оборудование-и-подготовка-по">Необходимое оборудование и подготовка ПО</h2>
+
+<p>Для успешного проведения процедуры вам потребуется собрать определенный набор инструментов. Базовым элементом является ноутбук с операционной системой Windows, так как большинство диагностических программ не поддерживают macOS или Linux без сложных эмуляторов. Также необходим специализированный кабель-адаптер, который будет связывать компьютер и автомобиль.</p>
+
+<p>Наиболее распространенным интерфейсом для работы с отечественными автомобилями является <em>K-Line</em> или более современный <em>J2534</em>. Для старых блоков Bosch M7.9.7 часто используют кабель <code>BM9213</code>, а для newer версий может потребоваться адаптер <code>OpenPort 2.0</code>. Качество кабеля играет критическую роль: дешевые китайские копии часто вызывают ошибки связи в самый неподходящий момент.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Используйте только проверенные кабели с чипами FTDI или Prolific. Дешевые копии на чипах CH340 могут вызывать обрывы связи при записи, что приведет к «окирпичиванию» блока.</p>
+</blockquote>
+
+<p>Помимо «железа», нужно подготовить программное обеспечение. Стандартный набор включает в себя загрузчик (например, <em>Loader</em> или <em>CombiLoader</em>) и саму прошивку в формате <code>.bin</code> или <code>.frf</code>. Важно убедиться, что версия прошивки соответствует идентификатору вашего блока управления, который можно узнать через сканер.</p>
+
+<div class="poll-widget" id="poll-64993a10"><div class="poll-widget-question">📊 Какой адаптер вы планируете использовать?</div><div class="poll-widget-option" data-poll="64993a10" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">K-Line (ВАЗ-диагностика)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">OpenPort 2.0</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">J2534 PassThru</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="64993a10" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Я пока не знаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="идентификация-типа-эбу-на-шевроле-нива">Идентификация типа ЭБУ на Шевроле Нива</h2>
+
+<p>Прежде чем искать файл прошивки, необходимо точно определить, какой контроллер установлен на вашем автомобиле. На разных годах выпуска и модификациях Шевроле Нива устанавливались различные блоки управления, и прошивка от одного не подойдет к другому. Основные типы блоков, встречающиеся на этих моделях, относятся к семейству <em>Bosch</em> и <em>Januar</em>.</p>
+
+<p>Чаще всего можно встретить блоки <em>Bosch M7.9.7</em>, которые устанавливались на машины стандарта <em>Euro-3</em>. Они имеют разъем типа <code>OBD-II</code> и расположены в нижней части центральной консоли или под бардачком. Для более новых версий с <em>Euro-4</em> применялись контроллеры <em>Bosch ME17.9.7</em> или <em>ME17.9.71</em>, которые требуют более аккуратного обращения из-за сложной структуры памяти.</p>
+
+<p>Существуют также блоки от производителя <em>Januar 7.2</em> (Январь), которые программно совместимы с Бошевскими, но имеют свои особенности в распиновке. Определить тип блока можно визуально, сняв защитный кожух, или программно, подключившись сканером и считав <strong>ID оборудования</strong>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип ЭБУ</th>
+<th>Стандарт</th>
+<th>Тип разъема</th>
+<th>Особенности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bosch M7.9.7</td>
+<td>Euro-3</td>
+<td>OBD-II (16 pin)</td>
+<td>Популярный, много прошивок</td>
+</tr>
+<tr>
+<td>Bosch ME17.9.7</td>
+<td>Euro-4</td>
+<td>OBD-II (16 pin)</td>
+<td>Требует питания 12В на пин 1</td>
+</tr>
+<tr>
+<td>Januar 7.2</td>
+<td>Euro-2/3</td>
+<td>OBD-II / GM12</td>
+<td>Аналог Bosch, высокая надежность</td>
+</tr>
+<tr>
+<td>Bosch MP30</td>
+<td>Euro-2</td>
+<td>Специфичный</td>
+<td>Старые модели до 2008 года</td>
+</tr>
+</tbody>
+</table>
+
+<p>Если вы не уверены в типе вашего блока, лучше сначала подключить диагностический сканер и считать информацию. В поле «Идентификатор ЭБУ» будет указана точная маркировка, по которой можно искать соответствующее программное обеспечение в базах данных.</p>
+
+<h2 id="подключение-и-подготовка-автомобиля">Подключение и подготовка автомобиля</h2>
+
+<p>Подготовка автомобиля к прошивке — этап, который часто недооценивают, что приводит к фатальным ошибкам. Главное правило: напряжение в бортовой сети должно быть стабильным. Идеальным вариантом будет подключение внешнего зарядного устройства в режиме «Пусковое» или «Питание», которое способно выдавать ток не менее 10-15 Ампер.</p>
+
+<p>Найдите диагностический разъем <code>OBD-II</code>. В Шевроле Нива он обычно расположен под панелью приборов со стороны водителя, часто прикрыт пластиковой заглушкой или находится в нише. Убедитесь, что зажигание выключено перед подключением адаптера. Вставьте адаптер плотно до щелчка.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист подготовки</h4><label class="check-item"><input type="checkbox"><span>Проверить заряд АКБ (не менее 12.5В)</span></label><label class="check-item"><input type="checkbox"><span>Подключить внешнее питание</span></label><label class="check-item"><input type="checkbox"><span>Выключить все потребители (фары, печку)</span></label><label class="check-item"><input type="checkbox"><span>Проверить надежность соединения кабеля</span></label><label class="check-item"><input type="checkbox"><span>Убедиться, что ноутбук подключен к сети</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>После подключения кабеля к ноутбуку и автомобилю, включите зажигание, но не запускайте двигатель. Загорится лампочка <code>Check Engine</code>. Если индикатор не загорается, значит, цепь питания ЭБУ нарушена или блок неисправен, и продолжать работу бессмысленно. Компьютер должен определить новый порт в диспетчере устройств.</p>
+
+<h2 id="процесс-прошивки-через-obd2">Процесс прошивки через OBD2</h2>
+
+<p>Сам процесс записи программного обеспечения зависит от выбранной программы-загрузчика. Рассмотрим алгоритм действий на примере популярной связки для блоков <em>Bosch M7.9.7</em>. Запустите программу-загрузчик и выберите правильный тип контроллера из списка. Это критически важно, так как выбор неверного алгоритма может повредить память.</p>
+
+<p>В настройках соединения укажите порт <code>COM</code>, который был присвоен вашему адаптеру в системе, и скорость обмена (обычно она определяется автоматически). Нажмите кнопку «Связь» или «Connect». Если все прошло успешно, в окне программы появится информация о текущей версии прошивки и контрольной сумме.</p>
+
+<pre><code>Алгоритм действий:
+<p>1. Открыть файл прошивки (.bin) в загрузчике.</p>
+<p>2. Нажать кнопку «Запись» или «Write».</p>
+<p>3. Дождаться окончания процесса (статус-бар 100%).</p>
+<p>4. Выполнить сброс адаптаций.</code></pre></p>
+
+<p>Во время записи индикатор прогресса будет двигаться. В этот момент категорически запрещается касаться проводов, дергать ключ зажигания или выключать ноутбук. Процесс может занять от 2 до 10 минут в зависимости от объема данных и скорости адаптера. После успешной записи программа сообщит о завершении.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если в процессе записи произошел сбой и статус «Запись» не достиг 100%, не паникуйте. Попробуйте снова нажать кнопку «Связь» и повторить запись. Если блок перестал отвечать, потребуется восстановление через BSL (Boot Sector Loader).</p>
+</blockquote>
+
+
+</p></blockquote>
+
+<h2 id="сброс-адаптаций-и-проверка-результата">Сброс адаптаций и проверка результата</h2>
+
+<p>После успешной записи новой программы в память ЭБУ, необходимо выполнить сброс адаптаций. ЭБУ хранит в памяти корректировки, полученные в процессе работы со старой прошивкой (положение дросселя, состав смеси, угол опережения). Если их не сбросить, автомобиль может работать нестабильно.</p>
+
+<p>Для сброса можно использовать ту же диагностическую программу, найдя функцию «Сброс адаптаций» или «Reset Adaptations». Альтернативный метод — «деградация» блока: снять минусовую клемму аккумулятора на 15-20 минут. Однако программный сброс считается более надежным и полным.</p>
+
+<p>После сброса выключите зажигание, подождите 10 секунд и запустите двигатель. Первые минуты мотор может работать на повышенных оборотах — это нормально, идет процесс обучения. Проверьте отсутствие ошибок, послушайте работу двигателя на холостом ходу.</p>
+
+
+</p>
+
+<p>Оцените результат. Обычно после установки качественной тюнинговой прошивки исчезает «провал» при нажатии на педаль газа, улучшается приемистость на низких оборотах и стабилизируется холостой ход. Если поведение машины ухудшилось, всегда можно вернуться к заводской версии, если вы сделали ее резервную копию.</p>
+
+
+</p>
+
+<h2 id="возможные-проблемы-и-их-решение">Возможные проблемы и их решение</h2>
+
+<p>В процессе самостоятельной прошивки могут возникнуть различные трудности. Одна из самых частых — ошибка контрольной суммы (Checksum Error). Это означает, что записанные данные не совпадают с расчетными. В таком случае необходимо проверить целостность файла прошивки и попробовать перепрошить блок еще раз.</p>
+
+<p>Другая проблема — невозможность войти в режим загрузки. Это часто случается, если ЭБУ заблокирован иммобилайзером или имеет защитные механизмы. Для некоторых блоков <em>Bosch ME17.9.7</em> требуется специальное разблокирующее оборудование или вскрытие корпуса для замыкания контактов на плате.</p>
+
+<ul>
+<li>🔌 <strong>Проблема:</strong> Обрыв связи посередине процесса. <strong>Решение:</strong> Проверьте надежность контакта в разъеме OBD, зачистите контакты, используйте кабель с ферритовыми кольцами.</li>
+<li>💻 <strong>Проблема:</strong> Программа зависает. <strong>Решение:</strong> Отключите антивирус, закройте лишние приложения, используйте компьютер без фоновых задач.</li>
+<li>🚗 <strong>Проблема:</strong> Машина не заводится после прошивки. <strong>Решение:</strong> Проверьте, та ли прошивка была залита (для вашего объема двигателя), сделайте полный сброс ЭБУ (снятие клемм).</li>
+</ul>
+
+<p>Если ни один из методов не помогает, возможно, потребуется профессиональное вмешательство с использованием программаторов, подключаемых напрямую к выводам микросхемы памяти. Но в 95% случаев при соблюдении инструкции проблем не возникает.</p>
+
+<details>
+<summary>Можно ли перепрошить Шевроле Нива без компьютера?</summary>
+<p>Самостоятельно, без использования ПК и специализированного ПО, перепрошить ЭБУ невозможно. Существуют готовые решения «под ключ», где блок меняют целиком на уже прошитый, но это не является прошивкой в чистом виде. Также существуют устройства для чип-тюнинга через смартфон, но они работают только с определенными типами блоков и требуют наличия адаптера.</p>
+</details>
+
+<details>
+<summary>Снимется ли автомобиль с гарантии после прошивки?</summary>
+<p>Да, любое вмешательство в программное обеспечение ЭБУ, которое меняет заводские параметры, является основанием для снятия с гарантии на двигатель и связанные с ним системы. Официальные дилеры могут определить факт прошивки по логу ошибок или измененной контрольной сумме при плановом ТО.</p>
+</details>
+
+<details>
+<summary>Увеличится ли расход топлива после чип-тюнинга?</summary>
+<p>Зависит от цели прошивки. Если цель — повышение мощности (Stage 1), расход может вырасти на 5-10% из-за более богатой смеси и активной езды. Если цель — экономия (Eco-режим), то расход можно снизить, но в ущерб динамике. Чаще всего ищут баланс, где расход остается на прежнем уровне, а тяга растет.</p>
+</details>
+
+<details>
+<summary>Опасно ли это для ресурса двигателя?</summary>
+<p>Грамотно сделанная прошивка от проверенных калибровщиков не опасна. Двигатели Шевроле Нива имеют большой запас прочности. Однако агрессивные прошивки с сильным увеличением угла опережения зажигания могут привести к детонации и перегреву, что сократит ресурс мотора. Важно выбирать проверенные решения.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#необходимое-оборудование-и-подготовка-по">Необходимое оборудование и подготовка ПО</a></li><li><a href="#идентификация-типа-эбу-на-шевроле-нива">Идентификация типа ЭБУ на Шевроле Нива</a></li><li><a href="#подключение-и-подготовка-автомобиля">Подключение и подготовка автомобиля</a></li><li><a href="#процесс-прошивки-через-obd2">Процесс прошивки через OBD2</a></li><li><a href="#сброс-адаптаций-и-проверка-результата">Сброс адаптаций и проверка результата</a></li><li><a href="#возможные-проблемы-и-их-решение">Возможные проблемы и их решение</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

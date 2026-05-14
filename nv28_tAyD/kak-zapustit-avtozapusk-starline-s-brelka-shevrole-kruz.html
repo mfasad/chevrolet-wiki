@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🚗</text></svg>">
+    <title>Автозапуск Starline на Chevrolet Cruze: настройка с брелка — Chevrolet-Wiki</title>
+    <meta name="description" content="Подробная инструкция по настройке автозапуска Starline на Шевроле Круз. Как запустить двигатель с брелка, программирование функций и устранение ошибок.">
+    <link rel="canonical" href="https://chevrolet-wiki.vercel.app/nv28_tAyD/kak-zapustit-avtozapusk-starline-s-brelka-shevrole-kruz.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Автозапуск Starline на Chevrolet Cruze: настройка с брелка">
+    <meta property="og:description" content="Подробная инструкция по настройке автозапуска Starline на Шевроле Круз. Как запустить двигатель с брелка, программирование функций и устранение ошибок.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1778744935">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>Chevrolet-Wiki</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/corvette/" class="nav-link">📁 Corvette</a>
+<a href="/category/tahoe/" class="nav-link">📁 Tahoe</a>
+<a href="/category/silverado/" class="nav-link">📁 Silverado</a>
+<a href="/category/equinox/" class="nav-link">📁 Equinox</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/corvette/" class="dropdown-item">📁 Corvette</a>
+<a href="/category/tahoe/" class="dropdown-item">📁 Tahoe</a>
+<a href="/category/silverado/" class="dropdown-item">📁 Silverado</a>
+<a href="/category/equinox/" class="dropdown-item">📁 Equinox</a>
+<a href="/category/blazer/" class="dropdown-item">📁 Blazer</a>
+<a href="/category/trailblazer/" class="dropdown-item">📁 TrailBlazer</a>
+<a href="/category/spark/" class="dropdown-item">📁 Spark</a>
+<a href="/category/cobalt/" class="dropdown-item">📁 Cobalt</a>
+<a href="/category/camaro/" class="dropdown-item">📁 Camaro</a>
+<a href="/category/malibu/" class="dropdown-item">📁 Malibu</a>
+<a href="/category/cruze/" class="dropdown-item">📁 Cruze</a>
+<a href="/category/aveo/" class="dropdown-item">📁 Aveo</a>
+<a href="/category/lacetti/" class="dropdown-item">📁 Lacetti</a>
+<a href="/category/lanos/" class="dropdown-item">📁 Lanos</a>
+<a href="/category/orlando/" class="dropdown-item">📁 Orlando</a>
+<a href="/category/captiva/" class="dropdown-item">📁 Captiva</a>
+<a href="/category/epica/" class="dropdown-item">📁 Epica</a>
+<a href="/category/niva/" class="dropdown-item">📁 Niva</a>
+<a href="/category/impala/" class="dropdown-item">📁 Impala</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Автозапуск Starline на Chevrolet Cruze: настройка с брелка</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как запустить автозапуск Starline с брелка на Chevrolet Cruze</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-системы-и-проверка-условий-запуска">Подготовка системы и проверка условий запуска</a></li><li><a href="#алгоритм-запуска-двигателя-с-основного-брелка">Алгоритм запуска двигателя с основного брелка</a></li><li><a href="#настройка-параметров-автозапуска-через-таблицу-функций">Настройка параметров автозапуска через таблицу функций</a></li><li><a href="#использование-временного-и-температурного-автозапуска">Использование временного и температурного автозапуска</a></li><li><a href="#устранение-типичных-ошибок-и-проблем">Устранение типичных ошибок и проблем</a></li><li><a href="#безопасность-и-особенности-эксплуатации-зимой">Безопасность и особенности эксплуатации зимой</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Владение автомобилем <em>Chevrolet Cruze</em> в условиях сурового климата часто требует предварительного прогрева двигателя перед началом движения. Штатная система безопасности редко оснащается функцией дистанционного старта, поэтому владельцы часто обращаются к установке охранных комплексов <strong>Starline</strong>. Правильная настройка автозапуска позволяет садиться в теплый салон с чистыми стеклами, что значительно повышает комфорт эксплуатации транспортного средства.</p>
+
+<p>Процесс активации этой функции зависит от конкретной модели сигнализации и способа ее подключения к бортовой сети автомобиля. В большинстве случаев управление осуществляется через основной брелок с ЖК-дисплеем или через мобильное приложение, если установлен GSM-модуль. Однако именно физический пульт остается самым надежным инструментом для быстрой проверки статуса и запуска мотора в условиях плохого приема сотовой связи.</p>
+
+<p>Прежде чем приступать к непосредственному запуску, необходимо убедиться, что система установлена корректно и запрограммирована под характеристики вашего двигателя. Ошибки на этапе настройки могут привести к тому, что автомобиль не заведется или, в худшем случае, двигатель будет работать нестабльно. Ниже мы подробно разберем алгоритмы действий, необходимые таблицы параметров и возможные проблемы, с которыми сталкиваются владельцы <em>Шевроле Круз</em>.</p>
+
+<h2 id="подготовка-системы-и-проверка-условий-запуска">Подготовка системы и проверка условий запуска</h2>
+
+<p>Перед тем как пытаться завести двигатель дистанционно, важно убедиться, что выполнены все необходимые условия безопасности. Сигнализация <strong>Starline</strong> блокирует запуск, если автомобиль не стоит на охране или открыт капот. Это базовый уровень защиты, предотвращающий угон или повреждение имущества при несанкционированном доступе.</p>
+
+<p>Также следует проверить состояние самого брелка. Разряженная батарея может привести к потере сигнала или невозможности подтвердить команду запуска. На дисплее пульта не должно гореть индикаторов неисправности, таких как мигающий значок молнии или открытой двери, если все замки закрыты. Для <em>Chevrolet Cruze</em> критично правильное подключение к цепи контроля работы двигателя, чтобы система понимала, что мотор уже запущен или, наоборот, заглушен.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Никогда не оставляйте автомобиль с работающим двигателем в закрытом гараже или помещении без вентиляции. Выхлопные газы могут накапливаться и представлять смертельную опасность для людей и животных.</p>
+</blockquote>
+
+<p>Убедитесь, что рычаг управления коробкой передач находится в положении парковки <code>P</code> (для АКПП) или нейтралей (для МКПП с установленной программной нейтралью). Если вы владелец механики, процедура "программной нейтрали" должна быть выполнена до постановки на охрану, иначе стартер не крутанет при попытке удаленного старта.</p>
+
+<div class="poll-widget" id="poll-fd20cfe2"><div class="poll-widget-question">📊 Как часто вы используете автозапуск зимой?</div><div class="poll-widget-option" data-poll="fd20cfe2" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Каждое утро перед выходом</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="fd20cfe2" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Только в сильные морозы</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="fd20cfe2" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Редко, предпочитаю прогревать вручную</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="fd20cfe2" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">У меня нет автозапуска</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="алгоритм-запуска-двигателя-с-основного-брелка">Алгоритм запуска двигателя с основного брелка</h2>
+
+<p>Запуск двигателя с брелка Starline на Chevrolet Cruze осуществляется по стандартному алгоритму, характерному для большинства моделей сигнализаций этого производителя. Основное действие — это последовательное нажатие кнопок в определенном временном интервале. Обычно используется кнопка с изображением замка или снежинки, в зависимости от серии устройства.</p>
+
+<p>Для активации старта необходимо нажать кнопку 1 (обычно это кнопка закрытия замка или отдельная кнопка старта) и удерживать ее до появления звукового сигнала. Сразу после этого, отпустив первую кнопку, нужно быстро нажать кнопку 3 (открытие замка или старт). Если все сделано правильно, брелок издаст мелодичный звук, а на экране отобразится иконка выхлопной трубы.</p>
+
+<ul>
+<li>🔑 Нажмите и удерживайте кнопку 1 до звукового сигнала.</li>
+<li>🚀 Быстро нажмите кнопку 3 сразу после отпускания первой.</li>
+<li>📡 Дождитесь подтверждения от автомобиля в виде вспышки габаритов.</li>
+<li>🌡️ Проверьте температуру двигателя на дисплее брелка после прогрева.</li>
+</ul>
+
+<p>Время прогрева по умолчанию обычно составляет 10 минут, но этот параметр можно изменить через настройки. Если двигатель не запустился с первой попытки, система Starline автоматически повторит попытку еще несколько раз, увеличивая время работы стартера. Для <em>Шевроле Круз</em> важно, чтобы время работы стартера было настроено адекватно состоянию аккумулятора и исправности двигателя.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед запуском</h4><label class="check-item"><input type="checkbox"><span>Рычаг КПП в положении Паркинг</span></label><label class="check-item"><input type="checkbox"><span>Капот и двери закрыты</span></label><label class="check-item"><input type="checkbox"><span>Снято ручное торможение (для программной нейтрали)</span></label><label class="check-item"><input type="checkbox"><span>Заряд АКБ в норме</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="настройка-параметров-автозапуска-через-таблицу-функций">Настройка параметров автозапуска через таблицу функций</h2>
+
+<p>Для стабильной работы автозапуска на <em>Chevrolet Cruze</em> необходимо правильно запрограммировать функции сигнализации. Это делается путем входа в режим программирования, который активируется через кнопку Valet или комбинацией кнопок на брелке. Таблица функций позволяет адаптировать работу стартера под конкретный тип двигателя и трансмиссии.</p>
+
+<p>Особое внимание следует уделить функции контроля работы двигателя. Для дизельных версий Cruze необходимо устанавливать увеличенное время прогрева свечей накаливания, если такая опция поддерживается подключенным модулем. Для бензиновых версий важно настроить время работы стартера, чтобы он не крутил двигатель слишком долго после его успешного запуска.</p>
+
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Описание</th>
+<th>Рекомендуемое значение для Cruze</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Тип двигателя</td>
+<td>Бензин или Дизель</td>
+<td>Бензин (стандарт)</td>
+</tr>
+<tr>
+<td>Время работы стартера</td>
+<td>Длительность прокрутки</td>
+<td>0.8 - 1.2 сек</td>
+</tr>
+<tr>
+<td>Контроль работы</td>
+<td>По тахометру или напряжению</td>
+<td>По тахометру</td>
+</tr>
+<tr>
+<td>Время прогрева</td>
+<td>Длительность работы до остановки</td>
+<td>10 или 20 минут</td>
+</tr>
+</tbody>
+</table>
+
+<p>Изменение параметров требует точности. Если вы не уверены в значении конкретной функции, лучше оставить заводские настройки или обратиться к установщику. Неправильная настройка контроля работы двигателя может привести к тому, что стартер будет крутить уже работающий мотор, что вредно для зубьев бендикса.</p>
+
+<details class="faq-item"><summary>Что такое программная нейтраль?</summary><div class="faq-answer"><p>Программная нейтраль — это алгоритм для автомобилей с механической коробкой передач. Он позволяет оставить автомобиль на передаче с выключенным двигателем, но при этом сохранить возможность автозапуска. Для этого необходимо выполнить последовательность действий: поднять ручник при работающем двигателе, вынуть ключ, выйти и закрыть дверь. Сигнализация запомнит состояние и разрешит запуск только если ручник был поднят при работающем моторе.</p></div></details>
+
+<h2 id="использование-временного-и-температурного-автозапуска">Использование временного и температурного автозапуска</h2>
+
+<p>Одной из самых полезных функций для владельцев <em>Chevrolet Cruze</em> в зимний период является запуск по температуре двигателя. Система самостоятельно мониторит показания датчика, установленного на блоке цилиндров или в салоне, и запускает мотор, когда температура опускается ниже заданного порога.</p>
+
+<p>Это позволяет поддерживать двигатель в тепле всю ночь, не расходуя ресурс аккумулятора на постоянные попытки запуска холодного мотора утром. Порог срабатывания можно настроить на значения -5, -10, -18 или -25 градусов Цельсия. Для дизельных версий рекомендуется ставить более высокий порог, например -5 или -10 градусов, чтобы масло не успевало загустеть.</p>
+
+<p>Временной запуск позволяет заводить автомобиль через определенные интервалы времени, например, каждые 2, 4 или 24 часа. Эта функция менее популярна, так как требует постоянного наличия топлива и может разрядить аккумулятор при частых коротких циклах работы. Однако в экстремально холодные ночи она может стать спасением для двигателя.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При использовании температурного автозапуска следите за уровнем топлива в баке. Частые запуски могут быстро опустошить бак, а в мороз конденсат в топливной системе может замерзнуть.</p>
+</blockquote>
+
+<p>Для активации температурного запуска необходимо войти в меню функций брелка и выбрать соответствующий значок термометра. После активации на дисплее появится индикация установленного порога температуры. Система будет игнорировать команду запуска, если двигатель уже горячий, что экономит топливо.</p>
+
+<h2 id="устранение-типичных-ошибок-и-проблем">Устранение типичных ошибок и проблем</h2>
+
+<p>Даже правильно установленная система может давать сбои. На <em>Chevrolet Cruze</em> часто встречается проблема, когда автомобиль заводится и сразу глохнет. Это обычно указывает на ошибку в обходе иммобилайзера. Если чип-ключ не считывается модулем обхода, штатная система безопасности блокирует подачу топлива или искры.</p>
+
+<p>Еще одна распространенная проблема — отсутствие реакции на команды с брелка. В этом случае нужно проверить антенный модуль, который наклеен на лобовое стекло. Если он поврежден или плохо приклеен, радиус действия сигнала резко снижается. Также стоит проверить состояние концевиков дверей и капота, так как сигнализация не запустит двигатель, если "видит" открытую дверь.</p>
+
+<ul>
+<li>🔋 Проверьте напряжение аккумулятора — при низком заряде автозапуск блокируется.</li>
+<li>🚗 Убедитесь, что автомобиль стоит на ровной поверхности.</li>
+<li>🔧 Проверьте подключение датчика температуры двигателя.</li>
+<li>📶 Убедитесь, что нет сильных радиопомех в месте парковки.</li>
+</ul>
+
+<p>Если на брелке отображается ошибка <code>SP</code> (Check Engine), это может означать, что двигатель уже запущен или система видит неисправность в цепи зажигания. В таких случаях помогает сброс настроек на заводские и повторное программирование функций. Для <strong>Starline</strong> характерна самодиагностика, которая выводит коды ошибок на экран пульта.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если автомобиль перестал реагировать на автозапуск после замены аккумулятора в брелке, попробуйте перепрограммировать брелок в память сигнализации, даже если остальные функции работают нормально.</p></div>
+
+<h2 id="безопасность-и-особенности-эксплуатации-зимой">Безопасность и особенности эксплуатации зимой</h2>
+
+<p>Эксплуатация автомобиля с автозапуском требует соблюдения определенных правил безопасности. В первую очередь, это касается выбора места парковки. Не следует запускать двигатель в замкнутых пространствах. Кроме того, на <em>Chevrolet Cruze</em> с механической коробкой передач нужно быть особенно внимательным при парковке на уклонах.</p>
+
+<p>Зимой рекомендуется использовать синтетические масла с низкой температурой застывания. Это снизит нагрузку на стартер и аккумулятор в момент запуска. Также стоит регулярно проверять состояние свечей зажигания и высоковольтных проводов, так как холодный пуск требует исправной системы зажигания.</p>
+
+<p> Поэтому не стоит злоупотреблять функцией прогрева, если в этом нет острой необходимости. Оптимальное время прогрева для выхода на рабочий режим — 10-15 минут.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Регулярное обслуживание системы автозапуска и своевременная замена элементов питания в брелке гарантируют стабильный запуск двигателя даже в сильные морозы.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему автомобиль заводится и сразу глохнет через 2-3 секунды?</summary>
+<p>Скорее всего, система не видит, что двигатель запустился. Проверьте настройку контроля работы двигателя (по тахометру или напряжению). Также возможна проблема с обходчиком иммобилайзера — чип-ключ может быть потерян или размагничен.</p>
+</details>
+
+<details>
+<summary>Можно ли настроить автозапуск на механике без выполнения программной нейтрали?</summary>
+<p>Нет, это невозможно и опасно. Без выполнения процедуры программной нейтрали (поднятие ручника при работающем двигателе) автомобиль может остаться на передаче. При запуске он рванет с места, что приведет к аварии. Некоторые модели Starline имеют функцию "гибридного" контроля, но полагаться на нее не стоит.</p>
+</details>
+
+<details>
+<summary>Как увеличить время работы двигателя при автозапуске?</summary>
+<p>Время работы двигателя программируется в таблице функций сигнализации. Обычно доступны варианты: 5, 10, 20 и 30 минут. Для изменения необходимо войти в режим программирования брелка и выбрать соответствующую функцию. Стандартное время для прогрева зимой — 10 или 20 минут.</p>
+</details>
+
+<details>
+<summary>Что делать, если брелок показывает температуру -90 градусов?</summary>
+<p>Это указывает на обрыв цепи датчика температуры двигателя. Датчик либо отошел от разъема, либо вышел из строя. Необходимо проверить подключение датчика, который обычно установлен под капотом и подключен к основному блоку сигнализации.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-системы-и-проверка-условий-запуска">Подготовка системы и проверка условий запуска</a></li><li><a href="#алгоритм-запуска-двигателя-с-основного-брелка">Алгоритм запуска двигателя с основного брелка</a></li><li><a href="#настройка-параметров-автозапуска-через-таблицу-функций">Настройка параметров автозапуска через таблицу функций</a></li><li><a href="#использование-временного-и-температурного-автозапуска">Использование временного и температурного автозапуска</a></li><li><a href="#устранение-типичных-ошибок-и-проблем">Устранение типичных ошибок и проблем</a></li><li><a href="#безопасность-и-особенности-эксплуатации-зимой">Безопасность и особенности эксплуатации зимой</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🚗 Chevrolet-Wiki</div>
+                    <p class="footer-about">Chevrolet — полный справочник по ремонту, обслуживанию и выбору запчастей. Подробные инструкции для всех моделей от Aveo до Tahoe.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/corvette/">📁 Corvette</a></li>
+<li><a href="/category/tahoe/">📁 Tahoe</a></li>
+<li><a href="/category/silverado/">📁 Silverado</a></li>
+<li><a href="/category/equinox/">📁 Equinox</a></li>
+<li><a href="/category/blazer/">📁 Blazer</a></li>
+<li><a href="/category/trailblazer/">📁 TrailBlazer</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Chevrolet-Wiki. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>
