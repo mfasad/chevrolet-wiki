@@ -290,6 +290,92 @@
             .tag-cloud { gap: 6px; }
             .tag-btn { font-size: 0.8rem; padding: 6px 12px; }
         }
+
+
+        /* cw-live-photos:start */
+        .hero-home {
+            min-height: 650px;
+            padding: 68px 0 54px;
+            text-align: left;
+            background:
+                linear-gradient(90deg, rgba(248,250,252,.98) 0%, rgba(248,250,252,.94) 35%, rgba(248,250,252,.35) 61%, rgba(15,23,42,.12) 100%),
+                url('/static/img/home/chevrolet-garage-hero.jpg') center / cover no-repeat;
+        }
+        .hero-home::before { display: none; }
+        .hero-home .container { display: flex; flex-direction: column; align-items: flex-start; }
+        .hero-logo { display: none; }
+        .hero-home h1 { max-width: 650px; font-size: clamp(2.3rem, 4.6vw, 4.3rem); letter-spacing: -.045em; }
+        .hero-desc { max-width: 590px; margin: 8px 0 26px; color: #475569; font-size: 1.12rem; }
+        .search-hero { width: min(100%, 570px); max-width: 570px; margin: 0 0 24px; }
+        .tag-cloud { justify-content: flex-start; max-width: 690px; margin: 0 0 28px; }
+        .tag-btn { background: rgba(255,255,255,.9); backdrop-filter: blur(8px); }
+        .trust-strip { justify-content: flex-start; gap: 10px; max-width: 820px; }
+        .trust-item { background: rgba(255,255,255,.88); backdrop-filter: blur(8px); padding: 10px 14px; }
+
+        .cw-photo-routes { padding-top: 16px; }
+        .cw-photo-routes__head {
+            display: flex; align-items: end; justify-content: space-between; gap: 24px;
+            margin-bottom: 22px;
+        }
+        .cw-photo-routes__head p { max-width: 560px; color: #64748b; line-height: 1.6; }
+        .cw-photo-routes__grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .cw-photo-card {
+            min-height: 270px; grid-column: span 4; position: relative; overflow: hidden;
+            border-radius: 18px; color: #fff; text-decoration: none;
+            box-shadow: 0 16px 40px rgba(15,23,42,.13);
+            isolation: isolate;
+        }
+        .cw-photo-card:nth-child(1), .cw-photo-card:nth-child(2) { grid-column: span 6; min-height: 340px; }
+        .cw-photo-card img {
+            width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: -2;
+            transition: transform .45s ease;
+        }
+        .cw-photo-card::after {
+            content: ''; position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(180deg, transparent 24%, rgba(15,23,42,.9) 100%);
+        }
+        .cw-photo-card:hover img { transform: scale(1.045); }
+        .cw-photo-card__copy {
+            position: absolute; left: 0; right: 0; bottom: 0; padding: 24px;
+        }
+        .cw-photo-card__eyebrow {
+            display: inline-block; margin-bottom: 8px; padding: 5px 9px; border-radius: 999px;
+            background: rgba(255,255,255,.16); backdrop-filter: blur(8px);
+            font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+        }
+        .cw-photo-card h3 { margin: 0 0 7px; font-size: 1.35rem; line-height: 1.2; }
+        .cw-photo-card p { margin: 0; color: #dbeafe; font-size: .9rem; line-height: 1.45; }
+
+        @media (max-width: 900px) {
+            .hero-home {
+                min-height: auto;
+                background:
+                    linear-gradient(90deg, rgba(248,250,252,.97) 0%, rgba(248,250,252,.91) 58%, rgba(248,250,252,.62) 100%),
+                    url('/static/img/home/chevrolet-garage-hero.jpg') 63% center / cover no-repeat;
+            }
+            .cw-photo-card, .cw-photo-card:nth-child(1), .cw-photo-card:nth-child(2) {
+                grid-column: span 6; min-height: 280px;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-home { padding: 38px 0 28px; background-position: 67% center; }
+            .hero-home h1 { font-size: 2.15rem; max-width: 92%; }
+            .hero-desc { max-width: 92%; }
+            .trust-strip { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+            .trust-item { min-width: 0; align-items: flex-start; }
+            .trust-sub { display: none; }
+            .cw-photo-routes__head { display: block; }
+            .cw-photo-routes__head p { margin-top: 8px; }
+            .cw-photo-card, .cw-photo-card:nth-child(1), .cw-photo-card:nth-child(2) {
+                grid-column: 1 / -1; min-height: 255px;
+            }
+        }
+        /* cw-live-photos:end */
+
     </style>
     <!--#include virtual="/ssi/head.html" -->
 </head>
@@ -426,7 +512,7 @@
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">🔄</span>
-                    <div class="trust-text">Актуальный контент<span class="trust-sub">Обновлено: май 2026</span></div>
+                    <div class="trust-text">Актуальный контент<span class="trust-sub">Проверяем и дополняем материалы</span></div>
                 </div>
             </div>
         </div>
@@ -440,6 +526,39 @@
                     <p>Chevrolet-Wiki — это исчерпывающий справочник по ремонту, обслуживанию и подбору оригинальных запчастей для всех моделей бренда. Здесь вы найдете детальные инструкции, которые помогут сэкономить на сервисе и поддерживать автомобиль в идеальном состоянии.</p>
                 </div>
             </section>
+
+
+            <section class="home-section cw-photo-routes" data-animate aria-labelledby="cw-routes-title">
+                <div class="cw-photo-routes__head">
+                    <div>
+                        <h2 class="home-section-title" id="cw-routes-title">С чего начать</h2>
+                        <p>Выберите задачу — от первой диагностики до поиска подходящих деталей.</p>
+                    </div>
+                </div>
+                <div class="cw-photo-routes__grid">
+                    <a class="cw-photo-card" href="/category/cruze/">
+                        <img src="/static/img/home/diagnostics.jpg" alt="Диагностика автомобиля сканером" width="1536" height="1024" loading="lazy">
+                        <span class="cw-photo-card__copy"><span class="cw-photo-card__eyebrow">Диагностика</span><h3>Найти причину неисправности</h3><p>Проверки, коды ошибок и понятная последовательность действий.</p></span>
+                    </a>
+                    <a class="cw-photo-card" href="/category/aveo/">
+                        <img src="/static/img/home/engine-service.jpg" alt="Обслуживание двигателя автомобиля" width="1536" height="1024" loading="lazy">
+                        <span class="cw-photo-card__copy"><span class="cw-photo-card__eyebrow">Двигатель</span><h3>Провести обслуживание</h3><p>Масла, фильтры, свечи и работы, которые можно спланировать заранее.</p></span>
+                    </a>
+                    <a class="cw-photo-card" href="/category/captiva/">
+                        <img src="/static/img/home/brakes-suspension.jpg" alt="Проверка тормозов и подвески" width="1536" height="1024" loading="lazy">
+                        <span class="cw-photo-card__copy"><span class="cw-photo-card__eyebrow">Ходовая</span><h3>Проверить тормоза и подвеску</h3><p>Износ, симптомы и порядок осмотра основных узлов.</p></span>
+                    </a>
+                    <a class="cw-photo-card" href="/category/cobalt/">
+                        <img src="/static/img/home/auto-electrics.jpg" alt="Проверка автомобильной электрики" width="1536" height="1024" loading="lazy">
+                        <span class="cw-photo-card__copy"><span class="cw-photo-card__eyebrow">Электрика</span><h3>Разобраться с питанием и датчиками</h3><p>Предохранители, цепи и безопасные проверки мультиметром.</p></span>
+                    </a>
+                    <a class="cw-photo-card" href="/category/drugoe/">
+                        <img src="/static/img/home/parts-selection.jpg" alt="Подбор автомобильных запчастей" width="1536" height="1024" loading="lazy">
+                        <span class="cw-photo-card__copy"><span class="cw-photo-card__eyebrow">Запчасти</span><h3>Подобрать совместимые детали</h3><p>Как сверить параметры и не ошибиться перед покупкой.</p></span>
+                    </a>
+                </div>
+            </section>
+
 
             <section class="home-section" data-animate>
                 <a href="#" class="featured-card" id="popularCard">
@@ -756,7 +875,9 @@
             (async function() {
                 try {
                     const resp = await fetch('/static/js/popular_articles.json');
-                    pool = await resp.json();
+                    pool = (await resp.json()).filter(a =>
+                        !/\b(?:19|20)\d{2}\b/.test(`${a.title || ''} ${a.desc || ''}`)
+                    );
                     shuffleAndRender();
                 } catch (err) { console.error("Failed to load articles:", err); }
             })();
